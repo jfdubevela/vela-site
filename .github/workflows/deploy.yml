@@ -26,7 +26,7 @@ jobs:
             docker run -d \
               --name vela-site \
               --restart unless-stopped \
-              -p 3002:3000 \
+              -p 3003:3000 \
               -e RESEND_API_KEY="$RESEND_API_KEY" \
               vela-site
             echo "✅ Déployé avec succès"
