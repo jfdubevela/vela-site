@@ -163,16 +163,42 @@ export default function Temoignages() {
 
         {/* Custom pricing note */}
         <ScrollReveal delay={0.15}>
-          <div className="rounded-2xl border border-[#7DB7D6]/20 bg-[#7DB7D6]/05 p-6 md:p-8 flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
-            <div className="flex flex-col gap-1">
-              <span className="text-sm font-semibold text-[#7DB7D6]">Agents IA & cas complexes</span>
-              <span className="text-sm text-[rgba(245,245,240,0.5)] max-w-[55ch]">
-                Pour les projets impliquant des agents IA ou des intégrations sur mesure, la tarification est établie après le diagnostic — toujours transparente, toujours justifiée.
+          <div className="rounded-2xl border border-[#7DB7D6]/20 bg-white/[0.03] p-7 md:p-10">
+            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-7">
+              <div className="flex flex-col gap-1.5">
+                <span className="text-xs uppercase tracking-[0.2em] text-[#7DB7D6] font-mono">Projets sur mesure</span>
+                <span className="text-lg font-black text-[#F7F3EB] leading-tight">
+                  Agents IA, dashboards &amp; systèmes complexes
+                </span>
+                <span className="text-sm text-[rgba(245,245,240,0.45)] max-w-[55ch] mt-1">
+                  Certains projets dépassent l&apos;automatisation standard. La tarification est établie après le diagnostic — toujours transparente, toujours basée sur la valeur créée.
+                </span>
+              </div>
+              <span className="shrink-0 text-xs font-mono px-4 py-2 rounded-full border border-[#7DB7D6]/25 text-[#7DB7D6] self-start">
+                Prix sur devis
               </span>
             </div>
-            <span className="shrink-0 text-xs font-mono px-4 py-2 rounded-full border border-[#7DB7D6]/25 text-[#7DB7D6] self-start md:self-auto">
-              Sur mesure
-            </span>
+
+            <div className="flex flex-wrap gap-2">
+              {[
+                'Agents IA multi-étapes',
+                'Tableaux de bord live',
+                'Synchronisation CRM + ERP',
+                'Traitement de documents IA',
+                'Qualification de prospects automatisée',
+                'Rapports exécutifs auto-générés',
+                'Chatbot interne d\'équipe',
+                'Alertes intelligentes multi-sources',
+                'Intégrations API sur mesure',
+              ].map((example) => (
+                <span
+                  key={example}
+                  className="text-xs px-3 py-1.5 rounded-full bg-white/[0.06] border border-white/[0.08] text-[rgba(245,245,240,0.55)]"
+                >
+                  {example}
+                </span>
+              ))}
+            </div>
           </div>
         </ScrollReveal>
 
