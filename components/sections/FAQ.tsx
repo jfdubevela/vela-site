@@ -7,7 +7,7 @@ const items = [
   {
     question: "Est-ce que j'ai besoin de compétences techniques pour travailler avec vous ?",
     answer:
-      "Non. Vous n'avez besoin d'aucune compétence technique. On s'occupe de tout — de la conception au déploiement. On vous explique ce qu'on fait en langage clair, on vous forme sur les points de contrôle essentiels, et on vous remet une documentation d'une page par automation.",
+      "Non. Vous n'avez besoin d'aucune compétence technique. On s'occupe de tout, de la conception au déploiement. On vous explique ce qu'on fait en langage clair, on vous forme sur les points de contrôle essentiels, et on vous remet une documentation d'une page par automation.",
   },
   {
     question: 'En combien de temps voit-on des résultats concrets ?',
@@ -22,7 +22,7 @@ const items = [
   {
     question: "Comment ça s'intègre à mes outils actuels (Google Workspace, CRM, etc.) ?",
     answer:
-      "On travaille avec les outils que vous utilisez déjà. Notre stack naturel : Make, Google Workspace, Microsoft 365, Gmail/Outlook, Mailchimp. On connecte vos outils existants entre eux — pas besoin de migrer ou changer de logiciel. Le diagnostic identifie exactement ce qui est connecté à quoi.",
+      "On travaille avec les outils que vous utilisez déjà. Notre stack naturel : Make, Google Workspace, Microsoft 365, Gmail/Outlook, Mailchimp. On connecte vos outils existants entre eux, sans besoin de migrer ou changer de logiciel. Le diagnostic identifie exactement ce qui est connecté à quoi.",
   },
   {
     question: "Qu'est-ce qui se passe si une automation tombe en panne ?",
@@ -37,12 +37,12 @@ const items = [
   {
     question: 'Mes données et accès restent-ils en ma possession ?',
     answer:
-      "Oui, toujours. C'est une règle fondamentale chez VELA : le client possède tout — les comptes, les accès, les scénarios, les clés API. On ne garde aucun accès après la fin d'un mandat sauf si vous nous demandez explicitement de continuer avec la maintenance mensuelle.",
+      "Oui, toujours. C'est une règle fondamentale chez VELA : le client possède tout : les comptes, les accès, les scénarios, les clés API. On ne garde aucun accès après la fin d'un mandat sauf si vous nous demandez explicitement de continuer avec la maintenance mensuelle.",
   },
   {
     question: "Qu'est-ce qui vous différencie des autres agences I.A. ?",
     answer:
-      "On mesure avant d'automatiser — et c'est rare. On ne vend pas de démos fragiles ou de promesses vagues. Chaque livrable a une définition de \"DONE\" claire : monitoring, alertes, logs, documentation, formation, 7 jours de stabilisation. On est une micro-agence québécoise : vous parlez directement aux experts, pas à des intermédiaires.",
+      "On mesure avant d'automatiser, et c'est rare. On ne vend pas de démos fragiles ou de promesses vagues. Chaque livrable a une définition de \"DONE\" claire : monitoring, alertes, logs, documentation, formation, 7 jours de stabilisation. On est une micro-agence québécoise : vous parlez directement aux experts, pas à des intermédiaires.",
   },
 ]
 

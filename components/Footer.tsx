@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="flex flex-col gap-4 items-start">
             <Image src="/logo.svg" alt="VELA" width={132} height={46} className="h-10 w-auto" />
             <p className="text-sm text-[rgba(245,245,240,0.45)] leading-relaxed max-w-[30ch]">
-              Automatisation par l&apos;I.A. — claire, rentable, fiable.
+              Automatisation par l&apos;I.A. : claire, rentable, fiable.
             </p>
             <p className="text-xs text-[rgba(245,245,240,0.25)] font-mono">
               Basé à Longueuil, Québec

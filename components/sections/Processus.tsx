@@ -148,7 +148,7 @@ export default function Processus() {
             <p className="text-sm text-[#0A2E4D]/50 max-w-[70ch] leading-relaxed">
               <strong className="text-[#0A2E4D]/80 font-semibold">Règle structurante :</strong>{' '}
               Le diagnostic est obligatoire avant toute implantation. On ne déploie
-              pas à l&apos;aveugle — on chiffre la valeur d&apos;abord.
+              pas à l&apos;aveugle : on chiffre la valeur d&apos;abord.
             </p>
           </div>
         </ScrollReveal>

@@ -78,7 +78,7 @@ export default function Tarification() {
             </h2>
             <p className="mt-5 text-sm text-[#0A2E4D]/50 max-w-[55ch] leading-relaxed">
               Les licences des outils (Make, Mailchimp, etc.) sont payées directement
-              par vous. Vous gardez tous vos accès — toujours.
+              par vous. Vous gardez tous vos accès, toujours.
             </p>
           </div>
         </ScrollReveal>
@@ -86,7 +86,7 @@ export default function Tarification() {
         {/* Diagnostic tiers */}
         <ScrollReveal delay={0.05}>
           <p className="text-xs uppercase tracking-[0.2em] text-[#0A2E4D]/40 mb-6 font-mono">
-            01 — Diagnostic (obligatoire)
+            01. Diagnostic (obligatoire)
           </p>
         </ScrollReveal>
 
@@ -169,7 +169,7 @@ export default function Tarification() {
         {/* Implantation grid */}
         <ScrollReveal delay={0.05}>
           <p className="text-xs uppercase tracking-[0.2em] text-[#0A2E4D]/40 mb-5 font-mono">
-            02 — Implantation (par automation)
+            02. Implantation (par automation)
           </p>
         </ScrollReveal>
         <div className="grid grid-cols-3 gap-3 mb-14">
@@ -190,7 +190,7 @@ export default function Tarification() {
         {/* Agents IA & cas complexes */}
         <ScrollReveal delay={0.05}>
           <p className="text-xs uppercase tracking-[0.2em] text-[#0A2E4D]/40 mb-5 font-mono">
-            03 — Agents IA &amp; cas complexes
+            03. Agents IA &amp; cas complexes
           </p>
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
@@ -201,7 +201,7 @@ export default function Tarification() {
                   Certains projets dépassent<br />l&apos;automatisation standard.
                 </h3>
                 <p className="text-sm text-[rgba(245,245,240,0.5)] leading-relaxed mb-6">
-                  Agents IA multi-étapes, traitement de documents non structurés, logique conditionnelle avancée, intégrations sur-mesure — ces cas sont évalués individuellement, toujours selon la valeur créée.
+                  Agents IA multi-étapes, traitement de documents non structurés, logique conditionnelle avancée, intégrations sur-mesure, ces cas sont évalués individuellement, toujours selon la valeur créée.
                 </p>
                 <button
                   onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
@@ -230,7 +230,7 @@ export default function Tarification() {
         {/* Maintenance */}
         <ScrollReveal delay={0.05}>
           <p className="text-xs uppercase tracking-[0.2em] text-[#0A2E4D]/40 mb-5 font-mono">
-            04 — Maintenance mensuelle (optionnelle)
+            04. Maintenance mensuelle (optionnelle)
           </p>
         </ScrollReveal>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-10">

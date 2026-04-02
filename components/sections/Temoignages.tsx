@@ -171,7 +171,7 @@ export default function Temoignages() {
                   Agents IA, dashboards &amp; systèmes complexes
                 </span>
                 <span className="text-sm text-[rgba(245,245,240,0.45)] max-w-[55ch] mt-1">
-                  Certains projets dépassent l&apos;automatisation standard. La tarification est établie après le diagnostic — toujours transparente, toujours basée sur la valeur créée.
+                  Certains projets dépassent l&apos;automatisation standard. La tarification est établie après le diagnostic, toujours transparente, toujours basée sur la valeur créée.
                 </span>
               </div>
               <span className="shrink-0 text-xs font-mono px-4 py-2 rounded-full border border-[#7DB7D6]/25 text-[#7DB7D6] self-start">

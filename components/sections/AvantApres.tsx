@@ -17,7 +17,7 @@ const before = [
 const after = [
   'Relances déclenchées automatiquement',
   'Dashboard centralisé mis à jour en temps réel',
-  'Zéro oubli — le système tourne sans vous',
+  'Zéro oubli, le système tourne sans vous',
   '6h/semaine récupérées',
   'Rapports automatiques, décisions éclairées',
 ]
@@ -124,7 +124,7 @@ export default function AvantApres() {
                 +<CountUp target={15000} suffix="$" />
               </p>
               <p className="text-sm text-[rgba(245,245,240,0.45)] mt-1 font-mono">
-                par an — c&apos;est ce que représentent 6h/semaine récupérées
+                par an, c&apos;est ce que représentent 6h/semaine récupérées
                 <br className="hidden md:block" /> au taux de 50$/h chargé
               </p>
             </div>
