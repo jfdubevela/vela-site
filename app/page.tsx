@@ -8,6 +8,7 @@ import Processus from '@/components/sections/Processus'
 import Services from '@/components/sections/Services'
 import AvantApres from '@/components/sections/AvantApres'
 import Temoignages from '@/components/sections/Temoignages'
+import Tarification from '@/components/sections/Tarification'
 import EtudesDeCas from '@/components/sections/EtudesDeCas'
 import FAQ from '@/components/sections/FAQ'
 import CTAFinal from '@/components/sections/CTAFinal'
@@ -40,6 +41,9 @@ export default function Home() {
           <Temoignages />
         </div>
         <div className="relative md:min-h-[100dvh] md:sticky top-0 z-[70] bg-[#F5F5F0] shadow-[0_-12px_40px_rgba(0,0,0,0.2)]">
+          <Tarification />
+        </div>
+        <div className="relative md:min-h-[100dvh] md:sticky top-0 z-[75] bg-[#F5F5F0] shadow-[0_-12px_40px_rgba(0,0,0,0.2)]">
           <EtudesDeCas />
         </div>
         <div className="relative md:min-h-[100dvh] md:sticky top-0 z-[80] bg-[#0A2E4D] shadow-[0_-12px_40px_rgba(0,0,0,0.25)]">

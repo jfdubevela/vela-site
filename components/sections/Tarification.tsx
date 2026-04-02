@@ -63,7 +63,7 @@ const implantationTiers = [
 
 export default function Tarification() {
   return (
-    <section id="tarifs" className="bg-[#F5F5F0] py-28 md:py-36">
+    <section id="tarification" className="bg-[#F5F5F0] py-28 md:py-36">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
         {/* Header */}
         <ScrollReveal>
@@ -186,6 +186,46 @@ export default function Tarification() {
             </ScrollReveal>
           ))}
         </div>
+
+        {/* Agents IA & cas complexes */}
+        <ScrollReveal delay={0.05}>
+          <p className="text-xs uppercase tracking-[0.2em] text-[#0A2E4D]/40 mb-5 font-mono">
+            03 — Agents IA &amp; cas complexes
+          </p>
+        </ScrollReveal>
+        <ScrollReveal delay={0.1}>
+          <div className="rounded-[1.75rem] bg-[#0A2E4D] p-8 md:p-10 mb-14">
+            <div className="grid md:grid-cols-2 gap-8 items-start">
+              <div>
+                <h3 className="text-xl md:text-2xl font-black text-[#F5F5F0] mb-3 leading-tight">
+                  Certains projets dépassent<br />l&apos;automatisation standard.
+                </h3>
+                <p className="text-sm text-[rgba(245,245,240,0.5)] leading-relaxed mb-6">
+                  Agents IA multi-étapes, traitement de documents non structurés, logique conditionnelle avancée, intégrations sur-mesure — ces cas sont évalués individuellement, toujours selon la valeur créée.
+                </p>
+                <button
+                  onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="inline-flex items-center gap-2 py-3 px-6 rounded-full bg-[#D4A373] hover:bg-[#C49060] text-[#0A2E4D] font-semibold text-sm transition-colors group cursor-pointer"
+                >
+                  Discuter de mon cas
+                  <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                </button>
+              </div>
+              <div className="grid grid-cols-1 gap-3">
+                {[
+                  { title: 'Traitement de documents IA', desc: 'Extraction, classification et routage automatique de factures, contrats et formulaires.' },
+                  { title: 'Service client automatisé', desc: 'Triage, réponses contextuelles et escalade intelligente vers les bonnes équipes.' },
+                  { title: 'Veille & rapports sur mesure', desc: 'Agrégation multi-sources, synthèse IA et distribution automatique aux parties prenantes.' },
+                ].map((item) => (
+                  <div key={item.title} className="rounded-[1rem] bg-white/[0.07] border border-white/10 p-4">
+                    <p className="text-sm font-semibold text-[#F5F5F0] mb-1">{item.title}</p>
+                    <p className="text-xs text-[rgba(245,245,240,0.45)] leading-relaxed">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
 
         {/* Maintenance */}
         <ScrollReveal delay={0.05}>
