@@ -19,7 +19,7 @@ export default function Temoignages() {
   const months = cost / (hours * rate * 4.3)
 
   return (
-    <section id="tarification" className="relative bg-[#0A2E4D] py-28 md:py-36 rounded-t-3xl overflow-hidden">
+    <section id="tarification" className="relative bg-[#0A2E4D] py-14 md:py-20 rounded-t-3xl overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image
@@ -39,13 +39,13 @@ export default function Temoignages() {
           <h2 className="text-[clamp(2rem,4.5vw,3.5rem)] font-black tracking-normal leading-[0.95] text-[#F7F3EB] mb-4">
             Un prix basé sur ce que<br />vous économisez vraiment.
           </h2>
-          <p className="text-base text-[rgba(245,245,240,0.5)] max-w-[52ch] mb-16">
+          <p className="text-base text-[rgba(245,245,240,0.5)] max-w-[52ch] mb-8">
             Pas de forfait arbitraire. On calcule la valeur réelle de chaque automatisation, et on charge 20 % de ça.
           </p>
         </ScrollReveal>
 
         {/* Formula */}
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] gap-4 items-stretch mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] gap-4 items-stretch mb-8">
           {[
             { top: 'Heures sauvées par semaine', sub: 'mesurées avant de commencer', accent: false },
             { op: '×' },
@@ -62,7 +62,7 @@ export default function Temoignages() {
             ) : (
               <ScrollReveal key={i} delay={i * 0.08} className="h-full">
                 <div className={`h-full rounded-2xl p-5 flex flex-col justify-between gap-3 border ${item.accent ? 'bg-[#D4A373]/10 border-[#D4A373]/30' : 'bg-white/[0.04] border-white/[0.08]'}`}>
-                  <span className={`font-black leading-tight ${item.accent ? 'text-[#D4A373] text-5xl md:text-6xl' : 'text-[#F7F3EB] text-2xl'}`}>{item.top}</span>
+                  <span className={`font-black leading-tight ${item.accent ? 'text-[#D4A373] text-4xl md:text-5xl' : 'text-[#F7F3EB] text-xl'}`}>{item.top}</span>
                   <span className="text-xs text-[rgba(245,245,240,0.35)]">{item.sub}</span>
                 </div>
               </ScrollReveal>
@@ -72,8 +72,8 @@ export default function Temoignages() {
 
         {/* Interactive calculator */}
         <ScrollReveal delay={0.1}>
-          <div className="rounded-[2rem] bg-white/[0.04] border border-white/[0.08] p-8 md:p-12 mb-12">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#7DB7D6] mb-8">Calculez votre cas</p>
+          <div className="rounded-[2rem] bg-white/[0.04] border border-white/[0.08] p-6 md:p-8 mb-6">
+            <p className="text-xs uppercase tracking-[0.2em] text-[#7DB7D6] mb-6">Calculez votre cas</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
               {/* Sliders */}
@@ -163,7 +163,7 @@ export default function Temoignages() {
 
         {/* Custom pricing note */}
         <ScrollReveal delay={0.15}>
-          <div className="rounded-2xl border border-[#7DB7D6]/20 bg-white/[0.03] p-7 md:p-10">
+          <div className="rounded-2xl border border-[#7DB7D6]/20 bg-white/[0.03] p-5 md:p-7">
             <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-7">
               <div className="flex flex-col gap-1.5">
                 <span className="text-xs uppercase tracking-[0.2em] text-[#7DB7D6] font-mono">Projets sur mesure</span>
