@@ -4,14 +4,25 @@ import { motion } from 'framer-motion'
 import SpotlightCard from '../ui/SpotlightCard'
 import ScrollReveal from '../ui/ScrollReveal'
 
-const cases = [
+type Case = {
+  num: string
+  sector: string
+  title: string
+  body: string
+  metric: string
+  tools: string[]
+  demoUrl?: string
+}
+
+const cases: Case[] = [
   {
     num: '01',
-    sector: 'Immobilier',
-    title: 'Zéro saisie CRM',
-    body: 'Les leads Centris étaient copiés manuellement dans HubSpot : 12h perdues chaque semaine. Un flux Make les capte, les classe et notifie le bon agent.',
-    metric: '+24 960 $ / année',
-    tools: ['Make', 'HubSpot', 'Centris'],
+    sector: 'Agent IA',
+    title: 'Réceptionniste vocale 24/7',
+    body: 'Un agent vocal IA répond aux appels entrants, qualifie les prospects, prend les rendez-vous et transfère au bon interlocuteur — sans jamais décrocher trop tard.',
+    metric: '24h/24 · 7j/7',
+    tools: ['Vapi', 'Make', 'Calendly'],
+    demoUrl: '/agent-vocal.html',
   },
   {
     num: '02',
@@ -120,8 +131,8 @@ export default function EtudesDeCas() {
                   </p>
                 </div>
 
-                {/* Tools */}
-                <div className="flex flex-wrap gap-1.5 pt-3 border-t border-[#0A2E4D]/07">
+                {/* Tools + Demo button */}
+                <div className="flex flex-wrap items-center gap-1.5 pt-3 border-t border-[#0A2E4D]/07">
                   {c.tools.map((tool) => (
                     <span
                       key={tool}
@@ -130,6 +141,14 @@ export default function EtudesDeCas() {
                       {tool}
                     </span>
                   ))}
+                  {c.demoUrl && (
+                    <a
+                      href={c.demoUrl}
+                      className="ml-auto text-[10px] px-3 py-1 rounded-full bg-[#0A2E4D] text-white font-mono tracking-wide hover:bg-[#0A2E4D]/80 transition-colors"
+                    >
+                      Démo →
+                    </a>
+                  )}
                 </div>
               </SpotlightCard>
             </motion.div>
