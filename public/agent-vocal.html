@@ -1,0 +1,2215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agent vocal I.A. — VELA Automatisation</title>
+  <meta name="description" content="Un agent vocal I.A. répond à vos clients 24h/24, répond à leurs questions et qualifie leurs besoins — pendant que vous gérez votre business." />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.png" type="image/png" />
+
+  <style>
+    /* ─── Fonts ─────────────────────────────────────────────────── */
+    @font-face {
+      font-family: 'NeueMontreal';
+      src: url('/fonts/PPNeueMontreal-Thin.otf') format('opentype');
+      font-weight: 100;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'NeueMontreal';
+      src: url('/fonts/PPNeueMontreal-Book.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'NeueMontreal';
+      src: url('/fonts/PPNeueMontreal-Italic.otf') format('opentype');
+      font-weight: 400;
+      font-style: italic;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'NeueMontreal';
+      src: url('/fonts/PPNeueMontreal-Medium.otf') format('opentype');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'NeueMontreal';
+      src: url('/fonts/PPNeueMontreal-Bold.otf') format('opentype');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'NeueMontreal';
+      src: url('/fonts/PPNeueMontreal-SemiBolditalic.otf') format('opentype');
+      font-weight: 600;
+      font-style: italic;
+      font-display: swap;
+    }
+
+    /* ─── Reset & Base ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --vela-deep:    #0A2E4D;
+      --vela-deep-2:  #0D3760;
+      --vela-off:     #F5F5F0;
+      --vela-cream:   #F7F3EB;
+      --vela-gold:    #D4A373;
+      --vela-gold-h:  #C49060;
+      --vela-horizon: #7DB7D6;
+      --vela-ink:     #1A1A1A;
+      --vela-dark:    #071E33;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'NeueMontreal', ui-sans-serif, system-ui, sans-serif;
+      background-color: var(--vela-deep);
+      color: var(--vela-off);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* ─── Scrollbar ─────────────────────────────────────────────── */
+    ::-webkit-scrollbar          { width: 4px; }
+    ::-webkit-scrollbar-track    { background: var(--vela-deep); }
+    ::-webkit-scrollbar-thumb    { background: rgba(125,183,214,0.25); border-radius: 2px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(125,183,214,0.45); }
+
+    /* ─── Grain overlay ─────────────────────────────────────────── */
+    .grain-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.018;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+    }
+
+    /* ─── Glass ─────────────────────────────────────────────────── */
+    .glass {
+      backdrop-filter: blur(14px) saturate(160%);
+      -webkit-backdrop-filter: blur(14px) saturate(160%);
+      background: rgba(10,46,77,0.72);
+      border: 1px solid rgba(255,255,255,0.07);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.07);
+    }
+
+    /* ─── Animations ────────────────────────────────────────────── */
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.35; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-10px); }
+    }
+    @keyframes shimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes word-in {
+      from { opacity: 0; transform: translateY(44px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slide-down {
+      from { opacity: 0; transform: translateY(-80px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fill-line {
+      from { height: 0; }
+      to   { height: 100%; }
+    }
+    @keyframes bounce-y {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(6px); }
+    }
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* ─── Shimmer text ──────────────────────────────────────────── */
+    .shimmer-text {
+      background: linear-gradient(90deg, #D4A373 0%, #F7F3EB 40%, #D4A373 60%, #C49060 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 3s linear infinite;
+    }
+
+    /* ─── Pill badge ─────────────────────────────────────────────── */
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      border: 1px solid rgba(125,183,214,0.25);
+      background: rgba(125,183,214,0.10);
+      color: var(--vela-horizon);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    .pill-badge .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--vela-horizon);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    /* ─── Layout helpers ─────────────────────────────────────────── */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    @media (min-width: 768px) { .container { padding: 0 48px; } }
+    @media (min-width: 1024px) { .container { padding: 0 80px; } }
+
+    section[id] { scroll-margin-top: 80px; }
+
+    .rounded-top { border-radius: 24px 24px 0 0; }
+    @media (min-width: 768px) { .rounded-top { border-radius: 24px 24px 0 0; } }
+
+    /* ─── Scroll reveal ──────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-d1 { transition-delay: 0.07s; }
+    .reveal-d2 { transition-delay: 0.14s; }
+    .reveal-d3 { transition-delay: 0.21s; }
+    .reveal-d4 { transition-delay: 0.28s; }
+    .reveal-d5 { transition-delay: 0.35s; }
+
+    /* ═══════════════════════════════════════════════════════════════
+       HEADER
+    ═══════════════════════════════════════════════════════════════ */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      transition: background 0.3s ease, backdrop-filter 0.3s ease;
+      animation: slide-down 0.6s cubic-bezier(0.16,1,0.3,1) 0.1s both;
+    }
+    header.scrolled {
+      backdrop-filter: blur(14px) saturate(160%);
+      -webkit-backdrop-filter: blur(14px) saturate(160%);
+      background: rgba(10,46,77,0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.07);
+    }
+    .header-inner {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-logo { display: flex; align-items: center; flex-shrink: 0; }
+    .header-logo img { height: 36px; width: auto; }
+    .header-logo svg { height: 36px; width: auto; }
+
+    .breadcrumb {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.7rem;
+      color: rgba(125,183,214,0.7);
+      letter-spacing: 0.06em;
+      margin-left: 16px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .breadcrumb::before {
+      content: '/';
+      color: rgba(245,245,240,0.2);
+    }
+    @media (max-width: 480px) { .breadcrumb { display: none; } }
+
+    /* Desktop nav */
+    .header-nav {
+      display: none;
+      align-items: center;
+      gap: 32px;
+    }
+    @media (min-width: 768px) { .header-nav { display: flex; } }
+    .header-nav a, .header-nav button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: rgba(245,245,240,0.65);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .header-nav a:hover, .header-nav button:hover { color: var(--vela-off); }
+
+    .header-actions {
+      display: none;
+      align-items: center;
+      gap: 8px;
+    }
+    @media (min-width: 768px) { .header-actions { display: flex; } }
+
+    .icon-btn {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: none;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(245,245,240,0.5);
+      text-decoration: none;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .icon-btn:hover { color: var(--vela-horizon); border-color: rgba(125,183,214,0.3); }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--vela-gold);
+      color: var(--vela-deep);
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.875rem;
+      padding: 10px 20px;
+      border-radius: 9999px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+      box-shadow: 0 0 16px 2px rgba(125,183,214,0.35);
+    }
+    .btn-gold:hover { background: var(--vela-gold-h); }
+
+    /* Hamburger */
+    .hamburger {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--vela-off);
+      padding: 8px;
+    }
+    @media (min-width: 768px) { .hamburger { display: none; } }
+
+    /* Mobile drawer */
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 150;
+      background: rgba(10,46,77,0.8);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .drawer-overlay.open { opacity: 1; pointer-events: all; }
+
+    .drawer {
+      position: fixed;
+      right: 0; top: 0; bottom: 0;
+      z-index: 160;
+      width: 288px;
+      display: flex;
+      flex-direction: column;
+      padding: 32px;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+      backdrop-filter: blur(14px) saturate(160%);
+      -webkit-backdrop-filter: blur(14px) saturate(160%);
+      background: rgba(10,46,77,0.92);
+      border-left: 1px solid rgba(255,255,255,0.07);
+    }
+    .drawer.open { transform: translateX(0); }
+    .drawer-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 48px; }
+    .drawer-header img, .drawer-header svg { height: 32px; width: auto; }
+    .drawer-close { background: none; border: none; cursor: pointer; color: var(--vela-off); padding: 4px; }
+    .drawer-nav { display: flex; flex-direction: column; gap: 24px; }
+    .drawer-nav button {
+      background: none; border: none; cursor: pointer;
+      font-family: inherit; font-size: 1.125rem; font-weight: 700;
+      color: var(--vela-off); text-align: left;
+      transition: color 0.2s;
+    }
+    .drawer-nav button:hover { color: var(--vela-gold); }
+    .drawer-footer { margin-top: auto; }
+    .drawer-footer .btn-gold { width: 100%; justify-content: center; }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SCROLL PROGRESS
+    ═══════════════════════════════════════════════════════════════ */
+    .scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      background: var(--vela-horizon);
+      z-index: 200;
+      width: 0%;
+      transition: width 0.1s linear;
+      box-shadow: 0 0 8px rgba(125,183,214,0.6);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════════════════════════════ */
+    #hero {
+      position: relative;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--vela-deep);
+    }
+
+    /* Animated bg mesh */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero-bg-mesh {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 70% 50%, rgba(125,183,214,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(212,163,115,0.05) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 90% 10%, rgba(13,55,96,0.6) 0%, transparent 70%);
+    }
+    .hero-bg-grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.025;
+      background-image: linear-gradient(rgba(125,183,214,1) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(125,183,214,1) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-bg-fade {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 200px;
+      background: linear-gradient(to top, var(--vela-deep), transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      padding-top: 120px;
+      padding-bottom: 60px;
+    }
+    .hero-inner {
+      max-width: 760px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* Hero badge */
+    .hero-badge {
+      animation: fade-up 0.6s ease 0.15s both;
+    }
+
+    /* Hero H1 words */
+    .hero-h1 {
+      font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+      font-weight: 900;
+      line-height: 0.95;
+      color: var(--vela-cream);
+      letter-spacing: -0.01em;
+    }
+    .hero-h1 .line-gold { color: var(--vela-gold); display: block; }
+
+    .hero-h1 .word {
+      display: inline-block;
+      margin-right: 0.22em;
+      opacity: 0;
+      transform: translateY(44px);
+      animation: word-in 0.55s cubic-bezier(0.16,1,0.3,1) both;
+    }
+    .hero-h1 .word:last-child { margin-right: 0; }
+
+    /* stagger delays */
+    .w0  { animation-delay: 0.35s; }
+    .w1  { animation-delay: 0.44s; }
+    .w2  { animation-delay: 0.53s; }
+    .w3  { animation-delay: 0.62s; }
+    .w4  { animation-delay: 0.71s; }
+    .w5  { animation-delay: 0.80s; }
+    .w6  { animation-delay: 0.89s; }
+    .w7  { animation-delay: 0.98s; }
+    .w8  { animation-delay: 1.07s; }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: rgba(245,245,240,0.62);
+      line-height: 1.7;
+      max-width: 50ch;
+      animation: fade-up 0.6s ease 0.7s both;
+    }
+    @media (min-width: 768px) { .hero-sub { font-size: 1.125rem; } }
+    .hero-sub strong { color: rgba(245,245,240,0.92); font-weight: 700; }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      animation: fade-up 0.6s ease 0.85s both;
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(245,245,240,0.22);
+      color: var(--vela-off);
+      font-family: inherit;
+      font-weight: 500;
+      font-size: 0.875rem;
+      padding: 14px 28px;
+      border-radius: 9999px;
+      background: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-outline:hover {
+      border-color: rgba(245,245,240,0.45);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .btn-gold-lg {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--vela-gold);
+      color: var(--vela-deep);
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.875rem;
+      padding: 14px 28px;
+      border-radius: 9999px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+      box-shadow: 0 8px 32px -8px rgba(212,163,115,0.45);
+    }
+    .btn-gold-lg:hover { background: var(--vela-gold-h); }
+
+    .hero-micro {
+      font-size: 0.75rem;
+      color: rgba(245,245,240,0.28);
+      font-family: 'Courier New', monospace;
+      letter-spacing: 0.08em;
+      animation: fade-up 0.5s ease 1.3s both;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: fade-up 0.6s ease 1.8s both;
+    }
+    .scroll-indicator span {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: rgba(245,245,240,0.25);
+    }
+    .scroll-arrow {
+      animation: bounce-y 1.6s ease-in-out infinite;
+      color: rgba(245,245,240,0.25);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SECTION HEADERS (shared)
+    ═══════════════════════════════════════════════════════════════ */
+    .section-eyebrow {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      margin-bottom: 16px;
+    }
+    .section-eyebrow.light { color: rgba(10,46,77,0.4); }
+    .section-eyebrow.dark  { color: var(--vela-horizon); }
+
+    .section-title-dark {
+      font-size: clamp(2rem, 4.5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 0.95;
+      color: var(--vela-deep);
+    }
+    .section-title-light {
+      font-size: clamp(2rem, 4.5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 0.95;
+      color: var(--vela-cream);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       DEMO VIDEO SECTION
+    ═══════════════════════════════════════════════════════════════ */
+    #demo-video {
+      background: var(--vela-off);
+      padding: 112px 0 144px;
+      position: relative;
+    }
+    #demo-video .section-header { margin-bottom: 48px; }
+    #demo-video .section-sub {
+      font-size: 1rem;
+      color: rgba(10,46,77,0.55);
+      max-width: 52ch;
+      line-height: 1.7;
+      margin-top: 16px;
+    }
+    @media (min-width: 768px) { #demo-video .section-sub { font-size: 1.125rem; } }
+
+    /* Video placeholder */
+    .video-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 32px 80px -20px rgba(10,46,77,0.18);
+    }
+    .video-placeholder {
+      position: relative;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, var(--vela-deep) 0%, #0D3760 45%, #0A2E4D 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .video-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse 60% 50% at 50% 50%, rgba(125,183,214,0.08) 0%, transparent 70%),
+        repeating-linear-gradient(
+          -45deg,
+          transparent 0,
+          transparent 20px,
+          rgba(125,183,214,0.025) 20px,
+          rgba(125,183,214,0.025) 21px
+        );
+    }
+    .video-placeholder::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(125,183,214,0.12);
+      border-radius: 24px;
+      pointer-events: none;
+    }
+    .video-title-wrap {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .video-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: rgba(125,183,214,0.6);
+      font-family: 'Courier New', monospace;
+    }
+    .video-title {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-weight: 700;
+      color: var(--vela-cream);
+    }
+    .video-subtitle {
+      font-size: 0.8125rem;
+      color: rgba(245,245,240,0.35);
+      font-style: italic;
+    }
+
+    /* Play button */
+    .play-btn {
+      position: relative;
+      z-index: 2;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(212,163,115,0.15);
+      border: 1.5px solid rgba(212,163,115,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .video-placeholder:hover .play-btn {
+      background: rgba(212,163,115,0.25);
+      transform: scale(1.08);
+    }
+    .play-btn::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 1px solid rgba(212,163,115,0.15);
+      animation: spin-slow 8s linear infinite;
+      background: transparent;
+    }
+
+    /* Waveform decoration */
+    .waveform-deco {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      opacity: 0.25;
+    }
+    .waveform-deco .bar {
+      width: 3px;
+      background: var(--vela-horizon);
+      border-radius: 2px;
+      animation: wave-bar 1.2s ease-in-out infinite;
+    }
+    .waveform-deco .bar:nth-child(1)  { height: 8px;  animation-delay: 0.0s; }
+    .waveform-deco .bar:nth-child(2)  { height: 16px; animation-delay: 0.1s; }
+    .waveform-deco .bar:nth-child(3)  { height: 24px; animation-delay: 0.2s; }
+    .waveform-deco .bar:nth-child(4)  { height: 14px; animation-delay: 0.3s; }
+    .waveform-deco .bar:nth-child(5)  { height: 20px; animation-delay: 0.15s;}
+    .waveform-deco .bar:nth-child(6)  { height: 10px; animation-delay: 0.25s;}
+    .waveform-deco .bar:nth-child(7)  { height: 18px; animation-delay: 0.05s;}
+    .waveform-deco .bar:nth-child(8)  { height: 26px; animation-delay: 0.35s;}
+    .waveform-deco .bar:nth-child(9)  { height: 12px; animation-delay: 0.1s; }
+    .waveform-deco .bar:nth-child(10) { height: 22px; animation-delay: 0.2s; }
+    .waveform-deco .bar:nth-child(11) { height: 8px;  animation-delay: 0.3s; }
+    .waveform-deco .bar:nth-child(12) { height: 16px; animation-delay: 0.0s; }
+    @keyframes wave-bar {
+      0%, 100% { transform: scaleY(0.4); }
+      50%       { transform: scaleY(1.0); }
+    }
+
+    .video-note {
+      text-align: center;
+      font-size: 0.8125rem;
+      font-style: italic;
+      color: rgba(10,46,77,0.4);
+      margin-top: 20px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       WORKFLOW SECTION
+    ═══════════════════════════════════════════════════════════════ */
+    #workflow {
+      background: var(--vela-deep);
+      padding: 112px 0 144px;
+      position: relative;
+      overflow: hidden;
+    }
+    #workflow::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 40%;
+      height: 100%;
+      background: radial-gradient(ellipse 60% 80% at 100% 50%, rgba(125,183,214,0.04), transparent 70%);
+      pointer-events: none;
+    }
+
+    #workflow .section-header { margin-bottom: 64px; }
+    #workflow .section-sub {
+      margin-top: 16px;
+      font-size: 1rem;
+      color: rgba(245,245,240,0.45);
+      max-width: 46ch;
+      line-height: 1.7;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Vertical line track */
+    .timeline-track {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 2px;
+      background: rgba(125,183,214,0.1);
+      display: none;
+    }
+    @media (min-width: 768px) { .timeline-track { display: block; } }
+
+    /* Fill overlay */
+    .timeline-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0%;
+      background: linear-gradient(to bottom, var(--vela-horizon), rgba(125,183,214,0.4));
+      transition: height 0.05s linear;
+      border-radius: 2px;
+    }
+
+    /* Mobile: single column track on left */
+    .timeline-track-mobile {
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: rgba(125,183,214,0.1);
+    }
+    @media (min-width: 768px) { .timeline-track-mobile { display: none; } }
+    .timeline-fill-mobile {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 0%;
+      background: linear-gradient(to bottom, var(--vela-horizon), rgba(125,183,214,0.4));
+      transition: height 0.05s linear;
+    }
+
+    /* Step */
+    .step {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);
+    }
+    .step.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mobile layout: card to right of center dot */
+    .step-spacer {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .step {
+        align-items: center;
+        gap: 0;
+        margin-bottom: 0;
+      }
+      /* Even steps: card on left */
+      .step:nth-child(even) .step-card-wrap { order: 1; justify-content: flex-end; padding-right: 48px; }
+      .step:nth-child(even) .step-dot-wrap   { order: 2; }
+      .step:nth-child(even) .step-spacer     { order: 3; display: block; flex: 1; }
+
+      /* Odd steps: card on right */
+      .step:nth-child(odd) .step-spacer     { order: 1; display: block; flex: 1; }
+      .step:nth-child(odd) .step-dot-wrap   { order: 2; }
+      .step:nth-child(odd) .step-card-wrap  { order: 3; justify-content: flex-start; padding-left: 48px; }
+    }
+
+    .step-card-wrap {
+      flex: 1;
+      display: flex;
+    }
+
+    .step-dot-wrap {
+      position: relative;
+      z-index: 10;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Desktop center dot */
+    @media (min-width: 768px) {
+      .step-dot-wrap {
+        width: 56px;
+        height: 56px;
+      }
+    }
+
+    .step-dot {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--vela-deep-2);
+      border: 2px solid rgba(125,183,214,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      flex-shrink: 0;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .step.visible .step-dot {
+      border-color: rgba(125,183,214,0.5);
+      box-shadow: 0 0 16px rgba(125,183,214,0.15);
+    }
+
+    /* Mobile dot on left */
+    @media (max-width: 767px) {
+      .step {
+        padding-left: 56px;
+        padding-top: 12px;
+        padding-bottom: 32px;
+        flex-direction: column;
+        gap: 0;
+      }
+      .step-dot-wrap {
+        position: absolute;
+        left: 0;
+        top: 12px;
+      }
+      .step-card-wrap {
+        flex: none;
+        width: 100%;
+      }
+      .step-spacer { display: none !important; }
+    }
+
+    .step-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      max-width: 380px;
+      transition: border-color 0.3s;
+      width: 100%;
+    }
+    @media (min-width: 768px) { .step-card { padding: 32px; } }
+    .step-card:hover { border-color: rgba(255,255,255,0.14); }
+
+    .step-num-bg {
+      position: absolute;
+      top: -16px;
+      right: -8px;
+      font-size: 5rem;
+      font-weight: 900;
+      font-family: 'Courier New', monospace;
+      color: rgba(245,245,240,0.04);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .step-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      color: var(--vela-gold);
+    }
+
+    .step-title {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--vela-cream);
+      margin-bottom: 8px;
+    }
+    .step-desc {
+      font-size: 0.875rem;
+      color: rgba(245,245,240,0.55);
+      line-height: 1.7;
+    }
+
+    /* Spacer between steps */
+    .step-gap {
+      height: 40px;
+    }
+    @media (min-width: 768px) { .step-gap { height: 48px; } }
+
+    /* ═══════════════════════════════════════════════════════════════
+       AVANT / APRÈS SECTION
+    ═══════════════════════════════════════════════════════════════ */
+    #avant-apres {
+      background: var(--vela-off);
+      padding: 112px 0 144px;
+      position: relative;
+      overflow: hidden;
+    }
+    #avant-apres .section-header { margin-bottom: 48px; }
+
+    .avap-grid {
+      border-radius: 32px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr;
+      box-shadow: 0 20px 60px -20px rgba(10,46,77,0.12);
+    }
+    @media (min-width: 768px) { .avap-grid { grid-template-columns: 1fr 1fr; } }
+
+    .avap-before {
+      background: #EDE9E0;
+      padding: 40px;
+    }
+    @media (min-width: 768px) { .avap-before { padding: 48px; } }
+
+    .avap-after {
+      background: var(--vela-deep);
+      padding: 40px;
+    }
+    @media (min-width: 768px) { .avap-after { padding: 48px; } }
+
+    .avap-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      margin-bottom: 4px;
+    }
+    .avap-before .avap-label { color: rgba(10,46,77,0.4); }
+    .avap-after  .avap-label { color: rgba(125,183,214,0.7); }
+
+    .avap-headline {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .avap-before .avap-headline { color: rgba(10,46,77,0.6); }
+    .avap-after  .avap-headline { color: rgba(247,243,235,0.7); }
+
+    .avap-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .avap-item:last-child { margin-bottom: 0; }
+    .avap-icon { flex-shrink: 0; margin-top: 2px; }
+    .avap-text { font-size: 0.875rem; line-height: 1.6; }
+    .avap-before .avap-text { color: rgba(10,46,77,0.6); }
+    .avap-after  .avap-text { color: rgba(245,245,240,0.75); }
+
+    /* ═══════════════════════════════════════════════════════════════
+       FORMULAIRE
+    ═══════════════════════════════════════════════════════════════ */
+    #formulaire {
+      background: var(--vela-deep);
+      padding: 144px 0 192px;
+      position: relative;
+      overflow: hidden;
+    }
+    #formulaire::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('/images/13.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.20;
+      z-index: 0;
+    }
+    #formulaire::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(10,46,77,0.6), transparent, rgba(10,46,77,0.8)),
+        linear-gradient(to right, rgba(10,46,77,0.6), transparent, rgba(10,46,77,0.6));
+      z-index: 1;
+    }
+
+    .form-container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    @media (min-width: 768px) { .form-grid { grid-template-columns: 1fr 1fr; gap: 80px; } }
+
+    .form-left { display: flex; flex-direction: column; gap: 32px; }
+
+    .form-title {
+      font-size: clamp(2.8rem, 5.5vw, 5rem);
+      font-weight: 900;
+      line-height: 0.92;
+      color: var(--vela-cream);
+    }
+    .form-title .muted { color: rgba(247,243,235,0.4); }
+
+    .form-desc {
+      font-size: 1rem;
+      color: rgba(245,245,240,0.55);
+      max-width: 44ch;
+      line-height: 1.7;
+    }
+    @media (min-width: 768px) { .form-desc { font-size: 1.125rem; } }
+
+    .form-quote {
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--vela-gold);
+      font-weight: 500;
+    }
+    @media (min-width: 768px) { .form-quote { font-size: 1.5rem; } }
+
+    .form-micro {
+      font-size: 0.75rem;
+      color: rgba(245,245,240,0.25);
+      font-family: 'Courier New', monospace;
+      letter-spacing: 0.08em;
+    }
+
+    /* Form card */
+    .form-card {
+      border-radius: 32px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    @media (min-width: 768px) { .form-card { padding: 40px; } }
+
+    .form-card-title { font-size: 1rem; font-weight: 600; color: var(--vela-off); }
+    .form-card-sub   { font-size: 0.875rem; color: rgba(245,245,240,0.4); margin-top: 4px; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 480px) { .form-row { grid-template-columns: 1fr 1fr; } }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .field label {
+      font-size: 0.75rem;
+      color: rgba(245,245,240,0.5);
+    }
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--vela-off);
+      font-family: inherit;
+      font-size: 0.875rem;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: rgba(245,245,240,0.3);
+    }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: rgba(125,183,214,0.5);
+    }
+    .field select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(245,245,240,0.4)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+    .field select option { background: #0A2E4D; }
+    .field textarea { resize: none; }
+
+    .btn-submit {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--vela-gold);
+      color: var(--vela-deep);
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.875rem;
+      padding: 16px;
+      border-radius: 9999px;
+      border: none;
+      cursor: pointer;
+      margin-top: 4px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-submit:hover { background: var(--vela-gold-h); }
+    .btn-submit:active { transform: scale(0.98); }
+    .btn-submit:disabled { opacity: 0.6; cursor: default; }
+
+    .form-error { font-size: 0.75rem; color: #f87171; }
+
+    /* Success state */
+    .form-success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      padding: 32px 0;
+      text-align: center;
+    }
+    .form-success.show { display: flex; }
+    .form-success-icon { color: var(--vela-gold); }
+    .form-success-title { font-size: 1.125rem; font-weight: 600; color: var(--vela-off); }
+    .form-success-sub   { font-size: 0.875rem; color: rgba(245,245,240,0.5); }
+
+    .form-body { display: flex; flex-direction: column; gap: 16px; }
+    .form-body.hidden { display: none; }
+
+    /* ═══════════════════════════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════════════════════════ */
+    footer {
+      background: var(--vela-dark);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 64px 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    @media (min-width: 768px) {
+      .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; }
+    }
+
+    .footer-brand { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+    .footer-brand img { height: 40px; width: auto; }
+    .footer-brand-desc {
+      font-size: 0.875rem;
+      color: rgba(245,245,240,0.45);
+      line-height: 1.6;
+      max-width: 30ch;
+    }
+    .footer-location {
+      font-size: 0.75rem;
+      color: rgba(245,245,240,0.25);
+      font-family: 'Courier New', monospace;
+    }
+    .footer-social { display: flex; gap: 12px; margin-top: 8px; }
+
+    .footer-col-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: rgba(245,245,240,0.3);
+      margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a, .footer-col span {
+      font-size: 0.875rem;
+      color: rgba(245,245,240,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--vela-off); }
+    .footer-col a.gold-hover:hover { color: var(--vela-gold); }
+
+    .footer-bottom {
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    @media (min-width: 768px) { .footer-bottom { flex-direction: row; justify-content: space-between; } }
+    .footer-copy {
+      font-size: 0.75rem;
+      color: rgba(245,245,240,0.22);
+      font-family: 'Courier New', monospace;
+    }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a {
+      font-size: 0.75rem;
+      color: rgba(245,245,240,0.22);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: rgba(245,245,240,0.5); }
+
+  </style>
+</head>
+<body>
+
+<!-- Grain overlay -->
+<div class="grain-overlay" aria-hidden="true"></div>
+
+<!-- Scroll progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     HEADER
+═══════════════════════════════════════════════════════════════ -->
+<header id="siteHeader">
+  <div class="container">
+    <div class="header-inner">
+
+      <!-- Logo + breadcrumb -->
+      <div style="display:flex;align-items:center;flex-shrink:0;">
+        <a href="/" aria-label="VELA, accueil" class="header-logo">
+          <svg width="120" height="42" viewBox="0 0 2584 903" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:36px;width:auto;">
+            <path d="M191.623 751.159L0 560.101L552.796 0V392.171L191.623 751.159Z" fill="#F7F3EB"/>
+            <path d="M223.727 783.337L552.796 453.511V692.836L343.115 903L223.727 783.337Z" fill="#F7F3EB"/>
+            <path d="M959.093 514.253L1071.35 236.692H1237.56L959.093 780.886L681.354 236.692H847.56L959.093 514.253Z" fill="#F7F3EB"/>
+            <path d="M1354.81 746.646V632.271H1612.13V746.646H1354.81ZM1354.81 351.067V236.692H1612.13V351.067H1354.81ZM1354.81 536.837V426.104H1597.56V536.837H1354.81ZM1258.58 236.692H1394.17V746.646H1258.58V236.692Z" fill="#F7F3EB"/>
+            <path d="M1658.89 236.692H1800.31V626.443H2006.61V746.646H1658.89V236.692Z" fill="#F7F3EB"/>
+            <path d="M2172.13 664.325L2176.5 560.149H2438.21L2441.85 664.325H2172.13ZM2305.53 445.773L2238.47 598.76L2247.21 630.085L2188.17 746.646H2027.79L2305.53 202.452L2584 746.646H2423.63L2365.31 635.185L2373.33 598.76L2305.53 445.773Z" fill="#F7F3EB"/>
+          </svg>
+        </a>
+        <span class="breadcrumb">Agent vocal I.A.</span>
+      </div>
+
+      <!-- Desktop nav -->
+      <nav class="header-nav" aria-label="Navigation principale">
+        <a href="/#services">Services</a>
+        <a href="/#tarification">Tarification</a>
+        <a href="/#etudes-de-cas">Exemples</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
+
+      <!-- Actions -->
+      <div class="header-actions">
+        <a href="https://www.linkedin.com/company/agencevela/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn VELA" class="icon-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+        <button class="btn-gold" onclick="scrollToSection('#formulaire')">
+          Contactez-nous
+        </button>
+      </div>
+
+      <!-- Hamburger -->
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile drawer overlay -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+
+<!-- Mobile drawer -->
+<div class="drawer" id="mobileDrawer">
+  <div class="drawer-header">
+    <svg width="100" height="35" viewBox="0 0 2584 903" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:32px;width:auto;">
+      <path d="M191.623 751.159L0 560.101L552.796 0V392.171L191.623 751.159Z" fill="#F7F3EB"/>
+      <path d="M223.727 783.337L552.796 453.511V692.836L343.115 903L223.727 783.337Z" fill="#F7F3EB"/>
+      <path d="M959.093 514.253L1071.35 236.692H1237.56L959.093 780.886L681.354 236.692H847.56L959.093 514.253Z" fill="#F7F3EB"/>
+      <path d="M1354.81 746.646V632.271H1612.13V746.646H1354.81ZM1354.81 351.067V236.692H1612.13V351.067H1354.81ZM1354.81 536.837V426.104H1597.56V536.837H1354.81ZM1258.58 236.692H1394.17V746.646H1258.58V236.692Z" fill="#F7F3EB"/>
+      <path d="M1658.89 236.692H1800.31V626.443H2006.61V746.646H1658.89V236.692Z" fill="#F7F3EB"/>
+      <path d="M2172.13 664.325L2176.5 560.149H2438.21L2441.85 664.325H2172.13ZM2305.53 445.773L2238.47 598.76L2247.21 630.085L2188.17 746.646H2027.79L2305.53 202.452L2584 746.646H2423.63L2365.31 635.185L2373.33 598.76L2305.53 445.773Z" fill="#F7F3EB"/>
+    </svg>
+    <button class="drawer-close" onclick="closeDrawer()" aria-label="Fermer">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+  <nav class="drawer-nav">
+    <button onclick="navClick('/#services')">Services</button>
+    <button onclick="navClick('/#tarification')">Tarification</button>
+    <button onclick="navClick('/#etudes-de-cas')">Exemples</button>
+    <button onclick="navClick('/#faq')">FAQ</button>
+  </nav>
+  <div class="drawer-footer">
+    <button class="btn-gold" style="width:100%;justify-content:center;" onclick="navClick('#formulaire')">Contactez-nous</button>
+  </div>
+</div>
+
+<main>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="hero-bg-mesh"></div>
+    <div class="hero-bg-grid"></div>
+    <div class="hero-bg-fade"></div>
+  </div>
+
+  <div class="hero-content container">
+    <div class="hero-inner">
+
+      <!-- Badge -->
+      <div class="hero-badge">
+        <span class="pill-badge">
+          <span class="dot"></span>
+          Agent vocal I.A. · PME québécoises
+        </span>
+      </div>
+
+      <!-- H1 -->
+      <h1 class="hero-h1">
+        <span class="block">
+          <span class="word w0">Votre</span><span class="word w1">téléphone</span><span class="word w2">répond.</span>
+        </span>
+        <span class="block line-gold">
+          <span class="word w3">Même</span><span class="word w4">quand</span><span class="word w5">vous</span><span class="word w6">êtes</span><span class="word w7">occupé.</span>
+        </span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="hero-sub">
+        Un agent vocal I.A. répond à vos clients 24h/24, répond à leurs questions et qualifie leurs besoins —
+        <strong>pendant que vous gérez votre business.</strong>
+      </p>
+
+      <!-- CTA -->
+      <div class="hero-cta">
+        <a href="#demo-video" class="btn-gold-lg">
+          Voir la démo en action
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="#workflow" class="btn-outline">
+          Comment ça fonctionne
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Micro-text -->
+      <p class="hero-micro">Configuration sur mesure · Voix naturelle en français · Disponible 24h/24</p>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="scroll-indicator">
+    <span>Défiler</span>
+    <div class="scroll-arrow">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     DÉMO VIDÉO
+═══════════════════════════════════════════════════════════════ -->
+<section id="demo-video" class="rounded-top">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <p class="section-eyebrow light">Démonstration</p>
+      <h2 class="section-title-dark">
+        Écoutez l&rsquo;agent en action.
+        <br>
+        <span style="color:rgba(10,46,77,0.35);">Une vraie conversation.</span>
+      </h2>
+      <p class="section-sub">
+        Deux questions. Deux réponses précises. Zéro humain impliqué.
+      </p>
+    </div>
+
+    <!-- Video placeholder -->
+    <div class="video-wrapper reveal reveal-d1">
+      <div class="video-placeholder" role="img" aria-label="Placeholder vidéo démo agent vocal">
+
+        <!-- Waveform deco -->
+        <div class="waveform-deco" aria-hidden="true">
+          <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+          <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+          <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+          <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        </div>
+
+        <!-- Play button -->
+        <div class="play-btn" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#D4A373" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="6 3 20 12 6 21 6 3"/>
+          </svg>
+        </div>
+
+        <!-- Title -->
+        <div class="video-title-wrap">
+          <span class="video-label">Démo — Agent vocal I.A.</span>
+          <span class="video-title">Restaurant La Bonne Fourchette</span>
+          <span class="video-subtitle">Vidéo disponible prochainement</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Note -->
+    <p class="video-note reveal reveal-d2">
+      Démo réalisée avec ElevenLabs + Claude. Voix, réponses et base de connaissances 100% configurables.
+    </p>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     WORKFLOW
+═══════════════════════════════════════════════════════════════ -->
+<section id="workflow" class="rounded-top">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <p class="section-eyebrow dark">Workflow</p>
+      <h2 class="section-title-light">
+        Comment ça fonctionne.
+        <br>
+        <span style="color:rgba(247,243,235,0.35);">De l&rsquo;appel à la réponse.</span>
+      </h2>
+      <p class="section-sub">En quelques secondes — automatiquement.</p>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline" id="timeline">
+
+      <!-- Desktop center track -->
+      <div class="timeline-track" id="timelineTrack">
+        <div class="timeline-fill" id="timelineFill"></div>
+      </div>
+
+      <!-- Mobile left track -->
+      <div class="timeline-track-mobile">
+        <div class="timeline-fill-mobile" id="timelineFillMobile"></div>
+      </div>
+
+      <!-- STEP 1 -->
+      <div class="step" data-step="1">
+        <div class="step-spacer"></div>
+        <div class="step-dot-wrap">
+          <div class="step-dot">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4A373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="step-card-wrap">
+          <div class="step-card">
+            <span class="step-num-bg">01</span>
+            <div class="step-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <h3 class="step-title">Le client appelle</h3>
+            <p class="step-desc">Un client compose le numéro du restaurant ou du commerce. Aucune application requise de sa part.</p>
+          </div>
+        </div>
+      </div>
+      <div class="step-gap"></div>
+
+      <!-- STEP 2 -->
+      <div class="step" data-step="2">
+        <div class="step-card-wrap">
+          <div class="step-card">
+            <span class="step-num-bg">02</span>
+            <div class="step-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                <line x1="12" y1="19" x2="12" y2="23"/>
+                <line x1="8" y1="23" x2="16" y2="23"/>
+              </svg>
+            </div>
+            <h3 class="step-title">L&rsquo;agent répond instantanément</h3>
+            <p class="step-desc">En français, avec la voix et le ton configurés pour votre entreprise. Zéro temps d&rsquo;attente.</p>
+          </div>
+        </div>
+        <div class="step-dot-wrap">
+          <div class="step-dot">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4A373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+              <line x1="12" y1="19" x2="12" y2="23"/>
+              <line x1="8" y1="23" x2="16" y2="23"/>
+            </svg>
+          </div>
+        </div>
+        <div class="step-spacer"></div>
+      </div>
+      <div class="step-gap"></div>
+
+      <!-- STEP 3 -->
+      <div class="step" data-step="3">
+        <div class="step-spacer"></div>
+        <div class="step-dot-wrap">
+          <div class="step-dot">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4A373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="step-card-wrap">
+          <div class="step-card">
+            <span class="step-num-bg">03</span>
+            <div class="step-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <h3 class="step-title">Le client parle naturellement</h3>
+            <p class="step-desc">«&thinsp;Êtes-vous ouverts demain&thinsp;?» «&thinsp;Je suis allergique aux arachides, est-ce sécuritaire&thinsp;?» L&rsquo;agent comprend le langage naturel.</p>
+          </div>
+        </div>
+      </div>
+      <div class="step-gap"></div>
+
+      <!-- STEP 4 -->
+      <div class="step" data-step="4">
+        <div class="step-card-wrap">
+          <div class="step-card">
+            <span class="step-num-bg">04</span>
+            <div class="step-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+              </svg>
+            </div>
+            <h3 class="step-title">L&rsquo;agent consulte vos données</h3>
+            <p class="step-desc">Horaire, menu, politiques, allergènes — tout ce que vous lui avez fourni. En temps réel. Aucune improvisation.</p>
+          </div>
+        </div>
+        <div class="step-dot-wrap">
+          <div class="step-dot">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4A373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="12" cy="5" rx="9" ry="3"/>
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+            </svg>
+          </div>
+        </div>
+        <div class="step-spacer"></div>
+      </div>
+      <div class="step-gap"></div>
+
+      <!-- STEP 5 -->
+      <div class="step" data-step="5">
+        <div class="step-spacer"></div>
+        <div class="step-dot-wrap">
+          <div class="step-dot">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4A373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+        </div>
+        <div class="step-card-wrap">
+          <div class="step-card">
+            <span class="step-num-bg">05</span>
+            <div class="step-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <h3 class="step-title">Réponse claire et précise</h3>
+            <p class="step-desc">Pas de mise en attente. Pas d&rsquo;erreur humaine. La bonne information, au bon moment.</p>
+          </div>
+        </div>
+      </div>
+      <div class="step-gap"></div>
+
+      <!-- STEP 6 -->
+      <div class="step" data-step="6">
+        <div class="step-card-wrap">
+          <div class="step-card">
+            <span class="step-num-bg">06</span>
+            <div class="step-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                <polyline points="9 16 12 19 15 16"/><line x1="12" y1="14" x2="12" y2="19"/>
+              </svg>
+            </div>
+            <h3 class="step-title">L&rsquo;agent passe à l&rsquo;action</h3>
+            <p class="step-desc">Réservation, transfert à un humain, confirmation par SMS — selon vos règles d&rsquo;affaires.</p>
+          </div>
+        </div>
+        <div class="step-dot-wrap">
+          <div class="step-dot">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4A373" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+              <polyline points="9 16 12 19 15 16"/><line x1="12" y1="14" x2="12" y2="19"/>
+            </svg>
+          </div>
+        </div>
+        <div class="step-spacer"></div>
+      </div>
+
+    </div><!-- /timeline -->
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     AVANT / APRÈS
+═══════════════════════════════════════════════════════════════ -->
+<section id="avant-apres" class="rounded-top">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <p class="section-eyebrow light">La transformation</p>
+      <h2 class="section-title-dark">
+        La différence concrète.
+        <br>
+        <span style="color:rgba(10,46,77,0.35);">Avant. Après.</span>
+      </h2>
+    </div>
+
+    <div class="avap-grid">
+
+      <!-- AVANT -->
+      <div class="avap-before">
+        <div class="avap-label">Sans agent I.A.</div>
+        <div class="avap-headline">La réalité de beaucoup de PME</div>
+
+        <div class="avap-items">
+          <div class="avap-item reveal reveal-d1">
+            <div class="avap-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#f87171" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15" stroke="#fff" stroke-width="2" stroke-linecap="round"/><line x1="9" y1="9" x2="15" y2="15" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="avap-text">Appels manqués pendant le service</span>
+          </div>
+          <div class="avap-item reveal reveal-d2">
+            <div class="avap-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#f87171" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15" stroke="#fff" stroke-width="2" stroke-linecap="round"/><line x1="9" y1="9" x2="15" y2="15" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="avap-text">Employés interrompus pour des questions répétitives</span>
+          </div>
+          <div class="avap-item reveal reveal-d3">
+            <div class="avap-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#f87171" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15" stroke="#fff" stroke-width="2" stroke-linecap="round"/><line x1="9" y1="9" x2="15" y2="15" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="avap-text">Clients frustrés qui ne rappellent pas</span>
+          </div>
+          <div class="avap-item reveal reveal-d4">
+            <div class="avap-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#f87171" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15" stroke="#fff" stroke-width="2" stroke-linecap="round"/><line x1="9" y1="9" x2="15" y2="15" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="avap-text">Informations incorrectes données à la va-vite</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- APRÈS -->
+      <div class="avap-after">
+        <div class="avap-label">Avec agent VELA</div>
+        <div class="avap-headline">Systèmes solides, pas démos fragiles</div>
+
+        <div class="avap-items">
+          <div class="avap-item reveal reveal-d1">
+            <div class="avap-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#D4A373" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10" stroke="#071E33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+            <span class="avap-text">Chaque appel reçoit une réponse immédiate</span>
+          </div>
+          <div class="avap-item reveal reveal-d2">
+            <div class="avap-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#D4A373" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10" stroke="#071E33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+            <span class="avap-text">Équipe concentrée sur son cœur de métier</span>
+          </div>
+          <div class="avap-item reveal reveal-d3">
+            <div class="avap-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#D4A373" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10" stroke="#071E33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+            <span class="avap-text">Clients satisfaits, mieux informés</span>
+          </div>
+          <div class="avap-item reveal reveal-d4">
+            <div class="avap-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#D4A373" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10" stroke="#071E33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+            <span class="avap-text">Données cohérentes, toujours à jour</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     FORMULAIRE
+═══════════════════════════════════════════════════════════════ -->
+<section id="formulaire" class="rounded-top">
+  <div class="container form-container">
+    <div class="form-grid">
+
+      <!-- Left — copy -->
+      <div class="form-left">
+
+        <div class="reveal">
+          <span class="pill-badge">
+            <span class="dot"></span>
+            Prêt à automatiser vos appels ?
+          </span>
+        </div>
+
+        <h2 class="form-title reveal reveal-d1">
+          Prêt à automatiser
+          <br>vos appels&thinsp;?
+          <br><span class="muted">On vous montre comment.</span>
+        </h2>
+
+        <p class="form-desc reveal reveal-d2">
+          On vous montre comment en 30 minutes. Aucun engagement.
+        </p>
+
+        <p class="form-quote reveal reveal-d3">&ldquo;Systèmes solides, pas démos fragiles.&rdquo;</p>
+
+        <p class="form-micro reveal reveal-d4">
+          Prix fixe · Aucune surprise · Vous gardez tous vos accès
+        </p>
+
+      </div>
+
+      <!-- Right — form -->
+      <div class="reveal reveal-d1">
+        <div class="form-card glass">
+
+          <!-- Success state -->
+          <div class="form-success" id="formSuccess">
+            <div class="form-success-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="#D4A373" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10" stroke="#0A2E4D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
+            <p class="form-success-title">Message envoyé !</p>
+            <p class="form-success-sub">On vous répond dans les 2 jours ouvrables.</p>
+          </div>
+
+          <!-- Form body -->
+          <div class="form-body" id="formBody">
+            <div>
+              <p class="form-card-title">Laissez vos coordonnées</p>
+              <p class="form-card-sub">On vous répond dans les 2 jours ouvrables.</p>
+            </div>
+
+            <form id="contactForm" novalidate>
+
+              <div style="display:flex;flex-direction:column;gap:16px;">
+                <div class="form-row">
+                  <div class="field">
+                    <label for="nom">Nom complet</label>
+                    <input id="nom" name="nom" type="text" required placeholder="Marie Tremblay" autocomplete="name" />
+                  </div>
+                  <div class="field">
+                    <label for="courriel">Courriel professionnel</label>
+                    <input id="courriel" name="courriel" type="email" required placeholder="marie@entreprise.com" autocomplete="email" />
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="typeEntreprise">Type d&rsquo;entreprise</label>
+                  <select id="typeEntreprise" name="typeEntreprise">
+                    <option value="" disabled selected>Choisir...</option>
+                    <option value="restaurant">Restaurant</option>
+                    <option value="commerce">Commerce de détail</option>
+                    <option value="consultant">Consultant / Solopreneur</option>
+                    <option value="sante">Professionnel de la santé</option>
+                    <option value="autre">Autre</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="tailleEntreprise">Taille de l&rsquo;entreprise</label>
+                  <select id="tailleEntreprise" name="tailleEntreprise">
+                    <option value="" disabled selected>Choisir...</option>
+                    <option value="1">Solopreneur / 1 personne</option>
+                    <option value="2-10">2–10 employés</option>
+                    <option value="11-50">11–50 employés</option>
+                    <option value="50+">50+ employés</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="message">Message (optionnel)</label>
+                  <textarea id="message" name="message" rows="3" placeholder="Décrivez brièvement votre situation..."></textarea>
+                </div>
+
+                <p class="form-error" id="formError" style="display:none;"></p>
+
+                <button type="submit" class="btn-submit" id="submitBtn">
+                  <span id="submitText">Envoyer ma demande</span>
+                  <svg id="submitArrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                  </svg>
+                </button>
+              </div>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Brand -->
+      <div class="footer-brand">
+        <svg width="132" height="46" viewBox="0 0 2584 903" fill="none" xmlns="http://www.w3.org/2000/svg" style="height:40px;width:auto;">
+          <path d="M191.623 751.159L0 560.101L552.796 0V392.171L191.623 751.159Z" fill="#F7F3EB"/>
+          <path d="M223.727 783.337L552.796 453.511V692.836L343.115 903L223.727 783.337Z" fill="#F7F3EB"/>
+          <path d="M959.093 514.253L1071.35 236.692H1237.56L959.093 780.886L681.354 236.692H847.56L959.093 514.253Z" fill="#F7F3EB"/>
+          <path d="M1354.81 746.646V632.271H1612.13V746.646H1354.81ZM1354.81 351.067V236.692H1612.13V351.067H1354.81ZM1354.81 536.837V426.104H1597.56V536.837H1354.81ZM1258.58 236.692H1394.17V746.646H1258.58V236.692Z" fill="#F7F3EB"/>
+          <path d="M1658.89 236.692H1800.31V626.443H2006.61V746.646H1658.89V236.692Z" fill="#F7F3EB"/>
+          <path d="M2172.13 664.325L2176.5 560.149H2438.21L2441.85 664.325H2172.13ZM2305.53 445.773L2238.47 598.76L2247.21 630.085L2188.17 746.646H2027.79L2305.53 202.452L2584 746.646H2423.63L2365.31 635.185L2373.33 598.76L2305.53 445.773Z" fill="#F7F3EB"/>
+        </svg>
+        <p class="footer-brand-desc">Automatisation par l&rsquo;I.A.&thinsp;: claire, rentable, fiable.</p>
+        <p class="footer-location">Basé à Longueuil, Québec</p>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/company/agencevela/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn VELA" class="icon-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <a href="mailto:info@velavelavela.com" aria-label="Courriel VELA" class="icon-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div class="footer-col">
+        <p class="footer-col-title">Services</p>
+        <ul>
+          <li><a href="/#services">Diagnostic &amp; stratégie</a></li>
+          <li><a href="/#services">Implantation</a></li>
+          <li><a href="/#services">Éducation</a></li>
+          <li><a href="/#services">Adoption</a></li>
+        </ul>
+      </div>
+
+      <!-- Navigation -->
+      <div class="footer-col">
+        <p class="footer-col-title">Navigation</p>
+        <ul>
+          <li><a href="/#tarification">Tarification</a></li>
+          <li><a href="/#etudes-de-cas">Exemples</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="#formulaire">Réserver un appel</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-col">
+        <p class="footer-col-title">Contact</p>
+        <ul>
+          <li><a href="mailto:info@velavelavela.com" class="gold-hover">info@velavelavela.com</a></li>
+          <li><a href="tel:4384991855" class="gold-hover">438 499-1855</a></li>
+          <li><span>Longueuil, QC</span></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 VELA Automatisation inc.</p>
+      <div class="footer-links">
+        <a href="#">Politique de confidentialité</a>
+        <a href="#">Conditions d&rsquo;utilisation</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════════════════ -->
+<script>
+/* ─── Smooth scroll helper ─────────────────────────────────────── */
+function scrollToSection(selector) {
+  const target = document.querySelector(selector);
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth' });
+  } else if (selector.startsWith('#')) {
+    window.location.href = '/' + selector;
+  }
+}
+
+/* ─── Smooth anchor links ──────────────────────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+  anchor.addEventListener('click', function(e) {
+    var href = this.getAttribute('href');
+    if (href.length > 1) {
+      var target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  });
+});
+
+/* ─── Header scroll ─────────────────────────────────────────────── */
+var header = document.getElementById('siteHeader');
+window.addEventListener('scroll', function() {
+  if (window.scrollY > 60) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+}, { passive: true });
+
+/* ─── Scroll progress ───────────────────────────────────────────── */
+var progressBar = document.getElementById('scrollProgress');
+window.addEventListener('scroll', function() {
+  var scrollTop  = window.scrollY || document.documentElement.scrollTop;
+  var docHeight  = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  var pct        = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  progressBar.style.width = pct + '%';
+}, { passive: true });
+
+/* ─── Mobile drawer ─────────────────────────────────────────────── */
+var hamburger     = document.getElementById('hamburgerBtn');
+var drawerOverlay = document.getElementById('drawerOverlay');
+var mobileDrawer  = document.getElementById('mobileDrawer');
+
+function openDrawer() {
+  drawerOverlay.classList.add('open');
+  mobileDrawer.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeDrawer() {
+  drawerOverlay.classList.remove('open');
+  mobileDrawer.classList.remove('open');
+  document.body.style.overflow = '';
+}
+function navClick(href) {
+  closeDrawer();
+  setTimeout(function() {
+    if (href.startsWith('#')) {
+      var target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.location.href = '/' + href;
+      }
+    } else {
+      window.location.href = href;
+    }
+  }, 300);
+}
+
+hamburger.addEventListener('click', openDrawer);
+
+/* ─── Scroll reveal (IntersectionObserver) ──────────────────────── */
+var revealEls = document.querySelectorAll('.reveal');
+var revealObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '-8% 0px' });
+
+revealEls.forEach(function(el) { revealObserver.observe(el); });
+
+/* ─── Workflow steps (staggered) ────────────────────────────────── */
+var steps = document.querySelectorAll('.step');
+var stepObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      var stepNum   = parseInt(entry.target.getAttribute('data-step') || '1');
+      var delay     = (stepNum - 1) * 0.12;
+      entry.target.style.transitionDelay = delay + 's';
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15, rootMargin: '-5% 0px' });
+
+steps.forEach(function(step) { stepObserver.observe(step); });
+
+/* ─── Timeline fill on scroll ───────────────────────────────────── */
+var timeline         = document.getElementById('timeline');
+var timelineFill     = document.getElementById('timelineFill');
+var timelineFillMob  = document.getElementById('timelineFillMobile');
+
+function updateTimelineFill() {
+  if (!timeline) return;
+  var rect      = timeline.getBoundingClientRect();
+  var viewH     = window.innerHeight;
+  var totalH    = rect.height;
+  var scrolled  = viewH - rect.top;
+  var pct       = Math.min(Math.max(scrolled / (totalH + viewH * 0.5), 0), 1) * 100;
+
+  if (timelineFill)    timelineFill.style.height    = pct + '%';
+  if (timelineFillMob) timelineFillMob.style.height = pct + '%';
+}
+
+window.addEventListener('scroll', updateTimelineFill, { passive: true });
+updateTimelineFill();
+
+/* ─── Form validation + success ─────────────────────────────────── */
+var form       = document.getElementById('contactForm');
+var formBody   = document.getElementById('formBody');
+var formSuccess= document.getElementById('formSuccess');
+var submitBtn  = document.getElementById('submitBtn');
+var submitText = document.getElementById('submitText');
+var submitArrow= document.getElementById('submitArrow');
+var formError  = document.getElementById('formError');
+
+if (form) {
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    var nom      = document.getElementById('nom').value.trim();
+    var courriel = document.getElementById('courriel').value.trim();
+
+    // Basic validation
+    if (!nom) {
+      showError('Veuillez entrer votre nom complet.');
+      return;
+    }
+    var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!courriel || !emailRe.test(courriel)) {
+      showError('Veuillez entrer un courriel valide.');
+      return;
+    }
+
+    formError.style.display = 'none';
+    submitBtn.disabled = true;
+    submitText.textContent = 'Envoi en cours\u2026';
+    if (submitArrow) submitArrow.style.display = 'none';
+
+    // Simulate async
+    setTimeout(function() {
+      formBody.classList.add('hidden');
+      formSuccess.classList.add('show');
+    }, 1200);
+  });
+}
+
+function showError(msg) {
+  formError.textContent = msg;
+  formError.style.display = 'block';
+}
+
+/* ─── Spotlight card effect (matching the main site) ────────────── */
+document.querySelectorAll('.step-card').forEach(function(card) {
+  card.addEventListener('mousemove', function(e) {
+    var rect = card.getBoundingClientRect();
+    var x = ((e.clientX - rect.left) / rect.width)  * 100 + '%';
+    var y = ((e.clientY - rect.top)  / rect.height) * 100 + '%';
+    card.style.setProperty('--mx', x);
+    card.style.setProperty('--my', y);
+  });
+});
+
+/* ─── Active state on current section nav link ───────────────────── */
+var sections = document.querySelectorAll('section[id]');
+var navLinks  = document.querySelectorAll('.header-nav a');
+
+var sectionObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      var id = entry.target.getAttribute('id');
+      navLinks.forEach(function(link) {
+        var href = link.getAttribute('href');
+        link.style.color = (href && href.includes(id))
+          ? '#F5F5F0'
+          : 'rgba(245,245,240,0.65)';
+      });
+    }
+  });
+}, { threshold: 0.5 });
+
+sections.forEach(function(s) { sectionObserver.observe(s); });
+</script>
+
+</body>
+</html>
