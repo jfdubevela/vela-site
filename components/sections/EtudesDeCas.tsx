@@ -21,7 +21,7 @@ const cases: Case[] = [
     title: 'Réceptionniste vocale 24/7',
     body: 'Un agent vocal IA répond aux appels entrants, qualifie les prospects, prend les rendez-vous et transfère au bon interlocuteur — sans jamais décrocher trop tard.',
     metric: '24h/24 · 7j/7',
-    tools: ['Vapi', 'Make', 'Calendly'],
+    tools: ['ElevenLabs', 'n8n', 'Calendly'],
     demoUrl: '/agent-vocal.html',
   },
   {
