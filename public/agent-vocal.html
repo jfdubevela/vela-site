@@ -2041,11 +2041,35 @@ if (form) {
     submitText.textContent = 'Envoi en cours\u2026';
     if (submitArrow) submitArrow.style.display = 'none';
 
-    // Simulate async
-    setTimeout(function() {
-      formBody.classList.add('hidden');
-      formSuccess.classList.add('show');
-    }, 1200);
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        nom: nom,
+        courriel: courriel,
+        typeEntreprise: document.getElementById('typeEntreprise').value,
+        tailleEntreprise: document.getElementById('tailleEntreprise').value,
+        message: document.getElementById('message').value.trim(),
+      }),
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (data.success) {
+        formBody.classList.add('hidden');
+        formSuccess.classList.add('show');
+      } else {
+        showError(data.error || 'Une erreur est survenue.');
+        submitBtn.disabled = false;
+        submitText.textContent = 'Envoyer ma demande';
+        if (submitArrow) submitArrow.style.display = '';
+      }
+    })
+    .catch(function() {
+      showError('Impossible de joindre le serveur. Réessayez.');
+      submitBtn.disabled = false;
+      submitText.textContent = 'Envoyer ma demande';
+      if (submitArrow) submitArrow.style.display = '';
+    });
   });
 }
 
