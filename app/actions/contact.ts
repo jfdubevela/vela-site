@@ -2,9 +2,8 @@
 
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 export async function submitContact(formData: FormData) {
+  const resend = new Resend(process.env.RESEND_API_KEY)
   const nom = formData.get('nom') as string
   const courriel = formData.get('courriel') as string
   const typeEntreprise = formData.get('typeEntreprise') as string
