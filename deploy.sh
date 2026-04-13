@@ -15,7 +15,7 @@ ssh "$VPS" '
     --name vela-site \
     --restart unless-stopped \
     -p 3003:3000 \
-    -e RESEND_API_KEY="'"$RESEND_API_KEY"'" \
+    --env-file /opt/vela/.env \
     -v /opt/vela/public/videos:/app/public/videos:ro \
     vela-site
   echo "✅ Déployé avec succès"
