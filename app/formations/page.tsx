@@ -61,7 +61,7 @@ const formations: Formation[] = [
         ],
       },
       {
-        title: 'L'art du prompting efficace',
+        title: "L\u2019art du prompting efficace",
         items: [
           'Passer du prompt de 3 mots à une instruction structurée',
           'Le cadre R.A.C.E. : Rôle, Action, Contexte, Exigence',
@@ -69,18 +69,18 @@ const formations: Formation[] = [
         ],
       },
       {
-        title: 'Cas d'usage concrets par département',
+        title: "Cas d\u2019usage concrets par département",
         items: [
           'Administration : résumés de rapports, ordres du jour, nettoyage de données',
           'Ventes et service client : personnalisation des approches, gestion des avis',
-          'RH et gestion : descriptions de postes, préparation d'entrevues',
+          "RH et gestion : descriptions de postes, pr\u00e9paration d\u2019entrevues",
         ],
       },
       {
         title: 'Boîte à outils et prochaines étapes',
         items: [
           'Quel outil choisir selon vos besoins : ChatGPT, Claude, Copilot, Gemini',
-          "Comment bâtir une charte d'utilisation I.A. pour votre équipe",
+          "Comment b\u00e2tir une charte d\u2019utilisation I.A. pour votre \u00e9quipe",
         ],
       },
     ],
