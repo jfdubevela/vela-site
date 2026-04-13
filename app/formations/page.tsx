@@ -175,7 +175,7 @@ export default function FormationsPage() {
           />
 
           <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 py-24 w-full">
-            <div className="flex flex-col gap-8 max-w-[42ch]">
+            <div className="flex flex-col gap-8 max-w-[720px]">
 
               {/* Badge */}
               <motion.div
@@ -206,7 +206,7 @@ export default function FormationsPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ type: 'spring', stiffness: 70, damping: 18, delay: 0.4 }}
-                className="text-base md:text-lg text-[rgba(245,245,240,0.58)] leading-relaxed"
+                className="text-base md:text-lg text-[rgba(245,245,240,0.58)] leading-relaxed max-w-[50ch]"
               >
                 Des formations concrètes, ancrées dans la réalité des PME québécoises.{' '}
                 <span className="text-[rgba(245,245,240,0.88)] font-semibold">
