@@ -196,8 +196,9 @@ export default function FormationsPage() {
                 transition={{ type: 'spring', stiffness: 75, damping: 18, delay: 0.25 }}
                 className="text-[clamp(2.4rem,5.5vw,4.4rem)] font-black tracking-normal leading-[0.95] text-[#F7F3EB]"
               >
-                Former votre équipe à l&apos;I.A.{' '}
-                <span className="text-[#D4A373]">qui change vraiment les choses.</span>
+                Former votre équipe à l&apos;I.A.
+                <br />
+                <span className="text-[#D4A373]">qui change vraiment<br />les choses.</span>
               </motion.h1>
 
               {/* Subtitle */}
