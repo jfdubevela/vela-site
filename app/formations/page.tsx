@@ -212,14 +212,15 @@ export default function FormationsPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: '-8% 0px' }}
                     transition={{ type: 'spring', stiffness: 70, damping: 18, delay: i * 0.1 }}
+                    onClick={() => toggle(f.id)}
+                    className="cursor-pointer"
                   >
                     <SpotlightCard
-                      className={`rounded-[2rem] bg-white/[0.04] border transition-colors duration-300 p-8 flex flex-col gap-5 cursor-pointer shadow-[0_20px_60px_-20px_rgba(10,46,77,0.5)] ${
+                      className={`rounded-[2rem] bg-white/[0.04] border transition-colors duration-300 p-8 flex flex-col gap-5 shadow-[0_20px_60px_-20px_rgba(10,46,77,0.5)] ${
                         isOpen
                           ? 'border-[#D4A373]/40'
                           : 'border-white/[0.08] hover:border-white/[0.16]'
                       }`}
-                      onClick={() => toggle(f.id)}
                     >
                       {/* Top row */}
                       <div className="flex items-start justify-between">
