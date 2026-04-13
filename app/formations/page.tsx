@@ -39,9 +39,9 @@ const formations: Formation[] = [
     num: '01',
     title: "Utiliser l'I.A. de manière stratégique et sécuritaire",
     tagline:
-      "Comprendre, évaluer et intégrer l'I.A. dans votre organisation — sans risquer votre réputation.",
-    duration: 'Conférence · Atelier ½ journée · Journée complète',
-    audience: 'Dirigeants, gestionnaires, équipes opérationnelles',
+      "Comprendre et intégrer l\u2019I.A. dans votre travail de mani\u00e8re efficace et sans risquer vos donn\u00e9es.",
+    duration: '3 heures',
+    audience: 'Dirigeants, gestionnaires, \u00e9quipes op\u00e9rationnelles',
     format: 'Conférence ou atelier',
     modules: [
       {
