@@ -123,36 +123,21 @@ const LiveStatus = memo(function LiveStatus() {
   )
 })
 
-/* ─── Bento Card 03: Typewriter cycling ─── */
-const atelierTopics = [
-  'Comment automatiser vos relances clients',
-  'Structurer un CRM sans coder',
-  'Identifier vos 3 quick wins I.A.',
-  'Comprendre Make en 60 minutes',
-]
+/* ─── Bento Card 03: Typewriter (single topic) ─── */
+const atelierTopic = "Utiliser l'I.A. de manière stratégique et sécuritaire"
 
 const Typewriter = memo(function Typewriter() {
-  const [topicIdx, setTopicIdx] = useState(0)
   const [displayed, setDisplayed] = useState('')
-  const [deleting, setDeleting] = useState(false)
 
   useEffect(() => {
-    const full = atelierTopics[topicIdx]
-    let timeout: ReturnType<typeof setTimeout>
-
-    if (!deleting && displayed.length < full.length) {
-      timeout = setTimeout(() => setDisplayed(full.slice(0, displayed.length + 1)), 42)
-    } else if (!deleting && displayed.length === full.length) {
-      timeout = setTimeout(() => setDeleting(true), 2200)
-    } else if (deleting && displayed.length > 0) {
-      timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 22)
-    } else if (deleting && displayed.length === 0) {
-      setDeleting(false)
-      setTopicIdx((i) => (i + 1) % atelierTopics.length)
+    if (displayed.length < atelierTopic.length) {
+      const timeout = setTimeout(
+        () => setDisplayed(atelierTopic.slice(0, displayed.length + 1)),
+        42
+      )
+      return () => clearTimeout(timeout)
     }
-
-    return () => clearTimeout(timeout)
-  }, [displayed, deleting, topicIdx])
+  }, [displayed])
 
   return (
     <div className="mt-4 p-3 rounded-xl bg-white/[0.05] border border-white/[0.06]">

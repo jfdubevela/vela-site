@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 import { List, X, LinkedinLogo } from '@phosphor-icons/react'
 import MagneticButton from './ui/MagneticButton'
 
@@ -65,6 +66,12 @@ export default function Nav() {
                 {link.label}
               </button>
             ))}
+            <Link
+              href="/formations"
+              className="text-sm font-medium text-[rgba(245,245,240,0.65)] hover:text-[#F5F5F0] transition-colors duration-200"
+            >
+              Formations
+            </Link>
           </nav>
 
           {/* CTA */}
@@ -132,6 +139,13 @@ export default function Nav() {
                     {link.label}
                   </button>
                 ))}
+                <Link
+                  href="/formations"
+                  onClick={() => setMobileOpen(false)}
+                  className="text-left text-lg font-semibold text-[#F5F5F0] hover:text-[#D4A373] transition-colors"
+                >
+                  Formations
+                </Link>
               </nav>
               <div className="mt-auto">
                 <button
