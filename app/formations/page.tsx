@@ -202,7 +202,7 @@ export default function FormationsPage() {
             </ScrollReveal>
 
             {/* Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:items-stretch">
               {formations.map((f, i) => {
                 const isOpen = selectedId === f.id
                 return (
@@ -213,10 +213,10 @@ export default function FormationsPage() {
                     viewport={{ once: true, margin: '-8% 0px' }}
                     transition={{ type: 'spring', stiffness: 70, damping: 18, delay: i * 0.1 }}
                     onClick={() => toggle(f.id)}
-                    className="cursor-pointer"
+                    className="cursor-pointer h-full"
                   >
                     <SpotlightCard
-                      className={`rounded-[2rem] bg-white/[0.04] border transition-colors duration-300 p-8 flex flex-col gap-5 shadow-[0_20px_60px_-20px_rgba(10,46,77,0.5)] ${
+                      className={`h-full rounded-[2rem] bg-white/[0.04] border transition-colors duration-300 p-8 flex flex-col gap-5 shadow-[0_20px_60px_-20px_rgba(10,46,77,0.5)] ${
                         isOpen
                           ? 'border-[#D4A373]/40'
                           : 'border-white/[0.08] hover:border-white/[0.16]'
