@@ -20,22 +20,69 @@ import {
 } from '@phosphor-icons/react'
 
 /* ─── Data ─── */
-const formations = [
+type Module = { title: string; items: string[] }
+type Formation = {
+  id: string
+  num: string
+  title: string
+  tagline: string
+  duration: string
+  audience: string
+  format: string
+  modules: Module[]
+  cta: string
+}
+
+const formations: Formation[] = [
   {
     id: 'ia-strategique',
     num: '01',
     title: "Utiliser l'I.A. de manière stratégique et sécuritaire",
     tagline:
       "Comprendre, évaluer et intégrer l'I.A. dans votre organisation — sans risquer votre réputation.",
-    duration: '60–90 min · ½ journée · journée complète',
+    duration: 'Conférence · Atelier ½ journée · Journée complète',
     audience: 'Dirigeants, gestionnaires, équipes opérationnelles',
     format: 'Conférence ou atelier',
-    points: [
-      "Démystifier l'I.A. : ce qu'elle fait vraiment (et ce qu'elle ne fait pas)",
-      "Identifier les cas d'usage à fort potentiel pour votre secteur",
-      'Comprendre les risques de sécurité, de confidentialité et de conformité',
-      "Cadre décisionnel pour adopter l'I.A. de façon responsable",
-      'Atelier pratique : évaluer vos propres processus',
+    modules: [
+      {
+        title: "Comprendre l'I.A. sans la magie",
+        items: [
+          "Ce qu'est vraiment l'I.A. générative — un outil statistique, pas une entité consciente",
+          "La différence entre chercher une information (Google) et en générer une (I.A.)",
+          "Le phénomène d'hallucination : pourquoi l'I.A. peut se tromper avec assurance",
+        ],
+      },
+      {
+        title: 'Sécurité et éthique : votre guide de survie',
+        items: [
+          "La règle d'or de la confidentialité des données",
+          'Loi 25 au Québec : ce que ça change concrètement pour votre utilisation',
+          "Propriété intellectuelle et biais : ce qu'il faut savoir avant de publier",
+        ],
+      },
+      {
+        title: 'L'art du prompting efficace',
+        items: [
+          'Passer du prompt de 3 mots à une instruction structurée',
+          'Le cadre R.A.C.E. : Rôle, Action, Contexte, Exigence',
+          "Démonstration en direct : d'un mauvais résultat à un excellent résultat",
+        ],
+      },
+      {
+        title: 'Cas d'usage concrets par département',
+        items: [
+          'Administration : résumés de rapports, ordres du jour, nettoyage de données',
+          'Ventes et service client : personnalisation des approches, gestion des avis',
+          'RH et gestion : descriptions de postes, préparation d'entrevues',
+        ],
+      },
+      {
+        title: 'Boîte à outils et prochaines étapes',
+        items: [
+          'Quel outil choisir selon vos besoins : ChatGPT, Claude, Copilot, Gemini',
+          "Comment bâtir une charte d'utilisation I.A. pour votre équipe",
+        ],
+      },
     ],
     cta: 'Réserver cette formation',
   },
@@ -48,12 +95,22 @@ const formations = [
     duration: 'Variable selon vos besoins',
     audience: 'Votre équipe, votre contexte',
     format: 'Adapté à votre organisation',
-    points: [
-      "Programme co-conçu selon vos objectifs et votre maturité I.A.",
-      "Contenu ancré dans votre secteur d'activité",
-      'Exercices pratiques basés sur vos vrais processus',
-      'Livrables et ressources personnalisés pour votre équipe',
-      'Suivi post-formation disponible',
+    modules: [
+      {
+        title: 'Un programme construit avec vous',
+        items: [
+          "Contenu co-conçu selon vos objectifs et votre maturité I.A.",
+          "Ancré dans votre secteur d'activité spécifique",
+          'Exercices pratiques basés sur vos vrais processus',
+        ],
+      },
+      {
+        title: 'Livrables et suivi',
+        items: [
+          'Ressources et outils personnalisés pour votre équipe',
+          'Suivi post-formation disponible',
+        ],
+      },
     ],
     cta: 'Discuter de votre projet',
   },
@@ -291,26 +348,33 @@ export default function FormationsPage() {
                           </h4>
                         </div>
 
-                        <ul className="flex flex-col gap-3">
-                          {selected.points.map((point, i) => (
-                            <motion.li
-                              key={i}
-                              initial={{ opacity: 0, x: -12 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: i * 0.07, type: 'spring', stiffness: 120, damping: 20 }}
-                              className="flex items-start gap-3"
+                        <div className="flex flex-col gap-5">
+                          {selected.modules.map((mod, mi) => (
+                            <motion.div
+                              key={mi}
+                              initial={{ opacity: 0, y: 12 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: mi * 0.07, type: 'spring', stiffness: 120, damping: 20 }}
+                              className="flex flex-col gap-2"
                             >
-                              <CheckCircle
-                                size={16}
-                                weight="fill"
-                                className="text-[#D4A373]/70 mt-0.5 shrink-0"
-                              />
-                              <span className="text-sm text-[rgba(245,245,240,0.72)] leading-relaxed">
-                                {point}
-                              </span>
-                            </motion.li>
+                              <p className="text-sm font-semibold text-[#F7F3EB]">{mod.title}</p>
+                              <ul className="flex flex-col gap-1.5 pl-1">
+                                {mod.items.map((item, ii) => (
+                                  <li key={ii} className="flex items-start gap-2.5">
+                                    <CheckCircle
+                                      size={13}
+                                      weight="fill"
+                                      className="text-[#D4A373]/60 mt-0.5 shrink-0"
+                                    />
+                                    <span className="text-sm text-[rgba(245,245,240,0.62)] leading-relaxed">
+                                      {item}
+                                    </span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </motion.div>
                           ))}
-                        </ul>
+                        </div>
 
                         {/* Format meta */}
                         <div className="flex flex-wrap gap-3 pt-2 border-t border-white/[0.06]">
