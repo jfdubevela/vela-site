@@ -2,6 +2,45 @@
 
 import { Resend } from 'resend'
 
+export async function submitFormation(formData: FormData) {
+  const resend = new Resend(process.env.RESEND_API_KEY)
+  const nom = formData.get('nom') as string
+  const courriel = formData.get('courriel') as string
+  const formation = formData.get('formation') as string
+  const typeEntreprise = formData.get('typeEntreprise') as string
+  const tailleEntreprise = formData.get('tailleEntreprise') as string
+  const message = formData.get('message') as string
+
+  if (!nom || !courriel || !formation) {
+    return { success: false, error: 'Champs requis manquants.' }
+  }
+
+  try {
+    await resend.emails.send({
+      from: 'VELA <onboarding@resend.dev>',
+      to: 'jf@velavelavela.com',
+      replyTo: courriel,
+      subject: `Demande de formation — ${formation} — ${nom}`,
+      html: `
+        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #0A2E4D;">
+          <h2 style="color: #0A2E4D;">Nouvelle demande de formation</h2>
+          <hr style="border-color: #e5e7eb;" />
+          <p><strong>Formation choisie :</strong> ${formation}</p>
+          <p><strong>Nom :</strong> ${nom}</p>
+          <p><strong>Courriel :</strong> <a href="mailto:${courriel}">${courriel}</a></p>
+          <p><strong>Type d'entreprise :</strong> ${typeEntreprise || '—'}</p>
+          <p><strong>Taille de l'entreprise :</strong> ${tailleEntreprise || '—'}</p>
+          <p><strong>Message :</strong></p>
+          <p style="background:#f5f5f0; padding: 12px; border-radius: 8px;">${message || '(aucun message)'}</p>
+        </div>
+      `,
+    })
+    return { success: true }
+  } catch {
+    return { success: false, error: "Erreur lors de l'envoi. R\u00e9essayez." }
+  }
+}
+
 export async function submitContact(formData: FormData) {
   const resend = new Resend(process.env.RESEND_API_KEY)
   const nom = formData.get('nom') as string

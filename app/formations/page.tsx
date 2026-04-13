@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useTransition } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
@@ -18,6 +18,7 @@ import {
   Minus,
   Sparkle,
 } from '@phosphor-icons/react'
+import { submitFormation } from '@/app/actions/contact'
 
 /* ─── Data ─── */
 type Module = { title: string; items: string[] }
@@ -119,6 +120,9 @@ const formations: Formation[] = [
 /* ─── Page ─── */
 export default function FormationsPage() {
   const [selectedId, setSelectedId] = useState<string | null>(null)
+  const [sent, setSent] = useState(false)
+  const [formError, setFormError] = useState<string | null>(null)
+  const [isPending, startTransition] = useTransition()
 
   function toggle(id: string) {
     setSelectedId((prev) => (prev === id ? null : id))
@@ -126,8 +130,25 @@ export default function FormationsPage() {
 
   const selected = formations.find((f) => f.id === selectedId)
 
+  function scrollToFormations() {
+    document.getElementById('formations-list')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   function scrollToContact() {
-    window.location.href = '/#contact'
+    document.getElementById('contact-formations')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    const formData = new FormData(e.currentTarget)
+    startTransition(async () => {
+      const result = await submitFormation(formData)
+      if (result.success) {
+        setSent(true)
+      } else {
+        setFormError(result.error ?? 'Une erreur est survenue.')
+      }
+    })
   }
 
   return (
@@ -154,7 +175,7 @@ export default function FormationsPage() {
           />
 
           <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 py-24 w-full">
-            <div className="flex flex-col gap-8 max-w-[64ch]">
+            <div className="flex flex-col gap-8 max-w-[42ch]">
 
               {/* Badge */}
               <motion.div
@@ -175,8 +196,7 @@ export default function FormationsPage() {
                 transition={{ type: 'spring', stiffness: 75, damping: 18, delay: 0.25 }}
                 className="text-[clamp(2.4rem,5.5vw,4.4rem)] font-black tracking-normal leading-[0.95] text-[#F7F3EB]"
               >
-                Former votre équipe à l&apos;I.A.
-                <br />
+                Former votre équipe à l&apos;I.A.{' '}
                 <span className="text-[#D4A373]">qui change vraiment les choses.</span>
               </motion.h1>
 
@@ -202,10 +222,10 @@ export default function FormationsPage() {
               >
                 <MagneticButton
                   className="inline-flex items-center gap-2 bg-[#D4A373] hover:bg-[#C49060] text-[#0A2E4D] font-bold text-sm px-7 py-3.5 rounded-full transition-colors duration-200 cursor-pointer shadow-[0_8px_32px_-8px_rgba(212,163,115,0.45)]"
-                  onClick={scrollToContact}
+                  onClick={scrollToFormations}
                 >
-                  Demander une formation
-                  <ArrowRight size={14} weight="bold" />
+                  Voir nos formations
+                  <ArrowDown size={14} weight="bold" />
                 </MagneticButton>
               </motion.div>
 
@@ -241,7 +261,7 @@ export default function FormationsPage() {
         </section>
 
         {/* ─── Formations ─── */}
-        <section className="relative py-24 md:py-32">
+        <section id="formations-list" className="relative py-24 md:py-32">
           <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
 
             {/* Header */}
@@ -409,6 +429,145 @@ export default function FormationsPage() {
               )}
             </AnimatePresence>
 
+          </div>
+        </section>
+
+        {/* ─── Contact ─── */}
+        <section
+          id="contact-formations"
+          className="relative py-28 md:py-36 overflow-hidden"
+        >
+          <div
+            className="absolute inset-0 opacity-[0.04] bg-cover bg-center pointer-events-none"
+            style={{ backgroundImage: "url('/images/8.png')" }}
+            aria-hidden="true"
+          />
+          <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 items-center">
+
+              {/* Left — copy */}
+              <div className="flex flex-col gap-8">
+                <ScrollReveal>
+                  <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#7DB7D6]/20 bg-[#7DB7D6]/08 text-[#7DB7D6] text-xs font-medium tracking-wide self-start">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#7DB7D6] animate-[pulse-dot_2s_ease-in-out_infinite]" />
+                    Réservez votre formation
+                  </span>
+                </ScrollReveal>
+
+                <motion.h2
+                  initial={{ opacity: 0, y: 48 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-10% 0px' }}
+                  transition={{ type: 'spring', stiffness: 70, damping: 18, delay: 0.1 }}
+                  className="text-[clamp(2.4rem,5vw,4rem)] font-black tracking-normal leading-[0.92] text-[#F7F3EB]"
+                >
+                  Prêt à former
+                  <br />
+                  <span className="text-[rgba(247,243,235,0.4)]">votre équipe ?</span>
+                </motion.h2>
+
+                <ScrollReveal delay={0.2}>
+                  <p className="text-base md:text-lg text-[rgba(245,245,240,0.55)] max-w-[44ch] leading-relaxed">
+                    Choisissez votre formation et laissez vos coordonnées. On vous revient dans les 2 jours ouvrables pour organiser ça ensemble.
+                  </p>
+                </ScrollReveal>
+
+                <ScrollReveal delay={0.25}>
+                  <p className="text-xs text-[rgba(245,245,240,0.25)] font-mono tracking-wide">
+                    Prix fixe · Aucune surprise · Formation adaptée à votre équipe
+                  </p>
+                </ScrollReveal>
+              </div>
+
+              {/* Right — form */}
+              <ScrollReveal delay={0.15}>
+                <div className="rounded-[2rem] glass p-8 md:p-10 flex flex-col gap-6">
+                  {sent ? (
+                    <div className="flex flex-col items-center gap-4 py-8 text-center">
+                      <CheckCircle size={48} weight="fill" className="text-[#D4A373]" />
+                      <p className="text-lg font-semibold text-[#F5F5F0]">Demande envoyée !</p>
+                      <p className="text-sm text-[rgba(245,245,240,0.5)]">On vous répond dans les 2 jours ouvrables.</p>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="flex flex-col gap-1">
+                        <p className="text-base font-semibold text-[#F5F5F0]">Laissez vos coordonnées</p>
+                        <p className="text-sm text-[rgba(245,245,240,0.4)]">On vous répond dans les 2 jours ouvrables.</p>
+                      </div>
+
+                      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+                        {/* Formation */}
+                        <div className="flex flex-col gap-1.5">
+                          <label className="text-xs text-[rgba(245,245,240,0.5)]">Formation souhaitée</label>
+                          <select
+                            name="formation"
+                            required
+                            defaultValue=""
+                            className="w-full px-4 py-3 rounded-xl bg-white/[0.08] border border-white/[0.12] text-[#F5F5F0] text-sm focus:outline-none focus:border-[#7DB7D6]/50 transition-colors appearance-none cursor-pointer"
+                          >
+                            <option value="" disabled className="bg-[#0A2E4D]">Choisir une formation...</option>
+                            <option value="Utiliser l'I.A. de manière stratégique et sécuritaire" className="bg-[#0A2E4D]">
+                              Utiliser l&apos;I.A. de manière stratégique et sécuritaire
+                            </option>
+                            <option value="Sur mesure" className="bg-[#0A2E4D]">Sur mesure</option>
+                          </select>
+                        </div>
+
+                        {/* Nom + Courriel */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="flex flex-col gap-1.5">
+                            <label className="text-xs text-[rgba(245,245,240,0.5)]">Nom complet</label>
+                            <input name="nom" type="text" required placeholder="Marie Tremblay" className="w-full px-4 py-3 rounded-xl bg-white/[0.08] border border-white/[0.12] text-[#F5F5F0] text-sm placeholder:text-[rgba(245,245,240,0.3)] focus:outline-none focus:border-[#7DB7D6]/50 transition-colors" />
+                          </div>
+                          <div className="flex flex-col gap-1.5">
+                            <label className="text-xs text-[rgba(245,245,240,0.5)]">Courriel professionnel</label>
+                            <input name="courriel" type="email" required placeholder="marie@entreprise.com" className="w-full px-4 py-3 rounded-xl bg-white/[0.08] border border-white/[0.12] text-[#F5F5F0] text-sm placeholder:text-[rgba(245,245,240,0.3)] focus:outline-none focus:border-[#7DB7D6]/50 transition-colors" />
+                          </div>
+                        </div>
+
+                        {/* Type + Taille */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div className="flex flex-col gap-1.5">
+                            <label className="text-xs text-[rgba(245,245,240,0.5)]">Type d&apos;entreprise</label>
+                            <input name="typeEntreprise" type="text" placeholder="Ex : clinique, agence..." className="w-full px-4 py-3 rounded-xl bg-white/[0.08] border border-white/[0.12] text-[#F5F5F0] text-sm placeholder:text-[rgba(245,245,240,0.3)] focus:outline-none focus:border-[#7DB7D6]/50 transition-colors" />
+                          </div>
+                          <div className="flex flex-col gap-1.5">
+                            <label className="text-xs text-[rgba(245,245,240,0.5)]">Taille de l&apos;entreprise</label>
+                            <select name="tailleEntreprise" defaultValue="" className="w-full px-4 py-3 rounded-xl bg-white/[0.08] border border-white/[0.12] text-[#F5F5F0] text-sm focus:outline-none focus:border-[#7DB7D6]/50 transition-colors appearance-none cursor-pointer">
+                              <option value="" disabled className="bg-[#0A2E4D]">Choisir...</option>
+                              <option value="1" className="bg-[#0A2E4D]">Solopreneur / 1 personne</option>
+                              <option value="2-10" className="bg-[#0A2E4D]">2–10 employés</option>
+                              <option value="11-50" className="bg-[#0A2E4D]">11–50 employés</option>
+                              <option value="50+" className="bg-[#0A2E4D]">50+ employés</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        {/* Message */}
+                        <div className="flex flex-col gap-1.5">
+                          <label className="text-xs text-[rgba(245,245,240,0.5)]">Message (optionnel)</label>
+                          <textarea name="message" rows={3} placeholder="Décrivez brièvement votre contexte..." className="w-full px-4 py-3 rounded-xl bg-white/[0.08] border border-white/[0.12] text-[#F5F5F0] text-sm placeholder:text-[rgba(245,245,240,0.3)] focus:outline-none focus:border-[#7DB7D6]/50 transition-colors resize-none" />
+                        </div>
+
+                        {formError && (
+                          <p className="text-xs text-red-400">{formError}</p>
+                        )}
+
+                        <button
+                          type="submit"
+                          disabled={isPending}
+                          className="w-full flex items-center justify-center gap-2 bg-[#D4A373] hover:bg-[#C49060] active:scale-[0.98] disabled:opacity-60 text-[#0A2E4D] font-bold py-4 rounded-full transition-all duration-200 text-sm cursor-pointer mt-1"
+                        >
+                          {isPending ? 'Envoi en cours…' : 'Envoyer ma demande'}
+                          {!isPending && <ArrowRight size={15} weight="bold" />}
+                        </button>
+                      </form>
+                    </>
+                  )}
+                </div>
+              </ScrollReveal>
+
+            </div>
           </div>
         </section>
 
