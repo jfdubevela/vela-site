@@ -3,8 +3,10 @@ set -e
 
 VPS="root@187.124.226.112"
 
-echo "🚀 Déploiement en cours..."
+echo "→ Push vers GitHub..."
+git push origin main
 
+echo "→ Déploiement sur le serveur..."
 ssh "$VPS" '
   set -e
   cd /opt/vela
@@ -18,5 +20,6 @@ ssh "$VPS" '
     --env-file /opt/vela/.env \
     -v /opt/vela/public/videos:/app/public/videos:ro \
     vela-site
-  echo "✅ Déployé avec succès"
 '
+
+echo "✅ Déployé sur velavelavela.com"
