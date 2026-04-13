@@ -142,11 +142,15 @@ export default function FormationsPage() {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
     startTransition(async () => {
-      const result = await submitFormation(formData)
-      if (result.success) {
-        setSent(true)
-      } else {
-        setFormError(result.error ?? 'Une erreur est survenue.')
+      try {
+        const result = await submitFormation(formData)
+        if (result.success) {
+          setSent(true)
+        } else {
+          setFormError(result.error ?? 'Une erreur est survenue.')
+        }
+      } catch {
+        setFormError('Une erreur est survenue. R\u00e9essayez.')
       }
     })
   }
