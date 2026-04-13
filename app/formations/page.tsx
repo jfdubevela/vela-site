@@ -117,6 +117,75 @@ const formations: Formation[] = [
   },
 ]
 
+/* ─── Detail Panel ─── */
+function DetailPanel({ formation: f, onContact }: { formation: Formation; onContact: () => void }) {
+  return (
+    <div className="rounded-[2rem] border border-[#D4A373]/30 bg-white p-8 md:p-12 shadow-[0_8px_40px_-12px_rgba(10,46,77,0.1)]">
+      <div className="flex flex-col gap-8">
+
+        {/* Title */}
+        <h2 className="text-[clamp(1.6rem,3.5vw,2.6rem)] font-black tracking-tight leading-tight text-[#0A2E4D]">
+          {f.title}
+        </h2>
+
+        {/* Modules */}
+        <div className="flex flex-col gap-7">
+          {f.modules.map((mod, mi) => (
+            <motion.div
+              key={mi}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: mi * 0.07, type: 'spring', stiffness: 120, damping: 20 }}
+              className="flex flex-col gap-3"
+            >
+              <p className="text-base font-bold text-[#0A2E4D]">{mod.title}</p>
+              <ul className="flex flex-col gap-2.5 pl-1">
+                {mod.items.map((item, ii) => (
+                  <li key={ii} className="flex items-start gap-3">
+                    <CheckCircle size={16} weight="fill" className="text-[#D4A373] mt-0.5 shrink-0" />
+                    <span className="text-base text-[#0A2E4D]/65 leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Bottom row: meta + CTA */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pt-4 border-t border-[#0A2E4D]/[0.08]">
+          <div className="flex flex-wrap gap-6">
+            <div className="flex flex-col gap-1">
+              <span className="text-[10px] uppercase tracking-widest text-[#0A2E4D]/40 font-mono">Format</span>
+              <span className="text-sm text-[#0A2E4D]/70">{f.format}</span>
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="text-[10px] uppercase tracking-widest text-[#0A2E4D]/40 font-mono">Durée</span>
+              <span className="text-sm text-[#0A2E4D]/70">{f.duration}</span>
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="text-[10px] uppercase tracking-widest text-[#0A2E4D]/40 font-mono">Pour qui</span>
+              <span className="text-sm text-[#0A2E4D]/70">{f.audience}</span>
+            </div>
+          </div>
+          <div className="flex flex-col gap-2 shrink-0">
+            <MagneticButton
+              className="inline-flex items-center justify-center gap-2 bg-[#D4A373] hover:bg-[#C49060] text-[#0A2E4D] font-bold text-sm px-7 py-3.5 rounded-full transition-colors duration-200 cursor-pointer shadow-[0_8px_32px_-8px_rgba(212,163,115,0.40)] whitespace-nowrap"
+              onClick={onContact}
+            >
+              {f.cta}
+              <ArrowRight size={14} weight="bold" />
+            </MagneticButton>
+            <p className="text-[10px] text-[#0A2E4D]/25 font-mono text-center">
+              Réponse en 2 jours ouvrables
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  )
+}
+
 /* ─── Page ─── */
 export default function FormationsPage() {
   const [selectedId, setSelectedId] = useState<string | null>(null)
@@ -200,7 +269,7 @@ export default function FormationsPage() {
                 transition={{ type: 'spring', stiffness: 75, damping: 18, delay: 0.25 }}
                 className="text-[clamp(2.4rem,5.5vw,4.4rem)] font-black tracking-normal leading-[0.95] text-[#F7F3EB]"
               >
-                <span className="whitespace-nowrap">Former votre équipe à l&apos;I.A.</span>
+                Former votre équipe à l&apos;I.A.
                 <br />
                 <span className="text-[#D4A373]">qui change vraiment<br />les choses.</span>
               </motion.h1>
@@ -288,152 +357,104 @@ export default function FormationsPage() {
               {formations.map((f, i) => {
                 const isOpen = selectedId === f.id
                 return (
-                  <motion.div
-                    key={f.id}
-                    initial={{ opacity: 0, y: 32 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-8% 0px' }}
-                    transition={{ type: 'spring', stiffness: 70, damping: 18, delay: i * 0.1 }}
-                    onClick={() => toggle(f.id)}
-                    className="cursor-pointer h-full"
-                  >
-                    <SpotlightCard
-                      variant="light"
-                      className={`h-full rounded-[2rem] bg-white border transition-colors duration-300 p-8 flex flex-col gap-5 shadow-[0_8px_40px_-12px_rgba(10,46,77,0.12)] ${
-                        isOpen
-                          ? 'border-[#D4A373]/60'
-                          : 'border-[#0A2E4D]/[0.08] hover:border-[#0A2E4D]/[0.2]'
-                      }`}
+                  <div key={f.id} className="flex flex-col gap-4">
+                    <motion.div
+                      initial={{ opacity: 0, y: 32 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: '-8% 0px' }}
+                      transition={{ type: 'spring', stiffness: 70, damping: 18, delay: i * 0.1 }}
+                      onClick={() => toggle(f.id)}
+                      className="cursor-pointer h-full"
                     >
-                      {/* Top row */}
-                      <div className="flex items-start justify-between">
+                      <SpotlightCard
+                        variant="light"
+                        className={`h-full rounded-[2rem] bg-white border transition-colors duration-300 p-8 flex flex-col gap-5 shadow-[0_8px_40px_-12px_rgba(10,46,77,0.12)] ${
+                          isOpen
+                            ? 'border-[#D4A373]/60'
+                            : 'border-[#0A2E4D]/[0.08] hover:border-[#0A2E4D]/[0.2]'
+                        }`}
+                      >
+                        {/* Top row */}
+                        <div className="flex items-start justify-between">
+                          <div className="flex flex-col gap-2">
+                            <span className="font-mono text-[10px] tracking-widest text-[#0A2E4D]/30">
+                              {f.num}
+                            </span>
+                            <Chalkboard size={20} weight="duotone" className="text-[#0A2E4D]/60" />
+                          </div>
+                          <div
+                            className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-200 ${
+                              isOpen
+                                ? 'bg-[#D4A373]/15 border-[#D4A373]/50 text-[#D4A373]'
+                                : 'border-[#0A2E4D]/[0.15] text-[#0A2E4D]/30'
+                            }`}
+                          >
+                            {isOpen ? <Minus size={13} weight="bold" /> : <Plus size={13} weight="bold" />}
+                          </div>
+                        </div>
+
+                        {/* Content */}
                         <div className="flex flex-col gap-2">
-                          <span className="font-mono text-[10px] tracking-widest text-[#0A2E4D]/30">
-                            {f.num}
+                          <h3 className="text-xl font-bold tracking-tight text-[#0A2E4D] leading-snug">
+                            {f.title}
+                          </h3>
+                          <p className="text-sm text-[#0A2E4D]/55 leading-relaxed">
+                            {f.tagline}
+                          </p>
+                        </div>
+
+                        {/* Tags */}
+                        <div className="flex flex-wrap gap-2 mt-1">
+                          <span className="inline-flex items-center gap-1.5 text-[10px] font-mono text-[#0A2E4D]/50 px-2.5 py-1 rounded-full bg-[#0A2E4D]/[0.05] border border-[#0A2E4D]/[0.08]">
+                            <Clock size={11} />
+                            {f.duration}
                           </span>
-                          <Chalkboard size={20} weight="duotone" className="text-[#0A2E4D]/60" />
+                          <span className="inline-flex items-center gap-1.5 text-[10px] font-mono text-[#0A2E4D]/50 px-2.5 py-1 rounded-full bg-[#0A2E4D]/[0.05] border border-[#0A2E4D]/[0.08]">
+                            <Users size={11} />
+                            {f.audience}
+                          </span>
                         </div>
-                        <div
-                          className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-200 ${
-                            isOpen
-                              ? 'bg-[#D4A373]/15 border-[#D4A373]/50 text-[#D4A373]'
-                              : 'border-[#0A2E4D]/[0.15] text-[#0A2E4D]/30'
-                          }`}
-                        >
-                          {isOpen ? <Minus size={13} weight="bold" /> : <Plus size={13} weight="bold" />}
-                        </div>
-                      </div>
+                      </SpotlightCard>
+                    </motion.div>
 
-                      {/* Content */}
-                      <div className="flex flex-col gap-2">
-                        <h3 className="text-xl font-bold tracking-tight text-[#0A2E4D] leading-snug">
-                          {f.title}
-                        </h3>
-                        <p className="text-sm text-[#0A2E4D]/55 leading-relaxed">
-                          {f.tagline}
-                        </p>
-                      </div>
-
-                      {/* Tags */}
-                      <div className="flex flex-wrap gap-2 mt-1">
-                        <span className="inline-flex items-center gap-1.5 text-[10px] font-mono text-[#0A2E4D]/50 px-2.5 py-1 rounded-full bg-[#0A2E4D]/[0.05] border border-[#0A2E4D]/[0.08]">
-                          <Clock size={11} />
-                          {f.duration}
-                        </span>
-                        <span className="inline-flex items-center gap-1.5 text-[10px] font-mono text-[#0A2E4D]/50 px-2.5 py-1 rounded-full bg-[#0A2E4D]/[0.05] border border-[#0A2E4D]/[0.08]">
-                          <Users size={11} />
-                          {f.audience}
-                        </span>
-                      </div>
-                    </SpotlightCard>
-                  </motion.div>
+                    {/* Mobile-only: inline expanded panel directly below this card */}
+                    <div className="md:hidden">
+                      <AnimatePresence>
+                        {isOpen && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ type: 'spring', stiffness: 80, damping: 22 }}
+                            className="overflow-hidden"
+                          >
+                            <DetailPanel formation={f} onContact={scrollToContact} />
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  </div>
                 )
               })}
             </div>
 
-            {/* Expanded detail panel */}
-            <AnimatePresence mode="wait">
-              {selected && (
-                <motion.div
-                  key={selected.id}
-                  initial={{ opacity: 0, y: 24, height: 0 }}
-                  animate={{ opacity: 1, y: 0, height: 'auto' }}
-                  exit={{ opacity: 0, y: 16, height: 0 }}
-                  transition={{ type: 'spring', stiffness: 80, damping: 22 }}
-                  className="overflow-hidden mt-4"
-                >
-                  <div className="rounded-[2rem] border border-[#D4A373]/30 bg-white p-8 md:p-12 shadow-[0_8px_40px_-12px_rgba(10,46,77,0.1)]">
-                    <div className="flex flex-col gap-8">
-
-                      {/* Title */}
-                      <h1 className="text-[clamp(1.6rem,3.5vw,2.6rem)] font-black tracking-tight leading-tight text-[#0A2E4D]">
-                        {selected.title}
-                      </h1>
-
-                      {/* Modules */}
-                      <div className="flex flex-col gap-7">
-                        {selected.modules.map((mod, mi) => (
-                          <motion.div
-                            key={mi}
-                            initial={{ opacity: 0, y: 12 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: mi * 0.07, type: 'spring', stiffness: 120, damping: 20 }}
-                            className="flex flex-col gap-3"
-                          >
-                            <p className="text-base font-bold text-[#0A2E4D]">{mod.title}</p>
-                            <ul className="flex flex-col gap-2.5 pl-1">
-                              {mod.items.map((item, ii) => (
-                                <li key={ii} className="flex items-start gap-3">
-                                  <CheckCircle
-                                    size={16}
-                                    weight="fill"
-                                    className="text-[#D4A373] mt-0.5 shrink-0"
-                                  />
-                                  <span className="text-base text-[#0A2E4D]/65 leading-relaxed">
-                                    {item}
-                                  </span>
-                                </li>
-                              ))}
-                            </ul>
-                          </motion.div>
-                        ))}
-                      </div>
-
-                      {/* Bottom row: meta + CTA */}
-                      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pt-4 border-t border-[#0A2E4D]/[0.08]">
-                        <div className="flex flex-wrap gap-6">
-                          <div className="flex flex-col gap-1">
-                            <span className="text-[10px] uppercase tracking-widest text-[#0A2E4D]/40 font-mono">Format</span>
-                            <span className="text-sm text-[#0A2E4D]/70">{selected.format}</span>
-                          </div>
-                          <div className="flex flex-col gap-1">
-                            <span className="text-[10px] uppercase tracking-widest text-[#0A2E4D]/40 font-mono">Durée</span>
-                            <span className="text-sm text-[#0A2E4D]/70">{selected.duration}</span>
-                          </div>
-                          <div className="flex flex-col gap-1">
-                            <span className="text-[10px] uppercase tracking-widest text-[#0A2E4D]/40 font-mono">Pour qui</span>
-                            <span className="text-sm text-[#0A2E4D]/70">{selected.audience}</span>
-                          </div>
-                        </div>
-                        <div className="flex flex-col gap-2 shrink-0">
-                          <MagneticButton
-                            className="inline-flex items-center justify-center gap-2 bg-[#D4A373] hover:bg-[#C49060] text-[#0A2E4D] font-bold text-sm px-7 py-3.5 rounded-full transition-colors duration-200 cursor-pointer shadow-[0_8px_32px_-8px_rgba(212,163,115,0.40)] whitespace-nowrap"
-                            onClick={scrollToContact}
-                          >
-                            {selected.cta}
-                            <ArrowRight size={14} weight="bold" />
-                          </MagneticButton>
-                          <p className="text-[10px] text-[#0A2E4D]/25 font-mono text-center">
-                            Réponse en 2 jours ouvrables
-                          </p>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {/* Desktop-only: expanded detail panel below all cards */}
+            <div className="hidden md:block">
+              <AnimatePresence mode="wait">
+                {selected && (
+                  <motion.div
+                    key={selected.id}
+                    initial={{ opacity: 0, y: 24, height: 0 }}
+                    animate={{ opacity: 1, y: 0, height: 'auto' }}
+                    exit={{ opacity: 0, y: 16, height: 0 }}
+                    transition={{ type: 'spring', stiffness: 80, damping: 22 }}
+                    className="overflow-hidden mt-4"
+                  >
+                    <DetailPanel formation={selected} onContact={scrollToContact} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
           </div>
         </section>
