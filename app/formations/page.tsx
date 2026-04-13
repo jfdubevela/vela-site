@@ -336,77 +336,71 @@ export default function FormationsPage() {
                   transition={{ type: 'spring', stiffness: 80, damping: 22 }}
                   className="overflow-hidden mt-4"
                 >
-                  <div className="rounded-[2rem] border border-[#D4A373]/20 bg-white/[0.03] p-8 md:p-10">
-                    <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 md:gap-16 items-start">
+                  <div className="rounded-[2rem] border border-[#D4A373]/20 bg-white/[0.03] p-8 md:p-12">
+                    <div className="flex flex-col gap-8">
 
-                      {/* Left — detail */}
-                      <div className="flex flex-col gap-6">
-                        <div className="flex items-center gap-3">
-                          <Sparkle size={16} weight="duotone" className="text-[#D4A373]" />
-                          <h4 className="text-base font-bold text-[#F7F3EB]">
-                            Ce que couvre cette formation
-                          </h4>
-                        </div>
+                      {/* Title */}
+                      <h1 className="text-[clamp(1.6rem,3.5vw,2.6rem)] font-black tracking-tight leading-tight text-[#F7F3EB]">
+                        {selected.title}
+                      </h1>
 
-                        <div className="flex flex-col gap-5">
-                          {selected.modules.map((mod, mi) => (
-                            <motion.div
-                              key={mi}
-                              initial={{ opacity: 0, y: 12 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ delay: mi * 0.07, type: 'spring', stiffness: 120, damping: 20 }}
-                              className="flex flex-col gap-2"
-                            >
-                              <p className="text-sm font-semibold text-[#F7F3EB]">{mod.title}</p>
-                              <ul className="flex flex-col gap-1.5 pl-1">
-                                {mod.items.map((item, ii) => (
-                                  <li key={ii} className="flex items-start gap-2.5">
-                                    <CheckCircle
-                                      size={13}
-                                      weight="fill"
-                                      className="text-[#D4A373]/60 mt-0.5 shrink-0"
-                                    />
-                                    <span className="text-sm text-[rgba(245,245,240,0.62)] leading-relaxed">
-                                      {item}
-                                    </span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </motion.div>
-                          ))}
-                        </div>
-
-                        {/* Format meta */}
-                        <div className="flex flex-wrap gap-3 pt-2 border-t border-white/[0.06]">
-                          <div className="flex flex-col gap-0.5">
-                            <span className="text-[9px] uppercase tracking-widest text-[#7DB7D6]/50 font-mono">Format</span>
-                            <span className="text-xs text-[rgba(245,245,240,0.65)]">{selected.format}</span>
-                          </div>
-                          <div className="w-px h-8 bg-white/[0.08] self-center" />
-                          <div className="flex flex-col gap-0.5">
-                            <span className="text-[9px] uppercase tracking-widest text-[#7DB7D6]/50 font-mono">Durée</span>
-                            <span className="text-xs text-[rgba(245,245,240,0.65)]">{selected.duration}</span>
-                          </div>
-                          <div className="w-px h-8 bg-white/[0.08] self-center" />
-                          <div className="flex flex-col gap-0.5">
-                            <span className="text-[9px] uppercase tracking-widest text-[#7DB7D6]/50 font-mono">Pour qui</span>
-                            <span className="text-xs text-[rgba(245,245,240,0.65)]">{selected.audience}</span>
-                          </div>
-                        </div>
+                      {/* Modules */}
+                      <div className="flex flex-col gap-7">
+                        {selected.modules.map((mod, mi) => (
+                          <motion.div
+                            key={mi}
+                            initial={{ opacity: 0, y: 12 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: mi * 0.07, type: 'spring', stiffness: 120, damping: 20 }}
+                            className="flex flex-col gap-3"
+                          >
+                            <p className="text-base font-bold text-[#F7F3EB]">{mod.title}</p>
+                            <ul className="flex flex-col gap-2.5 pl-1">
+                              {mod.items.map((item, ii) => (
+                                <li key={ii} className="flex items-start gap-3">
+                                  <CheckCircle
+                                    size={16}
+                                    weight="fill"
+                                    className="text-[#D4A373]/70 mt-0.5 shrink-0"
+                                  />
+                                  <span className="text-base text-[rgba(245,245,240,0.72)] leading-relaxed">
+                                    {item}
+                                  </span>
+                                </li>
+                              ))}
+                            </ul>
+                          </motion.div>
+                        ))}
                       </div>
 
-                      {/* Right — CTA */}
-                      <div className="flex flex-col gap-4 md:min-w-[200px]">
-                        <MagneticButton
-                          className="inline-flex items-center justify-center gap-2 bg-[#D4A373] hover:bg-[#C49060] text-[#0A2E4D] font-bold text-sm px-7 py-3.5 rounded-full transition-colors duration-200 cursor-pointer shadow-[0_8px_32px_-8px_rgba(212,163,115,0.40)] whitespace-nowrap"
-                          onClick={scrollToContact}
-                        >
-                          {selected.cta}
-                          <ArrowRight size={14} weight="bold" />
-                        </MagneticButton>
-                        <p className="text-[10px] text-[rgba(245,245,240,0.25)] font-mono text-center">
-                          Réponse en 2 jours ouvrables
-                        </p>
+                      {/* Bottom row: meta + CTA */}
+                      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pt-4 border-t border-white/[0.06]">
+                        <div className="flex flex-wrap gap-6">
+                          <div className="flex flex-col gap-1">
+                            <span className="text-[10px] uppercase tracking-widest text-[#7DB7D6]/50 font-mono">Format</span>
+                            <span className="text-sm text-[rgba(245,245,240,0.72)]">{selected.format}</span>
+                          </div>
+                          <div className="flex flex-col gap-1">
+                            <span className="text-[10px] uppercase tracking-widest text-[#7DB7D6]/50 font-mono">Durée</span>
+                            <span className="text-sm text-[rgba(245,245,240,0.72)]">{selected.duration}</span>
+                          </div>
+                          <div className="flex flex-col gap-1">
+                            <span className="text-[10px] uppercase tracking-widest text-[#7DB7D6]/50 font-mono">Pour qui</span>
+                            <span className="text-sm text-[rgba(245,245,240,0.72)]">{selected.audience}</span>
+                          </div>
+                        </div>
+                        <div className="flex flex-col gap-2 shrink-0">
+                          <MagneticButton
+                            className="inline-flex items-center justify-center gap-2 bg-[#D4A373] hover:bg-[#C49060] text-[#0A2E4D] font-bold text-sm px-7 py-3.5 rounded-full transition-colors duration-200 cursor-pointer shadow-[0_8px_32px_-8px_rgba(212,163,115,0.40)] whitespace-nowrap"
+                            onClick={scrollToContact}
+                          >
+                            {selected.cta}
+                            <ArrowRight size={14} weight="bold" />
+                          </MagneticButton>
+                          <p className="text-[10px] text-[rgba(245,245,240,0.25)] font-mono text-center">
+                            Réponse en 2 jours ouvrables
+                          </p>
+                        </div>
                       </div>
 
                     </div>
