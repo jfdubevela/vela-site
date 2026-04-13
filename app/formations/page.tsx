@@ -262,19 +262,19 @@ export default function FormationsPage() {
         </section>
 
         {/* ─── Formations ─── */}
-        <section id="formations-list" className="relative py-24 md:py-32">
+        <section id="formations-list" className="relative py-24 md:py-32 bg-[#F5F5F0] rounded-t-3xl shadow-[0_-12px_40px_rgba(0,0,0,0.2)]">
           <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
 
             {/* Header */}
             <ScrollReveal>
               <div className="mb-14">
-                <p className="text-xs uppercase tracking-[0.25em] text-[#7DB7D6] mb-4">
+                <p className="text-xs uppercase tracking-[0.25em] text-[#0A2E4D]/50 mb-4">
                   Ce qu&apos;on enseigne
                 </p>
-                <h2 className="text-[clamp(1.9rem,4vw,3rem)] font-black tracking-normal leading-[0.95] text-[#F7F3EB] max-w-[22ch]">
+                <h2 className="text-[clamp(1.9rem,4vw,3rem)] font-black tracking-normal leading-[0.95] text-[#0A2E4D] max-w-[22ch]">
                   Choisissez votre formation.
                   <br />
-                  <span className="text-[rgba(247,243,235,0.35)]">Ou construisons-la ensemble.</span>
+                  <span className="text-[#0A2E4D]/30">Ou construisons-la ensemble.</span>
                 </h2>
               </div>
             </ScrollReveal>
@@ -294,25 +294,26 @@ export default function FormationsPage() {
                     className="cursor-pointer h-full"
                   >
                     <SpotlightCard
-                      className={`h-full rounded-[2rem] bg-white/[0.04] border transition-colors duration-300 p-8 flex flex-col gap-5 shadow-[0_20px_60px_-20px_rgba(10,46,77,0.5)] ${
+                      variant="light"
+                      className={`h-full rounded-[2rem] bg-white border transition-colors duration-300 p-8 flex flex-col gap-5 shadow-[0_8px_40px_-12px_rgba(10,46,77,0.12)] ${
                         isOpen
-                          ? 'border-[#D4A373]/40'
-                          : 'border-white/[0.08] hover:border-white/[0.16]'
+                          ? 'border-[#D4A373]/60'
+                          : 'border-[#0A2E4D]/[0.08] hover:border-[#0A2E4D]/[0.2]'
                       }`}
                     >
                       {/* Top row */}
                       <div className="flex items-start justify-between">
                         <div className="flex flex-col gap-2">
-                          <span className="font-mono text-[10px] tracking-widest text-[#7DB7D6]/50">
+                          <span className="font-mono text-[10px] tracking-widest text-[#0A2E4D]/30">
                             {f.num}
                           </span>
-                          <Chalkboard size={20} weight="duotone" className="text-[#7DB7D6]" />
+                          <Chalkboard size={20} weight="duotone" className="text-[#0A2E4D]/60" />
                         </div>
                         <div
                           className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-200 ${
                             isOpen
-                              ? 'bg-[#D4A373]/15 border-[#D4A373]/40 text-[#D4A373]'
-                              : 'border-white/[0.1] text-[rgba(245,245,240,0.3)]'
+                              ? 'bg-[#D4A373]/15 border-[#D4A373]/50 text-[#D4A373]'
+                              : 'border-[#0A2E4D]/[0.15] text-[#0A2E4D]/30'
                           }`}
                         >
                           {isOpen ? <Minus size={13} weight="bold" /> : <Plus size={13} weight="bold" />}
@@ -321,21 +322,21 @@ export default function FormationsPage() {
 
                       {/* Content */}
                       <div className="flex flex-col gap-2">
-                        <h3 className="text-xl font-bold tracking-tight text-[#F7F3EB] leading-snug">
+                        <h3 className="text-xl font-bold tracking-tight text-[#0A2E4D] leading-snug">
                           {f.title}
                         </h3>
-                        <p className="text-sm text-[rgba(245,245,240,0.52)] leading-relaxed">
+                        <p className="text-sm text-[#0A2E4D]/55 leading-relaxed">
                           {f.tagline}
                         </p>
                       </div>
 
                       {/* Tags */}
                       <div className="flex flex-wrap gap-2 mt-1">
-                        <span className="inline-flex items-center gap-1.5 text-[10px] font-mono text-[#7DB7D6]/60 px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.06]">
+                        <span className="inline-flex items-center gap-1.5 text-[10px] font-mono text-[#0A2E4D]/50 px-2.5 py-1 rounded-full bg-[#0A2E4D]/[0.05] border border-[#0A2E4D]/[0.08]">
                           <Clock size={11} />
                           {f.duration}
                         </span>
-                        <span className="inline-flex items-center gap-1.5 text-[10px] font-mono text-[#7DB7D6]/60 px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.06]">
+                        <span className="inline-flex items-center gap-1.5 text-[10px] font-mono text-[#0A2E4D]/50 px-2.5 py-1 rounded-full bg-[#0A2E4D]/[0.05] border border-[#0A2E4D]/[0.08]">
                           <Users size={11} />
                           {f.audience}
                         </span>
@@ -357,11 +358,11 @@ export default function FormationsPage() {
                   transition={{ type: 'spring', stiffness: 80, damping: 22 }}
                   className="overflow-hidden mt-4"
                 >
-                  <div className="rounded-[2rem] border border-[#D4A373]/20 bg-white/[0.03] p-8 md:p-12">
+                  <div className="rounded-[2rem] border border-[#D4A373]/30 bg-white p-8 md:p-12 shadow-[0_8px_40px_-12px_rgba(10,46,77,0.1)]">
                     <div className="flex flex-col gap-8">
 
                       {/* Title */}
-                      <h1 className="text-[clamp(1.6rem,3.5vw,2.6rem)] font-black tracking-tight leading-tight text-[#F7F3EB]">
+                      <h1 className="text-[clamp(1.6rem,3.5vw,2.6rem)] font-black tracking-tight leading-tight text-[#0A2E4D]">
                         {selected.title}
                       </h1>
 
@@ -375,16 +376,16 @@ export default function FormationsPage() {
                             transition={{ delay: mi * 0.07, type: 'spring', stiffness: 120, damping: 20 }}
                             className="flex flex-col gap-3"
                           >
-                            <p className="text-base font-bold text-[#F7F3EB]">{mod.title}</p>
+                            <p className="text-base font-bold text-[#0A2E4D]">{mod.title}</p>
                             <ul className="flex flex-col gap-2.5 pl-1">
                               {mod.items.map((item, ii) => (
                                 <li key={ii} className="flex items-start gap-3">
                                   <CheckCircle
                                     size={16}
                                     weight="fill"
-                                    className="text-[#D4A373]/70 mt-0.5 shrink-0"
+                                    className="text-[#D4A373] mt-0.5 shrink-0"
                                   />
-                                  <span className="text-base text-[rgba(245,245,240,0.72)] leading-relaxed">
+                                  <span className="text-base text-[#0A2E4D]/65 leading-relaxed">
                                     {item}
                                   </span>
                                 </li>
@@ -395,19 +396,19 @@ export default function FormationsPage() {
                       </div>
 
                       {/* Bottom row: meta + CTA */}
-                      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pt-4 border-t border-white/[0.06]">
+                      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pt-4 border-t border-[#0A2E4D]/[0.08]">
                         <div className="flex flex-wrap gap-6">
                           <div className="flex flex-col gap-1">
-                            <span className="text-[10px] uppercase tracking-widest text-[#7DB7D6]/50 font-mono">Format</span>
-                            <span className="text-sm text-[rgba(245,245,240,0.72)]">{selected.format}</span>
+                            <span className="text-[10px] uppercase tracking-widest text-[#0A2E4D]/40 font-mono">Format</span>
+                            <span className="text-sm text-[#0A2E4D]/70">{selected.format}</span>
                           </div>
                           <div className="flex flex-col gap-1">
-                            <span className="text-[10px] uppercase tracking-widest text-[#7DB7D6]/50 font-mono">Durée</span>
-                            <span className="text-sm text-[rgba(245,245,240,0.72)]">{selected.duration}</span>
+                            <span className="text-[10px] uppercase tracking-widest text-[#0A2E4D]/40 font-mono">Durée</span>
+                            <span className="text-sm text-[#0A2E4D]/70">{selected.duration}</span>
                           </div>
                           <div className="flex flex-col gap-1">
-                            <span className="text-[10px] uppercase tracking-widest text-[#7DB7D6]/50 font-mono">Pour qui</span>
-                            <span className="text-sm text-[rgba(245,245,240,0.72)]">{selected.audience}</span>
+                            <span className="text-[10px] uppercase tracking-widest text-[#0A2E4D]/40 font-mono">Pour qui</span>
+                            <span className="text-sm text-[#0A2E4D]/70">{selected.audience}</span>
                           </div>
                         </div>
                         <div className="flex flex-col gap-2 shrink-0">
@@ -418,7 +419,7 @@ export default function FormationsPage() {
                             {selected.cta}
                             <ArrowRight size={14} weight="bold" />
                           </MagneticButton>
-                          <p className="text-[10px] text-[rgba(245,245,240,0.25)] font-mono text-center">
+                          <p className="text-[10px] text-[#0A2E4D]/25 font-mono text-center">
                             Réponse en 2 jours ouvrables
                           </p>
                         </div>
