@@ -73,7 +73,7 @@ export default function CTAFinal() {
 
             <ScrollReveal delay={0.2}>
               <p className="text-base md:text-lg text-[rgba(245,245,240,0.55)] max-w-[44ch] leading-relaxed">
-                Une question sur l&apos;I.A., un projet à explorer, ou juste l&apos;envie de comprendre ce qui est possible pour votre entreprise — on est là pour ça.
+                Une question sur l&apos;I.A., un projet à explorer, ou juste l&apos;envie de comprendre ce qui est possible pour votre entreprise. On est là pour ça.
               </p>
             </ScrollReveal>
 

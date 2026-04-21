@@ -15,3 +15,8 @@ Le script fait automatiquement :
 
 Pour ce projet, on pousse directement sur le VPS sans attendre de review de PR.
 Après avoir terminé une implémentation : merger dans main et exécuter `bash deploy.sh` immédiatement.
+
+# Style rédactionnel
+
+Ne jamais utiliser le tiret cadratin "—" dans le contenu visible du site (textes, titres, descriptions, badges, etc.).
+À la place : utiliser un point, une virgule, ou un deux-points selon le contexte.

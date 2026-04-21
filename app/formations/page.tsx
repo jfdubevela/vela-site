@@ -48,7 +48,7 @@ const formations: Formation[] = [
       {
         title: "Comprendre l'I.A. sans la magie",
         items: [
-          "Ce qu'est vraiment l'I.A. générative — un outil statistique, pas une entité consciente",
+          "Ce qu'est vraiment l'I.A. générative : un outil statistique, pas une entité consciente",
           "La différence entre chercher une information (Google) et en générer une (I.A.)",
           "Le phénomène d'hallucination : pourquoi l'I.A. peut se tromper avec assurance",
         ],
