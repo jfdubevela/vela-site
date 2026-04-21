@@ -25,7 +25,6 @@ import {
   FileText,
   Books,
   Wrench,
-  Dumbbell,
 } from '@phosphor-icons/react'
 import { submitCoaching } from '@/app/actions/contact'
 
@@ -116,7 +115,7 @@ const livrables = [
   { icon: FileText, title: 'Mini-fiche synthèse après chaque session', desc: "Ce qu'on a couvert, les décisions prises, les prochaines étapes. Clair, court, actionnable." },
   { icon: Books, title: 'Accès à une bibliothèque de templates', desc: "Une collection de prompts et de structures testés et validés, organisés par cas d'usage." },
   { icon: Wrench, title: "Recommandations d'outils selon votre stack", desc: "Les bons outils pour vos besoins réels — pas la liste exhaustive que personne n'utilise." },
-  { icon: Dumbbell, title: 'Exercices pratiques entre les sessions', desc: "1 à 2 actions concrètes à tester dans votre quotidien. Assez pour progresser. Pas assez pour vous noyer." },
+  { icon: Lightning, title: 'Exercices pratiques entre les sessions', desc: "1 à 2 actions concrètes à tester dans votre quotidien. Assez pour progresser. Pas assez pour vous noyer." },
   { icon: TrendUp, title: 'Progression mesurable mois après mois', desc: "Un bilan mensuel qui trace votre évolution. Vous voyez concrètement ce que vous avez intégré." },
 ]
 
