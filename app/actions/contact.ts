@@ -83,7 +83,17 @@ export async function submitContact(formData: FormData) {
   const courriel = formData.get('courriel') as string
   const typeEntreprise = formData.get('typeEntreprise') as string
   const tailleEntreprise = formData.get('tailleEntreprise') as string
+  const service = formData.get('service') as string
   const message = formData.get('message') as string
+
+  const serviceLabels: Record<string, string> = {
+    incertain: 'Je ne suis pas certain',
+    automatisations: 'Automatisations I.A.',
+    'agent-vocal': 'Agent vocal I.A.',
+    formation: 'Formation',
+    coaching: 'Coaching I.A.',
+  }
+  const serviceLabel = service ? (serviceLabels[service] ?? service) : '—'
 
   if (!nom || !courriel) {
     return { success: false, error: 'Champs requis manquants.' }
@@ -94,13 +104,14 @@ export async function submitContact(formData: FormData) {
       from: 'VELA <onboarding@resend.dev>',
       to: 'jf@velavelavela.com',
       replyTo: courriel,
-      subject: `Nouvelle demande de diagnostic — ${nom}`,
+      subject: `Nouvelle demande — ${serviceLabel} — ${nom}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #0A2E4D;">
-          <h2 style="color: #0A2E4D;">Nouvelle demande de diagnostic</h2>
+          <h2 style="color: #0A2E4D;">Nouvelle demande de contact</h2>
           <hr style="border-color: #e5e7eb;" />
           <p><strong>Nom :</strong> ${nom}</p>
           <p><strong>Courriel :</strong> <a href="mailto:${courriel}">${courriel}</a></p>
+          <p><strong>Service d'intérêt :</strong> ${serviceLabel}</p>
           <p><strong>Type d'entreprise :</strong> ${typeEntreprise || '—'}</p>
           <p><strong>Taille de l'entreprise :</strong> ${tailleEntreprise || '—'}</p>
           <p><strong>Message :</strong></p>

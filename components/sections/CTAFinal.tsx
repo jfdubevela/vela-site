@@ -66,9 +66,9 @@ export default function CTAFinal() {
               transition={{ type: 'spring', stiffness: 70, damping: 18, delay: 0.1 }}
               className="text-[clamp(2.8rem,5.5vw,5rem)] font-black tracking-normal leading-[0.92] text-[#F7F3EB]"
             >
-              L&apos;automatisation est là.
+              L&apos;intelligence artificielle est là.
               <br />
-              <span className="text-[rgba(247,243,235,0.4)]">Vous avez le choix de la piloter.</span>
+              <span className="text-[rgba(247,243,235,0.4)]">Et vous?</span>
             </motion.h2>
 
             <ScrollReveal delay={0.2}>
@@ -135,6 +135,19 @@ export default function CTAFinal() {
                         <option value="2-10" className="bg-[#0A2E4D]">2–10 employés</option>
                         <option value="11-50" className="bg-[#0A2E4D]">11–50 employés</option>
                         <option value="50+" className="bg-[#0A2E4D]">50+ employés</option>
+                      </select>
+                    </div>
+
+                    {/* Service */}
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-xs text-[rgba(245,245,240,0.5)]">Quel service vous intéresse?</label>
+                      <select name="service" className={`${inputClass} appearance-none cursor-pointer`} defaultValue="">
+                        <option value="" disabled className="bg-[#0A2E4D]">Choisir...</option>
+                        <option value="incertain" className="bg-[#0A2E4D]">Je ne suis pas certain</option>
+                        <option value="automatisations" className="bg-[#0A2E4D]">Automatisations I.A.</option>
+                        <option value="agent-vocal" className="bg-[#0A2E4D]">Agent vocal I.A.</option>
+                        <option value="formation" className="bg-[#0A2E4D]">Formation</option>
+                        <option value="coaching" className="bg-[#0A2E4D]">Coaching I.A.</option>
                       </select>
                     </div>
 
