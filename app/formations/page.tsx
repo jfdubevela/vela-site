@@ -256,9 +256,9 @@ export default function FormationsPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.15 }}
               >
-                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#7DB7D6]/25 bg-[#7DB7D6]/10 text-[#7DB7D6] text-xs font-medium tracking-wide">
-                  <Chalkboard size={13} weight="duotone" />
-                  Formations &amp; Ateliers
+                <span className="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-[#7DB7D6]/50 bg-[#C5DCE8] text-[#1C3D55] text-xl font-medium tracking-wide">
+                  <Chalkboard size={20} weight="duotone" />
+                  Formations
                 </span>
               </motion.div>
 

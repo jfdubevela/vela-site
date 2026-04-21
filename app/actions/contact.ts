@@ -42,6 +42,41 @@ export async function submitFormation(formData: FormData) {
   }
 }
 
+export async function submitCoaching(formData: FormData) {
+  try {
+    const resend = new Resend(process.env.RESEND_API_KEY)
+    const prenom = formData.get('prenom') as string
+    const courriel = formData.get('courriel') as string
+    const role = formData.get('role') as string
+    const usage = formData.get('usage') as string
+
+    if (!prenom || !courriel || !role) {
+      return { success: false, error: 'Champs requis manquants.' }
+    }
+
+    await resend.emails.send({
+      from: 'VELA <onboarding@resend.dev>',
+      to: 'jf@velavelavela.com',
+      replyTo: courriel,
+      subject: `Session découverte coaching — ${prenom}`,
+      html: `
+        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #0A2E4D;">
+          <h2 style="color: #0A2E4D;">Nouvelle demande de coaching individuel</h2>
+          <hr style="border-color: #e5e7eb;" />
+          <p><strong>Prénom :</strong> ${prenom}</p>
+          <p><strong>Courriel :</strong> <a href="mailto:${courriel}">${courriel}</a></p>
+          <p><strong>Rôle :</strong> ${role}</p>
+          <p><strong>Usage actuel de l'I.A. :</strong> ${usage || '—'}</p>
+        </div>
+      `,
+    })
+    return { success: true }
+  } catch (err) {
+    console.error('submitCoaching error:', err)
+    return { success: false, error: "Erreur lors de l'envoi. Réessayez." }
+  }
+}
+
 export async function submitContact(formData: FormData) {
   const resend = new Resend(process.env.RESEND_API_KEY)
   const nom = formData.get('nom') as string
