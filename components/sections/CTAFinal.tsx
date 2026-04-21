@@ -73,14 +73,13 @@ export default function CTAFinal() {
 
             <ScrollReveal delay={0.2}>
               <p className="text-base md:text-lg text-[rgba(245,245,240,0.55)] max-w-[44ch] leading-relaxed">
-                Commencez par un diagnostic. Repartez avec un plan clair, un
-                chiffrage honnête et un prototype démontrable.
+                Une question sur l&apos;I.A., un projet à explorer, ou juste l&apos;envie de comprendre ce qui est possible pour votre entreprise — on est là pour ça.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={0.25}>
               <p className="text-xl md:text-2xl italic text-[#D4A373] font-medium">
-                &ldquo;Systèmes solides, pas démos fragiles.&rdquo;
+                &ldquo;Aucun projet trop petit. Aucune question trop basique.&rdquo;
               </p>
             </ScrollReveal>
 
