@@ -51,7 +51,7 @@ export default function Nav({ lightTop = false }: { lightTop?: boolean }) {
       >
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 h-20 flex items-center justify-between">
           {/* Logo */}
-          <a href="#" aria-label="VELA, accueil" className="shrink-0">
+          <a href="/" aria-label="VELA, accueil" className="shrink-0">
             <Image
               src="/logo.svg"
               alt="VELA"
