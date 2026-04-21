@@ -144,7 +144,6 @@ export default function CTAFinal() {
                         <option value="" disabled className="bg-[#0A2E4D]">Choisir...</option>
                         <option value="incertain" className="bg-[#0A2E4D]">Je ne suis pas certain</option>
                         <option value="automatisations" className="bg-[#0A2E4D]">Automatisations I.A.</option>
-                        <option value="agent-vocal" className="bg-[#0A2E4D]">Agent vocal I.A.</option>
                         <option value="formation" className="bg-[#0A2E4D]">Formation</option>
                         <option value="coaching" className="bg-[#0A2E4D]">Coaching I.A.</option>
                       </select>
