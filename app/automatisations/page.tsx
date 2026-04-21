@@ -24,7 +24,7 @@ const autoSections = [
 export default function AutomatisationsPage() {
   return (
     <>
-      <Nav />
+      <Nav showAnchorLinks={false} />
       <ScrollProgress sections={autoSections} />
       <main>
         <div className="z-[1]">

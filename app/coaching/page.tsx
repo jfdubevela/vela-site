@@ -142,7 +142,7 @@ export default function CoachingPage() {
 
   return (
     <>
-      <Nav lightTop />
+      <Nav lightTop showAnchorLinks={false} />
 
       <main>
         {/* ── Hero ── */}

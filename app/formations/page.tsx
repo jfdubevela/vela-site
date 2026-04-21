@@ -226,7 +226,7 @@ export default function FormationsPage() {
 
   return (
     <>
-      <Nav />
+      <Nav showAnchorLinks={false} />
       <main className="bg-[#0A2E4D]">
 
         {/* ─── Hero ─── */}
