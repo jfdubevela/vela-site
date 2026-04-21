@@ -680,7 +680,7 @@ export default function CoachingPage() {
                         </div>
 
                         <div className="flex flex-col gap-1.5">
-                          <label className="text-xs text-[rgba(245,245,240,0.5)]">Référencé par</label>
+                          <label className="text-xs text-[rgba(245,245,240,0.5)]">Référé par</label>
                           <input
                             name="reference"
                             type="text"

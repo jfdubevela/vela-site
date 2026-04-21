@@ -68,7 +68,7 @@ export async function submitCoaching(formData: FormData) {
           <p><strong>Courriel :</strong> <a href="mailto:${courriel}">${courriel}</a></p>
           <p><strong>Rôle :</strong> ${role}</p>
           <p><strong>Usage actuel de l'I.A. :</strong> ${usage || 'Non précisé'}</p>
-          <p><strong>Référencé par :</strong> ${reference || 'Non précisé'}</p>
+          <p><strong>Référé par :</strong> ${reference || 'Non précisé'}</p>
         </div>
       `,
     })
