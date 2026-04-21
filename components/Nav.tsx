@@ -13,10 +13,9 @@ const anchorLinks = [
   { label: 'FAQ', href: '#faq' },
 ]
 
-const serviceLinks = [
-  { label: 'Automatisations', href: '/automatisations' },
-  { label: 'Formation', href: '/formations' },
-  { label: 'Coaching', href: '/coaching' },
+// Sous-menu d'Automatisations
+const autoSubLinks = [
+  { label: 'Agent vocal I.A.', href: '/agent-vocal.html' },
 ]
 
 export default function Nav({
@@ -28,8 +27,8 @@ export default function Nav({
 }) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [servicesOpen, setServicesOpen] = useState(false)
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
+  const [autoOpen, setAutoOpen] = useState(false)
+  const [mobileAutoOpen, setMobileAutoOpen] = useState(false)
 
   useEffect(() => {
     function onScroll() {
@@ -91,24 +90,26 @@ export default function Nav({
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8">
-            {/* Services dropdown */}
+
+            {/* Automatisations — avec dropdown Agent vocal */}
             <div
               className="relative"
-              onMouseEnter={() => setServicesOpen(true)}
-              onMouseLeave={() => setServicesOpen(false)}
+              onMouseEnter={() => setAutoOpen(true)}
+              onMouseLeave={() => setAutoOpen(false)}
             >
-              <button
+              <Link
+                href="/automatisations"
                 className={`flex items-center gap-1 text-sm font-medium transition-colors duration-200 ${linkColor}`}
               >
-                Services
+                Automatisations
                 <CaretDown
                   size={12}
                   weight="bold"
-                  className={`transition-transform duration-200 ${servicesOpen ? 'rotate-180' : ''}`}
+                  className={`transition-transform duration-200 ${autoOpen ? 'rotate-180' : ''}`}
                 />
-              </button>
+              </Link>
               <AnimatePresence>
-                {servicesOpen && (
+                {autoOpen && (
                   <motion.div
                     initial={{ opacity: 0, y: 6 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -116,12 +117,12 @@ export default function Nav({
                     transition={{ duration: 0.15 }}
                     className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-44 glass rounded-xl overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.3)] py-1"
                   >
-                    {serviceLinks.map((s) => (
+                    {autoSubLinks.map((s) => (
                       <Link
                         key={s.href}
                         href={s.href}
                         className="block px-4 py-2.5 text-sm text-[rgba(245,245,240,0.75)] hover:text-[#F5F5F0] hover:bg-white/[0.06] transition-colors"
-                        onClick={() => setServicesOpen(false)}
+                        onClick={() => setAutoOpen(false)}
                       >
                         {s.label}
                       </Link>
@@ -130,6 +131,22 @@ export default function Nav({
                 )}
               </AnimatePresence>
             </div>
+
+            {/* Formation */}
+            <Link
+              href="/formations"
+              className={`text-sm font-medium transition-colors duration-200 ${linkColor}`}
+            >
+              Formation
+            </Link>
+
+            {/* Coaching */}
+            <Link
+              href="/coaching"
+              className={`text-sm font-medium transition-colors duration-200 ${linkColor}`}
+            >
+              Coaching
+            </Link>
 
             {/* Anchor links — visibles seulement sur les pages de service */}
             {showAnchorLinks &&
@@ -199,22 +216,32 @@ export default function Nav({
                   <X size={22} weight="bold" />
                 </button>
               </div>
+
               <nav className="flex flex-col gap-6">
-                {/* Services avec sous-menu mobile */}
+                {/* Automatisations + sous-menu Agent vocal */}
                 <div className="flex flex-col gap-3">
-                  <button
-                    onClick={() => setMobileServicesOpen((prev) => !prev)}
-                    className="flex items-center justify-between text-left text-lg font-semibold text-[#F5F5F0] hover:text-[#D4A373] transition-colors"
-                  >
-                    Services
-                    <CaretDown
-                      size={14}
-                      weight="bold"
-                      className={`transition-transform duration-200 text-[rgba(245,245,240,0.5)] ${mobileServicesOpen ? 'rotate-180' : ''}`}
-                    />
-                  </button>
+                  <div className="flex items-center justify-between">
+                    <Link
+                      href="/automatisations"
+                      onClick={() => setMobileOpen(false)}
+                      className="text-lg font-semibold text-[#F5F5F0] hover:text-[#D4A373] transition-colors"
+                    >
+                      Automatisations
+                    </Link>
+                    <button
+                      onClick={() => setMobileAutoOpen((prev) => !prev)}
+                      className="p-1 text-[rgba(245,245,240,0.5)] hover:text-[#D4A373] transition-colors"
+                      aria-label="Sous-menu Automatisations"
+                    >
+                      <CaretDown
+                        size={14}
+                        weight="bold"
+                        className={`transition-transform duration-200 ${mobileAutoOpen ? 'rotate-180' : ''}`}
+                      />
+                    </button>
+                  </div>
                   <AnimatePresence>
-                    {mobileServicesOpen && (
+                    {mobileAutoOpen && (
                       <motion.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
@@ -222,7 +249,7 @@ export default function Nav({
                         transition={{ duration: 0.2 }}
                         className="overflow-hidden flex flex-col gap-2 pl-4 border-l border-white/[0.1]"
                       >
-                        {serviceLinks.map((s) => (
+                        {autoSubLinks.map((s) => (
                           <Link
                             key={s.href}
                             href={s.href}
@@ -237,7 +264,25 @@ export default function Nav({
                   </AnimatePresence>
                 </div>
 
-                {/* Liens ancres — seulement sur les pages de service */}
+                {/* Formation */}
+                <Link
+                  href="/formations"
+                  onClick={() => setMobileOpen(false)}
+                  className="text-lg font-semibold text-[#F5F5F0] hover:text-[#D4A373] transition-colors"
+                >
+                  Formation
+                </Link>
+
+                {/* Coaching */}
+                <Link
+                  href="/coaching"
+                  onClick={() => setMobileOpen(false)}
+                  className="text-lg font-semibold text-[#F5F5F0] hover:text-[#D4A373] transition-colors"
+                >
+                  Coaching
+                </Link>
+
+                {/* Anchor links */}
                 {showAnchorLinks &&
                   anchorLinks.map((link) => (
                     <button
@@ -249,6 +294,7 @@ export default function Nav({
                     </button>
                   ))}
               </nav>
+
               <div className="mt-auto">
                 <button
                   onClick={() => handleNavClick('#contact')}
