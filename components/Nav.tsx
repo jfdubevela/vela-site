@@ -4,19 +4,32 @@ import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { List, X, LinkedinLogo } from '@phosphor-icons/react'
+import { List, X, LinkedinLogo, CaretDown } from '@phosphor-icons/react'
 import MagneticButton from './ui/MagneticButton'
 
-const links = [
-  { label: 'Services', href: '#services' },
+const anchorLinks = [
   { label: 'Tarification', href: '#tarification' },
   { label: 'Exemples', href: '#etudes-de-cas' },
   { label: 'FAQ', href: '#faq' },
 ]
 
-export default function Nav({ lightTop = false }: { lightTop?: boolean }) {
+const serviceLinks = [
+  { label: 'Automatisations', href: '/automatisations' },
+  { label: 'Formation', href: '/formations' },
+  { label: 'Coaching', href: '/coaching' },
+]
+
+export default function Nav({
+  lightTop = false,
+  showAnchorLinks = true,
+}: {
+  lightTop?: boolean
+  showAnchorLinks?: boolean
+}) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false)
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
 
   useEffect(() => {
     function onScroll() {
@@ -33,7 +46,9 @@ export default function Nav({ lightTop = false }: { lightTop?: boolean }) {
   }
 
   const isLight = lightTop && !scrolled
-  const linkColor = isLight ? 'text-[rgba(10,46,77,0.60)] hover:text-[#0A2E4D]' : 'text-[rgba(245,245,240,0.65)] hover:text-[#F5F5F0]'
+  const linkColor = isLight
+    ? 'text-[rgba(10,46,77,0.60)] hover:text-[#0A2E4D]'
+    : 'text-[rgba(245,245,240,0.65)] hover:text-[#F5F5F0]'
   const linkedinColor = isLight
     ? 'border-[rgba(10,46,77,0.15)] text-[rgba(10,46,77,0.45)] hover:text-[#0A2E4D] hover:border-[rgba(10,46,77,0.30)]'
     : 'border-white/10 text-[rgba(245,245,240,0.5)] hover:text-[#7DB7D6] hover:border-[#7DB7D6]/30'
@@ -46,7 +61,11 @@ export default function Nav({ lightTop = false }: { lightTop?: boolean }) {
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 120, damping: 22, delay: 0.1 }}
         className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
-          scrolled ? 'glass' : isLight ? 'bg-[rgba(247,243,235,0.72)] backdrop-blur-sm border-b border-[rgba(10,46,77,0.08)]' : 'bg-transparent'
+          scrolled
+            ? 'glass'
+            : isLight
+            ? 'bg-[rgba(247,243,235,0.72)] backdrop-blur-sm border-b border-[rgba(10,46,77,0.08)]'
+            : 'bg-transparent'
         }`}
       >
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 h-20 flex items-center justify-between">
@@ -59,27 +78,70 @@ export default function Nav({ lightTop = false }: { lightTop?: boolean }) {
               height={42}
               priority
               className={`h-9 w-auto transition-all duration-300 ${isLight ? 'brightness-0 saturate-100' : ''}`}
-              style={isLight ? { filter: 'brightness(0) saturate(100%) invert(15%) sepia(55%) saturate(650%) hue-rotate(183deg) brightness(82%)' } : undefined}
+              style={
+                isLight
+                  ? {
+                      filter:
+                        'brightness(0) saturate(100%) invert(15%) sepia(55%) saturate(650%) hue-rotate(183deg) brightness(82%)',
+                    }
+                  : undefined
+              }
             />
           </a>
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8">
-            {links.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => handleNavClick(link.href)}
-                className={`text-sm font-medium transition-colors duration-200 ${linkColor}`}
-              >
-                {link.label}
-              </button>
-            ))}
-            <Link
-              href="/formations"
-              className={`text-sm font-medium transition-colors duration-200 ${linkColor}`}
+            {/* Services dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setServicesOpen(true)}
+              onMouseLeave={() => setServicesOpen(false)}
             >
-              Formations
-            </Link>
+              <button
+                className={`flex items-center gap-1 text-sm font-medium transition-colors duration-200 ${linkColor}`}
+              >
+                Services
+                <CaretDown
+                  size={12}
+                  weight="bold"
+                  className={`transition-transform duration-200 ${servicesOpen ? 'rotate-180' : ''}`}
+                />
+              </button>
+              <AnimatePresence>
+                {servicesOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 6 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-44 glass rounded-xl overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.3)] py-1"
+                  >
+                    {serviceLinks.map((s) => (
+                      <Link
+                        key={s.href}
+                        href={s.href}
+                        className="block px-4 py-2.5 text-sm text-[rgba(245,245,240,0.75)] hover:text-[#F5F5F0] hover:bg-white/[0.06] transition-colors"
+                        onClick={() => setServicesOpen(false)}
+                      >
+                        {s.label}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Anchor links — visibles seulement sur les pages de service */}
+            {showAnchorLinks &&
+              anchorLinks.map((link) => (
+                <button
+                  key={link.href}
+                  onClick={() => handleNavClick(link.href)}
+                  className={`text-sm font-medium transition-colors duration-200 ${linkColor}`}
+                >
+                  {link.label}
+                </button>
+              ))}
           </nav>
 
           {/* CTA */}
@@ -138,22 +200,54 @@ export default function Nav({ lightTop = false }: { lightTop?: boolean }) {
                 </button>
               </div>
               <nav className="flex flex-col gap-6">
-                {links.map((link) => (
+                {/* Services avec sous-menu mobile */}
+                <div className="flex flex-col gap-3">
                   <button
-                    key={link.href}
-                    onClick={() => handleNavClick(link.href)}
-                    className="text-left text-lg font-semibold text-[#F5F5F0] hover:text-[#D4A373] transition-colors"
+                    onClick={() => setMobileServicesOpen((prev) => !prev)}
+                    className="flex items-center justify-between text-left text-lg font-semibold text-[#F5F5F0] hover:text-[#D4A373] transition-colors"
                   >
-                    {link.label}
+                    Services
+                    <CaretDown
+                      size={14}
+                      weight="bold"
+                      className={`transition-transform duration-200 text-[rgba(245,245,240,0.5)] ${mobileServicesOpen ? 'rotate-180' : ''}`}
+                    />
                   </button>
-                ))}
-                <Link
-                  href="/formations"
-                  onClick={() => setMobileOpen(false)}
-                  className="text-left text-lg font-semibold text-[#F5F5F0] hover:text-[#D4A373] transition-colors"
-                >
-                  Formations
-                </Link>
+                  <AnimatePresence>
+                    {mobileServicesOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="overflow-hidden flex flex-col gap-2 pl-4 border-l border-white/[0.1]"
+                      >
+                        {serviceLinks.map((s) => (
+                          <Link
+                            key={s.href}
+                            href={s.href}
+                            onClick={() => setMobileOpen(false)}
+                            className="text-base text-[rgba(245,245,240,0.65)] hover:text-[#D4A373] transition-colors"
+                          >
+                            {s.label}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Liens ancres — seulement sur les pages de service */}
+                {showAnchorLinks &&
+                  anchorLinks.map((link) => (
+                    <button
+                      key={link.href}
+                      onClick={() => handleNavClick(link.href)}
+                      className="text-left text-lg font-semibold text-[#F5F5F0] hover:text-[#D4A373] transition-colors"
+                    >
+                      {link.label}
+                    </button>
+                  ))}
               </nav>
               <div className="mt-auto">
                 <button
