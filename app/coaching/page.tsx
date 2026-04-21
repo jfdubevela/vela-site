@@ -114,7 +114,7 @@ const livrables = [
   { icon: Code, title: 'Prompts personnalisés à votre rôle', desc: "Des instructions calibrées pour votre contexte, vos livrables, votre ton. Pas des templates génériques." },
   { icon: FileText, title: 'Mini-fiche synthèse après chaque session', desc: "Ce qu'on a couvert, les décisions prises, les prochaines étapes. Clair, court, actionnable." },
   { icon: Books, title: 'Accès à une bibliothèque de templates', desc: "Une collection de prompts et de structures testés et validés, organisés par cas d'usage." },
-  { icon: Wrench, title: "Recommandations d'outils selon votre stack", desc: "Les bons outils pour vos besoins réels — pas la liste exhaustive que personne n'utilise." },
+  { icon: Wrench, title: "Recommandations d'outils", desc: "Les bons outils pour vos besoins réels — pas la liste exhaustive que personne n'utilise." },
   { icon: Lightning, title: 'Exercices pratiques entre les sessions', desc: "1 à 2 actions concrètes à tester dans votre quotidien. Assez pour progresser. Pas assez pour vous noyer." },
   { icon: TrendUp, title: 'Progression mesurable mois après mois', desc: "Un bilan mensuel qui trace votre évolution. Vous voyez concrètement ce que vous avez intégré." },
 ]
