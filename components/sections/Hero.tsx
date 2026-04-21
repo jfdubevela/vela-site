@@ -77,8 +77,8 @@ export default function Hero() {
               transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.15 }}
               className="inline-flex items-center gap-2.5 self-start"
             >
-              <span className="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-[#7DB7D6]/50 bg-[#C5DCE8] text-[#1C3D55] text-xl font-medium tracking-wide">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#1C3D55] animate-[pulse-dot_2s_ease-in-out_infinite]" />
+              <span className="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-[#7DB7D6]/50 bg-[#C5DCE8] text-[#1C3D55] text-[15px] font-medium tracking-wide">
+                <span className="w-2 h-2 rounded-full bg-[#1C3D55] animate-[pulse-dot_2s_ease-in-out_infinite]" />
                 Automatisation par I.A.
               </span>
             </motion.div>
