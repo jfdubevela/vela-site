@@ -142,7 +142,7 @@ export default function CoachingPage() {
 
   return (
     <>
-      <Nav />
+      <Nav lightTop />
 
       <main>
         {/* ── Hero ── */}

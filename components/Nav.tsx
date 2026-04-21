@@ -14,7 +14,7 @@ const links = [
   { label: 'FAQ', href: '#faq' },
 ]
 
-export default function Nav() {
+export default function Nav({ lightTop = false }: { lightTop?: boolean }) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -32,6 +32,13 @@ export default function Nav() {
     if (el) el.scrollIntoView({ behavior: 'smooth' })
   }
 
+  const isLight = lightTop && !scrolled
+  const linkColor = isLight ? 'text-[rgba(10,46,77,0.60)] hover:text-[#0A2E4D]' : 'text-[rgba(245,245,240,0.65)] hover:text-[#F5F5F0]'
+  const linkedinColor = isLight
+    ? 'border-[rgba(10,46,77,0.15)] text-[rgba(10,46,77,0.45)] hover:text-[#0A2E4D] hover:border-[rgba(10,46,77,0.30)]'
+    : 'border-white/10 text-[rgba(245,245,240,0.5)] hover:text-[#7DB7D6] hover:border-[#7DB7D6]/30'
+  const burgerColor = isLight ? 'text-[#0A2E4D]' : 'text-[#F5F5F0]'
+
   return (
     <>
       <motion.header
@@ -39,7 +46,7 @@ export default function Nav() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 120, damping: 22, delay: 0.1 }}
         className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
-          scrolled ? 'glass' : 'bg-transparent'
+          scrolled ? 'glass' : isLight ? 'bg-[rgba(247,243,235,0.72)] backdrop-blur-sm border-b border-[rgba(10,46,77,0.08)]' : 'bg-transparent'
         }`}
       >
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 h-20 flex items-center justify-between">
@@ -51,7 +58,8 @@ export default function Nav() {
               width={120}
               height={42}
               priority
-              className="h-9 w-auto"
+              className={`h-9 w-auto transition-all duration-300 ${isLight ? 'brightness-0 saturate-100' : ''}`}
+              style={isLight ? { filter: 'brightness(0) saturate(100%) invert(15%) sepia(55%) saturate(650%) hue-rotate(183deg) brightness(82%)' } : undefined}
             />
           </a>
 
@@ -61,14 +69,14 @@ export default function Nav() {
               <button
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className="text-sm font-medium text-[rgba(245,245,240,0.65)] hover:text-[#F5F5F0] transition-colors duration-200"
+                className={`text-sm font-medium transition-colors duration-200 ${linkColor}`}
               >
                 {link.label}
               </button>
             ))}
             <Link
               href="/formations"
-              className="text-sm font-medium text-[rgba(245,245,240,0.65)] hover:text-[#F5F5F0] transition-colors duration-200"
+              className={`text-sm font-medium transition-colors duration-200 ${linkColor}`}
             >
               Formations
             </Link>
@@ -81,7 +89,7 @@ export default function Nav() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn VELA"
-              className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-[rgba(245,245,240,0.5)] hover:text-[#7DB7D6] hover:border-[#7DB7D6]/30 transition-colors"
+              className={`w-9 h-9 rounded-full border flex items-center justify-center transition-colors ${linkedinColor}`}
             >
               <LinkedinLogo size={16} weight="fill" />
             </a>
@@ -95,7 +103,7 @@ export default function Nav() {
 
           {/* Mobile burger */}
           <button
-            className="md:hidden text-[#F5F5F0] p-2"
+            className={`md:hidden p-2 ${burgerColor}`}
             onClick={() => setMobileOpen(true)}
             aria-label="Menu"
           >
