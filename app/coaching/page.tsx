@@ -330,38 +330,71 @@ export default function CoachingPage() {
             </ScrollReveal>
 
             <ScrollReveal delay={0.16}>
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-9 md:gap-4 relative">
-                {/* Dashed track (desktop) */}
-                <div className="hidden md:block absolute top-[21px] left-[21px] right-[21px] h-0 border-t-2 border-dashed border-[rgba(212,163,115,0.30)] z-0" aria-hidden="true" />
-
+              {/* ── Desktop : 4 colonnes ── */}
+              <div className="hidden md:grid md:grid-cols-4 gap-4 relative">
+                <div className="absolute top-[21px] left-[21px] right-[21px] h-0 border-t-2 border-dashed border-[rgba(212,163,115,0.30)] z-0" aria-hidden="true" />
                 {steps.map((step) => (
                   <div key={step.num} className="relative z-10 flex flex-col gap-3.5">
-                    <div className="flex items-center gap-3.5 md:flex-col md:items-start md:gap-2">
+                    <div className="flex flex-col items-start gap-2">
                       <div
                         className={`w-[42px] h-[42px] rounded-full flex items-center justify-center font-bold text-sm shrink-0 shadow-[0_4px_16px_-4px_rgba(10,46,77,0.35)] font-mono ${
-                          step.isFree
-                            ? 'bg-[#D4A373] text-[#0A2E4D]'
-                            : 'bg-[#0A2E4D] text-[#F7F3EB]'
+                          step.isFree ? 'bg-[#D4A373] text-[#0A2E4D]' : 'bg-[#0A2E4D] text-[#F7F3EB]'
                         }`}
                       >
                         {step.num}
                       </div>
-                      <span className="font-mono text-[0.625rem] tracking-[0.18em] text-[rgba(26,26,26,0.3)]">
-                        {step.label}
-                      </span>
+                      <span className="font-mono text-[0.625rem] tracking-[0.18em] text-[rgba(26,26,26,0.3)]">{step.label}</span>
                     </div>
                     <h3 className="text-base font-bold text-[#1A1A1A] leading-[1.3]">{step.title}</h3>
                     <p className="text-[0.8125rem] text-[rgba(26,26,26,0.55)] leading-[1.65]">{step.desc}</p>
-                    <span
-                      className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[0.6375rem] font-mono w-fit border ${
-                        step.isFree
-                          ? 'bg-[rgba(212,163,115,0.12)] border-[rgba(212,163,115,0.25)] text-[rgba(180,120,60,0.85)]'
-                          : 'bg-[rgba(10,46,77,0.06)] border-[rgba(10,46,77,0.09)] text-[rgba(10,46,77,0.5)]'
-                      }`}
-                    >
+                    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[0.6375rem] font-mono w-fit border ${
+                      step.isFree
+                        ? 'bg-[rgba(212,163,115,0.12)] border-[rgba(212,163,115,0.25)] text-[rgba(180,120,60,0.85)]'
+                        : 'bg-[rgba(10,46,77,0.06)] border-[rgba(10,46,77,0.09)] text-[rgba(10,46,77,0.5)]'
+                    }`}>
                       <step.tagIcon size={10} weight="bold" />
                       {step.tag}
                     </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* ── Mobile : timeline verticale ── */}
+              <div className="flex md:hidden flex-col">
+                {steps.map((step, i) => (
+                  <div key={step.num} className="relative flex gap-5">
+                    {/* Colonne gauche — numéro + ligne */}
+                    <div className="flex flex-col items-center shrink-0 w-14">
+                      <div
+                        className={`w-14 h-14 rounded-full flex items-center justify-center font-black text-2xl shrink-0 shadow-[0_6px_20px_-6px_rgba(10,46,77,0.35)] font-mono z-10 ${
+                          step.isFree ? 'bg-[#D4A373] text-[#0A2E4D]' : 'bg-[#0A2E4D] text-[#F7F3EB]'
+                        }`}
+                      >
+                        {step.num}
+                      </div>
+                      {i < steps.length - 1 && (
+                        <div className="flex-1 w-px bg-gradient-to-b from-[rgba(10,46,77,0.18)] to-transparent mt-2 mb-0 min-h-[3rem]" aria-hidden="true" />
+                      )}
+                    </div>
+
+                    {/* Contenu */}
+                    <div className={`flex-1 pb-10 ${i === steps.length - 1 ? 'pb-0' : ''}`}>
+                      <span className="font-mono text-[0.6rem] tracking-[0.22em] text-[rgba(26,26,26,0.32)] block mb-2 mt-3.5">
+                        {step.label}
+                      </span>
+                      <h3 className="text-[1.375rem] font-black text-[#1A1A1A] leading-[1.2] mb-3">{step.title}</h3>
+                      <p className="text-[1rem] text-[rgba(26,26,26,0.58)] leading-[1.7] mb-4">{step.desc}</p>
+                      <span
+                        className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-[0.75rem] font-mono w-fit border ${
+                          step.isFree
+                            ? 'bg-[rgba(212,163,115,0.14)] border-[rgba(212,163,115,0.30)] text-[rgba(180,120,60,0.90)]'
+                            : 'bg-[rgba(10,46,77,0.06)] border-[rgba(10,46,77,0.12)] text-[rgba(10,46,77,0.55)]'
+                        }`}
+                      >
+                        <step.tagIcon size={12} weight="bold" />
+                        {step.tag}
+                      </span>
+                    </div>
                   </div>
                 ))}
               </div>
