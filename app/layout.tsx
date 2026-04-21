@@ -26,13 +26,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "VELA | Solutions I.A. pour PME",
+  metadataBase: new URL("https://velavelavela.com"),
+  title: {
+    default: "VELA | Automatisation, Formation et Coaching I.A.",
+    template: "%s | VELA",
+  },
   description:
-    "Vela est une micro-agence d'automatisation I.A. à Montréal dédiée aux PME québécoises. Gagnez en rentabilité et libérez votre temps grâce à nos workflows simples et fiables.",
+    "VELA accompagne les PME québécoises avec trois expertises en intelligence artificielle : automatisations sur mesure, formations et coaching individuel. Concrets, accessibles, orientés résultats.",
   openGraph: {
-    title: "VELA | Solutions I.A. pour PME",
+    title: "VELA | Automatisation, Formation et Coaching I.A.",
     description:
-      "Vela est une micro-agence d'automatisation I.A. à Montréal dédiée aux PME québécoises. Gagnez en rentabilité et libérez votre temps grâce à nos workflows simples et fiables.",
+      "VELA accompagne les PME québécoises avec trois expertises en intelligence artificielle : automatisations sur mesure, formations et coaching individuel. Concrets, accessibles, orientés résultats.",
+    url: "https://velavelavela.com",
+    siteName: "VELA",
     locale: "fr_CA",
     type: "website",
     images: [
@@ -40,15 +46,15 @@ export const metadata: Metadata = {
         url: "/og.jpg",
         width: 1200,
         height: 630,
-        alt: "VELA | Solutions I.A. pour PME",
+        alt: "VELA | Automatisation, Formation et Coaching I.A.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "VELA | Solutions I.A. pour PME",
+    title: "VELA | Automatisation, Formation et Coaching I.A.",
     description:
-      "Vela est une micro-agence d'automatisation I.A. à Montréal dédiée aux PME québécoises. Gagnez en rentabilité et libérez votre temps grâce à nos workflows simples et fiables.",
+      "VELA accompagne les PME québécoises avec trois expertises en intelligence artificielle : automatisations sur mesure, formations et coaching individuel.",
     images: ["/og.jpg"],
   },
 };

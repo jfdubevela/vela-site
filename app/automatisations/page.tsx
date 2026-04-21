@@ -1,4 +1,18 @@
+import type { Metadata } from 'next'
 import Nav from '@/components/Nav'
+
+export const metadata: Metadata = {
+  title: 'Automatisations I.A. sur mesure pour PME',
+  description:
+    "VELA élimine vos tâches répétitives grâce à des automatisations I.A. sur mesure. Diagnostic gratuit, prix fixe, livraison en 2 à 4 semaines. Pour PME québécoises.",
+  openGraph: {
+    title: 'Automatisations I.A. sur mesure pour PME | VELA',
+    description:
+      "VELA élimine vos tâches répétitives grâce à des automatisations I.A. sur mesure. Diagnostic gratuit, prix fixe, livraison en 2 à 4 semaines.",
+    url: 'https://velavelavela.com/automatisations',
+    images: [{ url: '/og.jpg', width: 1200, height: 630, alt: 'Automatisations I.A. VELA' }],
+  },
+}
 import Footer from '@/components/Footer'
 import ScrollProgress from '@/components/ui/ScrollProgress'
 import Hero from '@/components/sections/Hero'

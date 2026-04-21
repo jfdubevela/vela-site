@@ -1,4 +1,18 @@
+import type { Metadata } from 'next'
 import Nav from '@/components/Nav'
+
+export const metadata: Metadata = {
+  title: 'VELA | Automatisation, Formation et Coaching I.A. pour PME québécoises',
+  description:
+    "VELA accompagne les PME québécoises avec trois expertises complémentaires en I.A. : automatisations sur mesure, formations pratiques et coaching individuel. Concrets, accessibles, orientés résultats.",
+  openGraph: {
+    title: 'VELA | Automatisation, Formation et Coaching I.A. pour PME québécoises',
+    description:
+      "VELA accompagne les PME québécoises avec trois expertises complémentaires en I.A. : automatisations sur mesure, formations pratiques et coaching individuel.",
+    url: 'https://velavelavela.com',
+    images: [{ url: '/og.jpg', width: 1200, height: 630, alt: 'VELA' }],
+  },
+}
 import Footer from '@/components/Footer'
 import ScrollProgress from '@/components/ui/ScrollProgress'
 import Hero from '@/components/sections/Hero'
