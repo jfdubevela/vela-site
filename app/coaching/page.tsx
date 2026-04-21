@@ -679,6 +679,16 @@ export default function CoachingPage() {
                           </select>
                         </div>
 
+                        <div className="flex flex-col gap-1.5">
+                          <label className="text-xs text-[rgba(245,245,240,0.5)]">Référencé par</label>
+                          <input
+                            name="reference"
+                            type="text"
+                            placeholder="Nom d'une personne, LinkedIn, Google…"
+                            className="w-full px-4 py-3 rounded-xl bg-white/[0.08] border border-white/[0.12] text-[#F5F5F0] text-sm placeholder:text-[rgba(245,245,240,0.3)] focus:outline-none focus:border-[#7DB7D6]/50 transition-colors"
+                          />
+                        </div>
+
                         {formError && (
                           <p className="text-xs text-red-400">{formError}</p>
                         )}

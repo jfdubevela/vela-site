@@ -49,6 +49,7 @@ export async function submitCoaching(formData: FormData) {
     const courriel = formData.get('courriel') as string
     const role = formData.get('role') as string
     const usage = formData.get('usage') as string
+    const reference = formData.get('reference') as string
 
     if (!prenom || !courriel || !role) {
       return { success: false, error: 'Champs requis manquants.' }
@@ -58,7 +59,7 @@ export async function submitCoaching(formData: FormData) {
       from: 'VELA <onboarding@resend.dev>',
       to: 'jf@velavelavela.com',
       replyTo: courriel,
-      subject: `Session découverte coaching — ${prenom}`,
+      subject: `Session découverte coaching - ${prenom}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #0A2E4D;">
           <h2 style="color: #0A2E4D;">Nouvelle demande de coaching individuel</h2>
@@ -66,7 +67,8 @@ export async function submitCoaching(formData: FormData) {
           <p><strong>Prénom :</strong> ${prenom}</p>
           <p><strong>Courriel :</strong> <a href="mailto:${courriel}">${courriel}</a></p>
           <p><strong>Rôle :</strong> ${role}</p>
-          <p><strong>Usage actuel de l'I.A. :</strong> ${usage || '—'}</p>
+          <p><strong>Usage actuel de l'I.A. :</strong> ${usage || 'Non précisé'}</p>
+          <p><strong>Référencé par :</strong> ${reference || 'Non précisé'}</p>
         </div>
       `,
     })
