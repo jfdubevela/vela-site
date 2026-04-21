@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const sections = [
+const defaultSections = [
   { id: 'hero', label: 'Intro' },
   { id: 'probleme', label: 'Problème' },
   { id: 'processus', label: 'Processus' },
@@ -15,17 +15,25 @@ const sections = [
   { id: 'contact', label: 'Contact' },
 ]
 
-export default function ScrollProgress() {
-  const [active, setActive] = useState('hero')
+export default function ScrollProgress({
+  sections = defaultSections,
+}: {
+  sections?: { id: string; label: string }[]
+}) {
+  const [active, setActive] = useState(sections[0]?.id ?? '')
   const [hoveredId, setHoveredId] = useState<string | null>(null)
   const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    setActive(sections[0]?.id ?? '')
+  }, [sections])
 
   useEffect(() => {
     function onScroll() {
       setVisible(window.scrollY > 80)
 
       const mid = window.innerHeight * 0.5
-      let current = sections[0].id
+      let current = sections[0]?.id ?? ''
       for (const { id } of sections) {
         const el = document.getElementById(id)
         if (!el) continue
@@ -37,12 +45,11 @@ export default function ScrollProgress() {
     window.addEventListener('scroll', onScroll, { passive: true })
     onScroll()
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [sections])
 
   function scrollTo(id: string) {
     const el = document.getElementById(id)
     if (!el) return
-    // With sticky wrappers, scrollIntoView is unreliable — walk up offsetParent chain
     const wrapper = el.parentElement as HTMLElement
     let top = 0
     let node: HTMLElement | null = wrapper
@@ -72,7 +79,7 @@ export default function ScrollProgress() {
       <div
         className="absolute left-1/2 -translate-x-1/2 top-3 w-0.5 bg-white/30 transition-all duration-500 ease-out"
         style={{
-          height: `${(activeIndex / (sections.length - 1)) * 100}%`,
+          height: `${(activeIndex / Math.max(sections.length - 1, 1)) * 100}%`,
         }}
       />
 

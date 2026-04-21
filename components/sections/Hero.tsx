@@ -4,10 +4,32 @@ import { useRef, useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowDown } from '@phosphor-icons/react'
 import MagneticButton from '../ui/MagneticButton'
-const line1 = ['Moins', 'de', 'tâches', 'manuelles.']
-const line2 = ['Plus', 'de', 'temps', 'pour', 'ce', 'qui', 'compte.']
 
-export default function Hero() {
+interface HeroProps {
+  badge?: string
+  line1?: string[]
+  line2?: string[]
+  subtitle?: string
+  subtitleBold?: string
+  primaryCtaLabel?: string
+  primaryCtaTarget?: string
+  secondaryCtaLabel?: string | null
+  secondaryCtaTarget?: string
+  microText?: string
+}
+
+export default function Hero({
+  badge = 'Automatisation par I.A.',
+  line1 = ['Moins', 'de', 'tâches', 'manuelles.'],
+  line2 = ['Plus', 'de', 'temps', 'pour', 'ce', 'qui', 'compte.'],
+  subtitle = "VELA implante des automatisations par l'I.A. sur mesure pour les PME québécoises.",
+  subtitleBold = 'Claires, rentables, et livrées rapidement.',
+  primaryCtaLabel = 'Demander un diagnostic gratuit',
+  primaryCtaTarget = '#contact',
+  secondaryCtaLabel = 'Voir nos services',
+  secondaryCtaTarget = '#services',
+  microText = 'Prix fixe · Aucune surprise · Vous gardez tous vos accès',
+}: HeroProps = {}) {
   const containerRef = useRef<HTMLElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
 
@@ -59,16 +81,13 @@ export default function Hero() {
         >
           <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
-        {/* Left-to-right gradient: dark left for text, image reveals right */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#0A2E4D] via-[#0A2E4D]/75 to-[#0A2E4D]/20" />
-        {/* Bottom fade */}
         <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#0A2E4D] to-transparent" />
       </motion.div>
 
       {/* Content */}
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 pt-24 pb-10 w-full">
         <div className="grid grid-cols-1 md:grid-cols-[55fr_45fr] gap-12 md:gap-0 items-center min-h-[calc(100dvh-6rem)]">
-          {/* Left column */}
           <div className="flex flex-col justify-center gap-7">
             {/* Pill badge */}
             <motion.div
@@ -79,7 +98,7 @@ export default function Hero() {
             >
               <span className="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-[#7DB7D6]/50 bg-[#C5DCE8] text-[#1C3D55] text-[15px] font-medium tracking-wide">
                 <span className="w-2 h-2 rounded-full bg-[#1C3D55] animate-[pulse-dot_2s_ease-in-out_infinite]" />
-                Automatisation par I.A.
+                {badge}
               </span>
             </motion.div>
 
@@ -113,8 +132,8 @@ export default function Hero() {
               transition={{ type: 'spring', stiffness: 70, damping: 18, delay: 0.7 }}
               className="text-base md:text-lg text-[rgba(245,245,240,0.62)] leading-relaxed max-w-[50ch]"
             >
-              VELA implante des automatisations par l&apos;I.A. sur mesure pour les PME québécoises.{' '}
-              <span className="text-[rgba(245,245,240,0.92)] font-bold">Claires, rentables, et livrées rapidement.</span>
+              {subtitle}{' '}
+              <span className="text-[rgba(245,245,240,0.92)] font-bold">{subtitleBold}</span>
             </motion.p>
 
             {/* CTA group */}
@@ -126,19 +145,20 @@ export default function Hero() {
             >
               <MagneticButton
                 className="inline-flex items-center gap-2 bg-[#D4A373] hover:bg-[#C49060] text-[#0A2E4D] font-bold text-sm px-7 py-3.5 rounded-full transition-colors duration-200 cursor-pointer shadow-[0_8px_32px_-8px_rgba(212,163,115,0.45)]"
-                onClick={() => scrollToSection('#contact')}
+                onClick={() => scrollToSection(primaryCtaTarget)}
               >
-                Demander un diagnostic gratuit
+                {primaryCtaLabel}
               </MagneticButton>
-              <MagneticButton
-                className="inline-flex items-center gap-2 border border-[rgba(245,245,240,0.22)] text-[#F5F5F0] hover:border-[rgba(245,245,240,0.45)] hover:bg-white/[0.04] text-sm px-7 py-3.5 rounded-full transition-all duration-200 cursor-pointer"
-                onClick={() => scrollToSection('#services')}
-              >
-                Voir nos services
-                <ArrowDown size={15} weight="bold" className="opacity-70" />
-              </MagneticButton>
+              {secondaryCtaLabel !== null && (
+                <MagneticButton
+                  className="inline-flex items-center gap-2 border border-[rgba(245,245,240,0.22)] text-[#F5F5F0] hover:border-[rgba(245,245,240,0.45)] hover:bg-white/[0.04] text-sm px-7 py-3.5 rounded-full transition-all duration-200 cursor-pointer"
+                  onClick={() => scrollToSection(secondaryCtaTarget!)}
+                >
+                  {secondaryCtaLabel}
+                  <ArrowDown size={15} weight="bold" className="opacity-70" />
+                </MagneticButton>
+              )}
             </motion.div>
-
 
             {/* Guarantee micro-text */}
             <motion.p
@@ -147,11 +167,10 @@ export default function Hero() {
               transition={{ delay: 1.3, duration: 0.5 }}
               className="text-xs text-[rgba(245,245,240,0.28)] font-mono tracking-wide"
             >
-              Prix fixe · Aucune surprise · Vous gardez tous vos accès
+              {microText}
             </motion.p>
           </div>
 
-          {/* Right col — spacer (image shows through gradient) */}
           <div className="hidden md:block" />
         </div>
       </div>
