@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { LinkedinLogo, EnvelopeSimple } from '@phosphor-icons/react/dist/ssr'
+import { LinkedinLogo } from '@phosphor-icons/react/dist/ssr'
 
 export default function Footer() {
   return (
@@ -24,13 +24,6 @@ export default function Footer() {
                 className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-[rgba(245,245,240,0.5)] hover:text-[#7DB7D6] hover:border-[#7DB7D6]/30 transition-colors"
               >
                 <LinkedinLogo size={16} weight="fill" />
-              </a>
-              <a
-                href="mailto:info@velavelavela.com"
-                aria-label="Courriel VELA"
-                className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-[rgba(245,245,240,0.5)] hover:text-[#7DB7D6] hover:border-[#7DB7D6]/30 transition-colors"
-              >
-                <EnvelopeSimple size={16} weight="bold" />
               </a>
             </div>
           </div>
@@ -78,11 +71,6 @@ export default function Footer() {
               Contact
             </p>
             <ul className="flex flex-col gap-2.5">
-              <li>
-                <a href="mailto:info@velavelavela.com" className="text-sm text-[rgba(245,245,240,0.5)] hover:text-[#D4A373] transition-colors">
-                  info@velavelavela.com
-                </a>
-              </li>
               <li>
                 <a href="tel:4384991855" className="text-sm text-[rgba(245,245,240,0.5)] hover:text-[#D4A373] transition-colors">
                   438 499-1855

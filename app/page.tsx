@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'VELA | Automatisation, Formation et Coaching I.A. pour PME québécoises',
   description:
     "VELA accompagne les PME québécoises avec trois expertises complémentaires en I.A. : automatisations sur mesure, formations pratiques et coaching individuel. Concrets, accessibles, orientés résultats.",
+  alternates: { canonical: '/' },
   openGraph: {
     title: 'VELA | Automatisation, Formation et Coaching I.A. pour PME québécoises',
     description:

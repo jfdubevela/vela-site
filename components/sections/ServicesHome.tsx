@@ -104,11 +104,7 @@ export default function ServicesHome() {
       id="services"
       className="relative bg-[#0A2E4D] py-28 md:py-36 overflow-hidden rounded-t-3xl"
     >
-      <div
-        className="absolute inset-0 opacity-[0.04] bg-cover bg-center pointer-events-none"
-        style={{ backgroundImage: "url('/images/8.png')" }}
-        aria-hidden="true"
-      />
+      <div className="texture-overlay" aria-hidden="true" />
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
         {/* Header */}

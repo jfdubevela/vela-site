@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Automatisations I.A. sur mesure, Montréal',
   description:
     "Éliminez vos tâches répétitives avec l'I.A. Diagnostic gratuit, prix fixe, livraison en 2 à 4 semaines. Pour PME de Montréal. Réservez maintenant.",
+  alternates: { canonical: '/automatisations' },
   openGraph: {
     title: 'Automatisations I.A. sur mesure, Montréal | VELA',
     description:

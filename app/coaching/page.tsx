@@ -148,8 +148,7 @@ export default function CoachingPage() {
         {/* ── Hero ── */}
         <section
           id="hero"
-          className="relative min-h-[100dvh] flex items-center overflow-hidden pt-20"
-          style={{ background: '#F7F3EB' }}
+          className="relative min-h-[100dvh] flex items-center overflow-hidden pt-20 bg-vela-cream"
         >
           {/* Background image */}
           <div
@@ -315,8 +314,7 @@ export default function CoachingPage() {
 
             <ScrollReveal delay={0.08}>
               <h2
-                className="font-black tracking-[-0.02em] leading-[1] text-[#1A1A1A] mb-3"
-                style={{ fontSize: 'clamp(1.9rem, 4vw, 3.25rem)' }}
+                className="text-display-md font-black tracking-[-0.02em] leading-[1] text-[#1A1A1A] mb-3"
               >
                 Un format simple.<br />Une progression mesurable.
               </h2>
@@ -416,8 +414,7 @@ export default function CoachingPage() {
 
             <ScrollReveal delay={0.08}>
               <h2
-                className="font-black tracking-[-0.02em] leading-[1] text-[#F7F3EB] mb-3"
-                style={{ fontSize: 'clamp(1.9rem, 4vw, 3.25rem)' }}
+                className="text-display-md font-black tracking-[-0.02em] leading-[1] text-[#F7F3EB] mb-3"
               >
                 Ce qu&apos;on travaille ensemble,<br />
                 <span className="text-[rgba(247,243,235,0.35)]">selon où vous en êtes.</span>
@@ -481,8 +478,7 @@ export default function CoachingPage() {
 
             <ScrollReveal delay={0.08}>
               <h2
-                className="font-black tracking-[-0.02em] leading-[1] text-[#1A1A1A] mb-3"
-                style={{ fontSize: 'clamp(1.9rem, 4vw, 3.25rem)' }}
+                className="text-display-md font-black tracking-[-0.02em] leading-[1] text-[#1A1A1A] mb-3"
               >
                 Pas juste des conseils.<br />
                 <span className="text-[rgba(26,26,26,0.3)]">Des outils qui vous appartiennent.</span>

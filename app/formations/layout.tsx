@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: 'Formations I.A. pour équipes, Montréal',
   description:
     "Conférences et ateliers I.A. pratiques pour vos équipes. Contenu sur mesure, résultats mesurables. Adaptés aux PME québécoises. Demandez un devis.",
+  alternates: { canonical: '/formations' },
   openGraph: {
     title: 'Formations I.A. pour équipes, Montréal | VELA',
     description:

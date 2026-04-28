@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: 'Coaching I.A. individuel, Montréal',
   description:
     "Maîtrisez l'I.A. en sessions 1-on-1 sans jargon. Roadmap personnalisée pour pros et dirigeants. Session découverte gratuite, région de Montréal.",
+  alternates: { canonical: '/coaching' },
   openGraph: {
     title: 'Coaching I.A. individuel, Montréal | VELA',
     description:
