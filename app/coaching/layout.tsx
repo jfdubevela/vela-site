@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Coaching I.A. individuel',
+  title: 'Coaching I.A. individuel, Montréal',
   description:
-    "Coaching I.A. individuel pour intégrer l'intelligence artificielle dans votre travail concrètement, sans jargon. Sessions 1-on-1, roadmap personnalisée, résultats mesurables. Session découverte gratuite.",
+    "Maîtrisez l'I.A. en sessions 1-on-1 sans jargon. Roadmap personnalisée pour pros et dirigeants. Session découverte gratuite, région de Montréal.",
   openGraph: {
-    title: 'Coaching I.A. individuel | VELA',
+    title: 'Coaching I.A. individuel, Montréal | VELA',
     description:
-      "Coaching I.A. individuel pour intégrer l'intelligence artificielle dans votre travail. Sessions 1-on-1, roadmap personnalisée. Session découverte gratuite.",
+      "Maîtrisez l'I.A. en sessions 1-on-1 sans jargon. Roadmap personnalisée pour pros et dirigeants. Session découverte gratuite, région de Montréal.",
     url: 'https://velavelavela.com/coaching',
     images: [{ url: '/og.jpg', width: 1200, height: 630, alt: 'Coaching I.A. VELA' }],
   },

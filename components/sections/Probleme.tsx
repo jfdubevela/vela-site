@@ -15,7 +15,7 @@ export default function Probleme() {
       <div className="absolute right-0 top-0 bottom-0 w-[45%] hidden md:block">
         <Image
           src="/images/9.png"
-          alt=""
+          alt="Entrepreneur québécois dépassé par des tâches répétitives avant l'automatisation I.A."
           fill
           quality={80}
           className="object-cover object-center"

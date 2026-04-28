@@ -28,15 +28,15 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://velavelavela.com"),
   title: {
-    default: "VELA | Automatisation, Formation et Coaching I.A.",
+    default: "VELA | Automatisation I.A. pour PME, Montréal",
     template: "%s | VELA",
   },
   description:
-    "VELA accompagne les PME québécoises avec trois expertises en intelligence artificielle : automatisations sur mesure, formations et coaching individuel. Concrets, accessibles, orientés résultats.",
+    "Automatisations, formations et coaching I.A. pour PME à Montréal. Gagnez du temps et passez à l'action. Réservez votre appel découverte gratuit.",
   openGraph: {
-    title: "VELA | Automatisation, Formation et Coaching I.A.",
+    title: "VELA | Automatisation I.A. pour PME, Montréal",
     description:
-      "VELA accompagne les PME québécoises avec trois expertises en intelligence artificielle : automatisations sur mesure, formations et coaching individuel. Concrets, accessibles, orientés résultats.",
+      "Automatisations, formations et coaching I.A. pour PME à Montréal. Gagnez du temps et passez à l'action. Réservez votre appel découverte gratuit.",
     url: "https://velavelavela.com",
     siteName: "VELA",
     locale: "fr_CA",
@@ -52,9 +52,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "VELA | Automatisation, Formation et Coaching I.A.",
+    title: "VELA | Automatisation I.A. pour PME, Montréal",
     description:
-      "VELA accompagne les PME québécoises avec trois expertises en intelligence artificielle : automatisations sur mesure, formations et coaching individuel.",
+      "Automatisations, formations et coaching I.A. pour PME à Montréal. Gagnez du temps et passez à l'action. Réservez votre appel découverte gratuit.",
     images: ["/og.jpg"],
   },
 };

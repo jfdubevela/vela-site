@@ -37,7 +37,7 @@ export default function CTAFinal() {
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/13.png"
-          alt=""
+          alt="Bureau moderne d'une PME montréalaise utilisant l'intelligence artificielle"
           fill
           quality={80}
           className="object-cover object-center opacity-20"

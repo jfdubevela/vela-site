@@ -2,13 +2,13 @@ import type { Metadata } from 'next'
 import Nav from '@/components/Nav'
 
 export const metadata: Metadata = {
-  title: 'Automatisations I.A. sur mesure pour PME',
+  title: 'Automatisations I.A. sur mesure, Montréal',
   description:
-    "VELA élimine vos tâches répétitives grâce à des automatisations I.A. sur mesure. Diagnostic gratuit, prix fixe, livraison en 2 à 4 semaines. Pour PME québécoises.",
+    "Éliminez vos tâches répétitives avec l'I.A. Diagnostic gratuit, prix fixe, livraison en 2 à 4 semaines. Pour PME de Montréal. Réservez maintenant.",
   openGraph: {
-    title: 'Automatisations I.A. sur mesure pour PME | VELA',
+    title: 'Automatisations I.A. sur mesure, Montréal | VELA',
     description:
-      "VELA élimine vos tâches répétitives grâce à des automatisations I.A. sur mesure. Diagnostic gratuit, prix fixe, livraison en 2 à 4 semaines.",
+      "Éliminez vos tâches répétitives avec l'I.A. Diagnostic gratuit, prix fixe, livraison en 2 à 4 semaines. Pour PME de Montréal. Réservez maintenant.",
     url: 'https://velavelavela.com/automatisations',
     images: [{ url: '/og.jpg', width: 1200, height: 630, alt: 'Automatisations I.A. VELA' }],
   },

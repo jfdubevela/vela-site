@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Formations I.A. pour entreprises',
+  title: 'Formations I.A. pour équipes, Montréal',
   description:
-    "Conférences, ateliers et programmes sur mesure pour outiller votre équipe avec l'intelligence artificielle. Formations pratiques adaptées aux PME québécoises par VELA.",
+    "Conférences et ateliers I.A. pratiques pour vos équipes. Contenu sur mesure, résultats mesurables. Adaptés aux PME québécoises. Demandez un devis.",
   openGraph: {
-    title: 'Formations I.A. pour entreprises | VELA',
+    title: 'Formations I.A. pour équipes, Montréal | VELA',
     description:
-      "Conférences, ateliers et programmes sur mesure pour outiller votre équipe avec l'intelligence artificielle. Adaptées aux PME québécoises.",
+      "Conférences et ateliers I.A. pratiques pour vos équipes. Contenu sur mesure, résultats mesurables. Adaptés aux PME québécoises. Demandez un devis.",
     url: 'https://velavelavela.com/formations',
     images: [{ url: '/og.jpg', width: 1200, height: 630, alt: 'Formations I.A. VELA' }],
   },
