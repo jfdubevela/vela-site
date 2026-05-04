@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Proposition — Déborah Cherenfant · VELA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: 'PP Neue Montreal';
+    src: url('/fonts/PPNeueMontreal-Thin.otf') format('opentype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'PP Neue Montreal';
+    src: url('/fonts/PPNeueMontreal-Book.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'PP Neue Montreal';
+    src: url('/fonts/PPNeueMontreal-Italic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'PP Neue Montreal';
+    src: url('/fonts/PPNeueMontreal-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'PP Neue Montreal';
+    src: url('/fonts/PPNeueMontreal-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  :root {
+    --navy: #0A2E4D;
+    --navy-light: #0d3a61;
+    --gold: #D4A373;
+    --gold-light: #e8c49a;
+    --horizon: #7DB7D6;
+    --offwhite: #F5F5F0;
+    --cream: #F7F3EB;
+    --ink: #1A1A1A;
+    --muted: #6b7280;
+    --sans: 'PP Neue Montreal', ui-sans-serif, system-ui, sans-serif;
+    --mono: 'Geist Mono', ui-monospace, monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    background: var(--navy);
+    padding: 18px 48px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    opacity: 0.9;
+    transition: opacity 0.15s;
+  }
+  .nav a:hover { opacity: 1; }
+  .nav svg {
+    height: 22px;
+    width: auto;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    padding: 48px 48px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(125,183,214,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 120px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,163,115,0.1) 0%, transparent 70%);
+  }
+  .hero-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--horizon);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .hero-title {
+    font-family: var(--sans);
+    font-size: clamp(34px, 5vw, 54px);
+    color: #fff;
+    line-height: 1.05;
+    margin-bottom: 12px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .hero-title em {
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .hero-sub {
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    margin-top: 24px;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+  .hero-pills {
+    display: flex;
+    gap: 10px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+  .pill {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 100px;
+    padding: 6px 18px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.65);
+    font-family: var(--mono);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 56px 0; border-bottom: 1px solid rgba(0,0,0,0.07); }
+  section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: var(--sans);
+    font-size: 28px;
+    color: var(--navy);
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .lead {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.8;
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+
+  /* ── INTRO CARDS ── */
+  .insight-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 28px;
+  }
+  @media(max-width: 600px) { .insight-grid { grid-template-columns: 1fr; } }
+  .insight-card {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .insight-card .ic-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-family: var(--mono);
+    margin-bottom: 10px;
+  }
+  .insight-card p { font-size: 14px; color: #333; line-height: 1.7; }
+  .insight-card.accent { background: var(--navy); }
+  .insight-card.accent p { color: rgba(255,255,255,0.8); }
+  .insight-card.accent .ic-label { color: var(--gold); }
+
+  /* ── MOIS ── */
+  .month-block { margin-bottom: 40px; }
+  .month-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .month-num {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 13px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .month-title {
+    font-family: var(--sans);
+    font-size: 20px;
+    color: var(--navy);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .month-sub { font-size: 12px; color: var(--muted); font-weight: 400; }
+
+  .sessions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  @media(max-width: 600px) { .sessions-grid { grid-template-columns: 1fr; } }
+  .session-card {
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 10px;
+    padding: 20px;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .session-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--horizon);
+  }
+  .session-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    margin-bottom: 8px;
+  }
+  .session-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--navy);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .session-desc { font-size: 13px; color: #555; line-height: 1.6; }
+
+  /* ── LIVRABLES ── */
+  .deliverables {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin-top: 8px;
+  }
+  .del-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 16px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.07);
+  }
+  .del-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .del-text { font-size: 13px; color: #333; line-height: 1.6; }
+  .del-text strong { display: block; font-size: 13px; color: var(--navy); margin-bottom: 2px; font-weight: 600; }
+
+  /* ── PRIX ── */
+  .price-block {
+    background: var(--navy);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 28px;
+  }
+  .price-top {
+    padding: 32px 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .price-label {
+    font-family: var(--sans);
+    font-size: 22px;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.02em;
+  }
+  .price-note { font-size: 13px; color: rgba(255,255,255,0.55); }
+  .price-amount {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .price-was {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+  .price-now {
+    font-family: var(--sans);
+    font-size: 48px;
+    color: var(--gold);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .price-per { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 4px; }
+  .price-bottom {
+    background: rgba(255,255,255,0.05);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 16px 36px;
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .price-detail { font-size: 12px; color: rgba(255,255,255,0.5); }
+  .price-detail strong { color: rgba(255,255,255,0.8); display: block; font-weight: 500; }
+
+  /* ── FORMATION BONUS ── */
+  .bonus-header {
+    background: linear-gradient(135deg, var(--gold) 0%, #c8935a 100%);
+    border-radius: 12px 12px 0 0;
+    padding: 24px 32px;
+  }
+  .bonus-header .b-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--navy);
+    opacity: 0.7;
+    margin-bottom: 6px;
+  }
+  .bonus-header h3 {
+    font-family: var(--sans);
+    font-size: 22px;
+    color: var(--navy);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .bonus-body {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    padding: 28px 32px;
+  }
+  .formation-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 20px;
+  }
+  @media(max-width: 600px) { .formation-grid { grid-template-columns: 1fr; } }
+  .f-col h4 {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-family: var(--mono);
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+  .f-list { list-style: none; }
+  .f-list li {
+    font-size: 13px;
+    color: #333;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding-left: 16px;
+    position: relative;
+  }
+  .f-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 11px;
+  }
+  .formation-price-row {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0,0,0,0.07);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .fp-label { font-size: 13px; color: var(--muted); }
+  .fp-label strong { display: block; color: var(--navy); font-size: 15px; font-weight: 600; }
+  .fp-price {
+    font-family: var(--sans);
+    font-size: 32px;
+    color: var(--navy);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+  .fp-price span { font-size: 14px; color: var(--muted); font-family: var(--sans); font-weight: 400; letter-spacing: 0; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--navy);
+    padding: 40px 48px;
+    text-align: center;
+  }
+  .footer p { color: rgba(255,255,255,0.4); font-size: 12px; line-height: 1.8; }
+  .footer strong { color: var(--gold); font-weight: 500; }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: #fff; }
+    .hero, .nav { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    section { page-break-inside: avoid; }
+  }
+
+  @media(max-width: 600px) {
+    .nav { padding: 16px 24px; }
+    .hero { padding: 40px 24px 48px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="https://velavelavela.com" target="_blank" rel="noopener" aria-label="VELA — Retour au site">
+    <svg viewBox="0 0 2584 903" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M191.623 751.159L0 560.101L552.796 0V392.171L191.623 751.159Z" fill="#F7F3EB"/>
+      <path d="M223.727 783.337L552.796 453.511V692.836L343.115 903L223.727 783.337Z" fill="#F7F3EB"/>
+      <path d="M959.093 514.253L1071.35 236.692H1237.56L959.093 780.886L681.354 236.692H847.56L959.093 514.253Z" fill="#F7F3EB"/>
+      <path d="M1354.81 746.646V632.271H1612.13V746.646H1354.81ZM1354.81 351.067V236.692H1612.13V351.067H1354.81ZM1354.81 536.837V426.104H1597.56V536.837H1354.81ZM1258.58 236.692H1394.17V746.646H1258.58V236.692Z" fill="#F7F3EB"/>
+      <path d="M1658.89 236.692H1800.31V626.443H2006.61V746.646H1658.89V236.692Z" fill="#F7F3EB"/>
+      <path d="M2172.13 664.325L2176.5 560.149H2438.21L2441.85 664.325H2172.13ZM2305.53 445.773L2238.47 598.76L2247.21 630.085L2188.17 746.646H2027.79L2305.53 202.452L2584 746.646H2423.63L2365.31 635.185L2373.33 598.76L2305.53 445.773Z" fill="#F7F3EB"/>
+    </svg>
+  </a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-label">Proposition personnalisée · Confidentiel</div>
+    <h1 class="hero-title">Coaching individuel I.A.<br><em>pour Déborah Cherenfant</em></h1>
+    <p class="hero-sub">Préparé par Jean-François Dubé · Mai 2025</p>
+    <div class="hero-pills">
+      <span class="pill">6 sessions de 1h30</span>
+      <span class="pill">3 mois</span>
+      <span class="pill">100 % sur mesure</span>
+      <span class="pill">Claude Pro</span>
+    </div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section>
+  <div class="container">
+    <div class="section-label">Point de départ</div>
+    <h2 class="section-title">Ce qu'on a entendu</h2>
+    <p class="lead">Tu portes plusieurs chapeaux à la fois : TD, médias, conférences, projets entrepreneuriaux. Le contenu est au coeur de tout ce que tu fais, mais il prend trop de temps à préparer.</p>
+    <p class="lead">Tu utilises déjà Claude, mais comme un moteur de recherche plutôt que comme l'outil de production qu'il peut être. Résultat : tu laisses du temps et des opportunités sur la table.</p>
+
+    <div class="insight-grid">
+      <div class="insight-card">
+        <div class="ic-label">La douleur</div>
+        <p>Préparer des conférences, trouver des données, adapter du contenu. Tout ça prend trop de temps et tu veux aller plus loin.</p>
+      </div>
+      <div class="insight-card">
+        <div class="ic-label">L'objectif</div>
+        <p>Utiliser l'I.A. pour accélérer la création de contenu et récupérer des heures chaque semaine.</p>
+      </div>
+      <div class="insight-card accent">
+        <div class="ic-label">Ton outil principal</div>
+        <p>Tu préfères Claude et tu as raison. On va le configurer pour qu'il te connaisse vraiment : ton ton, tes projets, ta façon de travailler.</p>
+      </div>
+      <div class="insight-card">
+        <div class="ic-label">Ton niveau</div>
+        <p>Tu l'utilises déjà un peu, mais sans méthode. En 6 sessions, on passe du mode recherche au mode production.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMME -->
+<section>
+  <div class="container">
+    <div class="section-label">Le programme</div>
+    <h2 class="section-title">6 sessions, 3 mois, ta réalité</h2>
+    <p class="lead">Deux rencontres par mois, 1h30 chacune. Contenu théorique et exercices pratiques sur tes vraies tâches. Chaque session inclut un devoir court pour ancrer les apprentissages dans ton quotidien.</p>
+
+    <!-- MOIS 1 -->
+    <div class="month-block" style="margin-top:36px;">
+      <div class="month-header">
+        <div class="month-num">01</div>
+        <div>
+          <div class="month-title">Comprendre & débloquer</div>
+          <div class="month-sub">Mois 1, sessions 1 et 2</div>
+        </div>
+      </div>
+      <div class="sessions-grid">
+        <div class="session-card">
+          <div class="session-num">SESSION 01</div>
+          <div class="session-title">Comprendre l'I.A. vraiment</div>
+          <div class="session-desc">Comment ça fonctionne, ce que c'est et ce que ce n'est pas. Premier prompt sur une vraie tâche à toi. Configuration de base de Claude.</div>
+        </div>
+        <div class="session-card">
+          <div class="session-num">SESSION 02</div>
+          <div class="session-title">Maîtriser le prompt</div>
+          <div class="session-desc">Apprendre à bien formuler ses demandes pour obtenir des résultats utiles. Construire tes premiers prompts réutilisables.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOIS 2 -->
+    <div class="month-block">
+      <div class="month-header">
+        <div class="month-num">02</div>
+        <div>
+          <div class="month-title">Pratiquer et personnaliser</div>
+          <div class="month-sub">Mois 2, sessions 3 et 4</div>
+        </div>
+      </div>
+      <div class="sessions-grid">
+        <div class="session-card">
+          <div class="session-num">SESSION 03</div>
+          <div class="session-title">Personnalisation avancée par projet</div>
+          <div class="session-desc">Créer des projets distincts dans Claude pour chaque contexte : conférences, chroniques, recherche. Chaque espace connaît son rôle.</div>
+        </div>
+        <div class="session-card">
+          <div class="session-num">SESSION 04</div>
+          <div class="session-title">Cas d'usage : ton contenu</div>
+          <div class="session-desc">Appliquer l'I.A. à tes vraies tâches de la semaine. Conférences, recherche, communication. Introduction aux Skills pour automatiser des tâches répétitives.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOIS 3 -->
+    <div class="month-block">
+      <div class="month-header">
+        <div class="month-num">03</div>
+        <div>
+          <div class="month-title">Systématiser et gagner du temps</div>
+          <div class="month-sub">Mois 3, sessions 5 et 6</div>
+        </div>
+      </div>
+      <div class="sessions-grid">
+        <div class="session-card">
+          <div class="session-num">SESSION 05</div>
+          <div class="session-title">Ta bibliothèque de prompts</div>
+          <div class="session-desc">Construire ta banque de prompts prêts à l'emploi, classés par usage et toujours disponibles.</div>
+        </div>
+        <div class="session-card">
+          <div class="session-num">SESSION 06</div>
+          <div class="session-title">Bilan et autonomie</div>
+          <div class="session-desc">Mesurer le temps gagné, fixer ta routine hebdomadaire et identifier les prochaines étapes.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVRABLES -->
+<section>
+  <div class="container">
+    <div class="section-label">Ce que tu ressors avec</div>
+    <h2 class="section-title">Des résultats concrets, pas des théories</h2>
+    <div class="deliverables">
+      <div class="del-item">
+        <div class="del-icon">⚡</div>
+        <div class="del-text"><strong>Routine I.A. hebdomadaire</strong>Des réflexes qui tournent sans effort, adaptés à ton rythme.</div>
+      </div>
+      <div class="del-item">
+        <div class="del-icon">📁</div>
+        <div class="del-text"><strong>Bibliothèque de prompts</strong>6 à 10 prompts à ton image pour le contenu, la recherche et la comm.</div>
+      </div>
+      <div class="del-item">
+        <div class="del-icon">🧠</div>
+        <div class="del-text"><strong>Claude configuré pour toi</strong>Ton profil, ton ton, tes projets. L'outil te connaît.</div>
+      </div>
+      <div class="del-item">
+        <div class="del-icon">⏱</div>
+        <div class="del-text"><strong>Temps gagné mesurable</strong>Sur la préparation de conférences, chroniques et recherche de données.</div>
+      </div>
+      <div class="del-item">
+        <div class="del-icon">🎯</div>
+        <div class="del-text"><strong>Confiance et autonomie</strong>Savoir quand et comment utiliser l'I.A. sans dépendre de personne.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTISSEMENT -->
+<section>
+  <div class="container">
+    <div class="section-label">Investissement</div>
+    <h2 class="section-title">Pricing</h2>
+    <p class="lead">Six sessions. Trois mois. Un programme bâti sur ta réalité, pas un template générique.</p>
+
+    <div class="price-block">
+      <div class="price-top">
+        <div>
+          <div class="price-label">Coaching individuel I.A.</div>
+          <div class="price-note">Déborah Cherenfant · 6 sessions de 1h30 · 3 mois · Prix spécial</div>
+        </div>
+        <div class="price-amount">
+          <div class="price-was">Régulier : 1 800 $</div>
+          <div class="price-now">900 $</div>
+          <div class="price-per">soit 150 $ / session</div>
+        </div>
+      </div>
+      <div class="price-bottom">
+        <div class="price-detail"><strong>Rabais de 50 %</strong>Prix spécial appliqué</div>
+        <div class="price-detail"><strong>Facturation</strong>En bloc ou à la session</div>
+        <div class="price-detail"><strong>Outil</strong>Claude Pro (~25 $/mois, payé par toi)</div>
+        <div class="price-detail"><strong>Format</strong>Visioconférence · 1h30 chacune</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMATION BONUS -->
+<section>
+  <div class="container">
+    <div class="section-label">Bonus inclus dans la proposition</div>
+    <h2 class="section-title">Formation de groupe disponible</h2>
+    <p class="lead">Pour ton équipe, ton réseau ou un événement professionnel.</p>
+
+    <div style="margin-top: 24px;">
+      <div class="bonus-header">
+        <div class="b-label">Formation VELA</div>
+        <h3>Utiliser l'I.A. de manière stratégique et sécuritaire</h3>
+      </div>
+      <div class="bonus-body">
+        <p style="font-size:14px;color:#444;line-height:1.8;">Une formation de 2h30 pour outiller les professionnels qui veulent utiliser l'I.A. dans leur quotidien. Sans jargon, sans complexité. Idéale pour une équipe, une association ou un événement professionnel.</p>
+
+        <div class="formation-grid">
+          <div class="f-col">
+            <h4>Au programme</h4>
+            <ul class="f-list">
+              <li>Comment fonctionne l'I.A. (sans le jargon)</li>
+              <li>Sécurité & confidentialité (Loi 25)</li>
+              <li>La méthode R.A.C.E. — prompts qui livrent</li>
+              <li>Cas d'usage concrets du secteur</li>
+              <li>Configurer ses outils pour gagner du temps</li>
+              <li>Exercices pratiques en temps réel</li>
+            </ul>
+          </div>
+          <div class="f-col">
+            <h4>Détails</h4>
+            <ul class="f-list">
+              <li>Durée : 2h30</li>
+              <li>Format : présentiel ou visio</li>
+              <li>Groupe : 5 à 30 personnes</li>
+              <li>Niveau : débutants à intermédiaires</li>
+              <li>Contenu adapté au secteur du groupe</li>
+              <li>Support visuel inclus</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="formation-price-row">
+          <div class="fp-label">
+            <strong>Formation — 2h30 · Groupe</strong>
+            Tarif par événement · Adapté au secteur
+          </div>
+          <div class="fp-price">1 500 $ <span>/ événement</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p><strong>VELA — Automatisation par l'I.A.</strong><br>
+  Document confidentiel préparé pour Déborah Cherenfant · Mai 2025<br>
+  Jean-François Dubé · VELA</p>
+</div>
+
+</body>
+</html>
