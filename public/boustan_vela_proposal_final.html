@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boustan, Data Intelligence Proposal  ·  VELA</title>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0A2E4D;
+  --navy-deep: #071E33;
+  --navy-mid: #0D3760;
+  --navy-light: #7DB7D6;
+  --cream: #F7F3EB;
+  --cream-2: #EDE8DF;
+  --ink: #1A1A1A;
+  --muted: #7B9FB8;
+  --muted-2: rgba(10,46,77,0.58);
+  --border: rgba(10,46,77,0.10);
+  --border-md: rgba(10,46,77,0.18);
+  --border-strong: rgba(10,46,77,0.28);
+  --bg: #F5F5F0;
+  --white: #FFFFFF;
+  --accent: #D4A373;
+  --accent-light: #F7EBDA;
+  --serif: 'Satoshi', sans-serif;
+  --sans: 'Satoshi', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+  --r: 8px;
+  --r-lg: 20px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page { max-width: 820px; margin: 0 auto; }
+
+/* -- HEADER -- */
+.header {
+  background: var(--navy-deep);
+  padding: 24px 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.logo { height: 32px; width: auto; }
+
+.header-right {
+  text-align: right;
+}
+
+.header-label {
+  font-family: var(--serif);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 3px;
+}
+
+.header-date {
+  font-family: var(--serif);
+  font-size: 13px;
+  color: rgba(247,243,235,0.65);
+  letter-spacing: .03em;
+}
+
+/* -- HERO -- */
+.hero {
+  background: var(--navy);
+  padding: 56px 52px 52px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg-text {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-family: var(--serif);
+  font-size: 220px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.025);
+  line-height: 1;
+  letter-spacing: -.02em;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-eyebrow {
+  font-family: var(--serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.hero-title {
+  font-family: var(--serif);
+  font-size: 58px;
+  font-weight: 800;
+  line-height: .95;
+  color: var(--cream);
+  letter-spacing: -.01em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.hero-title .dim { color: rgba(247,243,235,0.28); font-weight: 300; }
+
+.hero-desc {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(247,243,235,0.6);
+  max-width: 520px;
+  line-height: 1.8;
+  margin-bottom: 44px;
+}
+
+.hero-pills {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  padding: 8px 18px;
+  border: 0.5px solid rgba(247,243,235,0.2);
+  border-radius: 999px;
+  font-family: var(--serif);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.pill-value { color: var(--cream); }
+.pill-label { color: var(--muted); font-weight: 400; font-size: 11px; margin-top: 1px; }
+
+.pill-inner { display: flex; flex-direction: column; }
+
+/* -- BODY -- */
+.body { padding: 0 52px 80px; }
+
+/* -- SECTION -- */
+.section { margin-top: 56px; }
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.section-num {
+  font-family: var(--serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.section-line { flex: 1; height: 0.5px; background: var(--border-md); }
+
+.section-title {
+  font-family: var(--serif);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  line-height: 1.05;
+  margin-bottom: 14px;
+}
+
+.section-body {
+  font-size: 16px;
+  color: var(--muted-2);
+  line-height: 1.85;
+  max-width: 620px;
+}
+
+/* -- CONTEXT BOX -- */
+.context-box {
+  background: var(--navy-deep);
+  border-radius: var(--r-lg);
+  padding: 22px 26px;
+  margin-top: 24px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.cb-bar {
+  width: 3px;
+  border-radius: 2px;
+  background: var(--accent);
+  flex-shrink: 0;
+  align-self: stretch;
+  min-height: 40px;
+}
+
+.cb-label {
+  font-family: var(--serif);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.cb-text {
+  font-size: 15px;
+  color: rgba(247,243,235,0.65);
+  line-height: 1.8;
+}
+
+.cb-text strong {
+  color: var(--cream);
+  font-weight: 500;
+}
+
+/* -- PHASE CARDS -- */
+.phase-card {
+  background: var(--white);
+  border: 0.5px solid var(--border-md);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.phase-bar {
+  padding: 14px 26px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.phase-bar-1 { background: var(--navy-deep); }
+.phase-bar-2 { background: var(--navy); }
+.phase-bar-3 { background: var(--navy-mid); }
+
+.phase-num {
+  font-family: var(--serif);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(247,243,235,0.45);
+}
+
+.phase-duration {
+  font-family: var(--serif);
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(247,243,235,0.35);
+  letter-spacing: .06em;
+}
+
+.phase-body { padding: 28px 30px 32px; }
+
+.phase-title {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  margin-bottom: 12px;
+}
+
+.phase-value-prop {
+  font-size: 16px;
+  color: var(--muted-2);
+  line-height: 1.85;
+  margin-bottom: 22px;
+  font-style: italic;
+  padding-left: 14px;
+  border-left: 2px solid var(--cream-2);
+}
+
+.phase-deliverables-title {
+  font-family: var(--serif);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.deliverables { display: flex; flex-direction: column; gap: 12px; }
+
+.del {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--ink);
+  line-height: 1.55;
+}
+
+.del-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+.del-icon-1 { background: rgba(10,46,77,0.08); }
+.del-icon-2 { background: rgba(10,46,77,0.14); }
+.del-icon-3 { background: var(--navy-mid); }
+
+.del-icon svg { width: 10px; height: 10px; }
+
+/* -- PRICING -- */
+.pricing-card {
+  background: var(--white);
+  border: 0.5px solid var(--border-md);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.pricing-head {
+  padding: 26px 30px 22px;
+  border-bottom: 0.5px solid var(--border);
+}
+
+.pricing-tag {
+  font-family: var(--serif);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.tag-active { background: var(--navy); color: var(--cream); }
+.tag-next { background: var(--accent-light); color: var(--accent); }
+.tag-future { background: var(--cream-2); color: var(--muted-2); }
+
+.pricing-title {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  margin-bottom: 6px;
+}
+
+.pricing-desc {
+  font-size: 15px;
+  color: var(--muted-2);
+  line-height: 1.75;
+  max-width: 580px;
+}
+
+.pricing-lines { padding: 8px 30px 4px; }
+
+.pricing-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 0.5px solid var(--border);
+  font-size: 15px;
+}
+
+.pricing-line:last-child { border-bottom: none; }
+
+.pl-bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.pl-b1 { background: rgba(10,46,77,0.2); }
+.pl-b2 { background: rgba(10,46,77,0.45); }
+.pl-b3 { background: var(--navy); }
+
+.pl-content { flex: 1; }
+.pl-label { color: var(--ink); font-weight: 400; line-height: 1.5; }
+.pl-sub { font-size: 14px; color: var(--muted); margin-top: 4px; line-height: 1.6; }
+
+/* -- PRICE TOTAL BAR -- */
+.price-total {
+  background: var(--navy-deep);
+  padding: 20px 26px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pt-left {}
+.pt-label {
+  font-family: var(--serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(247,243,235,0.45);
+  margin-bottom: 4px;
+}
+
+.pt-terms { font-size: 11px; color: var(--muted); }
+
+.pt-value {
+  font-family: var(--mono);
+  font-size: 34px;
+  font-weight: 600;
+  color: var(--cream);
+  letter-spacing: -.02em;
+}
+
+/* -- RANGE CARD -- */
+.range-card {
+  background: var(--white);
+  border: 0.5px solid var(--border-md);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.range-body { padding: 26px 30px 30px; }
+
+.range-visual {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.range-pole {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 110px;
+}
+
+.range-pole-label {
+  font-family: var(--serif);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.range-pole-value {
+  font-family: var(--mono);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: -.02em;
+}
+
+.range-bar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 4px;
+}
+
+.range-track {
+  height: 6px;
+  background: var(--cream-2);
+  border-radius: 999px;
+  position: relative;
+  overflow: visible;
+}
+
+.range-fill {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(10,46,77,0.25), var(--navy));
+  border-radius: 999px;
+}
+
+.range-note {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 6px;
+  text-align: center;
+}
+
+.range-factors {
+  background: var(--bg);
+  border-radius: var(--r);
+  padding: 16px 18px;
+  margin-top: 4px;
+}
+
+.rf-title {
+  font-family: var(--serif);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.rf-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--muted-2);
+  padding: 8px 0;
+  border-top: 0.5px solid var(--border);
+  line-height: 1.65;
+}
+
+.rf-row:first-of-type { border-top: none; }
+
+.rf-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--muted);
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+/* -- OPEN PHASE -- */
+.open-card {
+  background: var(--cream);
+  border: 0.5px solid var(--border-md);
+  border-radius: var(--r-lg);
+  padding: 28px 30px;
+  margin-bottom: 12px;
+}
+
+.open-deliverables {
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.open-del {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--muted-2);
+  line-height: 1.65;
+}
+
+.open-del-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--border-strong);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+.tbd-bar {
+  border-top: 0.5px solid var(--border-md);
+  padding-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.tbd-label {
+  font-family: var(--serif);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.tbd-value {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* -- SUMMARY TABLE -- */
+.summary-card {
+  background: var(--navy-deep);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 26px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.06);
+}
+
+.summary-row:last-child { border-bottom: none; }
+
+.summary-row.total {
+  background: rgba(255,255,255,0.04);
+  padding: 18px 26px;
+}
+
+.sr-phase {
+  font-family: var(--serif);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(247,243,235,0.4);
+  min-width: 80px;
+}
+
+.sr-label {
+  flex: 1;
+  font-size: 15px;
+  color: rgba(247,243,235,0.65);
+  padding: 0 20px;
+}
+
+.sr-price {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--cream);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.summary-row.total .sr-phase { color: rgba(247,243,235,0.6); font-size: 13px; }
+.summary-row.total .sr-label { color: rgba(247,243,235,0.8); font-size: 14px; font-weight: 500; }
+.summary-row.total .sr-price { font-size: 22px; color: #fff; }
+
+/* -- CONDITIONS -- */
+.conditions {
+  background: var(--white);
+  border: 0.5px solid var(--border-md);
+  border-radius: var(--r-lg);
+  padding: 28px 30px;
+  margin-top: 10px;
+}
+
+.cond-title {
+  font-family: var(--serif);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.cond-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.cond-label {
+  font-family: var(--serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.cond-value {
+  font-size: 15px;
+  color: var(--muted-2);
+  line-height: 1.65;
+}
+
+/* -- DISCLAIMER -- */
+.disclaimer {
+  background: var(--accent-light);
+  border: 0.5px solid rgba(212,163,115,0.30);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--r) var(--r) 0;
+  padding: 20px 24px;
+  margin-top: 10px;
+  font-size: 15px;
+  color: #7A5A2A;
+  line-height: 1.75;
+}
+
+.disclaimer strong { font-weight: 500; color: #5A3A1A; }
+
+/* -- FOOTER -- */
+.footer {
+  background: var(--navy-deep);
+  padding: 28px 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 56px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.footer-contact {
+  font-size: 13px;
+  color: rgba(247,243,235,0.45);
+  line-height: 1.8;
+}
+
+.footer-contact a {
+  color: rgba(247,243,235,0.7);
+  text-decoration: none;
+}
+
+.footer-right { text-align: right; }
+
+.footer-logo { height: 24px; width: auto; opacity: 0.5; margin-bottom: 8px; display: block; margin-left: auto; }
+
+.footer-tagline {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: .05em;
+}
+
+@media (max-width: 640px) {
+  .header, .hero, .body, .footer { padding-left: 24px; padding-right: 24px; }
+  .hero-title { font-size: 38px; }
+  .hero-bg-text { display: none; }
+  .cond-grid { grid-template-columns: 1fr; }
+  .footer { flex-direction: column; gap: 24px; }
+  .range-pole { min-width: 80px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HEADER -->
+<div class="header">
+  <img src="/logo.svg" class="logo" alt="VELA">
+  <div class="header-right">
+    <div class="header-label">Proposal</div>
+    <div class="header-date">May 2025 &nbsp;·&nbsp; Valid 30 days</div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg-text">DATA</div>
+  <div class="hero-eyebrow">Boustan Corp. &nbsp;·&nbsp; Data Intelligence Mandate</div>
+  <div class="hero-title">
+    Building the<br>
+    <span class="dim">intelligence</span><br>
+    layer.
+  </div>
+  <div class="hero-desc">
+    A structured, three-phase approach to centralizing Boustan's data, building actionable dashboards, and connecting insights directly to operations, starting with a validated pilot before scaling across the network.
+  </div>
+  <div class="hero-pills">
+    <div class="pill">
+      <div class="pill-inner">
+        <span class="pill-value">3 Phases</span>
+        <span class="pill-label">Structured rollout</span>
+      </div>
+    </div>
+    <div class="pill">
+      <div class="pill-inner">
+        <span class="pill-value">5–10 Locations</span>
+        <span class="pill-label">Pilot scope</span>
+      </div>
+    </div>
+    <div class="pill">
+      <div class="pill-inner">
+        <span class="pill-value">All Sources</span>
+        <span class="pill-label">POS  ·  Delivery  ·  CRM  ·  Ads</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="body">
+
+  <!-- SECTION 01, CONTEXT -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">01 &nbsp;·&nbsp; The Opportunity</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="section-title">From data silos<br>to one source of truth.</div>
+    <div class="section-body">
+      Boustan operates across dozens of franchise locations, each generating valuable data through its POS, delivery platforms, and marketing channels. Today, that data lives in separate systems that don't talk to each other. The opportunity is to change that, and turn raw transaction data into a real-time intelligence layer that drives better decisions at every level of the organization.
+    </div>
+
+    <div class="context-box">
+      <div class="cb-bar"></div>
+      <div>
+        <div class="cb-label">Starting Point</div>
+        <div class="cb-text">
+          Internal groundwork has already identified the tools in play: <strong>MYR POS</strong> (current system, with AUPHAM migration planned for September), <strong>Uber Eats, DoorDash, U-Eat</strong> for delivery, <strong>HubSpot</strong> for CRM, and <strong>Google & Meta</strong> for paid media. The destination: <strong>Power BI</strong> as the central analytics layer, with automated task creation in <strong>Monday.com</strong> when the data signals action.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 02, EXECUTION PLAN -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">02 &nbsp;·&nbsp; Execution Plan</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="section-title">Three phases.<br>Built to scale.</div>
+
+    <!-- Phase 1 -->
+    <div class="phase-card">
+      <div class="phase-bar phase-bar-1">
+        <span class="phase-num">Phase 01 &nbsp;·&nbsp; Diagnostic & Architecture</span>
+        <span class="phase-duration">~ 3 weeks</span>
+      </div>
+      <div class="phase-body">
+        <div class="phase-title">Know Before You Build.</div>
+        <div class="phase-value-prop">
+          The most expensive mistake in a data project is building the wrong architecture. This phase eliminates that risk entirely, validating every connection, auditing every data source, and delivering a precise blueprint before a single line of production code is written.
+        </div>
+        <div class="phase-deliverables-title">What gets delivered</div>
+        <div class="deliverables">
+          <div class="del">
+            <div class="del-icon del-icon-1">
+              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#0C2B4E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span>Confirmed access map for every data source, API availability, export formats, contractual constraints with MYR and delivery platforms</span>
+          </div>
+          <div class="del">
+            <div class="del-icon del-icon-1">
+              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#0C2B4E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span>Data quality audit across pilot locations, consistency of items, categories, and identifiers between franchisees</span>
+          </div>
+          <div class="del">
+            <div class="del-icon del-icon-1">
+              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#0C2B4E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span>License inventory, Power BI, Power Automate, Monday.com, HubSpot, with gap analysis and recommendations</span>
+          </div>
+          <div class="del">
+            <div class="del-icon del-icon-1">
+              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#0C2B4E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span>Architecture blueprint, recommended data model, ETL configuration, and Power BI structure designed to be portable for the AUPHAM migration in September</span>
+          </div>
+          <div class="del">
+            <div class="del-icon del-icon-1">
+              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#0C2B4E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span>Refined implementation pricing for Phase 2, based on confirmed findings, not assumptions</span>
+          </div>
+          <div class="del">
+            <div class="del-icon del-icon-1">
+              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#0C2B4E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span>Executive presentation and live debrief session with full recommendations</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="phase-card">
+      <div class="phase-bar phase-bar-2">
+        <span class="phase-num">Phase 02 &nbsp;·&nbsp; Pilot Implementation (5–10 Locations)</span>
+        <span class="phase-duration">Timeline TBD after Phase 1</span>
+      </div>
+      <div class="phase-body">
+        <div class="phase-title">Build It Right. Prove It Works.</div>
+        <div class="phase-value-prop">
+          Rather than rolling out across 45 locations at once, the pilot approach lets us validate the full architecture on a controlled set of franchisees, catching edge cases early, proving the model works, and entering the full deployment with confidence instead of risk.
+        </div>
+        <div class="phase-deliverables-title">What gets delivered</div>
+        <div class="deliverables">
+          <div class="del">
+            <div class="del-icon del-icon-2">
+              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#0C2B4E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span>Automated data pipelines connecting all sources, MYR, Uber Eats, DoorDash, U-Eat, HubSpot, Google Ads and Meta, into a unified Power BI data model via Power Automate</span>
+          </div>
+          <div class="del">
+            <div class="del-icon del-icon-2">
+              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#0C2B4E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span>Power BI dashboards tailored to Boustan's operations, sales by location, delivery performance, marketing ROI, and cross-source trends</span>
+          </div>
+          <div class="del">
+            <div class="del-icon del-icon-2">
+              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#0C2B4E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span>Power BI → Monday.com automation: when data signals a situation requiring action, an underperforming location, a delivery spike, a threshold breach, a task is automatically created in Monday and assigned to the right person</span>
+          </div>
+          <div class="del">
+            <div class="del-icon del-icon-2">
+              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#0C2B4E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span>Architecture built for portability, designed from day one to migrate cleanly to AUPHAM in September with minimal rework</span>
+          </div>
+          <div class="del">
+            <div class="del-icon del-icon-2">
+              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#0C2B4E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span>Team training and full system documentation, so Boustan owns and understands the system, not just uses it</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="phase-card">
+      <div class="phase-bar phase-bar-3">
+        <span class="phase-num">Phase 03 &nbsp;·&nbsp; Full Network Deployment</span>
+        <span class="phase-duration">After pilot validation</span>
+      </div>
+      <div class="phase-body">
+        <div class="phase-title">Scale What Works.</div>
+        <div class="phase-value-prop">
+          Once the pilot proves the architecture and validates the approach, deploying to the remaining 35–40 locations becomes a repeatable process. The hard work, the architecture, the data models, the automation logic, is already done.
+        </div>
+        <div class="phase-deliverables-title">What gets delivered</div>
+        <div class="deliverables">
+          <div class="del">
+            <div class="del-icon del-icon-3">
+              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span>Full network onboarding, all remaining franchisees connected to the centralized data infrastructure</span>
+          </div>
+          <div class="del">
+            <div class="del-icon del-icon-3">
+              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span>AUPHAM migration support, transition of the data architecture to the new POS system if timing aligns</span>
+          </div>
+          <div class="del">
+            <div class="del-icon del-icon-3">
+              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span>Network-wide training and per-location onboarding documentation</span>
+          </div>
+          <div class="del">
+            <div class="del-icon del-icon-3">
+              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span>Precise per-location pricing established at the end of the pilot, based on real data, not projections</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 03, INVESTMENT -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">03 &nbsp;·&nbsp; Investment</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="section-title">Transparent pricing.<br>No surprises.</div>
+    <div class="section-body">
+      Phase 1 is priced as a fixed deliverable, you pay for a result, not a stopwatch. Phase 2 is presented as a range because some variables, data quality across locations, API access specifics, can only be confirmed through the diagnostic. The range reflects that reality honestly, with a buffer built in so that what's discovered doesn't become an unexpected bill.
+    </div>
+
+    <!-- Phase 1 pricing -->
+    <div class="pricing-card" style="margin-top:28px;">
+      <div class="pricing-head">
+        <span class="pricing-tag tag-active">Phase 01 &nbsp;·&nbsp; Fixed Price</span>
+        <div class="pricing-title">Diagnostic & Architecture</div>
+        <div class="pricing-desc">A complete picture of what's possible, what's connected, and exactly what to build, delivered in three weeks. This investment protects everything that comes after it.</div>
+      </div>
+      <div class="pricing-lines">
+        <div class="pricing-line">
+          <div class="pl-bullet pl-b1"></div>
+          <div class="pl-content">
+            <div class="pl-label">Access validation & technical assessment</div>
+            <div class="pl-sub">API availability per platform, license inventory, contractual constraints with MYR and delivery apps, blocking risks identified with immediate alternatives</div>
+          </div>
+        </div>
+        <div class="pricing-line">
+          <div class="pl-bullet pl-b2"></div>
+          <div class="pl-content">
+            <div class="pl-label">Data quality audit & governance design</div>
+            <div class="pl-sub">Cross-location data consistency, standardization gaps between franchisees, quick wins identified for immediate automation</div>
+          </div>
+        </div>
+        <div class="pricing-line">
+          <div class="pl-bullet pl-b3"></div>
+          <div class="pl-content">
+            <div class="pl-label">Architecture plan & executive presentation</div>
+            <div class="pl-sub">Final recommended architecture, Power BI data model design, refined Phase 2 pricing, live debrief session with full PDF deliverable</div>
+          </div>
+        </div>
+      </div>
+      <div class="price-total">
+        <div class="pt-left">
+          <div class="pt-label">Phase 01&nbsp;&nbsp;·&nbsp;&nbsp;Fixed Investment</div>
+          <div class="pt-terms">25% on signing &nbsp;·&nbsp; 75% on delivery</div>
+        </div>
+        <div class="pt-value">$7,500</div>
+      </div>
+    </div>
+
+    <!-- Phase 2 pricing range -->
+    <div class="range-card">
+      <div class="pricing-head" style="border-bottom: 0.5px solid var(--border);">
+        <span class="pricing-tag tag-next">Phase 02 &nbsp;·&nbsp; Estimated Range</span>
+        <div class="pricing-title">Pilot Implementation</div>
+        <div class="pricing-desc">Pricing is presented as a range because three variables, data quality across locations, API access specifics with delivery platforms, and the complexity of Monday.com automation flows, can only be confirmed through the Phase 1 diagnostic. The range is honest, and the buffer is built in on our end.</div>
+      </div>
+      <div class="range-body">
+        <div class="range-visual">
+          <div class="range-pole">
+            <div class="range-pole-label">Favorable</div>
+            <div class="range-pole-value">$18K</div>
+          </div>
+          <div class="range-bar">
+            <div class="range-track"><div class="range-fill"></div></div>
+            <div class="range-note">5–10 pilot locations  ·  all sources</div>
+          </div>
+          <div class="range-pole" style="align-items:flex-end;">
+            <div class="range-pole-label">Complex</div>
+            <div class="range-pole-value">$28K</div>
+          </div>
+        </div>
+
+        <div class="range-factors">
+          <div class="rf-title">What drives the range</div>
+          <div class="rf-row">
+            <div class="rf-dot"></div>
+            <span><strong style="color:var(--navy)">Data quality</strong>, If MYR data is inconsistent across locations (different item names, categories, or identifiers), additional normalization work is required before the data can be reliably centralized</span>
+          </div>
+          <div class="rf-row">
+            <div class="rf-dot"></div>
+            <span><strong style="color:var(--navy)">Delivery platform API access</strong>, If Uber Eats, DoorDash, or U-Eat require manual workarounds rather than direct API connections, additional extraction work is factored in</span>
+          </div>
+          <div class="rf-row">
+            <div class="rf-dot"></div>
+            <span><strong style="color:var(--navy)">Monday.com automation complexity</strong>, The number and sophistication of triggers defined (which data signals create which tasks, assigned to whom) will determine the depth of custom development required</span>
+          </div>
+          <div class="rf-row">
+            <div class="rf-dot"></div>
+            <span><strong style="color:var(--navy)">AUPHAM portability</strong>, Architecture is designed from day one to migrate cleanly to AUPHAM in September. This is built into the range regardless of scenario</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 3 open -->
+    <div class="open-card">
+      <span class="pricing-tag tag-future">Phase 03 &nbsp;·&nbsp; Established After Pilot</span>
+      <div class="pricing-title" style="margin-top:10px;">Full Network Deployment</div>
+      <div class="pricing-desc" style="margin-top:6px;">The pilot phase exists precisely to generate the data needed to price the full rollout accurately. At its conclusion, we will know the real cost per location, and be able to give a definitive number for deploying to the remaining 35–40 franchisees.</div>
+      <div class="open-deliverables">
+        <div class="open-del"><div class="open-del-dot"></div><span>Full network onboarding to the centralized data infrastructure</span></div>
+        <div class="open-del"><div class="open-del-dot"></div><span>AUPHAM migration support and architecture transition</span></div>
+        <div class="open-del"><div class="open-del-dot"></div><span>Network-wide training and per-location documentation</span></div>
+      </div>
+      <div class="tbd-bar">
+        <div class="tbd-label">Phase 03 Investment</div>
+        <div class="tbd-value">Established at end of pilot  ·  per-location pricing</div>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="summary-card">
+      <div class="summary-row">
+        <span class="sr-phase">Phase 01</span>
+        <span class="sr-label">Diagnostic, Architecture & Execution Plan</span>
+        <span class="sr-price">$7,500</span>
+      </div>
+      <div class="summary-row">
+        <span class="sr-phase">Phase 02</span>
+        <span class="sr-label">Pilot Implementation, 5 to 10 locations</span>
+        <span class="sr-price">$18K – $28K</span>
+      </div>
+      <div class="summary-row">
+        <span class="sr-phase">Phase 03</span>
+        <span class="sr-label">Full Network Deployment, 35–40 locations</span>
+        <span class="sr-price" style="color:var(--muted);font-size:13px;font-style:italic;">TBD after pilot</span>
+      </div>
+      <div class="summary-row total">
+        <span class="sr-phase">Phases 1–2</span>
+        <span class="sr-label">Complete pilot-ready system  ·  all sources connected</span>
+        <span class="sr-price">$25.5K – $35.5K</span>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      <strong>On pricing transparency:</strong> Phase 2 pricing is based on current assumptions that will be confirmed during the diagnostic. Any scope change identified during Phase 1 will be communicated and agreed upon before any implementation work begins. There are no surprises on our end, and we make sure there aren't any on yours either.
+    </div>
+  </div>
+
+  <!-- SECTION 04, CONDITIONS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">04 &nbsp;·&nbsp; Terms</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="conditions">
+      <div class="cond-title">Engagement Terms</div>
+      <div class="cond-grid">
+        <div>
+          <div class="cond-label">Payment, Phase 1</div>
+          <div class="cond-value">25% on signing  ·  75% on delivery of the final architecture plan</div>
+        </div>
+        <div>
+          <div class="cond-label">Payment, Phase 2</div>
+          <div class="cond-value">Terms confirmed at Phase 2 kickoff following diagnostic findings</div>
+        </div>
+        <div>
+          <div class="cond-label">Start Date</div>
+          <div class="cond-value">Available upon confirmation  ·  Phase 1 delivery within 3 weeks</div>
+        </div>
+        <div>
+          <div class="cond-label">Format</div>
+          <div class="cond-value">Remote  ·  Zoom meetings as needed  ·  PDF deliverable + live debrief</div>
+        </div>
+        <div>
+          <div class="cond-label">Revisions</div>
+          <div class="cond-value">One revision round included on the Phase 1 architecture plan</div>
+        </div>
+        <div>
+          <div class="cond-label">Validity</div>
+          <div class="cond-value">This proposal is valid for 30 days from the date above</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-contact">
+    Jean-François Dubé<br>
+    <a href="mailto:dube.jf@icloud.com">dube.jf@icloud.com</a><br>
+    438 499-1855
+  </div>
+  <div class="footer-right">
+    <img src="/logo.svg" class="footer-logo" alt="VELA">
+    <div class="footer-tagline">AI Strategy &amp; Data Consulting</div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
