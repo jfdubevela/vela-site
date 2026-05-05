@@ -36,7 +36,7 @@ export default function Home() {
           <Hero
             badge="Automatisation · Formation · Coaching"
             line1={['Votre', 'productivité', 'et', 'créativité']}
-            line2={['amplifiées', 'par', "l'intelligence", 'artificielle']}
+            line2={['amplifiées', 'par', "l'intelligence artificielle"]}
             subtitle="VELA accompagne les professionnels et les PME québécoises avec trois expertises complémentaires en intelligence artificielle."
             subtitleBold="Concrets, accessibles, et orientés résultats."
             primaryCtaLabel="Découvrir nos services"
