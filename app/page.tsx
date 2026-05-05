@@ -2,14 +2,14 @@ import type { Metadata } from 'next'
 import Nav from '@/components/Nav'
 
 export const metadata: Metadata = {
-  title: 'VELA | Automatisation, Formation et Coaching I.A. pour PME québécoises',
+  title: 'Vela | Intelligence artificielle pour professionnels et PME',
   description:
-    "VELA accompagne les PME québécoises avec trois expertises complémentaires en I.A. : automatisations sur mesure, formations pratiques et coaching individuel. Concrets, accessibles, orientés résultats.",
+    "VELA accompagne les professionnels et les PME québécoises avec trois expertises complémentaires en intelligence artificielle. Concrets, accessibles, et orientés résultats.",
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'VELA | Automatisation, Formation et Coaching I.A. pour PME québécoises',
+    title: 'Vela | Intelligence artificielle pour professionnels et PME',
     description:
-      "VELA accompagne les PME québécoises avec trois expertises complémentaires en I.A. : automatisations sur mesure, formations pratiques et coaching individuel.",
+      "VELA accompagne les professionnels et les PME québécoises avec trois expertises complémentaires en intelligence artificielle. Concrets, accessibles, et orientés résultats.",
     url: 'https://velavelavela.com',
     images: [{ url: '/og.jpg', width: 1200, height: 630, alt: 'VELA' }],
   },
@@ -35,9 +35,9 @@ export default function Home() {
         <div className="z-[1]">
           <Hero
             badge="Automatisation · Formation · Coaching"
-            line1={['Votre', 'entreprise,']}
-            line2={['amplifiée', 'par', "l'I.A."]}
-            subtitle="VELA accompagne les PME québécoises avec trois expertises complémentaires en intelligence artificielle."
+            line1={['Votre', 'productivité', 'et', 'créativité']}
+            line2={['amplifiées', 'par', "l'intelligence", 'artificielle']}
+            subtitle="VELA accompagne les professionnels et les PME québécoises avec trois expertises complémentaires en intelligence artificielle."
             subtitleBold="Concrets, accessibles, et orientés résultats."
             primaryCtaLabel="Découvrir nos services"
             primaryCtaTarget="#services"
