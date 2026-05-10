@@ -9,6 +9,7 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import SkillHero from '@/components/sections/SkillHero'
 import SkillExplication from '@/components/sections/SkillExplication'
+import type { InstallStep } from '@/components/sections/SkillExplication'
 import SkillForm from '@/components/ui/SkillForm'
 
 // ============================================================
@@ -53,10 +54,42 @@ const CONFIG = {
     '[Profil 3 — ex: Tu en as assez de rédiger le même message générique]',
   ],
 
-  // --- Aperçu ---
-  // Chemin vers /public/... — laisser undefined pour afficher le placeholder
-  apercuSrc: undefined as string | undefined,   // ex: '/skills/cold-email-apercu.gif'
-  apercuAlt: '[Description de l\'aperçu]',
+  // --- Installation Claude ---
+  claudeSteps: [
+    {
+      label: 'Ouvre Claude.ai et clique sur "Projects" dans le menu de gauche.',
+    },
+    {
+      label: 'Crée un nouveau projet ou ouvre un projet existant.',
+    },
+    {
+      label: 'Clique sur "Set instructions" (ou "Custom instructions").',
+      detail: 'C\'est ici que tu colles le contenu du skill.',
+    },
+    {
+      label: 'Colle le texte du skill reçu par courriel, puis sauvegarde.',
+    },
+    {
+      label: 'Lance une nouvelle conversation dans ce projet — le skill est actif.',
+    },
+  ],
+
+  // --- Installation ChatGPT ---
+  gptSteps: [
+    {
+      label: 'Ouvre ChatGPT et clique sur ton avatar en bas à gauche.',
+    },
+    {
+      label: 'Choisis "Customize ChatGPT" dans le menu.',
+    },
+    {
+      label: 'Dans le champ "What would you like ChatGPT to know...", colle le skill.',
+      detail: 'Ou crée un GPT personnalisé via "Explore GPTs" > "Create" pour un résultat plus propre.',
+    },
+    {
+      label: 'Clique sur "Save" et commence une nouvelle conversation.',
+    },
+  ],
 
   // --- Formulaire Loops ---
   nomSkill:      '[nom-du-skill]',              // valeur envoyée comme `source` à Loops
@@ -103,8 +136,8 @@ export default function SkillPage() {
           description={CONFIG.description}
           benefices={CONFIG.benefices}
           pourQui={CONFIG.pourQui}
-          apercuSrc={CONFIG.apercuSrc}
-          apercuAlt={CONFIG.apercuAlt}
+          claudeSteps={CONFIG.claudeSteps as InstallStep[]}
+          gptSteps={CONFIG.gptSteps as InstallStep[]}
         />
         <SkillForm
           nomSkill={CONFIG.nomSkill}
