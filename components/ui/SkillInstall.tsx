@@ -103,7 +103,7 @@ function GPTLogo() {
 
 export default function SkillInstall({ claudeSteps, gptSteps }: SkillInstallProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <PlatformBox platform="Claude" steps={claudeSteps} logo={<ClaudeLogo />} />
       <PlatformBox platform="ChatGPT" steps={gptSteps} logo={<GPTLogo />} />
     </div>
