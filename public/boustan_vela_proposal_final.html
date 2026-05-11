@@ -736,6 +736,115 @@ body {
 
 .disclaimer strong { font-weight: 500; color: #5A3A1A; }
 
+/* -- PHASE WEEKS -- */
+.phase-weeks {
+  margin: 0 0 28px;
+  border: 0.5px solid var(--border-md);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+
+.phase-week {
+  display: flex;
+  gap: 0;
+  align-items: stretch;
+  border-bottom: 0.5px solid var(--border);
+}
+
+.phase-week:last-child { border-bottom: none; }
+
+.pw-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  min-width: 72px;
+  padding: 16px 0 16px 18px;
+  border-right: 0.5px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  padding-top: 18px;
+}
+
+.pw-body { padding: 14px 18px 16px; flex: 1; }
+
+.pw-title {
+  font-family: var(--serif);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: 10px;
+}
+
+.pw-item {
+  font-size: 14px;
+  color: var(--muted-2);
+  line-height: 1.6;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 3px 0;
+}
+
+.pw-item-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+/* -- MONDAY EXAMPLES -- */
+.monday-examples {
+  background: var(--bg);
+  border-radius: var(--r);
+  padding: 16px 18px;
+  margin-top: 14px;
+}
+
+.monday-ex-title {
+  font-family: var(--serif);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.monday-ex-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--muted-2);
+  padding: 7px 0;
+  border-top: 0.5px solid var(--border);
+  line-height: 1.6;
+}
+
+.monday-ex-item:first-of-type { border-top: none; padding-top: 0; }
+
+.monday-ex-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background: rgba(10,46,77,0.08);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+.monday-ex-icon svg { width: 10px; height: 10px; }
+
 /* -- FOOTER -- */
 .footer {
   background: var(--navy-deep);
@@ -865,45 +974,83 @@ body {
       <div class="phase-body">
         <div class="phase-title">Know Before You Build.</div>
         <div class="phase-value-prop">
-          The most expensive mistake in a data project is building the wrong architecture. This phase eliminates that risk entirely, validating every connection, auditing every data source, and delivering a precise blueprint before a single line of production code is written.
+          The most expensive mistake in a data project is building the wrong architecture. This phase eliminates that risk entirely by mapping every connection, auditing every source, and delivering a precise blueprint before any implementation begins. Three focused weeks. One clear answer: here is exactly what to build, and here is what it will cost.
         </div>
-        <div class="phase-deliverables-title">What gets delivered</div>
+
+        <div class="phase-deliverables-title" style="margin-bottom:12px;">How the 3 weeks unfold</div>
+        <div class="phase-weeks">
+          <div class="phase-week">
+            <div class="pw-num">Week 1</div>
+            <div class="pw-body">
+              <div class="pw-title">Discovery &amp; Access</div>
+              <div class="pw-item"><div class="pw-item-dot"></div><span>Kickoff meeting with Boustan's operational, marketing, and tech stakeholders to align on priorities and success criteria</span></div>
+              <div class="pw-item"><div class="pw-item-dot"></div><span>Walkthrough of how each tool is currently used day-to-day: MYR, DoorDash, Uber Eats, U-Eat, HubSpot, Google Ads, Meta</span></div>
+              <div class="pw-item"><div class="pw-item-dot"></div><span>Access testing to each source: confirm what's actually available to pull from each platform</span></div>
+              <div class="pw-item"><div class="pw-item-dot"></div><span>Review of existing reports, dashboards, or spreadsheets the team currently relies on to understand what gaps need filling</span></div>
+              <div class="pw-item"><div class="pw-item-dot"></div><span>Initial review of the Monday.com workspace: current usage, board structure, and how it fits into daily operations</span></div>
+            </div>
+          </div>
+          <div class="phase-week">
+            <div class="pw-num">Week 2</div>
+            <div class="pw-body">
+              <div class="pw-title">Audit &amp; Mapping</div>
+              <div class="pw-item"><div class="pw-item-dot"></div><span>Hands-on review of actual data from the pilot locations: confirm what's clean, what's usable, and what's missing</span></div>
+              <div class="pw-item"><div class="pw-item-dot"></div><span>Identify which metrics are trackable today vs. which require additional setup across the 5–10 pilot sites</span></div>
+              <div class="pw-item"><div class="pw-item-dot"></div><span>License and subscription audit: what's currently active across Power BI, Power Automate, Monday.com, and HubSpot, what's underused, and what's missing</span></div>
+              <div class="pw-item"><div class="pw-item-dot"></div><span>Map the complete data flow: what moves from where to where, at what frequency, and in what format</span></div>
+              <div class="pw-item"><div class="pw-item-dot"></div><span>First draft of findings documented and shared for early alignment before the final presentation</span></div>
+            </div>
+          </div>
+          <div class="phase-week">
+            <div class="pw-num">Week 3</div>
+            <div class="pw-body">
+              <div class="pw-title">Blueprint &amp; Presentation</div>
+              <div class="pw-item"><div class="pw-item-dot"></div><span>Design of the final data architecture: what gets centralized, how it flows, and how Power BI is structured for Boustan's specific reporting needs</span></div>
+              <div class="pw-item"><div class="pw-item-dot"></div><span>Definition of the Monday.com integration strategy: which data signals trigger which actions, who gets notified, what boards get updated</span></div>
+              <div class="pw-item"><div class="pw-item-dot"></div><span>Confirmation that the architecture is portable to AUPHAM in September, with a documented transition path</span></div>
+              <div class="pw-item"><div class="pw-item-dot"></div><span>Preparation of refined Phase 2 scope and pricing, based on confirmed findings rather than assumptions</span></div>
+              <div class="pw-item"><div class="pw-item-dot"></div><span>Executive presentation delivered as a full PDF with live debrief session, covering all recommendations, risks identified, and the go-forward plan</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-deliverables-title">What leaves your hands at the end</div>
         <div class="deliverables">
           <div class="del">
             <div class="del-icon del-icon-1">
-              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#0C2B4E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#0A2E4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <span>Confirmed access map for every data source, API availability, export formats, contractual constraints with MYR and delivery platforms</span>
+            <span>Confirmed access map for every data source, with any restrictions or workarounds documented</span>
           </div>
           <div class="del">
             <div class="del-icon del-icon-1">
-              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#0C2B4E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#0A2E4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <span>Data quality audit across pilot locations, consistency of items, categories, and identifiers between franchisees</span>
+            <span>Data quality report for pilot locations, with a clear picture of what's ready to use today</span>
           </div>
           <div class="del">
             <div class="del-icon del-icon-1">
-              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#0C2B4E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#0A2E4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <span>License inventory, Power BI, Power Automate, Monday.com, HubSpot, with gap analysis and recommendations</span>
+            <span>License inventory with gap analysis and a concrete recommendation on what to add, remove, or adjust</span>
           </div>
           <div class="del">
             <div class="del-icon del-icon-1">
-              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#0C2B4E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#0A2E4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <span>Architecture blueprint, recommended data model, ETL configuration, and Power BI structure designed to be portable for the AUPHAM migration in September</span>
+            <span>Architecture blueprint, the exact data model, dashboard structure, and Monday.com integration strategy, built to migrate cleanly to AUPHAM in September</span>
           </div>
           <div class="del">
             <div class="del-icon del-icon-1">
-              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#0C2B4E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#0A2E4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <span>Refined implementation pricing for Phase 2, based on confirmed findings, not assumptions</span>
+            <span>Refined Phase 2 scope and fixed pricing, based on real findings, not assumptions</span>
           </div>
           <div class="del">
             <div class="del-icon del-icon-1">
-              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#0C2B4E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#0A2E4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <span>Executive presentation and live debrief session with full recommendations</span>
+            <span>Executive PDF deliverable and live debrief session with full Q&amp;A</span>
           </div>
         </div>
       </div>
@@ -936,9 +1083,36 @@ body {
           </div>
           <div class="del">
             <div class="del-icon del-icon-2">
-              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#0C2B4E" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg viewBox="0 0 10 10" fill="none"><path d="M2 5L4 7L8 3" stroke="#0A2E4D" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <span>Power BI → Monday.com automation: when data signals a situation requiring action, an underperforming location, a delivery spike, a threshold breach, a task is automatically created in Monday and assigned to the right person</span>
+            <span>Monday.com as the operations layer, surfacing Power BI data directly where your team already works, not as a passive report viewer but as an active command center</span>
+            <div class="monday-examples">
+              <div class="monday-ex-title">What Monday.com can do with the data</div>
+              <div class="monday-ex-item">
+                <div class="monday-ex-icon"><svg viewBox="0 0 10 10" fill="none"><rect x="1.5" y="2" width="7" height="5.5" rx="1" stroke="#0A2E4D" stroke-width="1"/><path d="M3.5 4.5h3M3.5 6h2" stroke="#0A2E4D" stroke-width=".8" stroke-linecap="round"/></svg></div>
+                <span><strong style="color:var(--navy)">Embedded Power BI reports</strong> — Live dashboards displayed directly inside a Monday board. Your ops team sees sales and delivery performance without ever leaving Monday.</span>
+              </div>
+              <div class="monday-ex-item">
+                <div class="monday-ex-icon"><svg viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="3.5" stroke="#0A2E4D" stroke-width="1"/><path d="M5 3.5V5l1 1" stroke="#0A2E4D" stroke-width=".9" stroke-linecap="round"/></svg></div>
+                <span><strong style="color:var(--navy)">Automated status updates</strong> — Each location's item in Monday switches automatically between green, yellow, and red based on real-time thresholds: sales vs. target, delivery rating, complaint volume.</span>
+              </div>
+              <div class="monday-ex-item">
+                <div class="monday-ex-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M5 1.5v2M5 6.5v2M1.5 5h2M6.5 5h2" stroke="#0A2E4D" stroke-width=".9" stroke-linecap="round"/><circle cx="5" cy="5" r="1.2" stroke="#0A2E4D" stroke-width=".9"/></svg></div>
+                <span><strong style="color:var(--navy)">Automatic task creation</strong> — When a signal appears in the data (sales below target for 3 consecutive days, a delivery spike, a rating drop), a task is created in Monday, assigned to the right person, with the relevant data already attached.</span>
+              </div>
+              <div class="monday-ex-item">
+                <div class="monday-ex-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 7L3.5 3.5L5 6L6.5 4.5L8 7" stroke="#0A2E4D" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <span><strong style="color:var(--navy)">Franchisee KPI scorecards</strong> — Each location has a Monday item that always shows its current week's numbers: revenue, order volume, delivery rating, marketing spend. One board, 45 locations, always up to date.</span>
+              </div>
+              <div class="monday-ex-item">
+                <div class="monday-ex-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 4.5h6M2 6.5h4" stroke="#0A2E4D" stroke-width=".9" stroke-linecap="round"/><rect x="1.5" y="2" width="7" height="6.5" rx="1" stroke="#0A2E4D" stroke-width=".9"/></svg></div>
+                <span><strong style="color:var(--navy)">Automated weekly digest</strong> — Every Monday morning, a summary update is posted automatically in the relevant Monday thread with key highlights for each region manager, pulled directly from Power BI.</span>
+              </div>
+              <div class="monday-ex-item">
+                <div class="monday-ex-icon"><svg viewBox="0 0 10 10" fill="none"><path d="M2 7.5L5 2.5L8 7.5H2Z" stroke="#0A2E4D" stroke-width=".9" stroke-linejoin="round"/><path d="M5 5.5v1" stroke="#0A2E4D" stroke-width=".9" stroke-linecap="round"/></svg></div>
+                <span><strong style="color:var(--navy)">Threshold alerts</strong> — When any metric crosses a predefined limit (e.g., ad spend with no corresponding sales lift, a location's volume suddenly halved), Monday sends a notification to the right stakeholder before anyone notices manually.</span>
+              </div>
+            </div>
           </div>
           <div class="del">
             <div class="del-icon del-icon-2">
@@ -1053,13 +1227,13 @@ body {
       <div class="pricing-head" style="border-bottom: 0.5px solid var(--border);">
         <span class="pricing-tag tag-next">Phase 02 &nbsp;·&nbsp; Estimated Range</span>
         <div class="pricing-title">Pilot Implementation</div>
-        <div class="pricing-desc">Pricing is presented as a range because three variables, data quality across locations, API access specifics with delivery platforms, and the complexity of Monday.com automation flows, can only be confirmed through the Phase 1 diagnostic. The range is honest, and the buffer is built in on our end.</div>
+        <div class="pricing-desc">Pricing is presented as a range because two variables, API access specifics with delivery platforms and the complexity of Monday.com automation flows, can only be confirmed through the Phase 1 diagnostic. Since all franchisees already send data in the same format, no normalization work is required, and that certainty is already reflected in this range. The buffer is built in on our end.</div>
       </div>
       <div class="range-body">
         <div class="range-visual">
           <div class="range-pole">
             <div class="range-pole-label">Favorable</div>
-            <div class="range-pole-value">$18K</div>
+            <div class="range-pole-value">$14K</div>
           </div>
           <div class="range-bar">
             <div class="range-track"><div class="range-fill"></div></div>
@@ -1067,7 +1241,7 @@ body {
           </div>
           <div class="range-pole" style="align-items:flex-end;">
             <div class="range-pole-label">Complex</div>
-            <div class="range-pole-value">$28K</div>
+            <div class="range-pole-value">$22K</div>
           </div>
         </div>
 
@@ -1075,19 +1249,19 @@ body {
           <div class="rf-title">What drives the range</div>
           <div class="rf-row">
             <div class="rf-dot"></div>
-            <span><strong style="color:var(--navy)">Data quality</strong>, If MYR data is inconsistent across locations (different item names, categories, or identifiers), additional normalization work is required before the data can be reliably centralized</span>
+            <span><strong style="color:var(--navy)">Delivery platform API access</strong> — If Uber Eats, DoorDash, or U-Eat require manual workarounds rather than direct API connections, additional extraction work is factored in</span>
           </div>
           <div class="rf-row">
             <div class="rf-dot"></div>
-            <span><strong style="color:var(--navy)">Delivery platform API access</strong>, If Uber Eats, DoorDash, or U-Eat require manual workarounds rather than direct API connections, additional extraction work is factored in</span>
+            <span><strong style="color:var(--navy)">Monday.com automation depth</strong> — The number of automated workflows defined: how many triggers, how many boards updated, how many notification flows, directly impacts build time. A lean starter setup vs. a fully wired command center are both within scope; the Phase 1 findings help define which makes more sense</span>
           </div>
           <div class="rf-row">
             <div class="rf-dot"></div>
-            <span><strong style="color:var(--navy)">Monday.com automation complexity</strong>, The number and sophistication of triggers defined (which data signals create which tasks, assigned to whom) will determine the depth of custom development required</span>
+            <span><strong style="color:var(--navy)">Number of Power BI dashboards</strong> — A focused set of 3–4 core reports vs. a richer suite covering sales, delivery, marketing, and location scorecards separately represents a meaningful build-time difference</span>
           </div>
           <div class="rf-row">
             <div class="rf-dot"></div>
-            <span><strong style="color:var(--navy)">AUPHAM portability</strong>, Architecture is designed from day one to migrate cleanly to AUPHAM in September. This is built into the range regardless of scenario</span>
+            <span><strong style="color:var(--navy)">AUPHAM portability</strong> — Architecture is designed from day one to migrate cleanly to AUPHAM in September. This is built into the range regardless of scenario, with no additional cost</span>
           </div>
         </div>
       </div>
@@ -1119,7 +1293,7 @@ body {
       <div class="summary-row">
         <span class="sr-phase">Phase 02</span>
         <span class="sr-label">Pilot Implementation, 5 to 10 locations</span>
-        <span class="sr-price">$18K – $28K</span>
+        <span class="sr-price">$14K – $22K</span>
       </div>
       <div class="summary-row">
         <span class="sr-phase">Phase 03</span>
@@ -1129,7 +1303,7 @@ body {
       <div class="summary-row total">
         <span class="sr-phase">Phases 1–2</span>
         <span class="sr-label">Complete pilot-ready system  ·  all sources connected</span>
-        <span class="sr-price">$25.5K – $35.5K</span>
+        <span class="sr-price">$21.5K – $29.5K</span>
       </div>
     </div>
 
