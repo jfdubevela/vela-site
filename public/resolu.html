@@ -1200,6 +1200,7 @@
   <div class="tab-nav-links">
     <button class="tab-btn active" onclick="switchTab('brief')">Brief de marque</button>
     <button class="tab-btn" onclick="switchTab('plan')">Plan de travail</button>
+    <button class="tab-btn" onclick="switchTab('design')">Design System</button>
   </div>
 </nav>
 
@@ -2120,6 +2121,1619 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 </script>
+
+<style>
+/* ─────────────────────────────────────────────────────────────
+   résolu conseil — Design Tokens
+   Color + typography foundations
+   ───────────────────────────────────────────────────────────── */
+
+/* Fonts (all local, no Google Fonts request):
+   - DM Sans (variable, opsz + wght axes) → identity, UI, body
+   - Lora    (variable, wght axis)        → editorial voice, quotes
+*/
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("/fonts/DMSans-VariableFont_opsz,wght.ttf") format("truetype-variations"),
+       url("/fonts/DMSans-VariableFont_opsz,wght.ttf") format("truetype");
+  font-weight: 100 1000;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("/fonts/DMSans-Italic-VariableFont_opsz,wght.ttf") format("truetype-variations"),
+       url("/fonts/DMSans-Italic-VariableFont_opsz,wght.ttf") format("truetype");
+  font-weight: 100 1000;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lora";
+  src: url("/fonts/Lora-VariableFont_wght.ttf") format("truetype-variations"),
+       url("/fonts/Lora-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 1000;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lora";
+  src: url("/fonts/Lora-Italic-VariableFont_wght.ttf") format("truetype-variations"),
+       url("/fonts/Lora-Italic-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 1000;
+  font-style: italic;
+  font-display: swap;
+}
+
+#tab-design {
+
+  /* ─── PALETTE: BRONZE (default — existing identity) ─────── */
+  --bronze-700:     #A0732A;   /* primary bronze — accent only */
+  --bronze-500:     #B8893A;   /* light bronze — hover/secondary accent */
+  --bronze-100:     #EDE0CC;   /* pale bronze — subtle fills, focus rings */
+  --cream:          #FAF7F3;   /* default background */
+  --sand:           #E2DDD8;   /* surface, dividers on cream */
+  --charcoal:       #1C2B3A;   /* dark inversions, principle boxes */
+  --gray-500:       #6B6560;   /* secondary text */
+  --gray-300:       #9A928C;   /* tertiary text, captions */
+  --ink:            #14181C;   /* primary text on light */
+  --white:          #FFFFFF;
+
+  /* ─── SEMANTIC ROLES (light mode only) ──────────────────── */
+  --bg:             var(--cream);
+  --bg-elevated:    var(--white);
+  --bg-inverse:     var(--charcoal);
+  --bg-subtle:      var(--sand);
+  --bg-accent-soft: var(--bronze-100);
+
+  --surface:        var(--white);
+  --surface-muted:  var(--sand);
+  --surface-dark:   var(--charcoal);
+
+  --text-primary:   var(--ink);
+  --text-secondary: var(--gray-500);
+  --text-tertiary:  var(--gray-300);
+  --text-accent:    var(--bronze-700);
+  --text-on-dark:   var(--cream);
+  --text-on-accent: var(--cream);
+
+  --border:         #D9D2CA;        /* hairline on cream */
+  --border-strong:  #B8B0A7;        /* visible border */
+  --border-dark:    #2A3B4D;        /* border on charcoal */
+  --border-accent:  var(--bronze-700);
+
+  /* ─── STATES ─────────────────────────────────────────────── */
+  --accent:           var(--bronze-700);
+  --accent-hover:     #8C6324;   /* bronze darkened ~6% */
+  --accent-active:    #785423;   /* deeper still */
+  --accent-disabled:  #D6C9B3;   /* desaturated bronze */
+  --focus-ring:       rgba(160, 115, 42, 0.32);   /* bronze @ 32% */
+  --focus-ring-strong:rgba(160, 115, 42, 0.6);
+
+  --danger:           #8C2D1F;   /* oxblood — aligns with editorial palette */
+  --danger-hover:     #71241A;
+  --danger-soft:      #F4E1DD;
+
+  /* ─── TYPOGRAPHY ─────────────────────────────────────────── */
+  --font-sans:   "DM Sans", "Helvetica Neue", Helvetica, sans-serif;
+  --font-serif:  "Lora", "Lora", Georgia, serif;
+
+  /* type scale — desktop. clamp() at consumer side if needed */
+  --fs-display:  72px;   /* hero — sparingly */
+  --fs-h1:       52px;
+  --fs-h2:       38px;
+  --fs-h3:       26px;
+  --fs-h4:       20px;
+  --fs-body-lg:  19px;
+  --fs-body:     16px;
+  --fs-caption:  14px;
+  --fs-label:    12px;
+  --fs-overline: 10px;
+
+  /* line heights — generous, editorial */
+  --lh-display: 1.05;
+  --lh-h1:      1.08;
+  --lh-h2:      1.15;
+  --lh-h3:      1.25;
+  --lh-h4:      1.35;
+  --lh-body-lg: 1.6;
+  --lh-body:    1.6;
+  --lh-tight:   1.3;
+
+  /* tracking */
+  --tr-display:  -0.02em;
+  --tr-h1:       -0.018em;
+  --tr-h2:       -0.014em;
+  --tr-h3:       -0.008em;
+  --tr-h4:       -0.004em;
+  --tr-body:      0;
+  --tr-label:     0.12em;     /* 12px label */
+  --tr-overline:  0.2em;      /* 10px overline */
+
+  /* weights — restraint is the rule */
+  --fw-light:   300;          /* default for headings + body */
+  --fw-regular: 400;
+  --fw-medium:  500;          /* used VERY sparingly for UI emphasis */
+
+  /* ─── SPACING (4-px base) ─────────────────────────────────── */
+  --space-0:   0;
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* gutters — house rule: tight 2px grid gutters between cells,
+     generous outer padding inside each cell */
+  --grid-gutter: 2px;
+  --grid-max-w:  1280px;
+  --grid-cols-desktop: 12;
+  --grid-cols-mobile:  4;
+  --container-pad-desktop: 48px;
+  --container-pad-mobile:  20px;
+
+  /* ─── RADII — restrained, almost-square ─────────────────── */
+  --radius-none: 0;
+  --radius-sm:   2px;
+  --radius-md:   4px;
+  --radius-lg:   6px;
+  --radius-pill: 999px;
+
+  /* ─── BORDERS ─────────────────────────────────────────────── */
+  --bw-hairline: 1px;
+  --bw-strong:   2px;
+
+  /* ─── SHADOWS — almost none. flatness is the brand ──────── */
+  --shadow-none:  none;
+  --shadow-card:  0 1px 0 rgba(28, 43, 58, 0.04), 0 0 0 1px var(--border);
+  --shadow-pop:   0 12px 32px -16px rgba(28, 43, 58, 0.16);
+  --shadow-focus: 0 0 0 3px var(--focus-ring);
+
+  /* ─── MOTION ─────────────────────────────────────────────── */
+  --ease-out:  cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-in:   cubic-bezier(0.6, 0, 0.7, 0.2);
+  --dur-fast:  120ms;
+  --dur-base:  200ms;
+  --dur-slow:  360ms;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   SEMANTIC ELEMENT STYLES
+   Apply via class names — kept off the bare tags so consumers
+   can opt in.
+   ───────────────────────────────────────────────────────────── */
+
+#tab-design .rc-body, #tab-design body.rc {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-serif);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  letter-spacing: var(--tr-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#tab-design .rc-display {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-light);
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tr-display);
+  color: var(--text-primary);
+}
+
+#tab-design .rc-h1 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-light);
+  font-size: var(--fs-h1);
+  line-height: var(--lh-h1);
+  letter-spacing: var(--tr-h1);
+}
+
+#tab-design .rc-h2 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-light);
+  font-size: var(--fs-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: var(--tr-h2);
+}
+
+#tab-design .rc-h3 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-light);
+  font-size: var(--fs-h3);
+  line-height: var(--lh-h3);
+  letter-spacing: var(--tr-h3);
+}
+
+#tab-design .rc-h4 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-h4);
+  line-height: var(--lh-h4);
+  letter-spacing: var(--tr-h4);
+}
+
+#tab-design .rc-body-lg {
+  font-family: var(--font-serif);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-body-lg);
+}
+
+#tab-design .rc-body { font-size: var(--fs-body); line-height: var(--lh-body); font-family: var(--font-serif); font-weight: var(--fw-regular); }
+
+#tab-design .rc-caption {
+  font-size: var(--fs-caption);
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+#tab-design .rc-label {
+  font-size: var(--fs-label);
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  font-weight: var(--fw-regular);
+  color: var(--text-secondary);
+}
+
+#tab-design .rc-overline {
+  font-size: var(--fs-overline);
+  letter-spacing: var(--tr-overline);
+  text-transform: uppercase;
+  font-weight: var(--fw-regular);
+  color: var(--text-accent);
+}
+
+#tab-design .rc-editorial, #tab-design .rc-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: var(--fw-regular);
+  line-height: 1.45;
+  letter-spacing: 0.005em;
+  color: var(--text-primary);
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   ALTERNATE PALETTES
+   Apply by adding a class to <body> or any subtree.
+   ───────────────────────────────────────────────────────────── */
+
+/* Palette 2 — ARDOISE
+   Quebec stone & winter light. Slate primary, oxidized-copper
+   accent. Cooler, more analytic. */
+#tab-design .palette-ardoise {
+  --bronze-700:     #7E4A2E;     /* (alias kept for compatibility) */
+  --accent:         #7E4A2E;     /* dark copper / patina-edge */
+  --accent-hover:   #6A3D24;
+  --accent-active:  #57311C;
+  --accent-disabled:#D4C2B5;
+
+  --cream:          #F1EFEC;     /* cool ivory */
+  --sand:           #DBD7D2;
+  --charcoal:       #1A222B;     /* deep slate */
+  --gray-500:       #5E6770;     /* slate gray */
+  --gray-300:       #9099A1;
+  --ink:            #121821;
+  --bronze-100:     #E5DDD2;     /* pale stone — replaces pale bronze role */
+
+  --bg:             var(--cream);
+  --bg-inverse:     var(--charcoal);
+  --text-accent:    var(--accent);
+  --border:         #CCC8C1;
+  --border-strong:  #A7A29A;
+  --focus-ring:     rgba(126, 74, 46, 0.32);
+}
+
+/* Palette 3 — ENCRE
+   Newsprint and ink. Deep navy + carmine — the press-room
+   palette. Highest editorial gravity. */
+#tab-design .palette-encre {
+  --bronze-700:     #A93220;     /* (alias kept for compatibility) */
+  --accent:         #A93220;     /* carmine — used like a redline */
+  --accent-hover:   #8E2719;
+  --accent-active:  #761F14;
+  --accent-disabled:#E6C7C0;
+
+  --cream:          #F4EFE6;     /* paper */
+  --sand:           #E2DACA;
+  --charcoal:       #0F1B2A;     /* deep navy ink */
+  --gray-500:       #5C5B57;
+  --gray-300:       #8E8C86;
+  --ink:            #0E1620;
+  --bronze-100:     #F1DAD2;     /* pale carmine wash */
+
+  --bg:             var(--cream);
+  --bg-inverse:     var(--charcoal);
+  --text-accent:    var(--accent);
+  --border:         #D6CEBE;
+  --border-strong:  #A89E8A;
+  --focus-ring:     rgba(169, 50, 32, 0.28);
+}
+
+
+  #tab-design *, #tab-design *::before, #tab-design *::after { box-sizing: border-box; }
+  #tab-design, #tab-design { margin: 0; padding: 0; background: #1a1f25; }
+  #tab-design {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  #tab-design .slide {
+    width: 1920px;
+    height: 1080px;
+    background: var(--bg);
+    position: relative;
+    padding: 80px 96px;
+    overflow: hidden;
+    margin: 24px auto;
+    break-before: page;
+  }
+  #tab-design .slide:first-of-type { margin-top: 0; }
+  #tab-design .slide-head { margin-bottom: 56px; }
+  #tab-design .slide-head .overline {
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bronze-700);
+    font-weight: 400;
+  }
+  #tab-design .slide-title {
+    font-size: 72px;
+    line-height: 1.05;
+    letter-spacing: -0.018em;
+    font-weight: 300;
+    margin: 18px 0 0;
+    color: var(--text-primary);
+    max-width: 22ch;
+  }
+  #tab-design .slide-body {
+    display: flex;
+    gap: 64px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  #tab-design .dsx-card-wrap { display: flex; flex-direction: column; gap: 16px; }
+  #tab-design .dsx-card-title { font-size: 18px; color: var(--gray-500); letter-spacing: -0.005em; }
+  #tab-design .dsx-card-frame {
+    width: 700px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  #tab-design .dsx-card-frame > .card { width: 700px; }
+  #tab-design .slide::after {
+    content: attr(data-num);
+    position: absolute;
+    bottom: 48px;
+    right: 96px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 14px;
+    color: var(--gray-300);
+    letter-spacing: 0.1em;
+  }
+  #tab-design .slide-cover::after { content: ""; }
+  #tab-design .slide-cover {
+    background: var(--charcoal);
+    color: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+  }
+  #tab-design .cover-inner { text-align: center; max-width: 1400px; padding: 0 96px; }
+  #tab-design .cover-overline {
+    font-size: 16px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bronze-500);
+    font-weight: 400;
+    margin-bottom: 64px;
+  }
+  #tab-design .cover-title {
+    font-size: 280px;
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    margin: 0;
+    color: var(--cream);
+  }
+  #tab-design .cover-title-sm {
+    font-size: 96px; font-weight: 300; letter-spacing: -0.02em; line-height: 1.05;
+    margin: 0 0 24px; color: var(--cream);
+  }
+  #tab-design .cover-dot { color: var(--bronze-500); }
+  #tab-design .cover-tag {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 36px;
+    line-height: 1.4;
+    color: #C8CFD7;
+    margin: 56px 0 0;
+  }
+  #tab-design .cover-meta { margin-top: 64px; font-size: 16px; color: #9AA8B8; letter-spacing: 0.04em; }
+  #tab-design .slide-identity { background: var(--cream); }
+  #tab-design .identity-grid {
+    display: grid; grid-template-columns: 1fr 1.6fr 1.4fr; gap: 64px; margin-top: 32px;
+  }
+  #tab-design .ib-lbl {
+    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--bronze-700); margin-bottom: 18px;
+  }
+  #tab-design .ib-list { font-size: 32px; line-height: 1.4; font-weight: 300; color: var(--text-primary); }
+  #tab-design .ib-list span { display: inline-block; margin-right: 8px; }
+  #tab-design .ib-quote {
+    font-family: var(--font-serif); font-style: italic; font-size: 28px;
+    line-height: 1.45; color: var(--text-primary);
+  }
+  #tab-design .ib-rules {
+    list-style: none; padding: 0; margin: 0;
+    font-family: var(--font-serif); font-weight: 400;
+    font-size: 19px; line-height: 1.7; color: var(--text-primary);
+  }
+  #tab-design .ib-rules li { padding-left: 24px; position: relative; }
+  #tab-design .ib-rules li::before { content: "—"; position: absolute; left: 0; color: var(--bronze-700); }
+
+</style>
+
+<!-- TAB: DESIGN SYSTEM -->
+<div id="tab-design" class="tab-content">
+
+
+<section class="slide slide-cover" data-screen-label="Cover">
+  <div class="cover-inner">
+    <div class="cover-overline">Design System · v1.1 · mai 2026</div>
+    <h1 class="cover-title">résolu<span class="cover-dot">.</span></h1>
+    <p class="cover-tag">Transforme les enjeux en opportunités.</p>
+    <div class="cover-meta">Cabinet de conseil stratégique en communication d'enjeux · Montréal</div>
+  </div>
+</section>
+
+<section class="slide slide-identity" data-screen-label="Identity">
+  <div class="slide-head">
+    <div class="overline">Identité</div>
+    <h2 class="slide-title">Une voix posée. Jamais alarmiste.</h2>
+  </div>
+  <div class="identity-grid">
+    <div class="identity-block">
+      <div class="ib-lbl">Personnalité</div>
+      <div class="ib-list">
+        <span>Stratégique</span><span>·</span>
+        <span>Lucide</span><span>·</span>
+        <span>Calme</span><span>·</span>
+        <span>Direct</span><span>·</span>
+        <span>Accessible</span>
+      </div>
+    </div>
+    <div class="identity-block">
+      <div class="ib-lbl">Inspiration</div>
+      <div class="ib-quote">Moins McKinsey, plus cabinet d'auteur. Journalisme de qualité, édition institutionnelle québécoise.</div>
+    </div>
+    <div class="identity-block">
+      <div class="ib-lbl">Règles invariantes</div>
+      <ul class="ib-rules">
+        <li>« résolu » toujours en minuscules</li>
+        <li>Vouvoiement systématique, « nous » côté cabinet</li>
+        <li>Sans pour l'UI, sérif pour le corps de texte</li>
+        <li>Bronze comme accent — jamais en fond plein</li>
+        <li>Fond crème par défaut, blanc pour surfaces</li>
+        <li>Hiérarchie par taille et couleur, jamais par bold</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-num="03 / 33" data-screen-label="Le wordmark">
+  <div class="slide-head">
+    <div class="overline">Logo</div>
+    <h2 class="slide-title">Le wordmark</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">Logo · système</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">logo · système</div>
+
+  <!-- Primary wordmark -->
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2px; margin-top:14px;">
+    <div style="background:var(--white); border:1px solid var(--border); padding:28px 24px; display:flex; flex-direction:column; gap:14px;">
+      <div class="meta" style="color:var(--gray-500); text-transform:uppercase; letter-spacing:0.1em; font-size:10px;">primary · light</div>
+      <div class="wm" style="font-size:48px;">résolu<span class="dot">.</span></div>
+    </div>
+    <div style="background:var(--charcoal); padding:28px 24px; display:flex; flex-direction:column; gap:14px;">
+      <div class="meta" style="color:var(--gray-300); text-transform:uppercase; letter-spacing:0.1em; font-size:10px;">primary · on dark</div>
+      <div class="wm wm-on-dark" style="font-size:48px;">résolu<span class="dot">.</span></div>
+    </div>
+  </div>
+
+  <!-- Full lockup with conseil -->
+  <div style="margin-top:2px; background:var(--white); border:1px solid var(--border); padding:24px 28px;">
+    <div class="meta" style="color:var(--gray-500); text-transform:uppercase; letter-spacing:0.1em; font-size:10px; margin-bottom:12px;">full lockup · cabinet — montréal</div>
+    <div style="display:flex; align-items:flex-end; gap:18px;">
+      <div class="wm" style="font-size:48px;">résolu<span class="dot">.</span></div>
+      <div style="width:1px; height:34px; background:var(--border); margin-bottom:4px;"></div>
+      <div style="display:flex; flex-direction:column; gap:2px; padding-bottom:4px;">
+        <div style="font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--bronze-700);">cabinet — montréal</div>
+        <div style="font-size:14px; letter-spacing:0.04em; text-transform:uppercase; color:var(--gray-500); font-weight:300;">conseil</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Compact marks -->
+  <div style="margin-top:2px; display:grid; grid-template-columns: 1fr 1fr; gap:2px;">
+    <div style="background:var(--white); border:1px solid var(--border); padding:18px 20px; display:flex; align-items:center; gap:20px;">
+      <div style="width:48px; height:48px; background:var(--cream); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; position:relative;">
+        <div class="wm" style="font-size:34px; letter-spacing:-0.04em;">r</div>
+        <div style="position:absolute; bottom:14px; right:10px; width:7px; height:7px; border-radius:99px; background:var(--bronze-700);"></div>
+      </div>
+      <div>
+        <div class="meta" style="color:var(--gray-500); text-transform:uppercase; letter-spacing:0.1em; font-size:10px;">compact mark</div>
+        <div style="font-size:12px; color:var(--gray-500); margin-top:4px;">favicon, avatar, square use</div>
+      </div>
+    </div>
+    <div style="background:var(--charcoal); padding:18px 20px; display:flex; align-items:center; gap:20px;">
+      <div style="width:48px; height:48px; background:#13202E; display:flex; align-items:center; justify-content:center; position:relative;">
+        <div class="wm wm-on-dark" style="font-size:34px; letter-spacing:-0.04em;">r</div>
+        <div style="position:absolute; bottom:14px; right:10px; width:7px; height:7px; border-radius:99px; background:var(--bronze-500);"></div>
+      </div>
+      <div>
+        <div class="meta" style="color:var(--gray-300); text-transform:uppercase; letter-spacing:0.1em; font-size:10px;">compact · on dark</div>
+        <div style="font-size:12px; color:#9AA8B8; margin-top:4px;">app icon, dark cover</div>
+      </div>
+    </div>
+  </div>
+  <div class="meta" style="margin-top:14px;">fichiers SVG dans assets/ : wordmark · wordmark-on-dark · lockup-cabinet · mark · mark-on-dark</div>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="04 / 33" data-screen-label="Règles d'application">
+  <div class="slide-head">
+    <div class="overline">Logo</div>
+    <h2 class="slide-title">Règles d'application</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">Logo · règles</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">logo · règles d'application</div>
+
+  <!-- Clear space -->
+  <div style="margin-top:16px; background:var(--white); border:1px solid var(--border); padding:18px 24px;">
+    <div class="meta" style="color:var(--gray-500); text-transform:uppercase; letter-spacing:0.1em; font-size:10px; margin-bottom:10px;">clear space · 0.5x la hauteur de "o"</div>
+    <div style="position:relative; display:inline-block; padding:24px 24px;">
+      <!-- guides -->
+      <div style="position:absolute; inset:0; border:1px dashed var(--bronze-100);"></div>
+      <div class="wm" style="font-size:48px;">résolu<span class="dot">.</span></div>
+    </div>
+  </div>
+
+  <!-- Min sizes -->
+  <div style="margin-top:2px; background:var(--white); border:1px solid var(--border); padding:18px 24px;">
+    <div class="meta" style="color:var(--gray-500); text-transform:uppercase; letter-spacing:0.1em; font-size:10px; margin-bottom:14px;">taille minimum</div>
+    <div style="display:flex; align-items:flex-end; gap:32px;">
+      <div style="text-align:center;">
+        <div class="wm" style="font-size:28px;">résolu<span class="dot">.</span></div>
+        <div class="meta" style="margin-top:8px;">80px web · 20mm print</div>
+        <div style="font-size:10px; color:#2F5D43; margin-top:2px;">✓ minimum recommandé</div>
+      </div>
+      <div style="text-align:center; opacity:.5;">
+        <div class="wm" style="font-size:14px;">résolu<span class="dot">.</span></div>
+        <div class="meta" style="margin-top:8px;">trop petit</div>
+        <div style="font-size:10px; color:var(--danger); margin-top:2px;">✗ utiliser la mark "r."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Don'ts -->
+  <div style="margin-top:2px; display:grid; grid-template-columns: 1fr 1fr 1fr; gap:2px;">
+    <div style="background:var(--white); border:1px solid var(--border); padding:16px; min-height:120px;">
+      <div style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--danger); margin-bottom:10px;">✗ ne pas tordre</div>
+      <div class="wm" style="font-size:30px; transform:scaleY(1.4); transform-origin:left top;">résolu<span class="dot">.</span></div>
+    </div>
+    <div style="background:var(--white); border:1px solid var(--border); padding:16px; min-height:120px;">
+      <div style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--danger); margin-bottom:10px;">✗ pas d'effets</div>
+      <div class="wm" style="font-size:28px; text-shadow:0 2px 8px rgba(160,115,42,0.5);">résolu<span class="dot">.</span></div>
+    </div>
+    <div style="background:var(--bronze-700); padding:16px; min-height:120px;">
+      <div style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--cream); margin-bottom:10px;">✗ pas sur bronze plein</div>
+      <div class="wm" style="font-size:28px; color:var(--cream);">résolu<span class="dot" style="color:var(--cream);">.</span></div>
+    </div>
+  </div>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="05 / 33" data-screen-label="Palette bronze">
+  <div class="slide-head">
+    <div class="overline">Couleurs</div>
+    <h2 class="slide-title">Palette bronze</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">Palette bronze</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">palette · bronze (default)</div>
+  <div style="margin-top:18px; display:grid; grid-template-columns: repeat(4, 1fr); gap:2px;">
+    
+      <div style="background:#A0732A; padding:14px 12px; min-height:84px; color:#FAF7F3;">
+        <div style="font-size:11px; opacity:.85;">Bronze 700</div>
+        <div style="font-size:11px; font-family:ui-monospace,Menlo,monospace; margin-top:2px; opacity:.85;">#A0732A</div>
+        <div style="font-size:10px; margin-top:18px; opacity:.7; font-style:italic; font-family:var(--font-serif);">primary accent</div>
+      </div>
+      <div style="background:#B8893A; padding:14px 12px; min-height:84px; color:#FAF7F3;">
+        <div style="font-size:11px; opacity:.85;">Bronze 500</div>
+        <div style="font-size:11px; font-family:ui-monospace,Menlo,monospace; margin-top:2px; opacity:.85;">#B8893A</div>
+        <div style="font-size:10px; margin-top:18px; opacity:.7; font-style:italic; font-family:var(--font-serif);">hover / lighter accent</div>
+      </div>
+      <div style="background:#EDE0CC; padding:14px 12px; min-height:84px; color:#14181C;">
+        <div style="font-size:11px; opacity:.85;">Bronze 100</div>
+        <div style="font-size:11px; font-family:ui-monospace,Menlo,monospace; margin-top:2px; opacity:.85;">#EDE0CC</div>
+        <div style="font-size:10px; margin-top:18px; opacity:.7; font-style:italic; font-family:var(--font-serif);">soft fills, focus</div>
+      </div>
+      <div style="background:#FAF7F3; padding:14px 12px; min-height:84px; color:#14181C;">
+        <div style="font-size:11px; opacity:.85;">Cream</div>
+        <div style="font-size:11px; font-family:ui-monospace,Menlo,monospace; margin-top:2px; opacity:.85;">#FAF7F3</div>
+        <div style="font-size:10px; margin-top:18px; opacity:.7; font-style:italic; font-family:var(--font-serif);">default background</div>
+      </div>
+      <div style="background:#E2DDD8; padding:14px 12px; min-height:84px; color:#14181C;">
+        <div style="font-size:11px; opacity:.85;">Sand</div>
+        <div style="font-size:11px; font-family:ui-monospace,Menlo,monospace; margin-top:2px; opacity:.85;">#E2DDD8</div>
+        <div style="font-size:10px; margin-top:18px; opacity:.7; font-style:italic; font-family:var(--font-serif);">surface, dividers</div>
+      </div>
+      <div style="background:#1C2B3A; padding:14px 12px; min-height:84px; color:#FAF7F3;">
+        <div style="font-size:11px; opacity:.85;">Charcoal</div>
+        <div style="font-size:11px; font-family:ui-monospace,Menlo,monospace; margin-top:2px; opacity:.85;">#1C2B3A</div>
+        <div style="font-size:10px; margin-top:18px; opacity:.7; font-style:italic; font-family:var(--font-serif);">dark inversion</div>
+      </div>
+      <div style="background:#6B6560; padding:14px 12px; min-height:84px; color:#FAF7F3;">
+        <div style="font-size:11px; opacity:.85;">Gray 500</div>
+        <div style="font-size:11px; font-family:ui-monospace,Menlo,monospace; margin-top:2px; opacity:.85;">#6B6560</div>
+        <div style="font-size:10px; margin-top:18px; opacity:.7; font-style:italic; font-family:var(--font-serif);">secondary text</div>
+      </div>
+      <div style="background:#9A928C; padding:14px 12px; min-height:84px; color:#FAF7F3;">
+        <div style="font-size:11px; opacity:.85;">Gray 300</div>
+        <div style="font-size:11px; font-family:ui-monospace,Menlo,monospace; margin-top:2px; opacity:.85;">#9A928C</div>
+        <div style="font-size:10px; margin-top:18px; opacity:.7; font-style:italic; font-family:var(--font-serif);">tertiary text</div>
+      </div>
+  </div>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="06 / 33" data-screen-label="Rôles sémantiques">
+  <div class="slide-head">
+    <div class="overline">Couleurs</div>
+    <h2 class="slide-title">Rôles sémantiques</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">Rôles sémantiques</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">semantic roles · light mode</div>
+  <table style="width:100%; margin-top:18px; border-collapse:collapse; font-size:13px;">
+    
+      <tbody><tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:8px 0; width:32px;"><div style="width:20px; height:20px; background:#FAF7F3; border:1px solid var(--border);"></div></td>
+        <td style="padding:8px 12px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--text-primary); width:170px;">--bg</td>
+        <td style="padding:8px 12px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500); width:90px;">#FAF7F3</td>
+        <td style="padding:8px 0; color:var(--gray-500); font-family:var(--font-serif); font-style:italic;">page background</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:8px 0; width:32px;"><div style="width:20px; height:20px; background:#FFFFFF; border:1px solid var(--border);"></div></td>
+        <td style="padding:8px 12px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--text-primary); width:170px;">--bg-elevated</td>
+        <td style="padding:8px 12px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500); width:90px;">#FFFFFF</td>
+        <td style="padding:8px 0; color:var(--gray-500); font-family:var(--font-serif); font-style:italic;">cards, modals</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:8px 0; width:32px;"><div style="width:20px; height:20px; background:#1C2B3A; border:1px solid var(--border);"></div></td>
+        <td style="padding:8px 12px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--text-primary); width:170px;">--bg-inverse</td>
+        <td style="padding:8px 12px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500); width:90px;">#1C2B3A</td>
+        <td style="padding:8px 0; color:var(--gray-500); font-family:var(--font-serif); font-style:italic;">intercalary sections, principle boxes</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:8px 0; width:32px;"><div style="width:20px; height:20px; background:#EDE0CC; border:1px solid var(--border);"></div></td>
+        <td style="padding:8px 12px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--text-primary); width:170px;">--bg-accent-soft</td>
+        <td style="padding:8px 12px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500); width:90px;">#EDE0CC</td>
+        <td style="padding:8px 0; color:var(--gray-500); font-family:var(--font-serif); font-style:italic;">subtle bronze fills</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:8px 0; width:32px;"><div style="width:20px; height:20px; background:#14181C; border:1px solid var(--border);"></div></td>
+        <td style="padding:8px 12px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--text-primary); width:170px;">--text-primary</td>
+        <td style="padding:8px 12px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500); width:90px;">#14181C</td>
+        <td style="padding:8px 0; color:var(--gray-500); font-family:var(--font-serif); font-style:italic;">body, headings</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:8px 0; width:32px;"><div style="width:20px; height:20px; background:#6B6560; border:1px solid var(--border);"></div></td>
+        <td style="padding:8px 12px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--text-primary); width:170px;">--text-secondary</td>
+        <td style="padding:8px 12px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500); width:90px;">#6B6560</td>
+        <td style="padding:8px 0; color:var(--gray-500); font-family:var(--font-serif); font-style:italic;">meta, captions</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:8px 0; width:32px;"><div style="width:20px; height:20px; background:#9A928C; border:1px solid var(--border);"></div></td>
+        <td style="padding:8px 12px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--text-primary); width:170px;">--text-tertiary</td>
+        <td style="padding:8px 12px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500); width:90px;">#9A928C</td>
+        <td style="padding:8px 0; color:var(--gray-500); font-family:var(--font-serif); font-style:italic;">hints, timestamps</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:8px 0; width:32px;"><div style="width:20px; height:20px; background:#A0732A; border:1px solid var(--border);"></div></td>
+        <td style="padding:8px 12px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--text-primary); width:170px;">--text-accent</td>
+        <td style="padding:8px 12px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500); width:90px;">#A0732A</td>
+        <td style="padding:8px 0; color:var(--gray-500); font-family:var(--font-serif); font-style:italic;">links, accents, overline</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:8px 0; width:32px;"><div style="width:20px; height:20px; background:#D9D2CA; border:1px solid var(--border);"></div></td>
+        <td style="padding:8px 12px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--text-primary); width:170px;">--border</td>
+        <td style="padding:8px 12px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500); width:90px;">#D9D2CA</td>
+        <td style="padding:8px 0; color:var(--gray-500); font-family:var(--font-serif); font-style:italic;">hairlines on cream</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:8px 0; width:32px;"><div style="width:20px; height:20px; background:#B8B0A7; border:1px solid var(--border);"></div></td>
+        <td style="padding:8px 12px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--text-primary); width:170px;">--border-strong</td>
+        <td style="padding:8px 12px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500); width:90px;">#B8B0A7</td>
+        <td style="padding:8px 0; color:var(--gray-500); font-family:var(--font-serif); font-style:italic;">active separation</td>
+      </tr>
+  </tbody></table>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="07 / 33" data-screen-label="États d'interaction">
+  <div class="slide-head">
+    <div class="overline">Couleurs</div>
+    <h2 class="slide-title">États d'interaction</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">États d'interaction</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">interaction states</div>
+  <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:2px; margin-top:18px;">
+    
+      <div style="background:#A0732A; padding:14px 12px; min-height:74px; color:#FAF7F3;">
+        <div style="font-size:11px; text-transform:uppercase; letter-spacing:0.12em;">default</div>
+        <div style="font-size:11px; font-family:ui-monospace,Menlo,monospace; margin-top:2px; opacity:.85;">#A0732A</div>
+        <div style="font-size:10px; margin-top:14px; opacity:.75; font-family:ui-monospace,Menlo,monospace;">--accent</div>
+      </div>
+      <div style="background:#8C6324; padding:14px 12px; min-height:74px; color:#FAF7F3;">
+        <div style="font-size:11px; text-transform:uppercase; letter-spacing:0.12em;">hover</div>
+        <div style="font-size:11px; font-family:ui-monospace,Menlo,monospace; margin-top:2px; opacity:.85;">#8C6324</div>
+        <div style="font-size:10px; margin-top:14px; opacity:.75; font-family:ui-monospace,Menlo,monospace;">--accent-hover</div>
+      </div>
+      <div style="background:#785423; padding:14px 12px; min-height:74px; color:#FAF7F3;">
+        <div style="font-size:11px; text-transform:uppercase; letter-spacing:0.12em;">active</div>
+        <div style="font-size:11px; font-family:ui-monospace,Menlo,monospace; margin-top:2px; opacity:.85;">#785423</div>
+        <div style="font-size:10px; margin-top:14px; opacity:.75; font-family:ui-monospace,Menlo,monospace;">--accent-active</div>
+      </div>
+      <div style="background:#D6C9B3; padding:14px 12px; min-height:74px; color:#6B6560;">
+        <div style="font-size:11px; text-transform:uppercase; letter-spacing:0.12em;">disabled</div>
+        <div style="font-size:11px; font-family:ui-monospace,Menlo,monospace; margin-top:2px; opacity:.85;">#D6C9B3</div>
+        <div style="font-size:10px; margin-top:14px; opacity:.75; font-family:ui-monospace,Menlo,monospace;">--accent-disabled</div>
+      </div>
+  </div>
+  <div style="margin-top:18px; padding:14px 16px; border:1px solid var(--border); background:var(--white);">
+    <div style="font-size:11px; color:var(--gray-500); margin-bottom:8px;">focus ring · rgba(160, 115, 42, 0.32) · 3px offset 2px</div>
+    <button style="font-family:var(--font-sans); font-weight:500; font-size:13px; padding:10px 18px; background:var(--accent); color:var(--cream); border:0; border-radius:2px; outline: 3px solid rgba(160,115,42,0.32); outline-offset:2px;">Prendre rendez-vous</button>
+  </div>
+  <div style="margin-top:8px; padding:14px 16px; border:1px solid var(--border); background:var(--white); display:flex; gap:12px; align-items:center;">
+    <div style="font-size:11px; color:var(--gray-500); flex:1;">danger · #8C2D1F · usage très rare (suppression, retrait)</div>
+    <span style="display:inline-block; width:18px; height:18px; background:#8C2D1F;"></span>
+    <span style="font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500);">#8C2D1F</span>
+  </div>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="08 / 33" data-screen-label="Palettes alternatives">
+  <div class="slide-head">
+    <div class="overline">Couleurs</div>
+    <h2 class="slide-title">Palettes alternatives</h2>
+  </div>
+  <div class="slide-body cards-2"><div class="dsx-card-wrap"><div class="dsx-card-title">Ardoise</div><div class="dsx-card-frame"><div class="card palette-ardoise" style="background:#F1EFEC;">
+  <div style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#7E4A2E; font-weight:400;">palette alternative · ardoise</div>
+  <div style="font-family:var(--font-serif); font-style:italic; color:#14181C; font-size:15px; margin-top:8px; line-height:1.4;">Quebec stone and winter light. Cooler, more analytic — for institutional microsites.</div>
+  <div style="display:grid; grid-template-columns: repeat(5, 1fr); gap:2px; margin-top:16px;">
+    
+      <div style="background:#7E4A2E; padding:12px 10px; min-height:70px; color:#FAF7F3;">
+        <div style="font-size:10px; text-transform:uppercase; letter-spacing:0.1em; opacity:.85;">accent</div>
+        <div style="font-size:10px; font-family:ui-monospace,Menlo,monospace; margin-top:4px; opacity:.85;">#7E4A2E</div>
+      </div>
+      <div style="background:#E5DDD2; padding:12px 10px; min-height:70px; color:#14181C;">
+        <div style="font-size:10px; text-transform:uppercase; letter-spacing:0.1em; opacity:.85;">soft</div>
+        <div style="font-size:10px; font-family:ui-monospace,Menlo,monospace; margin-top:4px; opacity:.85;">#E5DDD2</div>
+      </div>
+      <div style="background:#F1EFEC; padding:12px 10px; min-height:70px; color:#14181C;">
+        <div style="font-size:10px; text-transform:uppercase; letter-spacing:0.1em; opacity:.85;">background</div>
+        <div style="font-size:10px; font-family:ui-monospace,Menlo,monospace; margin-top:4px; opacity:.85;">#F1EFEC</div>
+      </div>
+      <div style="background:#DBD7D2; padding:12px 10px; min-height:70px; color:#14181C;">
+        <div style="font-size:10px; text-transform:uppercase; letter-spacing:0.1em; opacity:.85;">surface</div>
+        <div style="font-size:10px; font-family:ui-monospace,Menlo,monospace; margin-top:4px; opacity:.85;">#DBD7D2</div>
+      </div>
+      <div style="background:#1A222B; padding:12px 10px; min-height:70px; color:#FAF7F3;">
+        <div style="font-size:10px; text-transform:uppercase; letter-spacing:0.1em; opacity:.85;">inverse</div>
+        <div style="font-size:10px; font-family:ui-monospace,Menlo,monospace; margin-top:4px; opacity:.85;">#1A222B</div>
+      </div>
+  </div>
+  <div style="margin-top:18px; display:flex; gap:10px; align-items:center;">
+    <button style="font-family:var(--font-sans); font-weight:500; font-size:12px; padding:9px 16px; background:#7E4A2E; color:#F1EFEC; border:0; border-radius:2px;">Bouton primaire</button>
+    <span style="font-family:var(--font-serif); font-style:italic; color:#7E4A2E; font-size:14px;">— Ardoise</span>
+    <span style="margin-left:auto; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:#5E6770;">.palette-ardoise</span>
+  </div>
+</div></div></div><div class="dsx-card-wrap"><div class="dsx-card-title">Encre</div><div class="dsx-card-frame"><div class="card palette-encre" style="background:#F4EFE6;">
+  <div style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#A93220; font-weight:400;">palette alternative · encre</div>
+  <div style="font-family:var(--font-serif); font-style:italic; color:#14181C; font-size:15px; margin-top:8px; line-height:1.4;">Newsprint and ink. Carmine used like a redline — highest editorial gravity.</div>
+  <div style="display:grid; grid-template-columns: repeat(5, 1fr); gap:2px; margin-top:16px;">
+    
+      <div style="background:#A93220; padding:12px 10px; min-height:70px; color:#FAF7F3;">
+        <div style="font-size:10px; text-transform:uppercase; letter-spacing:0.1em; opacity:.85;">accent</div>
+        <div style="font-size:10px; font-family:ui-monospace,Menlo,monospace; margin-top:4px; opacity:.85;">#A93220</div>
+      </div>
+      <div style="background:#F1DAD2; padding:12px 10px; min-height:70px; color:#14181C;">
+        <div style="font-size:10px; text-transform:uppercase; letter-spacing:0.1em; opacity:.85;">soft</div>
+        <div style="font-size:10px; font-family:ui-monospace,Menlo,monospace; margin-top:4px; opacity:.85;">#F1DAD2</div>
+      </div>
+      <div style="background:#F4EFE6; padding:12px 10px; min-height:70px; color:#14181C;">
+        <div style="font-size:10px; text-transform:uppercase; letter-spacing:0.1em; opacity:.85;">background</div>
+        <div style="font-size:10px; font-family:ui-monospace,Menlo,monospace; margin-top:4px; opacity:.85;">#F4EFE6</div>
+      </div>
+      <div style="background:#E2DACA; padding:12px 10px; min-height:70px; color:#14181C;">
+        <div style="font-size:10px; text-transform:uppercase; letter-spacing:0.1em; opacity:.85;">surface</div>
+        <div style="font-size:10px; font-family:ui-monospace,Menlo,monospace; margin-top:4px; opacity:.85;">#E2DACA</div>
+      </div>
+      <div style="background:#0F1B2A; padding:12px 10px; min-height:70px; color:#FAF7F3;">
+        <div style="font-size:10px; text-transform:uppercase; letter-spacing:0.1em; opacity:.85;">inverse</div>
+        <div style="font-size:10px; font-family:ui-monospace,Menlo,monospace; margin-top:4px; opacity:.85;">#0F1B2A</div>
+      </div>
+  </div>
+  <div style="margin-top:18px; display:flex; gap:10px; align-items:center;">
+    <button style="font-family:var(--font-sans); font-weight:500; font-size:12px; padding:9px 16px; background:#A93220; color:#F4EFE6; border:0; border-radius:2px;">Bouton primaire</button>
+    <span style="font-family:var(--font-serif); font-style:italic; color:#A93220; font-size:14px;">— Encre</span>
+    <span style="margin-left:auto; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:#5C5B57;">.palette-encre</span>
+  </div>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="09 / 33" data-screen-label="Display &amp; H1 — DM Sans">
+  <div class="slide-head">
+    <div class="overline">Typographie</div>
+    <h2 class="slide-title">Display &amp; H1 — DM Sans</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">Display &amp; H1</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">display · dm sans variable · 72/300/-0.02em</div>
+  <div style="font-size:72px; line-height:1.05; letter-spacing:-0.02em; font-weight:300; font-variation-settings:'opsz' 72; margin-top:10px;">Transformer les enjeux</div>
+  <div class="meta" style="margin-top:6px;">font-size: 72 · line-height: 1.05 · weight: 300 · opsz: 72</div>
+  <hr class="hr">
+  <div class="lbl">h1 · 52/300/-0.018em</div>
+  <div style="font-size:52px; line-height:1.08; letter-spacing:-0.018em; font-weight:300; font-variation-settings:'opsz' 52; margin-top:8px;">Quand un enjeu monte, préparez votre voix</div>
+  <div class="meta" style="margin-top:6px;">font-size: 52 · line-height: 1.08 · weight: 300 · opsz: 52</div>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="10 / 33" data-screen-label="Hiérarchie de titres — DM Sans">
+  <div class="slide-head">
+    <div class="overline">Typographie</div>
+    <h2 class="slide-title">Hiérarchie de titres — DM Sans</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">H2 · H3 · H4</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">h2 · 38/300/-0.014em</div>
+  <div style="font-size:38px; line-height:1.15; letter-spacing:-0.014em; font-weight:300; font-variation-settings:'opsz' 38; margin-top:6px;">Diagnostic et stratégie de prise de parole</div>
+  <hr class="hr">
+  <div class="lbl">h3 · 26/300/-0.008em</div>
+  <div style="font-size:26px; line-height:1.25; letter-spacing:-0.008em; font-weight:300; margin-top:6px;">Trois mandats par trimestre, pas plus.</div>
+  <hr class="hr">
+  <div class="lbl">h4 · 20/400</div>
+  <div style="font-size:20px; line-height:1.35; font-weight:400; margin-top:6px;">Champ d'expertise — gouvernance et risque réputationnel</div>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="11 / 33" data-screen-label="Corps — Lora regular">
+  <div class="slide-head">
+    <div class="overline">Typographie</div>
+    <h2 class="slide-title">Corps — Lora regular</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">Body (Lora) &amp; caption</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">body large · lora regular · 19/1.6 · paragraphs d'ouverture</div>
+  <p style="font-family:var(--font-serif); font-weight:400; font-size:19px; line-height:1.6; color:var(--text-primary); max-width:560px; margin:8px 0 0;">Nous accompagnons les directions générales et les conseils d'administration sur les enjeux à fort impact réputationnel. Trois mandats à la fois, jamais plus.</p>
+  <hr class="hr">
+  <div class="lbl">body · lora regular · 16/1.6 · corps de texte courant</div>
+  <p style="font-family:var(--font-serif); font-weight:400; font-size:16px; line-height:1.6; color:var(--text-primary); max-width:560px; margin:8px 0 0;">Le travail commence par une cartographie des parties prenantes, des messages-clés et des risques narratifs. Nous remettons une note de positionnement en cinq pages, jamais plus.</p>
+  <hr class="hr">
+  <div class="lbl">caption · dm sans · 14/300 · meta, attribution</div>
+  <div style="font-family:var(--font-sans); font-size:14px; font-weight:300; color:var(--gray-500); margin-top:6px;">12 mai 2026 · 4 min de lecture · Marie-Claude Aubin</div>
+  <div class="meta" style="margin-top:14px;">le corps prend la voix sérif. l'UI reste sans.</div>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="12 / 33" data-screen-label="Label &amp; overline — DM Sans">
+  <div class="slide-head">
+    <div class="overline">Typographie</div>
+    <h2 class="slide-title">Label &amp; overline — DM Sans</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">Label &amp; overline</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">overline · 10/400/0.2em tracking · bronze · in-section anchor</div>
+  <div style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--bronze-700); font-weight:400; margin-top:14px;">Mandat 03 — gouvernance</div>
+  <hr class="hr">
+  <div class="lbl" style="color:var(--gray-500);">label · 12/400/0.12em tracking · uppercase · gray-500 · UI</div>
+  <div style="font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray-500); font-weight:400; margin-top:14px;">Statut de l'engagement</div>
+  <hr class="hr">
+  <div style="display:flex; gap:14px; align-items:baseline;">
+    <span style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--bronze-700);">approche</span>
+    <span style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gray-300);">·</span>
+    <span style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gray-500);">méthode</span>
+    <span style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gray-300);">·</span>
+    <span style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gray-500);">résultats</span>
+  </div>
+  <div class="meta" style="margin-top:8px;">L'overline pose l'ancre éditoriale. Le label nomme un état d'UI.</div>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="13 / 33" data-screen-label="Voix éditoriale — Lora italic">
+  <div class="slide-head">
+    <div class="overline">Typographie</div>
+    <h2 class="slide-title">Voix éditoriale — Lora italic</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">Voix éditoriale — Lora italic</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">lora italic · 400 · accroches, citations, voix forte</div>
+  <div style="font-family:var(--font-serif); font-style:italic; font-weight:400; font-size:32px; line-height:1.3; color:var(--text-primary); margin-top:14px;">Nous n'écrivons pas vos lignes. Nous vous aidons à trouver les vôtres.</div>
+  <hr class="hr">
+  <div style="font-family:var(--font-serif); font-style:italic; font-weight:400; font-size:18px; line-height:1.55; color:var(--text-primary); max-width:560px;">Quand un enjeu monte, ce n'est pas le moment d'improviser. Nous préparons les organisations à parler — à temps, juste, avec autorité.</div>
+  <div class="meta" style="margin-top:10px;">le body est en Lora regular · l'italique marque la voix éditoriale (manifeste, citation, accroche)</div>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="14 / 33" data-screen-label="Sans (UI) vs Sérif (lecture)">
+  <div class="slide-head">
+    <div class="overline">Typographie</div>
+    <h2 class="slide-title">Sans (UI) vs Sérif (lecture)</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">Sans (UI) vs Sérif (lecture)</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">règles d'usage typographique</div>
+  <div style="display:grid; grid-template-columns: 1fr 1px 1fr; gap:0; margin-top:16px; background:var(--border);">
+    <div style="background:var(--bg); padding:18px 18px 18px 0;">
+      <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray-500); margin-bottom:10px;">DM Sans · structure</div>
+      <div style="font-size:13px; line-height:1.7; color:var(--text-primary);">
+        Identité &amp; wordmark<br>
+        Titres &amp; sous-titres (h1 → h4)<br>
+        Navigation, boutons, onglets<br>
+        Labels &amp; overlines<br>
+        Légendes, meta, dates<br>
+        Tout l'UI fonctionnel
+      </div>
+      <div class="meta" style="margin-top:10px;">poids 300 par défaut · 500 pour UI critique</div>
+    </div>
+    <div style="background:var(--border);"></div>
+    <div style="background:var(--bg); padding:18px 0 18px 18px;">
+      <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--bronze-700); margin-bottom:10px;">Lora · lecture</div>
+      <div style="font-size:13px; line-height:1.7; color:var(--text-primary); font-family:var(--font-serif); font-weight:400;">
+        Corps de texte courant<br>
+        Paragraphes d'ouverture (lede)<br>
+        Descriptions de mandat<br>
+        Articles &amp; écrits longs<br>
+        <span style="font-style:italic;">Italique : citations, accroches, manifeste</span><br>
+        <span style="font-style:italic;">Italique : tagline, signatures</span>
+      </div>
+      <div class="meta" style="margin-top:10px; font-family:ui-monospace,Menlo,monospace; font-style:normal;">regular 400 pour body · italic 400 pour la voix</div>
+    </div>
+  </div>
+  <div style="margin-top:14px; padding:10px 14px; background:var(--bronze-100); font-size:12px; color:var(--charcoal); border-left:2px solid var(--bronze-700);">
+    Règle : sans pour ce qu'on actionne, sérif pour ce qu'on lit. Jamais de bold (700+) — la hiérarchie passe par la taille, la couleur et le passage sans ↔ sérif.
+  </div>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="15 / 33" data-screen-label="DM Sans · axes variables">
+  <div class="slide-head">
+    <div class="overline">Typographie</div>
+    <h2 class="slide-title">DM Sans · axes variables</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">DM Sans · axes variables</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">DM Sans · variable · axes wght (100–1000) + opsz (9–40)</div>
+  <div class="meta" style="margin-top:6px;">le fichier est variable : on règle weight ET optical size finement. Le poids 300 reste la base — les autres existent pour l'UI critique uniquement.</div>
+
+  <hr class="hr">
+
+  <div class="lbl" style="color:var(--gray-500);">weight axis · réglages disponibles · usage</div>
+  <div style="display:flex; flex-direction:column; gap:6px; margin-top:12px;">
+    
+      <div style="display:flex; align-items:baseline; gap:18px; padding:6px 0; border-bottom:1px dashed var(--border);">
+        <div style="width:64px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500);">200 · thin</div>
+        <div style="flex:1; font-size:22px; font-weight:200; color:var(--text-primary); ">Transformer les enjeux</div>
+        <div style="font-size:11px; color:var(--gray-500); width:200px; text-align:right;">jamais — trop fragile sur écran</div>
+      </div>
+      <div style="display:flex; align-items:baseline; gap:18px; padding:6px 0; border-bottom:1px dashed var(--border);">
+        <div style="width:64px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500);">300 · light</div>
+        <div style="flex:1; font-size:22px; font-weight:300; color:var(--text-primary); ">Transformer les enjeux</div>
+        <div style="font-size:11px; color:var(--gray-500); width:200px; text-align:right;">défaut · tout le contenu courant</div>
+      </div>
+      <div style="display:flex; align-items:baseline; gap:18px; padding:6px 0; border-bottom:1px dashed var(--border);">
+        <div style="width:64px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500);">400 · regular</div>
+        <div style="flex:1; font-size:22px; font-weight:400; color:var(--text-primary); ">Transformer les enjeux</div>
+        <div style="font-size:11px; color:var(--gray-500); width:200px; text-align:right;">body 14px et moins · helper text</div>
+      </div>
+      <div style="display:flex; align-items:baseline; gap:18px; padding:6px 0; border-bottom:1px dashed var(--border);">
+        <div style="width:64px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500);">500 · medium</div>
+        <div style="flex:1; font-size:22px; font-weight:500; color:var(--text-primary); ">Transformer les enjeux</div>
+        <div style="font-size:11px; color:var(--gray-500); width:200px; text-align:right;">label de bouton primaire · onglet actif</div>
+      </div>
+      <div style="display:flex; align-items:baseline; gap:18px; padding:6px 0; border-bottom:1px dashed var(--border);">
+        <div style="width:64px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500);">700 · bold</div>
+        <div style="flex:1; font-size:22px; font-weight:700; color:var(--danger); text-decoration:line-through; text-decoration-color:var(--danger);">Transformer les enjeux</div>
+        <div style="font-size:11px; color:var(--gray-500); width:200px; text-align:right;">interdit</div>
+      </div>
+  </div>
+
+  <hr class="hr">
+
+  <div class="lbl" style="color:var(--gray-500);">optical size axis · 9 → 40</div>
+  <div style="display:flex; align-items:flex-end; gap:24px; margin-top:14px;">
+    <div>
+      <div style="font-size:11px; color:var(--gray-500); margin-bottom:6px; font-family:ui-monospace,Menlo,monospace;">opsz 9 · small print</div>
+      <div style="font-size:13px; font-weight:300; font-variation-settings:'opsz' 9; line-height:1.5;">Une note de cinq pages.</div>
+    </div>
+    <div>
+      <div style="font-size:11px; color:var(--gray-500); margin-bottom:6px; font-family:ui-monospace,Menlo,monospace;">opsz 18 · body</div>
+      <div style="font-size:18px; font-weight:300; font-variation-settings:'opsz' 18; line-height:1.4;">Une note.</div>
+    </div>
+    <div>
+      <div style="font-size:11px; color:var(--gray-500); margin-bottom:6px; font-family:ui-monospace,Menlo,monospace;">opsz 40 · display</div>
+      <div style="font-size:34px; font-weight:300; font-variation-settings:'opsz' 40; line-height:1; letter-spacing:-0.02em;">Une note.</div>
+    </div>
+  </div>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="16 / 33" data-screen-label="Échelle 4 px">
+  <div class="slide-head">
+    <div class="overline">Espacement</div>
+    <h2 class="slide-title">Échelle 4 px</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">Échelle 4 px</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">spacing scale · base 4px</div>
+  <div style="margin-top:18px;">
+    
+      <div style="display:flex; align-items:center; gap:14px; padding:6px 0; border-bottom:1px dashed var(--border);">
+        <div style="width:50px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500);">--space-1</div>
+        <div style="width:46px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--text-primary);">4px</div>
+        <div style="height:6px; width:8px; background:var(--bronze-700);"></div>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px; padding:6px 0; border-bottom:1px dashed var(--border);">
+        <div style="width:50px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500);">--space-2</div>
+        <div style="width:46px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--text-primary);">8px</div>
+        <div style="height:6px; width:16px; background:var(--bronze-700);"></div>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px; padding:6px 0; border-bottom:1px dashed var(--border);">
+        <div style="width:50px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500);">--space-3</div>
+        <div style="width:46px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--text-primary);">12px</div>
+        <div style="height:6px; width:24px; background:var(--bronze-700);"></div>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px; padding:6px 0; border-bottom:1px dashed var(--border);">
+        <div style="width:50px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500);">--space-4</div>
+        <div style="width:46px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--text-primary);">16px</div>
+        <div style="height:6px; width:32px; background:var(--bronze-700);"></div>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px; padding:6px 0; border-bottom:1px dashed var(--border);">
+        <div style="width:50px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500);">--space-5</div>
+        <div style="width:46px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--text-primary);">20px</div>
+        <div style="height:6px; width:40px; background:var(--bronze-700);"></div>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px; padding:6px 0; border-bottom:1px dashed var(--border);">
+        <div style="width:50px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500);">--space-6</div>
+        <div style="width:46px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--text-primary);">24px</div>
+        <div style="height:6px; width:48px; background:var(--bronze-700);"></div>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px; padding:6px 0; border-bottom:1px dashed var(--border);">
+        <div style="width:50px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500);">--space-8</div>
+        <div style="width:46px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--text-primary);">32px</div>
+        <div style="height:6px; width:64px; background:var(--bronze-700);"></div>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px; padding:6px 0; border-bottom:1px dashed var(--border);">
+        <div style="width:50px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500);">--space-10</div>
+        <div style="width:46px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--text-primary);">40px</div>
+        <div style="height:6px; width:80px; background:var(--bronze-700);"></div>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px; padding:6px 0; border-bottom:1px dashed var(--border);">
+        <div style="width:50px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500);">--space-12</div>
+        <div style="width:46px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--text-primary);">48px</div>
+        <div style="height:6px; width:96px; background:var(--bronze-700);"></div>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px; padding:6px 0; border-bottom:1px dashed var(--border);">
+        <div style="width:50px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500);">--space-16</div>
+        <div style="width:46px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--text-primary);">64px</div>
+        <div style="height:6px; width:128px; background:var(--bronze-700);"></div>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px; padding:6px 0; border-bottom:1px dashed var(--border);">
+        <div style="width:50px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500);">--space-20</div>
+        <div style="width:46px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--text-primary);">80px</div>
+        <div style="height:6px; width:160px; background:var(--bronze-700);"></div>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px; padding:6px 0; border-bottom:1px dashed var(--border);">
+        <div style="width:50px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--gray-500);">--space-24</div>
+        <div style="width:46px; font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--text-primary);">96px</div>
+        <div style="height:6px; width:192px; background:var(--bronze-700);"></div>
+      </div>
+  </div>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="17 / 33" data-screen-label="Grille 12 colonnes">
+  <div class="slide-head">
+    <div class="overline">Espacement</div>
+    <h2 class="slide-title">Grille 12 colonnes</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">Grille 12 colonnes</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">grille · 12 colonnes · gouttière 2px (signature)</div>
+  <div class="meta" style="margin-top:6px;">la gouttière inter-cellule de 2px est un trait de marque : blocs adossés, jamais flottants</div>
+  <div style="display:grid; grid-template-columns: repeat(12, 1fr); gap:2px; margin-top:18px;">
+    <div style="background:var(--bronze-100); height:34px; display:flex; align-items:center; justify-content:center; font-size:10px; color:var(--bronze-700); font-family:ui-monospace,Menlo,monospace;">1</div><div style="background:var(--bronze-100); height:34px; display:flex; align-items:center; justify-content:center; font-size:10px; color:var(--bronze-700); font-family:ui-monospace,Menlo,monospace;">2</div><div style="background:var(--bronze-100); height:34px; display:flex; align-items:center; justify-content:center; font-size:10px; color:var(--bronze-700); font-family:ui-monospace,Menlo,monospace;">3</div><div style="background:var(--bronze-100); height:34px; display:flex; align-items:center; justify-content:center; font-size:10px; color:var(--bronze-700); font-family:ui-monospace,Menlo,monospace;">4</div><div style="background:var(--bronze-100); height:34px; display:flex; align-items:center; justify-content:center; font-size:10px; color:var(--bronze-700); font-family:ui-monospace,Menlo,monospace;">5</div><div style="background:var(--bronze-100); height:34px; display:flex; align-items:center; justify-content:center; font-size:10px; color:var(--bronze-700); font-family:ui-monospace,Menlo,monospace;">6</div><div style="background:var(--bronze-100); height:34px; display:flex; align-items:center; justify-content:center; font-size:10px; color:var(--bronze-700); font-family:ui-monospace,Menlo,monospace;">7</div><div style="background:var(--bronze-100); height:34px; display:flex; align-items:center; justify-content:center; font-size:10px; color:var(--bronze-700); font-family:ui-monospace,Menlo,monospace;">8</div><div style="background:var(--bronze-100); height:34px; display:flex; align-items:center; justify-content:center; font-size:10px; color:var(--bronze-700); font-family:ui-monospace,Menlo,monospace;">9</div><div style="background:var(--bronze-100); height:34px; display:flex; align-items:center; justify-content:center; font-size:10px; color:var(--bronze-700); font-family:ui-monospace,Menlo,monospace;">10</div><div style="background:var(--bronze-100); height:34px; display:flex; align-items:center; justify-content:center; font-size:10px; color:var(--bronze-700); font-family:ui-monospace,Menlo,monospace;">11</div><div style="background:var(--bronze-100); height:34px; display:flex; align-items:center; justify-content:center; font-size:10px; color:var(--bronze-700); font-family:ui-monospace,Menlo,monospace;">12</div>
+  </div>
+  <div style="display:grid; grid-template-columns: repeat(12, 1fr); gap:2px; margin-top:2px;">
+    <div style="grid-column: span 7; background:var(--white); border:1px solid var(--border); padding:14px 16px; font-size:13px; color:var(--text-primary);">Contenu principal · 7 col</div>
+    <div style="grid-column: span 5; background:var(--charcoal); padding:14px 16px; font-size:13px; color:var(--cream);">Aside · 5 col</div>
+    <div style="grid-column: span 4; background:var(--white); border:1px solid var(--border); padding:14px 16px; font-size:12px; color:var(--gray-500);">card</div>
+    <div style="grid-column: span 4; background:var(--white); border:1px solid var(--border); padding:14px 16px; font-size:12px; color:var(--gray-500);">card</div>
+    <div style="grid-column: span 4; background:var(--white); border:1px solid var(--border); padding:14px 16px; font-size:12px; color:var(--gray-500);">card</div>
+  </div>
+  <div class="meta" style="margin-top:12px;">conteneur max 1280 · padding 48 desktop · 20 mobile · mobile : 4 colonnes</div>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="18 / 33" data-screen-label="Radii &amp; borders">
+  <div class="slide-head">
+    <div class="overline">Espacement</div>
+    <h2 class="slide-title">Radii &amp; borders</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">Radii &amp; borders</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">corner radii · presque carrés, francs</div>
+  <div style="display:flex; gap:14px; margin-top:14px; align-items:flex-end;">
+    
+      <div style="text-align:center;">
+        <div style="width:64px; height:64px; background:var(--charcoal); border-radius:0px;"></div>
+        <div style="font-family:ui-monospace,Menlo,monospace; font-size:10px; color:var(--gray-500); margin-top:6px;">0px</div>
+        <div style="font-size:10px; color:var(--gray-500); margin-top:2px;"></div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:64px; height:64px; background:var(--charcoal); border-radius:2px;"></div>
+        <div style="font-family:ui-monospace,Menlo,monospace; font-size:10px; color:var(--gray-500); margin-top:6px;">2px</div>
+        <div style="font-size:10px; color:var(--gray-500); margin-top:2px;"> inputs, buttons</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:64px; height:64px; background:var(--charcoal); border-radius:4px;"></div>
+        <div style="font-family:ui-monospace,Menlo,monospace; font-size:10px; color:var(--gray-500); margin-top:6px;">4px</div>
+        <div style="font-size:10px; color:var(--gray-500); margin-top:2px;"> cards</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:64px; height:64px; background:var(--charcoal); border-radius:6px;"></div>
+        <div style="font-family:ui-monospace,Menlo,monospace; font-size:10px; color:var(--gray-500); margin-top:6px;">6px</div>
+        <div style="font-size:10px; color:var(--gray-500); margin-top:2px;"> modal</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="width:64px; height:64px; background:var(--charcoal); border-radius:999px;"></div>
+        <div style="font-family:ui-monospace,Menlo,monospace; font-size:10px; color:var(--gray-500); margin-top:6px;">pill</div>
+        <div style="font-size:10px; color:var(--gray-500); margin-top:2px;"> badges</div>
+      </div>
+  </div>
+  <hr class="hr">
+  <div class="lbl">borders · 1px hairline · 2px actif</div>
+  <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; margin-top:14px;">
+    <div style="padding:16px; background:var(--white); border:1px solid var(--border);">
+      <div class="meta" style="color:var(--gray-500);">--border · 1px</div>
+      <div style="font-size:12px; margin-top:6px;">défaut sur crème</div>
+    </div>
+    <div style="padding:16px; background:var(--white); border:1px solid var(--border-strong);">
+      <div class="meta" style="color:var(--gray-500);">--border-strong · 1px</div>
+      <div style="font-size:12px; margin-top:6px;">hover, actif</div>
+    </div>
+    <div style="padding:16px; background:var(--white); border-left:2px solid var(--bronze-700); border-top:1px solid var(--border); border-right:1px solid var(--border); border-bottom:1px solid var(--border);">
+      <div class="meta" style="color:var(--gray-500);">2px bronze · accent</div>
+      <div style="font-size:12px; margin-top:6px;">citation, mise en avant</div>
+    </div>
+  </div>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="19 / 33" data-screen-label="Shadows">
+  <div class="slide-head">
+    <div class="overline">Espacement</div>
+    <h2 class="slide-title">Shadows</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">Shadows</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">shadows · la planéité est la marque</div>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-top:16px;">
+    <div style="background:var(--white); padding:18px 16px; box-shadow: 0 1px 0 rgba(28,43,58,0.04), 0 0 0 1px var(--border); border-radius:4px;">
+      <div style="font-size:12px; color:var(--gray-500); text-transform:uppercase; letter-spacing:0.1em;">card par défaut</div>
+      <div style="font-size:12px; color:var(--text-primary); margin-top:8px;">--shadow-card</div>
+      <div class="meta" style="margin-top:4px;">0 1px 0 / 0 0 0 1px border</div>
+    </div>
+    <div style="background:var(--white); padding:18px 16px; box-shadow: 0 12px 32px -16px rgba(28,43,58,0.16); border-radius:4px;">
+      <div style="font-size:12px; color:var(--gray-500); text-transform:uppercase; letter-spacing:0.1em;">menu / popover</div>
+      <div style="font-size:12px; color:var(--text-primary); margin-top:8px;">--shadow-pop</div>
+      <div class="meta" style="margin-top:4px;">0 12 32 -16 · diffuse uniquement</div>
+    </div>
+  </div>
+  <div style="margin-top:14px; padding:10px 14px; background:var(--bronze-100); font-size:12px; color:var(--charcoal); border-left:2px solid var(--bronze-700);">
+    Règle : aucune ombre portée nette. Si la hiérarchie ne tient pas avec une bordure 1px, repenser la composition.
+  </div>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="20 / 33" data-screen-label="Boutons primaires">
+  <div class="slide-head">
+    <div class="overline">Composants</div>
+    <h2 class="slide-title">Boutons primaires</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">Boutons primaires</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">bouton primaire · bronze · états</div>
+  <div style="display:grid; grid-template-columns: repeat(4, auto); gap:16px 24px; align-items:center; margin-top:16px; justify-content:start;">
+    <button class="btn btn-primary">Prendre rendez-vous</button>
+    <button class="btn btn-primary hover">Prendre rendez-vous</button>
+    <button class="btn btn-primary active">Prendre rendez-vous</button>
+    <button class="btn btn-primary focus">Prendre rendez-vous</button>
+    <div class="state">default</div>
+    <div class="state">hover</div>
+    <div class="state">active</div>
+    <div class="state">focus</div>
+  </div>
+  <hr class="hr">
+  <div style="display:flex; gap:24px; align-items:center;">
+    <button class="btn btn-primary disabled" disabled="">Indisponible</button>
+    <div class="state">disabled · #D6C9B3</div>
+    <div class="meta" style="margin-left:auto;">font-weight: 500 · radius: 2px · padding: 11/20</div>
+  </div>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="21 / 33" data-screen-label="Boutons secondaires">
+  <div class="slide-head">
+    <div class="overline">Composants</div>
+    <h2 class="slide-title">Boutons secondaires</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">Boutons — variantes</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">bouton secondaire · outline</div>
+  <div style="display:flex; gap:16px; margin-top:12px; align-items:center;">
+    <button class="btn btn-secondary">Lire le mandat</button>
+    <button class="btn btn-secondary hover">Lire le mandat</button>
+    <span class="state">default</span><span class="state">hover</span>
+  </div>
+  <hr class="hr">
+  <div class="lbl">bouton ghost · texte seul · sous-action</div>
+  <div style="display:flex; gap:16px; margin-top:12px; align-items:center;">
+    <button class="btn btn-ghost">En savoir plus</button>
+    <button class="btn btn-ghost hover">En savoir plus</button>
+    <span class="state">default</span><span class="state">hover (underline)</span>
+  </div>
+  <hr class="hr">
+  <div class="lbl">bouton danger · usage rare</div>
+  <div style="display:flex; gap:16px; margin-top:12px; align-items:center;">
+    <button class="btn btn-danger">Retirer du dossier</button>
+    <button class="btn btn-danger hover">Retirer du dossier</button>
+    <span class="state">default</span><span class="state">hover</span>
+  </div>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="22 / 33" data-screen-label="Champs de saisie">
+  <div class="slide-head">
+    <div class="overline">Composants</div>
+    <h2 class="slide-title">Champs de saisie</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">Champs de saisie</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">champ texte · états</div>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px 24px; margin-top:14px;">
+    <div class="field">
+      <label>Default</label>
+      <input class="input" placeholder="Nom du dossier">
+      <div class="helper">Indication discrète, gris 500</div>
+    </div>
+    <div class="field">
+      <label>Focus</label>
+      <input class="input focus" value="Gouvernance ESG 2026">
+      <div class="helper">Bordure bronze + ring 32%</div>
+    </div>
+    <div class="field">
+      <label>Error</label>
+      <input class="input error" value="acme.qc">
+      <div class="helper error">Le nom doit contenir au moins 5 caractères.</div>
+    </div>
+    <div class="field">
+      <label>Disabled</label>
+      <input class="input disabled" value="archivé" disabled="">
+      <div class="helper">Indisponible — voir l'archive</div>
+    </div>
+  </div>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="23 / 33" data-screen-label="Textarea &amp; select">
+  <div class="slide-head">
+    <div class="overline">Composants</div>
+    <h2 class="slide-title">Textarea &amp; select</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">Textarea &amp; select</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">textarea · select</div>
+  <div style="display:grid; grid-template-columns: 1.4fr 1fr; gap:20px; margin-top:14px;">
+    <div class="field">
+      <label>Note de contexte</label>
+      <textarea class="input" rows="4" style="font-family:var(--font-serif); font-style:italic; font-size:14px; line-height:1.5;">Le conseil souhaite préparer une intervention publique sur la transition énergétique avant l'AGA de juin.</textarea>
+      <div class="helper">Format libre · 400 caractères max</div>
+    </div>
+    <div class="field">
+      <label>Typologie d'enjeu</label>
+      <div style="position:relative;">
+        <select class="input" style="appearance:none; padding-right:36px;">
+          <option>Gouvernance</option>
+          <option>Réputation</option>
+          <option>Risque réglementaire</option>
+          <option>Crise</option>
+        </select>
+        <svg style="position:absolute; right:12px; top:50%; transform:translateY(-50%); pointer-events:none;" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#6B6560" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="helper">Une seule typologie principale</div>
+    </div>
+  </div>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="24 / 33" data-screen-label="Badges &amp; pills">
+  <div class="slide-head">
+    <div class="overline">Composants</div>
+    <h2 class="slide-title">Badges &amp; pills</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">Badges &amp; pills</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">badges · status</div>
+  <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;">
+    <span style="display:inline-flex; align-items:center; gap:6px; font-size:11px; padding:5px 10px; border-radius:999px; background:var(--bronze-100); color:var(--bronze-700); letter-spacing:0.02em;">
+      <span style="width:6px; height:6px; border-radius:999px; background:var(--bronze-700);"></span>En cours
+    </span>
+    <span style="display:inline-flex; align-items:center; gap:6px; font-size:11px; padding:5px 10px; border-radius:999px; background:#E8E4DC; color:var(--gray-500); letter-spacing:0.02em;">
+      <span style="width:6px; height:6px; border-radius:999px; background:var(--gray-500);"></span>En attente
+    </span>
+    <span style="display:inline-flex; align-items:center; gap:6px; font-size:11px; padding:5px 10px; border-radius:999px; background:#DCE5DC; color:#2F5D43; letter-spacing:0.02em;">
+      <span style="width:6px; height:6px; border-radius:999px; background:#2F5D43;"></span>Livré
+    </span>
+    <span style="display:inline-flex; align-items:center; gap:6px; font-size:11px; padding:5px 10px; border-radius:999px; background:var(--danger-soft); color:var(--danger); letter-spacing:0.02em;">
+      <span style="width:6px; height:6px; border-radius:999px; background:var(--danger);"></span>Bloqué
+    </span>
+  </div>
+  <hr class="hr">
+  <div class="lbl">pills · catégorie · stroke uniquement</div>
+  <div style="display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;">
+    
+      <span style="font-size:12px; padding:5px 12px; border-radius:999px; border:1px solid var(--border-strong); color:var(--text-primary);">Gouvernance</span>
+      <span style="font-size:12px; padding:5px 12px; border-radius:999px; border:1px solid var(--border-strong); color:var(--text-primary);">Risque réputationnel</span>
+      <span style="font-size:12px; padding:5px 12px; border-radius:999px; border:1px solid var(--border-strong); color:var(--text-primary);">ESG</span>
+      <span style="font-size:12px; padding:5px 12px; border-radius:999px; border:1px solid var(--border-strong); color:var(--text-primary);">Communication de crise</span>
+      <span style="font-size:12px; padding:5px 12px; border-radius:999px; border:1px solid var(--border-strong); color:var(--text-primary);">Affaires publiques</span>
+  </div>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="25 / 33" data-screen-label="Cards">
+  <div class="slide-head">
+    <div class="overline">Composants</div>
+    <h2 class="slide-title">Cards</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">Cards</div><div class="dsx-card-frame"></div></div></div>
+</section>
+
+<section class="slide" data-num="26 / 33" data-screen-label="Dividers">
+  <div class="slide-head">
+    <div class="overline">Composants</div>
+    <h2 class="slide-title">Dividers</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">Dividers</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">dividers · 1px hairline (défaut)</div>
+  <hr style="border:0; height:1px; background:var(--border); margin:14px 0;">
+  <div class="lbl">2px · marqueur de section (rare)</div>
+  <hr style="border:0; height:2px; background:var(--bronze-700); width:40px; margin:14px 0;">
+  <div class="lbl">filet vertical · inline meta</div>
+  <div style="display:flex; gap:14px; align-items:center; margin-top:14px; font-size:13px; color:var(--gray-500);">
+    <span>Marie-Claude Aubin</span>
+    <span style="height:14px; width:1px; background:var(--border-strong);"></span>
+    <span>Associée fondatrice</span>
+    <span style="height:14px; width:1px; background:var(--border-strong);"></span>
+    <span>Montréal</span>
+  </div>
+  <div class="meta" style="margin-top:14px;">jamais de bordure pointillée · pas de double-border · pas de filet bronze sur fond cream pleine largeur</div>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="27 / 33" data-screen-label="Navigation">
+  <div class="slide-head">
+    <div class="overline">Composants</div>
+    <h2 class="slide-title">Navigation</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">Navigation</div><div class="dsx-card-frame"><div class="card" style="padding:0;">
+  <!-- desktop -->
+  <div style="background:var(--cream); border-bottom:1px solid var(--border); padding:18px 32px; display:flex; align-items:center; gap:32px;">
+    <div style="font-family:var(--font-sans); font-weight:300; font-size:18px; letter-spacing:-0.01em;">résolu<span style="color:var(--bronze-700);">.</span></div>
+    <nav style="display:flex; gap:24px; font-size:13px; color:var(--text-primary);">
+      <a href="#" style="color:inherit; text-decoration:none; padding-bottom:2px; border-bottom:1px solid var(--text-primary);">Approche</a>
+      <a href="#" style="color:var(--gray-500); text-decoration:none;">Mandats</a>
+      <a href="#" style="color:var(--gray-500); text-decoration:none;">Équipe</a>
+      <a href="#" style="color:var(--gray-500); text-decoration:none;">Écrits</a>
+    </nav>
+    <button class="btn-primary" style="margin-left:auto; font-family:var(--font-sans); font-weight:500; font-size:12px; padding:9px 16px; background:var(--accent); color:var(--cream); border:0; border-radius:2px;">Prendre contact</button>
+  </div>
+
+  <!-- mobile -->
+  <div style="padding:20px 32px;">
+    <div class="lbl" style="font-size:10px;">mobile · hamburger</div>
+    <div style="background:var(--cream); border:1px solid var(--border); margin-top:10px; display:flex; align-items:center; justify-content:space-between; padding:14px 18px;">
+      <div style="font-family:var(--font-sans); font-weight:300; font-size:17px;">résolu<span style="color:var(--bronze-700);">.</span></div>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#14181C" stroke-width="1.25"><line x1="3" y1="8" x2="21" y2="8"></line><line x1="3" y1="16" x2="21" y2="16"></line></svg>
+    </div>
+  </div>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="28 / 33" data-screen-label="Bloc citation">
+  <div class="slide-head">
+    <div class="overline">Patterns éditoriaux</div>
+    <h2 class="slide-title">Bloc citation</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">Bloc citation</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">bloc citation · serif italic · border-left bronze 2px</div>
+  <blockquote style="margin:18px 0 0; padding:6px 0 6px 24px; border-left:2px solid var(--bronze-700);">
+    <div style="font-family:var(--font-serif); font-style:italic; font-weight:400; font-size:22px; line-height:1.4; color:var(--text-primary);">Nous n'écrivons pas vos lignes. Nous vous aidons à trouver les vôtres.</div>
+    <div style="margin-top:14px; font-size:12px; color:var(--gray-500); letter-spacing:0.04em;">— Marie-Claude Aubin, associée fondatrice</div>
+  </blockquote>
+  <div class="meta" style="margin-top:14px;">padding-left: 24px · border-left: 2px solid var(--bronze-700) · jamais de guillemets décoratifs « »</div>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="29 / 33" data-screen-label="Section label">
+  <div class="slide-head">
+    <div class="overline">Patterns éditoriaux</div>
+    <h2 class="slide-title">Section label</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">Section label</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">section label · 10px · uppercase · tracking 0.2em · bronze</div>
+  <div style="margin-top:18px;">
+    <div style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--bronze-700); font-weight:400;">Approche — étape 02</div>
+    <div style="font-size:38px; line-height:1.15; letter-spacing:-0.014em; font-weight:300; margin-top:8px;">Cartographier les voix</div>
+    <div style="font-size:15px; line-height:1.6; color:var(--gray-500); margin-top:10px; max-width:480px;">Avant d'écrire le moindre message, nous documentons qui parle, à qui, avec quelle autorité, sur quelle plateforme.</div>
+  </div>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="30 / 33" data-screen-label="Encadré principe">
+  <div class="slide-head">
+    <div class="overline">Patterns éditoriaux</div>
+    <h2 class="slide-title">Encadré principe</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">Encadré principe</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">encadré principe · variantes charcoal et crème</div>
+
+  <!-- charcoal version -->
+  <div style="margin-top:14px; background:var(--charcoal); color:var(--cream); padding:24px 28px;">
+    <div style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--bronze-500); margin-bottom:10px;">Principe 01</div>
+    <div style="font-family:var(--font-serif); font-style:italic; font-size:22px; line-height:1.35; color:var(--cream);">Trois mandats par trimestre. Pas plus. C'est une condition de qualité.</div>
+  </div>
+
+  <!-- cream version -->
+  <div style="margin-top:2px; background:var(--bronze-100); padding:20px 24px;">
+    <div style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--bronze-700); margin-bottom:8px;">Principe 02</div>
+    <div style="font-size:16px; line-height:1.55; color:var(--charcoal);">La discrétion est un livrable. Aucun nom de client n'est mentionné sans accord écrit.</div>
+  </div>
+  <div class="meta" style="margin-top:14px;">charcoal pour les principes structurants · bronze-100 pour les engagements opérationnels</div>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="31 / 33" data-screen-label="Liste de livrables">
+  <div class="slide-head">
+    <div class="overline">Patterns éditoriaux</div>
+    <h2 class="slide-title">Liste de livrables</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">Liste de livrables</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">liste de livrables · checkmark bronze 16px</div>
+  <ul style="list-style:none; padding:0; margin:18px 0 0;">
+    
+      <li style="display:flex; gap:12px; padding:10px 0; border-bottom:1px solid var(--border); align-items:flex-start;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A0732A" stroke-width="1.5" style="flex-shrink:0; margin-top:3px;">
+          <polyline points="4 12 10 18 20 6"></polyline>
+        </svg>
+        <div style="flex:1;">
+          <div style="font-size:14px; color:var(--text-primary);">Note de positionnement en 5 pages</div>
+          <div style="font-family:var(--font-serif); font-style:italic; font-size:13px; color:var(--gray-500); margin-top:2px;">remise sous 10 jours</div>
+        </div>
+      </li>
+      <li style="display:flex; gap:12px; padding:10px 0; border-bottom:1px solid var(--border); align-items:flex-start;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A0732A" stroke-width="1.5" style="flex-shrink:0; margin-top:3px;">
+          <polyline points="4 12 10 18 20 6"></polyline>
+        </svg>
+        <div style="flex:1;">
+          <div style="font-size:14px; color:var(--text-primary);">Cartographie des parties prenantes</div>
+          <div style="font-family:var(--font-serif); font-style:italic; font-size:13px; color:var(--gray-500); margin-top:2px;">matrice influence × intérêt</div>
+        </div>
+      </li>
+      <li style="display:flex; gap:12px; padding:10px 0; border-bottom:1px solid var(--border); align-items:flex-start;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A0732A" stroke-width="1.5" style="flex-shrink:0; margin-top:3px;">
+          <polyline points="4 12 10 18 20 6"></polyline>
+        </svg>
+        <div style="flex:1;">
+          <div style="font-size:14px; color:var(--text-primary);">Trois lignes de message validées</div>
+          <div style="font-family:var(--font-serif); font-style:italic; font-size:13px; color:var(--gray-500); margin-top:2px;">avec objections anticipées</div>
+        </div>
+      </li>
+      <li style="display:flex; gap:12px; padding:10px 0; border-bottom:1px solid var(--border); align-items:flex-start;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A0732A" stroke-width="1.5" style="flex-shrink:0; margin-top:3px;">
+          <polyline points="4 12 10 18 20 6"></polyline>
+        </svg>
+        <div style="flex:1;">
+          <div style="font-size:14px; color:var(--text-primary);">Préparation média (2 simulations)</div>
+          <div style="font-family:var(--font-serif); font-style:italic; font-size:13px; color:var(--gray-500); margin-top:2px;">enregistrées · revues à chaud</div>
+        </div>
+      </li>
+      <li style="display:flex; gap:12px; padding:10px 0; border-bottom:1px solid var(--border); align-items:flex-start;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A0732A" stroke-width="1.5" style="flex-shrink:0; margin-top:3px;">
+          <polyline points="4 12 10 18 20 6"></polyline>
+        </svg>
+        <div style="flex:1;">
+          <div style="font-size:14px; color:var(--text-primary);">Note post-intervention</div>
+          <div style="font-family:var(--font-serif); font-style:italic; font-size:13px; color:var(--gray-500); margin-top:2px;">analyse de couverture + ajustements</div>
+        </div>
+      </li>
+  </ul>
+</div></div></div></div>
+</section>
+
+<section class="slide" data-num="32 / 33" data-screen-label="Do's &amp; Don'ts">
+  <div class="slide-head">
+    <div class="overline">Brand</div>
+    <h2 class="slide-title">Do's &amp; Don'ts</h2>
+  </div>
+  <div class="slide-body cards-1"><div class="dsx-card-wrap"><div class="dsx-card-title">Do's &amp; Don'ts</div><div class="dsx-card-frame"><div class="card">
+  <div class="lbl">règles d'usage · visuel</div>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2px; margin-top:14px;">
+
+    <div style="background:var(--white); border:1px solid var(--border); padding:18px;">
+      <div style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#2F5D43; margin-bottom:10px;">✓ À faire</div>
+      <div style="font-family:var(--font-sans); font-weight:300; font-size:24px; letter-spacing:-0.01em;">résolu<span style="color:var(--bronze-700);">.</span></div>
+      <div style="font-size:11px; color:var(--gray-500); margin-top:8px;">minuscules · point bronze · weight 300</div>
+    </div>
+    <div style="background:var(--white); border:1px solid var(--border); padding:18px;">
+      <div style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--danger); margin-bottom:10px;">✗ À éviter</div>
+      <div style="font-family:var(--font-sans); font-weight:700; font-size:24px; text-transform:uppercase; letter-spacing:0.05em;">RÉSOLU</div>
+      <div style="font-size:11px; color:var(--gray-500); margin-top:8px;">majuscules · bold · jamais</div>
+    </div>
+
+    <div style="background:var(--white); border:1px solid var(--border); padding:18px;">
+      <div style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#2F5D43; margin-bottom:10px;">✓ Accent ≤ 12%</div>
+      <div style="display:flex; gap:4px; align-items:center;">
+        <div style="height:32px; width:140px; background:var(--cream); border:1px solid var(--border);"></div>
+        <div style="height:32px; width:18px; background:var(--bronze-700);"></div>
+      </div>
+      <div style="font-size:11px; color:var(--gray-500); margin-top:8px;">bronze comme filet ou bouton</div>
+    </div>
+    <div style="background:var(--white); border:1px solid var(--border); padding:18px;">
+      <div style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--danger); margin-bottom:10px;">✗ Bronze en fond</div>
+      <div style="height:32px; width:100%; background:var(--bronze-700);"></div>
+      <div style="font-size:11px; color:var(--gray-500); margin-top:8px;">jamais de bloc plein</div>
+    </div>
+
+    <div style="background:var(--white); border:1px solid var(--border); padding:18px;">
+      <div style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#2F5D43; margin-bottom:10px;">✓ Hiérarchie par taille</div>
+      <div style="font-size:22px; font-weight:300; line-height:1.1;">Un enjeu</div>
+      <div style="font-size:13px; color:var(--gray-500); line-height:1.4; margin-top:4px;">se prépare en amont</div>
+    </div>
+    <div style="background:var(--white); border:1px solid var(--border); padding:18px;">
+      <div style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--danger); margin-bottom:10px;">✗ Hiérarchie par bold</div>
+      <div style="font-size:14px; font-weight:700;">Un enjeu</div>
+      <div style="font-size:14px; font-weight:300; color:var(--gray-500); margin-top:4px;">se prépare en amont</div>
+    </div>
+
+  </div>
+</div></div></div></div>
+</section>
+
+<section class="slide slide-cover slide-close" data-screen-label="Close">
+  <div class="cover-inner">
+    <div class="cover-overline">Fin du document · v1.1</div>
+    <h1 class="cover-title-sm">Un système, pas un livre.</h1>
+    <p class="cover-tag">À itérer au rythme des mandats.</p>
+    <div class="cover-meta">résolu<span style="color:#A0732A">.</span> · conseil — Montréal</div>
+  </div>
+</section>
+
+
+</div><!-- /tab-design -->
 
 </body>
 </html>
