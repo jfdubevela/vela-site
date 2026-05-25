@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /resolu.html
+Allow: /
+
+Sitemap: https://www.velavelavela.com/sitemap.xml

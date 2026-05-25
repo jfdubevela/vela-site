@@ -1,0 +1,2125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>résolu · brief de marque</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bronze: #A0732A;
+    --bronze-light: #B8893A;
+    --bronze-pale: #EDE0CC;
+    --cream: #FAF7F3;
+    --sand: #E2DDD8;
+    --charcoal: #1C2B3A;
+    --mid: #6B6560;
+    --light-text: #9A928C;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--charcoal);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+
+  .cover-left {
+    background: var(--charcoal);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 80px;
+    position: relative;
+  }
+
+  .cover-left::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 80% 20%, rgba(196,113,74,0.15) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .cover-right {
+    background: var(--bronze);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover-right::before {
+    content: '';
+    position: absolute;
+    bottom: -100px; right: -100px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .cover-right::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: -60px;
+    width: 250px; height: 250px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .logo-mark {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 72px;
+    color: white;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  .logo-mark span { color: var(--bronze); }
+
+  .tagline {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.8s 0.25s ease both;
+  }
+
+  .cover-meta {
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+
+  .cover-meta p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 2.2;
+  }
+
+  .cover-right-content {
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.8s 0.55s ease both;
+  }
+
+  .cover-right h1 {
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 28px;
+  }
+
+  .cover-right h2 {
+    font-family: 'Lora', serif;
+    font-weight: 400;
+    font-size: 34px;
+    color: white;
+    line-height: 1.3;
+    margin-bottom: 24px;
+  }
+
+  .cover-right p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.85;
+    max-width: 380px;
+  }
+
+  /* LAYOUT */
+  .full-bleed {
+    max-width: 100%;
+  }
+
+  .contained {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 80px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-label::after {
+    content: '';
+    width: 48px;
+    height: 1px;
+    background: var(--bronze);
+    opacity: 0.4;
+  }
+
+  .section-label.light { color: var(--bronze-light); }
+  .section-label.light::after { background: var(--bronze-light); }
+
+  h2.section-title {
+    font-family: 'Lora', serif;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  h2.section-title.white { color: white; }
+
+  .subtitle {
+    font-size: 16px;
+    color: var(--mid);
+    max-width: 580px;
+    margin-bottom: 64px;
+    line-height: 1.85;
+  }
+
+  .subtitle.light { color: rgba(255,255,255,0.5); }
+
+  /* RATIONALE BLOCK */
+  .rationale {
+    background: var(--bronze-pale);
+    border-left: 3px solid var(--bronze);
+    padding: 24px 32px;
+    margin-bottom: 48px;
+    max-width: 680px;
+  }
+
+  .rationale-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 10px;
+  }
+
+  .rationale p {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.8;
+  }
+
+  .rationale.dark {
+    background: rgba(255,255,255,0.05);
+    border-left-color: var(--bronze-light);
+  }
+
+  .rationale.dark .rationale-label { color: var(--bronze-light); }
+  .rationale.dark p { color: rgba(255,255,255,0.55); }
+
+  /* GRID ELEMENTS */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--sand); }
+  .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--sand); }
+  .four-col { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: var(--sand); }
+  .five-col { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; background: var(--sand); }
+
+  .cell {
+    background: var(--cream);
+    padding: 44px 40px;
+    transition: background 0.25s;
+  }
+
+  .cell:hover { background: white; }
+  .cell.dark { background: var(--charcoal); }
+  .cell.dark:hover { background: #333; }
+  .cell.white { background: white; }
+  .cell.accent-top { border-top: 3px solid var(--bronze); background: white; }
+
+  .cell-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 18px;
+    display: block;
+  }
+
+  .cell.dark .cell-label { color: var(--bronze-light); }
+
+  .cell h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    margin-bottom: 14px;
+    color: var(--charcoal);
+    line-height: 1.4;
+  }
+
+  .cell.dark h3 { color: white; }
+
+  .cell p {
+    font-size: 14px;
+    line-height: 1.85;
+    color: var(--mid);
+  }
+
+  .cell.dark p { color: rgba(255,255,255,0.55); }
+
+  /* CONTRAST (is / is not) */
+  .contrast-not { background: var(--cream); padding: 56px 48px; }
+  .contrast-is { background: white; padding: 56px 48px; border-top: 3px solid var(--bronze); }
+
+  .contrast-head {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+
+  .contrast-not .contrast-head { color: var(--light-text); }
+  .contrast-is .contrast-head { color: var(--bronze); }
+
+  .contrast-list { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+
+  .contrast-list li {
+    font-size: 15px;
+    line-height: 1.6;
+    padding-left: 24px;
+    position: relative;
+  }
+
+  .contrast-not .contrast-list li { color: var(--mid); }
+  .contrast-not .contrast-list li::before { content: '×'; position: absolute; left: 0; color: var(--light-text); }
+  .contrast-is .contrast-list li { color: var(--charcoal); font-weight: 400; }
+  .contrast-is .contrast-list li::before { content: '→'; position: absolute; left: 0; color: var(--bronze); }
+
+  /* METHOD */
+  .method-number {
+    font-family: 'Lora', serif;
+    font-size: 56px;
+    color: var(--bronze-pale);
+    line-height: 1;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .method-note {
+    background: var(--charcoal);
+    padding: 28px 48px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .method-note-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--bronze);
+    flex-shrink: 0;
+  }
+
+  .method-note p {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+  }
+
+  /* PRINCIPLES */
+  .principle-cell {
+    background: rgba(255,255,255,0.03);
+    padding: 40px 28px;
+    transition: background 0.25s;
+  }
+
+  .principle-cell:hover { background: rgba(255,255,255,0.06); }
+
+  .principle-cell h4 {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--bronze-light);
+    margin-bottom: 14px;
+    letter-spacing: 0.5px;
+  }
+
+  .principle-cell p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.85;
+  }
+
+  /* PERSONALITY */
+  .personality-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2px;
+    background: var(--sand);
+    margin-bottom: 2px;
+  }
+
+  .personality-word {
+    background: var(--charcoal);
+    padding: 32px 36px;
+    display: flex;
+    align-items: center;
+  }
+
+  .personality-word h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 26px;
+    color: white;
+    letter-spacing: -0.5px;
+  }
+
+  .personality-desc {
+    background: var(--cream);
+    padding: 32px 44px;
+    display: flex;
+    align-items: center;
+    transition: background 0.25s;
+  }
+
+  .personality-desc:hover { background: white; }
+
+  .personality-desc p {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.8;
+  }
+
+  .personality-desc strong { color: var(--charcoal); font-weight: 500; }
+
+  /* CLIENTS */
+  .client-anchor {
+    background: var(--bronze-pale);
+    border-left: 3px solid var(--bronze);
+    padding: 28px 40px;
+    margin-top: 2px;
+  }
+
+  .client-anchor p {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--mid);
+    line-height: 1.75;
+  }
+
+  /* VOICE */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    margin-bottom: 64px;
+  }
+
+  .voice-item h4 {
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--bronze-light);
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .voice-item p {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.85;
+  }
+
+  .avoid-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .avoid-cell { padding: 40px; background: rgba(255,255,255,0.03); }
+
+  .avoid-cell h5 {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .avoid-cell.bad h5 { color: rgba(255,255,255,0.25); }
+  .avoid-cell.good h5 { color: var(--bronze-light); }
+
+  .avoid-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+
+  .avoid-list li {
+    font-size: 14px;
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .avoid-cell.bad .avoid-list li { color: rgba(255,255,255,0.35); }
+  .avoid-cell.bad .avoid-list li::before { content: '×'; position: absolute; left: 0; color: rgba(255,255,255,0.2); }
+  .avoid-cell.good .avoid-list li { color: rgba(255,255,255,0.65); }
+  .avoid-cell.good .avoid-list li::before { content: '→'; position: absolute; left: 0; color: var(--bronze); }
+
+  /* VISUAL DIRECTION */
+  .visual-bg { background: var(--sand); }
+
+  .color-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    align-items: flex-end;
+  }
+
+  .swatch {
+    flex: 1;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 18px;
+    transition: transform 0.2s;
+    cursor: default;
+  }
+
+  .swatch:hover { transform: translateY(-4px); }
+  .swatch.primary { height: 160px; background: var(--bronze); }
+  .swatch.dark-s { height: 120px; background: var(--charcoal); }
+  .swatch.cream-s { height: 100px; background: var(--cream); border: 1px solid #d0c8be; }
+  .swatch.sand-s { height: 90px; background: var(--sand); border: 1px solid #c8bfb5; }
+  .swatch.pale-s { height: 80px; background: var(--bronze-pale); }
+
+  .swatch-name { font-size: 11px; font-weight: 500; letter-spacing: 0.5px; }
+  .swatch-role { font-size: 10px; opacity: 0.55; margin-top: 3px; }
+  .swatch-hex { font-size: 10px; opacity: 0.45; font-family: monospace; }
+
+  .swatch.primary .swatch-name, .swatch.primary .swatch-role, .swatch.primary .swatch-hex,
+  .swatch.dark-s .swatch-name, .swatch.dark-s .swatch-role, .swatch.dark-s .swatch-hex { color: white; }
+
+  .swatch.cream-s .swatch-name, .swatch.cream-s .swatch-role, .swatch.cream-s .swatch-hex,
+  .swatch.sand-s .swatch-name, .swatch.sand-s .swatch-role, .swatch.sand-s .swatch-hex,
+  .swatch.pale-s .swatch-name, .swatch.pale-s .swatch-role, .swatch.pale-s .swatch-hex { color: var(--charcoal); }
+
+  .typo-demo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--sand);
+    margin-top: 48px;
+  }
+
+  .typo-block { padding: 48px; background: var(--cream); }
+
+  .typo-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--light-text);
+    margin-bottom: 24px;
+  }
+
+  .typo-sample-display {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 56px;
+    color: var(--charcoal);
+    line-height: 1.1;
+    letter-spacing: -1px;
+  }
+
+  .typo-sample-serif {
+    font-family: 'Lora', serif;
+    font-size: 19px;
+    color: var(--mid);
+    line-height: 1.85;
+    font-style: italic;
+  }
+
+  .typo-detail {
+    font-size: 12px;
+    color: var(--light-text);
+    margin-top: 20px;
+    border-top: 1px solid var(--sand);
+    padding-top: 16px;
+    line-height: 1.7;
+  }
+
+  /* LOGO */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--sand);
+    margin-top: 64px;
+  }
+
+  .logo-option {
+    background: var(--cream);
+    padding: 56px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    transition: background 0.25s;
+  }
+
+  .logo-option:hover { background: white; }
+  .logo-option.preferred { background: white; border-top: 3px solid var(--bronze); }
+
+  .logo-preview {
+    height: 90px;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-a { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 40px; color: var(--charcoal); letter-spacing: -0.5px; }
+  .logo-a .dot { color: var(--bronze); font-size: 48px; line-height: 0; position: relative; top: 4px; }
+
+  .logo-b { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 40px; color: var(--charcoal); }
+  .logo-b .r-accent { color: var(--bronze); font-weight: 500; }
+
+  .logo-c-wrap { display: flex; align-items: center; gap: 14px; }
+  .logo-c-mark { width: 46px; height: 46px; border: 2px solid var(--charcoal); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .logo-c-mark span { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 20px; color: var(--bronze); }
+  .logo-c-text { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 30px; color: var(--charcoal); letter-spacing: -0.5px; }
+
+  .logo-option h4 { font-size: 13px; font-weight: 500; color: var(--charcoal); margin-bottom: 8px; }
+  .logo-option p { font-size: 13px; color: var(--mid); line-height: 1.75; }
+
+  .logo-badge {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    background: var(--bronze-pale);
+    color: var(--bronze);
+    margin-top: 6px;
+    width: fit-content;
+  }
+
+  /* PRICING */
+  .pricing-bg { background: var(--charcoal); }
+
+  .pricing-cells {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: rgba(255,255,255,0.05);
+    margin-bottom: 2px;
+  }
+
+  .pricing-cell {
+    background: rgba(255,255,255,0.03);
+    padding: 40px 36px;
+    transition: background 0.25s;
+  }
+
+  .pricing-cell:hover { background: rgba(255,255,255,0.06); }
+
+  .pricing-phase {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bronze-light);
+    margin-bottom: 14px;
+  }
+
+  .pricing-cell h4 { font-size: 15px; font-weight: 400; color: white; margin-bottom: 20px; line-height: 1.5; }
+  .pricing-cell .price-hours { font-family: 'Lora', serif; font-size: 34px; color: white; margin-bottom: 4px; }
+  .pricing-cell .price-range { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+  .pricing-total {
+    background: var(--bronze);
+    padding: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .pricing-total-left h3 { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.65); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; }
+  .pricing-total-left p { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.85; }
+  .pricing-total-right { text-align: right; }
+  .total-amount { font-family: 'Lora', serif; font-size: 72px; color: white; line-height: 1; }
+  .total-note { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 8px; }
+
+  /* TIMELINE */
+  .timeline-cells {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: rgba(255,255,255,0.05);
+    margin-top: 48px;
+  }
+
+  .timeline-cell { background: rgba(255,255,255,0.03); padding: 40px 30px; }
+  .timeline-cell.launch { background: rgba(196,113,74,0.12); border-top: 2px solid var(--bronze); }
+
+  .timeline-week { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
+  .timeline-cell h4 { font-size: 15px; font-weight: 500; color: white; margin-bottom: 10px; }
+  .timeline-cell.launch h4 { color: var(--bronze-light); }
+  .timeline-cell p { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.75; }
+
+  /* FOOTER */
+  footer {
+    background: var(--cream);
+    border-top: 1px solid var(--sand);
+    padding: 56px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 26px; color: var(--charcoal); }
+  .footer-logo span { color: var(--bronze); }
+  footer p { font-size: 12px; color: var(--light-text); letter-spacing: 1px; }
+
+  /* NEXT STEPS */
+  .next-cells {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: rgba(255,255,255,0.05);
+    margin-top: 48px;
+  }
+
+  .next-cell { background: rgba(255,255,255,0.03); padding: 40px 32px; }
+  .next-num { font-family: 'Lora', serif; font-size: 40px; color: var(--bronze); line-height: 1; margin-bottom: 16px; }
+  .next-cell h4 { font-size: 15px; font-weight: 500; color: white; margin-bottom: 10px; }
+  .next-cell p { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.75; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* TAB NAVIGATION */
+  .tab-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: var(--charcoal);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 56px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .tab-nav-logo {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    color: white;
+    letter-spacing: -0.3px;
+  }
+
+  .tab-nav-logo span { color: var(--bronze); }
+
+  .tab-nav-links {
+    display: flex;
+    gap: 2px;
+  }
+
+  .tab-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 24px;
+    height: 56px;
+    transition: color 0.2s, background 0.2s;
+    position: relative;
+  }
+
+  .tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 24px;
+    right: 24px;
+    height: 2px;
+    background: var(--bronze);
+    transform: scaleX(0);
+    transition: transform 0.25s;
+  }
+
+  .tab-btn:hover { color: rgba(255,255,255,0.7); }
+
+  .tab-btn.active {
+    color: white;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .tab-btn.active::after { transform: scaleX(1); }
+
+  .tab-content { display: none; padding-top: 56px; }
+  .tab-content.active { display: block; }
+
+  /* PLAN DE TRAVAIL */
+  .plan-hero {
+    background: var(--charcoal);
+    padding: 100px 80px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .plan-hero::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    border: 1px solid rgba(160,115,42,0.12);
+  }
+
+  .plan-hero::after {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    border: 1px solid rgba(160,115,42,0.08);
+  }
+
+  .plan-hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .plan-hero h1 {
+    font-family: 'Lora', serif;
+    font-weight: 400;
+    font-size: 52px;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    max-width: 640px;
+  }
+
+  .plan-hero p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.45);
+    max-width: 520px;
+    line-height: 1.85;
+  }
+
+  .plan-hero-meta {
+    margin-top: 48px;
+    display: flex;
+    gap: 48px;
+  }
+
+  .plan-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .plan-meta-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+  }
+
+  .plan-meta-value {
+    font-size: 15px;
+    color: white;
+  }
+
+  /* STEPS */
+  .plan-steps {
+    background: var(--cream);
+    padding: 80px;
+  }
+
+  .plan-steps-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .step-row {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2px;
+    background: var(--sand);
+    margin-bottom: 2px;
+    transition: opacity 0.3s;
+  }
+
+  .step-row:last-child { margin-bottom: 0; }
+
+  .step-left {
+    background: var(--charcoal);
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .step-number {
+    font-family: 'Lora', serif;
+    font-size: 64px;
+    color: rgba(255,255,255,0.08);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .step-phase {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bronze-light);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .step-left h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: white;
+    line-height: 1.3;
+  }
+
+  .step-status {
+    margin-top: 28px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .step-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .status-upcoming .step-status-dot { background: rgba(255,255,255,0.2); }
+  .status-upcoming .step-status { color: rgba(255,255,255,0.25); }
+
+  .status-active .step-status-dot { background: var(--bronze); box-shadow: 0 0 8px rgba(160,115,42,0.5); }
+  .status-active .step-status { color: var(--bronze-light); }
+
+  .status-done .step-status-dot { background: #5a9e6a; }
+  .status-done .step-status { color: #5a9e6a; }
+
+  .step-right {
+    background: white;
+    padding: 48px 56px;
+  }
+
+  .step-right.cream { background: var(--cream); }
+
+  .step-desc {
+    font-size: 15px;
+    color: var(--mid);
+    line-height: 1.85;
+    margin-bottom: 32px;
+    max-width: 560px;
+  }
+
+  .step-deliverables {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .deliverable {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 13px;
+    color: var(--charcoal);
+    line-height: 1.6;
+  }
+
+  .deliverable-icon {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--bronze);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .deliverable-icon svg {
+    width: 10px;
+    height: 10px;
+    stroke: var(--bronze);
+    fill: none;
+    stroke-width: 2;
+  }
+
+  .step-duration {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--sand);
+    font-size: 12px;
+    color: var(--light-text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .step-duration strong { color: var(--charcoal); font-weight: 500; }
+
+  /* ROUNDS */
+  .rounds-block {
+    background: var(--bronze-pale);
+    border-left: 3px solid var(--bronze);
+    padding: 24px 28px;
+    margin-top: 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 560px;
+  }
+
+  .rounds-block p {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.8;
+  }
+
+  .rounds-num {
+    font-family: 'Lora', serif;
+    font-size: 36px;
+    color: var(--bronze);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  /* STEP HIGHLIGHT (03b) */
+  .step-row.highlight .step-left {
+    background: #1a2535;
+    border-left: 3px solid var(--bronze);
+  }
+
+  /* TIMELINE SUMMARY */
+  .plan-summary {
+    background: var(--bronze);
+    padding: 64px 80px;
+  }
+
+  .plan-summary-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .plan-summary h2 {
+    font-family: 'Lora', serif;
+    font-weight: 400;
+    font-size: 36px;
+    color: white;
+    line-height: 1.25;
+    margin-bottom: 16px;
+  }
+
+  .plan-summary p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.85;
+  }
+
+  .plan-total-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: rgba(255,255,255,0.15);
+  }
+
+  .plan-total-cell {
+    background: rgba(0,0,0,0.12);
+    padding: 28px 32px;
+  }
+
+  .plan-total-cell .label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 10px;
+  }
+
+  .plan-total-cell .value {
+    font-family: 'Lora', serif;
+    font-size: 32px;
+    color: white;
+    line-height: 1;
+  }
+
+  .plan-total-cell .note {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 6px;
+  }
+
+  /* PHASE SEPARATORS */
+  .phase-separator {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2px;
+    background: var(--sand);
+    margin-bottom: 2px;
+    margin-top: 40px;
+  }
+
+  .phase-separator:first-of-type { margin-top: 0; }
+
+  .phase-sep-left {
+    background: var(--bronze);
+    padding: 32px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .phase-sep-num {
+    font-family: 'Lora', serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 8px;
+  }
+
+  .phase-sep-left h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 22px;
+    color: white;
+    line-height: 1.2;
+  }
+
+  .phase-sep-right {
+    background: var(--bronze-pale);
+    padding: 32px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .phase-sep-date {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .phase-sep-date-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bronze);
+  }
+
+  .phase-sep-date-value {
+    font-family: 'Lora', serif;
+    font-size: 28px;
+    color: var(--charcoal);
+    line-height: 1;
+  }
+
+  .phase-sep-deliverables {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.8;
+    max-width: 480px;
+  }
+
+  .phase-sep-deliverables strong {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 8px;
+    font-weight: 400;
+  }
+</style>
+</head>
+<body>
+
+<!-- TAB NAVIGATION -->
+<nav class="tab-nav">
+  <div class="tab-nav-logo">résolu<span>.</span></div>
+  <div class="tab-nav-links">
+    <button class="tab-btn active" onclick="switchTab('brief')">Brief de marque</button>
+    <button class="tab-btn" onclick="switchTab('plan')">Plan de travail</button>
+  </div>
+</nav>
+
+<!-- TAB: BRIEF DE MARQUE -->
+<div id="tab-brief" class="tab-content active">
+
+<!-- ① COVER -->
+<div class="cover">
+  <div class="cover-left">
+    <div class="logo-mark">résolu<span>.</span></div>
+    <div class="tagline">Transforme les enjeux en opportunités.</div>
+    <div class="naming-note" style="position:relative;z-index:1;margin-bottom:32px;padding:16px 20px;border-left:2px solid rgba(160,115,42,0.5);animation:fadeUp 0.8s 0.38s ease both;opacity:0;"><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(160,115,42,0.7);margin-bottom:8px;">Note sur le nom</div><p style="font-size:12px;color:rgba(255,255,255,0.45);line-height:1.75;font-style:italic;">Le nom commercial est <strong style="color:rgba(255,255,255,0.7);font-style:normal;">résolu conseil</strong> au lancement. "Conseil" s'efface avec le temps, au rythme où la réputation rend le nom seul suffisant.</p></div><div class="cover-meta">
+      <p>Brief de marque · Direction créative</p>
+      <p>Mai 2025 · Usage client confidentiel</p>
+      <p>Préparé par Jean-François Dubé</p>
+    </div>
+  </div>
+  <div class="cover-right">
+    <div class="cover-right-content">
+      <h1>Ce document</h1>
+      <h2>Poser les fondations avant de construire.</h2>
+      <p>Ce brief établit la plateforme de marque, la personnalité, la direction visuelle et le plan de travail pour le lancement de résolu prévue pour l'été 2025.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ② BRAND PLATFORM -->
+<div class="full-bleed" style="background:var(--cream);">
+  <div class="contained">
+    <div class="section-label">01 · Plateforme de marque</div>
+    <h2 class="section-title">La base de tout ce<br>qu'on va construire.</h2>
+    <p class="subtitle">Ces quatre éléments ne sont pas des slogans. Ce sont des engagements opérationnels qui vont guider chaque décision : créative, éditoriale, commerciale.</p>
+
+    <div class="two-col">
+      <div class="cell dark">
+        <span class="cell-label">Mission</span>
+        <h3>Comprendre. Planifier. Agir.</h3>
+        <p>Aider les organisations à comprendre leurs enjeux, à planifier leur positionnement et à agir avec cohérence, avant que les situations ne leur échappent.</p>
+      </div>
+      <div class="cell">
+        <span class="cell-label">Vision</span>
+        <h3>La maîtrise en amont.</h3>
+        <p>Les organisations ne manquent pas de canaux de communication. Elles manquent de lecture stratégique de leurs enjeux. résolu conseil existe pour combler cet écart, avant que les situations ne deviennent des crises.</p>
+      </div>
+      <div class="cell">
+        <span class="cell-label">Positionnement</span>
+        <h3>Conseil stratégique de haute intensité, à échelle humaine.</h3>
+        <p>Ni grande agence, ni cabinet généraliste. La rigueur du conseil stratégique, accessible aux organisations de taille intermédiaire. Ancré dans la réalité politique et médiatique du Québec.</p>
+      </div>
+      <div class="cell dark">
+        <span class="cell-label">Promesse</span>
+        <h3>La franchise comme valeur de service.</h3>
+        <p>résolu conseil dit à ses clients ce qu'ils ont besoin d'entendre, pas ce qu'ils veulent entendre. Une lecture claire, un conseil fondé sur les faits, et un accompagnement jusqu'à l'objectif, pas seulement un rapport.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ③ IS / IS NOT -->
+<div class="full-bleed" style="background:var(--sand);">
+  <div class="contained">
+    <div class="section-label">02 · Positionnement clair</div>
+    <h2 class="section-title">Ce que résolu est.<br>Ce qu'il n'est pas.</h2>
+    <p class="subtitle">Dans un marché fragmenté, la clarté du positionnement est elle-même un avantage compétitif. Se définir en creux est aussi important que de se définir positivement.</p>
+
+    <div class="two-col">
+      <div class="contrast-not">
+        <div class="contrast-head">résolu n'est pas</div>
+        <ul class="contrast-list">
+          <li>Une agence de contenu ou de visibilité numérique quotidienne</li>
+          <li>Un service de relations de presse routinier</li>
+          <li>Une firme de lobbying au sens strict</li>
+          <li>Un fournisseur de services standardisés ou génériques</li>
+          <li>Une grande agence qui délègue aux juniors</li>
+          <li>Un cabinet qu'on appelle uniquement quand tout va mal</li>
+        </ul>
+      </div>
+      <div class="contrast-is">
+        <div class="contrast-head">résolu est</div>
+        <ul class="contrast-list">
+          <li>Un partenaire stratégique pour les moments qui comptent vraiment</li>
+          <li>Un conseiller ancré dans la réalité politique et médiatique du Québec</li>
+          <li>Une firme qui donne la priorité à l'analyse avant l'action</li>
+          <li>Une ressource discrète, rigoureuse et directe, adaptée à votre réalité</li>
+          <li>Une boutique où l'expertise que vous engagez est celle qui travaille</li>
+          <li>Un allié qu'on appelle surtout en amont, pour ne jamais être pris par surprise</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ④ METHOD -->
+<div class="full-bleed" style="background:var(--cream);">
+  <div class="contained">
+    <div class="section-label">03 · Approche</div>
+    <h2 class="section-title">Une méthode en quatre temps.<br>Pas une formule.</h2>
+    <p class="subtitle">Comprendre · Planifier · Agir. Ce n'est pas un processus linéaire et rigide. C'est un cadre itératif qui s'adapte à chaque mandat, chaque contexte, chaque client.</p>
+
+    <div class="three-col">
+      <div class="cell">
+        <span class="method-number">01</span>
+        <h3>Comprendre</h3>
+        <p>Lire le contexte, cartographier les acteurs, identifier les enjeux réels avant d'agir. Résolu suit ce qui se dit, ce qui se prépare, ce qui se profile, pour que le client ne soit jamais pris par surprise.</p>
+      </div>
+      <div class="cell">
+        <span class="method-number">02</span>
+        <h3>Planifier</h3>
+        <p>Structurer l'intervention, anticiper les scénarios, préparer les messages qui tiennent sous pression. Chaque plan est calibré sur les réalités du terrain, pas sur un modèle générique.</p>
+      </div>
+      <div class="cell">
+        <span class="method-number">03</span>
+        <h3>Agir</h3>
+        <p>Exécuter avec précision : relations médias, représentations gouvernementales, gestion de crise, développement de notoriété. L'expertise engagée est celle qui fait le travail.</p>
+      </div>
+    </div>
+    <div class="method-note">
+      <div class="method-note-dot"></div>
+      <p>résolu conseil n'est pas uniquement le cabinet qu'on appelle quand tout va mal. On l'appelle surtout quand on pense qu'un problème pourrait se pointer, pour anticiper et non éteindre des feux.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ PRINCIPLES -->
+<div class="full-bleed" style="background:var(--charcoal);">
+  <div class="contained">
+    <div class="section-label light">04 · Principes directeurs</div>
+    <h2 class="section-title white">Ce qui guide chaque<br>décision et chaque conseil.</h2>
+    <p class="subtitle light">Ces cinq principes ne sont pas des valeurs d'affichage. Ce sont des engagements opérationnels qui définissent comment résolu travaille, avec chaque client, sur chaque mandat.</p>
+
+    <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:2px; background:rgba(255,255,255,0.05);">
+      <div class="principle-cell">
+        <h4>La franchise</h4>
+        <p>Dire l'heure juste, même quand c'est difficile à entendre. La valeur d'un conseil repose sur sa capacité à nommer les vrais problèmes, pas à les contourner.</p>
+      </div>
+      <div class="principle-cell">
+        <h4>La rigueur des faits</h4>
+        <p>Toutes les recommandations s'appuient sur des informations vérifiées et une lecture rigoureuse du contexte. Jamais sur des suppositions non étayées.</p>
+      </div>
+      <div class="principle-cell">
+        <h4>La cohérence</h4>
+        <p>Ce que vous dites doit refléter ce que vous faites et qui vous êtes. résolu travaille cet alignement à chaque étape du mandat.</p>
+      </div>
+      <div class="principle-cell">
+        <h4>L'anticipation</h4>
+        <p>Identifier les risques avant qu'ils se matérialisent, construire des scénarios, préparer les organisations aux situations les plus exigeantes.</p>
+      </div>
+      <div class="principle-cell">
+        <h4>L'agilité</h4>
+        <p>Les plans figés ne fonctionnent pas. Les contextes évoluent, les acteurs se repositionnent. résolu conseil adapte la stratégie en continu, sans perdre de vue l'objectif.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑥ CLIENTS -->
+<div class="full-bleed" style="background:var(--cream);">
+  <div class="contained">
+    <div class="section-label">05 · Clientèle cible</div>
+    <h2 class="section-title">Pour qui résolu<br>est le plus utile.</h2>
+    <p class="subtitle">résolu conseil accompagne exclusivement des organisations, jamais des individus à titre personnel. Sa valeur est maximale quand les enjeux ont une dimension institutionnelle, politique ou médiatique.</p>
+
+    <div class="three-col">
+      <div class="cell">
+        <h3>PME et entreprises exposées</h3>
+        <p>Évoluant dans des secteurs réglementés ou soumis à une pression publique ou politique.</p>
+      </div>
+      <div class="cell">
+        <h3>Associations et organisations patronales</h3>
+        <p>Regroupements sectoriels dont la légitimité et la capacité d'influence reposent sur une communication cohérente et crédible.</p>
+      </div>
+      <div class="cell">
+        <h3>OBNL à portée politique</h3>
+        <p>Institutions dont la réputation est un actif critique, dont les enjeux ont une dimension publique, médiatique ou gouvernementale.</p>
+      </div>
+      <div class="cell">
+        <h3>Acteurs publics et parapublics</h3>
+        <p>Confrontés à des enjeux de communication sensibles aux trois paliers de gouvernement : fédéral, provincial, municipal.</p>
+      </div>
+      <div class="cell">
+        <h3>Organisations en transformation</h3>
+        <p>Traversant une mutation majeure nécessitant un alignement rigoureux entre gouvernance interne et communication externe.</p>
+      </div>
+      <div class="cell dark">
+        <h3>Ce qu'ils ont en commun</h3>
+        <p>Leur problème n'est jamais uniquement un problème de communication. C'est un problème de positionnement, de timing et d'influence.</p>
+        <p style="margin-top:16px; font-size:13px; color:rgba(255,255,255,0.35);">Et c'est exactement là que résolu intervient.</p>
+      </div>
+    </div>
+    <div class="client-anchor">
+      <p>"résolu conseil travaille exclusivement avec des organisations, jamais avec des individus à titre personnel. Notre valeur est maximale lorsque les enjeux ont une dimension institutionnelle, politique ou médiatique."</p>
+    </div>
+  </div>
+</div>
+
+<!-- ⑦ PERSONALITY -->
+<div class="full-bleed" style="background:var(--sand);">
+  <div class="contained">
+    <div class="section-label">06 · Personnalité de marque</div>
+    <h2 class="section-title">Comment résolu se<br>présente au monde.</h2>
+    <p class="subtitle">résolu conseil n'est ni alarmiste ni spectaculaire. Dans un secteur où beaucoup vendent de la réassurance, résolu conseil offre quelque chose de plus rare : de la franchise et de la lucidité.</p>
+
+    <div>
+      <div class="personality-row">
+        <div class="personality-word"><h4>stratégique</h4></div>
+        <div class="personality-desc"><p><strong>Chaque action est réfléchie, justifiée et alignée sur un objectif clair.</strong> résolu conseil ne réagit pas. Il oriente. La décision prime sur l'improvisation.</p></div>
+      </div>
+      <div class="personality-row">
+        <div class="personality-word"><h4>lucide</h4></div>
+        <div class="personality-desc"><p><strong>Nomme les enjeux sans les minimiser ni les dramatiser.</strong> Ni optimisme naïf, ni catastrophisme. La réalité telle qu'elle est, avec les options qu'elle offre.</p></div>
+      </div>
+      <div class="personality-row">
+        <div class="personality-word"><h4>calme</h4></div>
+        <div class="personality-desc"><p><strong>Même dans l'urgence, une posture stable et rassurante.</strong> C'est dans les moments les plus intenses que la maîtrise du ton et de la posture fait la différence.</p></div>
+      </div>
+      <div class="personality-row">
+        <div class="personality-word"><h4>direct</h4></div>
+        <div class="personality-desc"><p><strong>La franchise fait partie intégrante de la valeur ajoutée.</strong> La phrase courte. Sans ornement superflu. Orientée vers l'action, pas vers l'impression.</p></div>
+      </div>
+      <div class="personality-row" style="margin-bottom:0;">
+        <div class="personality-word"><h4>accessible</h4></div>
+        <div class="personality-desc"><p><strong>Premium et très personnalisé. Victor est terre à terre et ça se sent.</strong> résolu conseil ne cherche pas à impressionner. Il cherche à être utile. C'est une différence fondamentale.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑧ VOICE -->
+<div class="full-bleed" style="background:var(--charcoal);">
+  <div class="contained">
+    <div class="section-label light">07 · Ton et voix</div>
+    <h2 class="section-title white">Le langage de la décision,<br>pas de la performance.</h2>
+    <p class="subtitle light">résolu conseil ne cherche pas à impressionner avec ses mots. Il cherche à être utile. Précis, crédible, orienté vers l'action. Le registre de la maîtrise et de la lucidité.</p>
+
+    <div class="voice-grid">
+      <div class="voice-item">
+        <h4>Institutionnel sans être froid</h4>
+        <p>"Nous s'adressons à des décideurs, des gestionnaires et des équipes de direction. Victor est accessible. Le ton reflète les deux."</p>
+      </div>
+      <div class="voice-item">
+        <h4>Précis sans être technique</h4>
+        <p>"La précision du registre public et institutionnel, sans le jargon qui exclut. Chaque mot a une raison d'être."</p>
+      </div>
+      <div class="voice-item">
+        <h4>Confiant sans être arrogant</h4>
+        <p>"Le ton de quelqu'un qui a été dans la salle quand ça comptait, sans avoir besoin de le crier."</p>
+      </div>
+      <div class="voice-item">
+        <h4>Québécois sans le crier</h4>
+        <p>"Ancré dans la réalité politique et médiatique du Québec. Le français est la langue naturelle, pas une traduction."</p>
+      </div>
+      <div class="voice-item">
+        <h4>Court et délibéré</h4>
+        <p>"La phrase courte, directe, sans ornement superflu. résolu conseil pèse ses mots, parce que dans son milieu, les mots ont des conséquences."</p>
+      </div>
+      <div class="voice-item">
+        <h4>Humain sans être familier</h4>
+        <p>"Victor est sympathique, terre à terre. La marque garde cette chaleur, sans tomber dans l'informalité qui affaiblit la crédibilité."</p>
+      </div>
+    </div>
+
+    <div class="avoid-grid">
+      <div class="avoid-cell bad">
+        <h5>Ce qu'on évite</h5>
+        <ul class="avoid-list">
+          <li>Les superlatifs et promesses non mesurables</li>
+          <li>Le vocabulaire de l'urgence permanente</li>
+          <li>Les anglicismes inutiles dans les communications francophones</li>
+          <li>Les métaphores guerrières ou sportives</li>
+          <li>Le jargon générique de l'industrie RP</li>
+        </ul>
+      </div>
+      <div class="avoid-cell good">
+        <h5>Ce qu'on favorise</h5>
+        <ul class="avoid-list">
+          <li>La clarté factuelle et la précision vérifiable</li>
+          <li>Le registre institutionnel et public du Québec</li>
+          <li>La phrase courte, directe, sans ornement superflu</li>
+          <li>Le registre de la maîtrise et de la lucidité</li>
+          <li>L'accessibilité sans vulgarisation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑨ VISUAL DIRECTION -->
+<div class="full-bleed visual-bg">
+  <div class="contained">
+    <div class="section-label">08 · Direction visuelle</div>
+    <h2 class="section-title">Sobre avec<br>une colonne vertébrale.</h2>
+    <p class="subtitle">Chaque choix visuel est ancré dans ce que résolu est, pas dans ce que son secteur fait habituellement. L'objectif : une marque qui ressemble à une personne, pas à une institution.</p>
+
+    <!-- COULEURS -->
+    <div class="rationale">
+      <div class="rationale-label">Pourquoi cette palette</div>
+      <p>Le bronze est un choix courageux dans un secteur dominé par le bleu corporate et le gris institutionnel. Il évoque la chaleur humaine et le caractère méditerranéen, cohérent avec le parcours Chili-France-Québec de Victor. Sur une base crème et chaleureuse, il dit à la fois "accessible" et "distinctif". Absent du secteur RP québécois, il sera mémorable sans être strident.</p>
+    </div>
+
+    <div class="color-row">
+      <div class="swatch primary">
+        <div class="swatch-name">Bronze</div>
+        <div class="swatch-role">Couleur principale · Accents · CTA</div>
+        <div class="swatch-hex">#A0732A</div>
+      </div>
+      <div class="swatch dark-s">
+        <div class="swatch-name">Bleu nuit</div>
+        <div class="swatch-role">Textes · Fonds sombres</div>
+        <div class="swatch-hex">#1C2B3A</div>
+      </div>
+      <div class="swatch cream-s">
+        <div class="swatch-name">Crème</div>
+        <div class="swatch-role">Fond principal · Blanc chaud</div>
+        <div class="swatch-hex">#FAF7F3</div>
+      </div>
+      <div class="swatch sand-s">
+        <div class="swatch-name">Sable</div>
+        <div class="swatch-role">Séparateurs · Fonds secondaires</div>
+        <div class="swatch-hex">#E8DDD0</div>
+      </div>
+      <div class="swatch pale-s">
+        <div class="swatch-name">Bronze pâle</div>
+        <div class="swatch-role">Accents doux · Encadrés</div>
+        <div class="swatch-hex">#EDE0CC</div>
+      </div>
+      <div class="swatch" style="height:80px; background:#C8D8E4; flex:1; border-radius:2px; display:flex; flex-direction:column; justify-content:flex-end; padding:18px; transition:transform 0.2s;">
+        <div class="swatch-name" style="font-size:11px; font-weight:500; color:#1C2B3A;">Bleu glacier</div>
+        <div class="swatch-role" style="font-size:10px; opacity:0.6; margin-top:3px; color:#1C2B3A;">Fonds · Contrepoint froid</div>
+        <div class="swatch-hex" style="font-size:10px; opacity:0.45; font-family:monospace; color:#1C2B3A;">#C8D8E4</div>
+      </div>
+    </div>
+
+    <!-- TYPO -->
+    <div class="rationale" style="margin-top:24px;">
+      <div class="rationale-label">Pourquoi ce mélange typographique</div>
+      <p>Un sans-sérif seul risquerait de sonner "startup de conseil", trop lisse, sans profondeur. Un sérif seul serait trop classique, trop institutionnel. Le mélange DM Sans + Lora dit quelque chose de plus nuancé : Victor est ce mélange. Expérience politique profonde, accessible et sympathique. Le sans-sérif pour la rigueur et la modernité, le sérif pour la chaleur et le jugement.</p>
+    </div>
+
+    <div class="typo-demo">
+      <div class="typo-block">
+        <div class="typo-label">Identité · Titres · Navigation · DM Sans Light</div>
+        <div class="typo-sample-display">résolu</div>
+        <div class="typo-detail">
+          DM Sans · Weight 300 · Tout en minuscules, assumé<br>
+          <strong>Pourquoi les minuscules :</strong> Dans un secteur où tout le monde crie en majuscules pour paraître important, écrire "résolu" en minuscules est presque un acte politique. Ça dit : on n'a pas besoin de hausser la voix. Cohérent avec la posture calme et maîtrisée de la marque.
+        </div>
+      </div>
+      <div class="typo-block">
+        <div class="typo-label">Corps · Citations · Textes longs · Lora Italic</div>
+        <div class="typo-sample-serif">"Un conseil qui porte ce nom ne réagit pas. Il décide. Il oriente. Il résout."</div>
+        <div class="typo-detail">
+          Lora · Italic · Apporte chaleur humaine et profondeur aux contenus longs<br>
+          <strong>Pourquoi le sérif en corps :</strong> Il ancre la crédibilité dans la durée. Les sérifs ont une texture de "pensée" que les sans-sérifs n'ont pas. En italique pour les citations, il donne une voix distincte aux mots de Victor.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑩ LOGO -->
+<div class="full-bleed" style="background:var(--cream);">
+  <div class="contained">
+    <div class="section-label">09 · Pistes logo</div>
+    <h2 class="section-title">Trois directions<br>à explorer ensemble.</h2>
+    <p class="subtitle">Victor avait l'intuition d'un "r + flèche". L'instinct est bon. L'instinct d'encoder le mouvement dans le logo est juste. Ces trois pistes partent du même endroit et arrivent ailleurs, avec plus de finesse.</p>
+
+    <div class="logo-grid">
+      <div class="logo-option">
+        <div class="logo-preview">
+          <div class="logo-a">résolu<span class="dot">·</span></div>
+        </div>
+        <div>
+          <h4>A · Le point de résolution</h4>
+          <p>Un interpunct intégré au nom. Dit "fin, décision prise, enjeu résolu" sans l'illustrer littéralement. Purement typographique. Élégant, mémorable, différenciant.</p>
+
+        </div>
+      </div>
+      <div class="logo-option">
+        <div class="logo-preview">
+          <div class="logo-b"><span class="r-accent">r</span>ésolu</div>
+        </div>
+        <div>
+          <h4>B · Le r distinctif</h4>
+          <p>Le r traité avec un poids différent ou une coupe franche. Conserve l'instinct de Victor, version premium, sans la flèche littérale.</p>
+        </div>
+      </div>
+      <div class="logo-option preferred">
+        <div class="logo-preview">
+          <div class="logo-c-wrap">
+            <div class="logo-c-mark"><span>r</span></div>
+            <div class="logo-c-text">résolu</div>
+          </div>
+        </div>
+        <div>
+          <h4>C · Le monogramme</h4>
+          <p>Un signe géométrique construit sur le R, utilisable seul comme icône sur les réseaux sociaux, en-têtes et documents officiels. Donne de la flexibilité système à long terme.</p>
+          <p style="font-size:13px;color:var(--mid);margin-top:12px;line-height:1.75;"><strong style="color:var(--charcoal);">Pourquoi les minuscules :</strong> Dans un secteur où tout le monde crie en majuscules, écrire "résolu conseil" en minuscules est un acte délibéré. Ça dit : on n'a pas besoin de hausser la voix. La confiance n'a pas besoin de majuscules pour exister.</p>
+          <p style="font-size:13px;color:var(--mid);margin-top:8px;line-height:1.75;"><strong style="color:var(--charcoal);">Ce qu'on va livrer :</strong> Les deux versions, R majuscule et r minuscule, côte à côte. Le comparatif parlera de lui-même. L'option B (r distinctif) sera également explorée en première production pour offrir un troisième point de comparaison.</p>
+          <span class="logo-badge">Direction préférée</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑪ PRICING + PLAN -->
+<div class="full-bleed pricing-bg">
+  <div class="contained">
+    <div class="section-label light">10 · Plan de travail</div>
+    <h2 class="section-title white">Ce qu'on va construire<br>et ce que ça coûte.</h2>
+    <p class="subtitle light">Un forfait honnête, pour un ami qui mérite un travail sérieux. Lancement visé : été 2025.</p>
+
+    <div class="pricing-cells" style="grid-template-columns:repeat(4,1fr);">
+      <div class="pricing-cell">
+        <div class="pricing-phase">Phase 01</div>
+        <h4>Stratégie de marque &amp; direction créative</h4>
+        <p style="font-size:13px; color:rgba(255,255,255,0.35); line-height:1.75;">Plateforme de marque · Personnalité · Ton et voix · Direction visuelle</p>
+      </div>
+      <div class="pricing-cell">
+        <div class="pricing-phase">Phase 02</div>
+        <h4>Système visuel complet &amp; logo</h4>
+        <p style="font-size:13px; color:rgba(255,255,255,0.35); line-height:1.75;">Palette · Typographie · Logo · Guide d'utilisation de base</p>
+      </div>
+      <div class="pricing-cell">
+        <div class="pricing-phase">Phase 03</div>
+        <h4>Déclinaisons de marque</h4>
+        <p style="font-size:13px; color:rgba(255,255,255,0.35); line-height:1.75;">Templates médias sociaux · Cartes d'affaires · En-tête de document · Signature courriel</p>
+      </div>
+      <div class="pricing-cell">
+        <div class="pricing-phase">Phase 04</div>
+        <h4>Site web vitrine 5–6 pages</h4>
+        <p style="font-size:13px; color:rgba(255,255,255,0.35); line-height:1.75;">Accueil · Services · Approche · À propos · Contact · Développé avec Claude Code</p>
+      </div>
+    </div>
+
+    <div class="pricing-total">
+      <div class="pricing-total-left">
+        <h3>Forfait · Tout inclus</h3>
+        <p>2 rounds de révisions inclus par phase</p>
+      </div>
+      <div class="pricing-total-right">
+        <div class="total-amount">2 500$</div>
+      </div>
+    </div>
+
+    <div class="timeline-cells" style="grid-template-columns:repeat(5,1fr);">
+      <div class="timeline-cell">
+        <div class="timeline-week">Semaines 1–2</div>
+        <h4>Validation de marque</h4>
+        <p>Présentation de ce brief. Validation de la direction. Ajustements si nécessaire.</p>
+      </div>
+      <div class="timeline-cell">
+        <div class="timeline-week">Semaines 3–4</div>
+        <h4>Système visuel &amp; logo</h4>
+        <p>Palette finale, typographie, logo. Deux directions présentées, une choisie et affinée.</p>
+      </div>
+      <div class="timeline-cell">
+        <div class="timeline-week">Semaines 5–6</div>
+        <h4>Déclinaisons</h4>
+        <p>Templates médias sociaux, cartes d'affaires, en-tête de document, signature courriel.</p>
+      </div>
+      <div class="timeline-cell">
+        <div class="timeline-week">Semaines 7–10</div>
+        <h4>Site web</h4>
+        <p>Développement des 5–6 pages avec Claude Code. Review + ajustements client.</p>
+      </div>
+      <div class="timeline-cell launch">
+        <div class="timeline-week">Été 2025</div>
+        <h4>Lancement</h4>
+        <p>résolu en ligne. Prêt à aller chercher les mandats qui comptent.</p>
+      </div>
+    </div>
+
+    <!-- NEXT STEPS -->
+    <div style="margin-top:64px;">
+      <div class="section-label light">Prochaines étapes</div>
+      <div class="next-cells">
+        <div class="next-cell">
+          <div class="next-num">01</div>
+          <h4>Victor valide la direction</h4>
+          <p>Retours sur la plateforme de marque, la personnalité, les pistes logo. Ajustements si nécessaire avant de passer à la production.</p>
+        </div>
+        <div class="next-cell">
+          <div class="next-num">02</div>
+          <h4>Création du système visuel</h4>
+          <p>Palette finalisée, typographie, grille, logo. Trois versions du signe présentées (R majuscule, r minuscule, r distinctif) pour un comparatif éclairé.</p>
+        </div>
+        <div class="next-cell">
+          <div class="next-num">03</div>
+          <h4>Développement du site</h4>
+          <p>5–6 pages avec Claude Code. Accueil, services, à propos, approche, contact. Architecture pensée pour la conversion, pas pour l'impression.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">résolu<span>.</span></div>
+  <p>Brief confidentiel · Mai 2025 · Préparé par Jean-François Dubé</p>
+</footer>
+
+</div><!-- /tab-brief -->
+
+<!-- TAB: PLAN DE TRAVAIL -->
+<div id="tab-plan" class="tab-content">
+
+  <!-- HERO -->
+  <div class="plan-hero">
+    <div class="plan-hero-inner">
+      <div class="section-label light" style="margin-bottom:32px;">Plan de travail · résolu conseil</div>
+      <h1>Trois livraisons.<br>Un lancement à mi-août.</h1>
+      <p>Le projet est structuré en trois phases séquentielles, chacune avec une date de livraison fixe et des livrables précis. Chaque phase se conclut par une validation client avant de passer à la suivante.</p>
+      <div class="plan-hero-meta">
+        <div class="plan-meta-item">
+          <span class="plan-meta-label">Phase 1</span>
+          <span class="plan-meta-value">Mi-juin 2025</span>
+        </div>
+        <div class="plan-meta-item">
+          <span class="plan-meta-label">Phase 2</span>
+          <span class="plan-meta-value">Mi-juillet 2025</span>
+        </div>
+        <div class="plan-meta-item">
+          <span class="plan-meta-label">Phase 3</span>
+          <span class="plan-meta-value">Mi-août 2025</span>
+        </div>
+        <div class="plan-meta-item">
+          <span class="plan-meta-label">Forfait total</span>
+          <span class="plan-meta-value">2 500 $</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEPS -->
+  <div class="plan-steps">
+    <div class="plan-steps-inner">
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- PHASE 1 -->
+      <!-- ═══════════════════════════════════════ -->
+      <div class="phase-separator">
+        <div class="phase-sep-left">
+          <div class="phase-sep-num">Livraison 01</div>
+          <h2>Fondations de marque</h2>
+        </div>
+        <div class="phase-sep-right">
+          <div class="phase-sep-deliverables">
+            <strong>Ce qui est livré</strong>
+            Design system · 3 palettes de couleurs · 3 directions de logo
+          </div>
+          <div class="phase-sep-date">
+            <span class="phase-sep-date-label">Livraison visée</span>
+            <span class="phase-sep-date-value">Mi-juin</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 01 -->
+      <div class="step-row">
+        <div class="step-left status-upcoming">
+          <div>
+            <div class="step-number">01</div>
+            <span class="step-phase">Étape 01</span>
+            <h3>Design system</h3>
+          </div>
+          <div class="step-status">
+            <div class="step-status-dot"></div>
+            À venir
+          </div>
+        </div>
+        <div class="step-right cream">
+          <p class="step-desc">Le squelette invisible sur lequel tout le reste s'appuie. Avant de dessiner quoi que ce soit, on établit les règles du jeu : grille, espacements, typographie, hiérarchie visuelle, composants de base. Un design system solide, c'est ce qui fait qu'une marque a l'air cohérente partout, même quand elle grandit.</p>
+          <div class="step-deliverables">
+            <div class="deliverable">
+              <div class="deliverable-icon"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>Grille de mise en page et système d'espacement</span>
+            </div>
+            <div class="deliverable">
+              <div class="deliverable-icon"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>Règles typographiques : corps, titres, citations, légendes</span>
+            </div>
+            <div class="deliverable">
+              <div class="deliverable-icon"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>Bibliothèque de composants de base (boutons, encadrés, tableaux)</span>
+            </div>
+            <div class="deliverable">
+              <div class="deliverable-icon"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>Documentation des règles d'utilisation</span>
+            </div>
+          </div>
+          <div class="step-duration">⏱ <strong>Juin — semaines 1–2</strong> · 2 rounds de révisions inclus</div>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 02 -->
+      <div class="step-row">
+        <div class="step-left status-upcoming">
+          <div>
+            <div class="step-number">02</div>
+            <span class="step-phase">Étape 02</span>
+            <h3>Proposition de 3 palettes de couleurs</h3>
+          </div>
+          <div class="step-status">
+            <div class="step-status-dot"></div>
+            À venir
+          </div>
+        </div>
+        <div class="step-right">
+          <p class="step-desc">Trois directions chromatiques distinctes sont présentées, avec leurs rationels respectifs. La direction bronze du brief est l'une des pistes — les deux autres explorent des territoires différents pour offrir un comparatif éclairé. Une direction est choisie, affinée et documentée.</p>
+          <div class="step-deliverables">
+            <div class="deliverable">
+              <div class="deliverable-icon"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>3 palettes complètes avec couleurs primaires, secondaires et neutres</span>
+            </div>
+            <div class="deliverable">
+              <div class="deliverable-icon"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>Rationel stratégique pour chaque direction</span>
+            </div>
+            <div class="deliverable">
+              <div class="deliverable-icon"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>Exemples d'application sur des supports réels</span>
+            </div>
+            <div class="deliverable">
+              <div class="deliverable-icon"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>Palette finale documentée (hex, CMYK, Pantone)</span>
+            </div>
+          </div>
+          <div class="step-duration">⏱ <strong>Juin — semaines 2–3</strong> · 2 rounds de révisions inclus</div>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 03 -->
+      <div class="step-row">
+        <div class="step-left status-upcoming">
+          <div>
+            <div class="step-number">03</div>
+            <span class="step-phase">Étape 03</span>
+            <h3>Proposition de 3 directions de logo</h3>
+          </div>
+          <div class="step-status">
+            <div class="step-status-dot"></div>
+            À venir
+          </div>
+        </div>
+        <div class="step-right cream">
+          <p class="step-desc">Trois pistes conceptuelles distinctes sont présentées — le point de résolution, le r distinctif, le monogramme — chacune avec son rationel et ses déclinaisons préliminaires. Cette étape est un choix de direction, pas encore le logo final. Ce qui vient ensuite, c'est le vrai travail.</p>
+          <div class="step-deliverables">
+            <div class="deliverable">
+              <div class="deliverable-icon"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>Direction A · Le point de résolution (interpunct typographique)</span>
+            </div>
+            <div class="deliverable">
+              <div class="deliverable-icon"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>Direction B · Le r distinctif (traitement typographique sur mesure)</span>
+            </div>
+            <div class="deliverable">
+              <div class="deliverable-icon"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>Direction C · Le monogramme (signe géométrique autonome)</span>
+            </div>
+            <div class="deliverable">
+              <div class="deliverable-icon"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>Validation d'une direction par le client avant de passer à l'affinage</span>
+            </div>
+          </div>
+          <div class="step-duration">⏱ <strong>Juin — semaines 3–4</strong> · Présentation comparative</div>
+        </div>
+      </div>
+
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- PHASE 2 -->
+      <!-- ═══════════════════════════════════════ -->
+      <div class="phase-separator">
+        <div class="phase-sep-left">
+          <div class="phase-sep-num">Livraison 02</div>
+          <h2>Identité visuelle complète</h2>
+        </div>
+        <div class="phase-sep-right">
+          <div class="phase-sep-deliverables">
+            <strong>Ce qui est livré</strong>
+            Logo finalisé (après rounds de modifications) · Déclinaisons de marque — cartes, templates, signature, en-tête
+          </div>
+          <div class="phase-sep-date">
+            <span class="phase-sep-date-label">Livraison visée</span>
+            <span class="phase-sep-date-value">Mi-juillet</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 03b -->
+      <div class="step-row highlight">
+        <div class="step-left status-upcoming">
+          <div>
+            <div class="step-number" style="color:rgba(160,115,42,0.18);">03b</div>
+            <span class="step-phase">Étape 03 · Suite</span>
+            <h3>Développement &amp; rounds de modifications logo</h3>
+          </div>
+          <div class="step-status">
+            <div class="step-status-dot"></div>
+            À venir
+          </div>
+        </div>
+        <div class="step-right">
+          <p class="step-desc">C'est ici que le logo se construit vraiment. Sur la base de la direction choisie à l'étape 03, on entre dans le travail d'affinage : proportions, poids, kerning, comportement sur fond clair et sombre. Deux rounds de modifications inclus pour itérer jusqu'à ce que le signe soit juste — pas presque juste.</p>
+          <div class="rounds-block">
+            <div class="rounds-num">2×</div>
+            <p>Deux rounds de modifications inclus. Chaque round, tu reçois une version révisée avec les ajustements intégrés. On affine, on reserre, on valide. Si tu sais ce que tu veux, deux rounds suffisent.</p>
+          </div>
+          <div class="step-deliverables" style="margin-top:24px;">
+            <div class="deliverable">
+              <div class="deliverable-icon"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>Logo principal — version couleur, noir, blanc</span>
+            </div>
+            <div class="deliverable">
+              <div class="deliverable-icon"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>Version horizontale et version compacte (icon-only)</span>
+            </div>
+            <div class="deliverable">
+              <div class="deliverable-icon"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>Fichiers finaux livrés : SVG, PNG (fond transparent), PDF</span>
+            </div>
+            <div class="deliverable">
+              <div class="deliverable-icon"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>Zone d'exclusion et tailles minimales documentées</span>
+            </div>
+          </div>
+          <div class="step-duration">⏱ <strong>Juillet — semaines 1–2</strong> · 2 rounds de modifications inclus</div>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 04 -->
+      <div class="step-row">
+        <div class="step-left status-upcoming">
+          <div>
+            <div class="step-number">04</div>
+            <span class="step-phase">Étape 04</span>
+            <h3>Déclinaisons de marque</h3>
+          </div>
+          <div class="step-status">
+            <div class="step-status-dot"></div>
+            À venir
+          </div>
+        </div>
+        <div class="step-right cream">
+          <p class="step-desc">La marque prend vie dans les outils du quotidien. À cette étape, on applique le système visuel finalisé aux supports que Victor va utiliser dès le lancement. Templates prêts à l'emploi, adaptés à chaque format, cohérents entre eux.</p>
+          <div class="step-deliverables">
+            <div class="deliverable">
+              <div class="deliverable-icon"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>Templates médias sociaux (LinkedIn, formats stories et carrousels)</span>
+            </div>
+            <div class="deliverable">
+              <div class="deliverable-icon"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>Carte d'affaires — recto/verso, prête à l'impression</span>
+            </div>
+            <div class="deliverable">
+              <div class="deliverable-icon"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>En-tête de document et modèle de proposition client</span>
+            </div>
+            <div class="deliverable">
+              <div class="deliverable-icon"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>Signature courriel HTML (compatible toutes plateformes)</span>
+            </div>
+          </div>
+          <div class="step-duration">⏱ <strong>Juillet — semaines 3–4</strong> · 2 rounds de révisions inclus</div>
+        </div>
+      </div>
+
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- PHASE 3 -->
+      <!-- ═══════════════════════════════════════ -->
+      <div class="phase-separator">
+        <div class="phase-sep-left">
+          <div class="phase-sep-num">Livraison 03</div>
+          <h2>Site web &amp; lancement</h2>
+        </div>
+        <div class="phase-sep-right">
+          <div class="phase-sep-deliverables">
+            <strong>Ce qui est livré</strong>
+            Site vitrine 5–6 pages · Mise en ligne · Transfert des fichiers · Guide de marque · Session de passation
+          </div>
+          <div class="phase-sep-date">
+            <span class="phase-sep-date-label">Livraison visée</span>
+            <span class="phase-sep-date-value">Mi-août</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 05 -->
+      <div class="step-row">
+        <div class="step-left status-upcoming">
+          <div>
+            <div class="step-number">05</div>
+            <span class="step-phase">Étape 05</span>
+            <h3>Site web vitrine 5–6 pages</h3>
+          </div>
+          <div class="step-status">
+            <div class="step-status-dot"></div>
+            À venir
+          </div>
+        </div>
+        <div class="step-right">
+          <p class="step-desc">Cinq à six pages développées avec Claude Code, sur la base du système visuel finalisé. L'architecture est pensée pour la conversion — un visiteur doit comprendre en 30 secondes ce que résolu fait, pour qui, et comment le contacter. Pas pour l'impression. Pour l'action.</p>
+          <div class="step-deliverables">
+            <div class="deliverable">
+              <div class="deliverable-icon"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>Accueil · Positionnement, approche, CTA principal</span>
+            </div>
+            <div class="deliverable">
+              <div class="deliverable-icon"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>Services · Comprendre, Planifier, Préparer, Agir</span>
+            </div>
+            <div class="deliverable">
+              <div class="deliverable-icon"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>Approche · La méthode en quatre temps</span>
+            </div>
+            <div class="deliverable">
+              <div class="deliverable-icon"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>À propos · Victor, parcours, philosophie</span>
+            </div>
+            <div class="deliverable">
+              <div class="deliverable-icon"><svg viewBox="0 0 10 10"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>Contact · Formulaire simple, coordonnées, invitation au premier appel</span>
+            </div>
+          </div>
+          <div class="step-duration">⏱ <strong>Août — semaines 1–3</strong> · 2 rounds de révisions inclus</div>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 06 -->
+      <div class="step-row">
+        <div class="step-left status-upcoming" style="background:var(--bronze); border:none;">
+          <div>
+            <div class="step-number" style="color:rgba(255,255,255,0.15);">06</div>
+            <span class="step-phase" style="color:rgba(255,255,255,0.6);">Étape 06</span>
+            <h3 style="color:white;">Lancement</h3>
+          </div>
+          <div class="step-status" style="color:rgba(255,255,255,0.5);">
+            <div class="step-status-dot" style="background:rgba(255,255,255,0.3);"></div>
+            Mi-août 2025
+          </div>
+        </div>
+        <div class="step-right" style="background:var(--charcoal); border-left: 3px solid var(--bronze);">
+          <p class="step-desc" style="color:rgba(255,255,255,0.55);">résolu est en ligne. Le système de marque est documenté, les fichiers sont transférés, Victor a tout ce qu'il faut pour déployer de façon autonome. Ce n'est pas une fin — c'est le début du vrai travail. Les mandats qui comptent, maintenant.</p>
+          <div class="step-deliverables">
+            <div class="deliverable" style="color:rgba(255,255,255,0.7);">
+              <div class="deliverable-icon" style="border-color:var(--bronze-light);"><svg viewBox="0 0 10 10" style="stroke:var(--bronze-light)"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>Site mis en ligne et domaine configuré</span>
+            </div>
+            <div class="deliverable" style="color:rgba(255,255,255,0.7);">
+              <div class="deliverable-icon" style="border-color:var(--bronze-light);"><svg viewBox="0 0 10 10" style="stroke:var(--bronze-light)"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>Transfert complet des fichiers sources (Figma, SVG, exports)</span>
+            </div>
+            <div class="deliverable" style="color:rgba(255,255,255,0.7);">
+              <div class="deliverable-icon" style="border-color:var(--bronze-light);"><svg viewBox="0 0 10 10" style="stroke:var(--bronze-light)"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>Guide d'utilisation de la marque (do's &amp; don'ts)</span>
+            </div>
+            <div class="deliverable" style="color:rgba(255,255,255,0.7);">
+              <div class="deliverable-icon" style="border-color:var(--bronze-light);"><svg viewBox="0 0 10 10" style="stroke:var(--bronze-light)"><polyline points="1,5 4,8 9,2"/></svg></div>
+              <span>Session de passation et formation à l'utilisation autonome</span>
+            </div>
+          </div>
+          <div class="step-duration" style="border-top-color:rgba(255,255,255,0.08); color:rgba(255,255,255,0.3);">⏱ <strong style="color:rgba(255,255,255,0.6);">Mi-août</strong> · Livraison finale</div>
+        </div>
+      </div>
+
+    </div><!-- /plan-steps-inner -->
+  </div><!-- /plan-steps -->
+
+  <!-- SUMMARY -->
+  <div class="plan-summary">
+    <div class="plan-summary-inner">
+      <div>
+        <h2>Un forfait honnête,<br>pour un travail sérieux.</h2>
+        <p>Trois livraisons claires. Deux rounds de révisions inclus à chaque étape. Pas de surprise, pas de frais cachés. L'expertise engagée est celle qui fait le travail — de la stratégie au lancement, sans délégation aux juniors.</p>
+      </div>
+      <div class="plan-total-grid">
+        <div class="plan-total-cell">
+          <div class="label">Forfait total</div>
+          <div class="value">2 500$</div>
+          <div class="note">Tout inclus</div>
+        </div>
+        <div class="plan-total-cell">
+          <div class="label">Lancement</div>
+          <div class="value">Mi-août</div>
+          <div class="note">résolu.cc en ligne</div>
+        </div>
+        <div class="plan-total-cell">
+          <div class="label">Révisions / étape</div>
+          <div class="value">2×</div>
+          <div class="note">Inclus dans le forfait</div>
+        </div>
+        <div class="plan-total-cell">
+          <div class="label">Livraisons</div>
+          <div class="value">3</div>
+          <div class="note">Juin · Juillet · Août</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">résolu<span>.</span></div>
+    <p>Plan de travail confidentiel · Mai 2025 · Préparé par Jean-François Dubé</p>
+  </footer>
+
+</div><!-- /tab-plan -->
+
+<script>
+  function switchTab(tab) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+    event.currentTarget.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
