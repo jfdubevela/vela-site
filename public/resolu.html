@@ -1190,6 +1190,83 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
+
+  /* MEETING MARKER */
+  .meeting-marker {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2px;
+    background: var(--bronze);
+    margin: 20px 0 2px;
+  }
+
+  .meeting-marker-left {
+    background: #0f1a24;
+    padding: 20px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .meeting-marker-tag {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--bronze-light);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .meeting-marker-tag::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    background: var(--bronze);
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(160,115,42,0.6);
+    flex-shrink: 0;
+  }
+
+  .meeting-marker-left h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    color: white;
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+  }
+
+  .meeting-marker-right {
+    background: var(--bronze-pale);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .meeting-marker-note {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.7;
+    max-width: 560px;
+  }
+
+  .meeting-marker-cal {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--bronze);
+    opacity: 0.6;
+  }
 </style>
 </head>
 <body>
@@ -1834,6 +1911,18 @@
         </div>
       </div>
 
+      <!-- MEETING APRÈS ÉTAPE 02 -->
+      <div class="meeting-marker">
+        <div class="meeting-marker-left">
+          <div class="meeting-marker-tag">Rencontre</div>
+          <h4>Début juin</h4>
+        </div>
+        <div class="meeting-marker-right">
+          <p class="meeting-marker-note">Présentation des trois palettes de couleurs. Victor choisit la direction chromatique finale avant de passer au logo.</p>
+          <div class="meeting-marker-cal">📅 Validation</div>
+        </div>
+      </div>
+
       <!-- ÉTAPE 03 -->
       <div class="step-row">
         <div class="step-left status-upcoming">
@@ -1868,6 +1957,18 @@
             </div>
           </div>
           <div class="step-duration">⏱ <strong>Juin — semaines 3–4</strong> · Présentation comparative</div>
+        </div>
+      </div>
+
+      <!-- MEETING APRÈS ÉTAPE 03 -->
+      <div class="meeting-marker">
+        <div class="meeting-marker-left">
+          <div class="meeting-marker-tag">Rencontre</div>
+          <h4>Mi-juin</h4>
+        </div>
+        <div class="meeting-marker-right">
+          <p class="meeting-marker-note">Présentation des trois directions de logo. Victor choisit la piste à développer. Ce choix déclenche le vrai travail de construction du signe.</p>
+          <div class="meeting-marker-cal">📅 Validation</div>
         </div>
       </div>
 
@@ -1933,6 +2034,18 @@
         </div>
       </div>
 
+      <!-- MEETING APRÈS ÉTAPE 03b -->
+      <div class="meeting-marker">
+        <div class="meeting-marker-left">
+          <div class="meeting-marker-tag">Rencontre</div>
+          <h4>Début juillet<br><span style="font-size:14px; opacity:0.6;">à partir du 5 juillet</span></h4>
+        </div>
+        <div class="meeting-marker-right">
+          <p class="meeting-marker-note">Présentation du logo affiné. Premier round de modifications intégré. On valide ensemble avant de passer aux déclinaisons de marque.</p>
+          <div class="meeting-marker-cal">📅 Validation</div>
+        </div>
+      </div>
+
       <!-- ÉTAPE 04 -->
       <div class="step-row">
         <div class="step-left status-upcoming">
@@ -1967,6 +2080,18 @@
             </div>
           </div>
           <div class="step-duration">⏱ <strong>Juillet — semaines 3–4</strong> · 2 rounds de révisions inclus</div>
+        </div>
+      </div>
+
+      <!-- MEETING APRÈS ÉTAPE 04 -->
+      <div class="meeting-marker">
+        <div class="meeting-marker-left">
+          <div class="meeting-marker-tag">Rencontre</div>
+          <h4>Début août</h4>
+        </div>
+        <div class="meeting-marker-right">
+          <p class="meeting-marker-note">Présentation des déclinaisons complètes : cartes, templates, signature, en-tête. Validation finale de l'identité visuelle avant le développement du site.</p>
+          <div class="meeting-marker-cal">📅 Validation</div>
         </div>
       </div>
 
@@ -2032,6 +2157,18 @@
         </div>
       </div>
 
+      <!-- MEETING APRÈS ÉTAPE 05 -->
+      <div class="meeting-marker">
+        <div class="meeting-marker-left">
+          <div class="meeting-marker-tag">Rencontre</div>
+          <h4>Mi-août</h4>
+        </div>
+        <div class="meeting-marker-right">
+          <p class="meeting-marker-note">Revue complète du site avant mise en ligne. Victor approuve le contenu, les pages et le formulaire de contact. Feu vert pour le lancement.</p>
+          <div class="meeting-marker-cal">📅 Approbation finale</div>
+        </div>
+      </div>
+
       <!-- ÉTAPE 06 -->
       <div class="step-row">
         <div class="step-left status-upcoming" style="background:var(--bronze); border:none;">
@@ -2042,7 +2179,7 @@
           </div>
           <div class="step-status" style="color:rgba(255,255,255,0.5);">
             <div class="step-status-dot" style="background:rgba(255,255,255,0.3);"></div>
-            Mi-août 2025
+            3e semaine d'août
           </div>
         </div>
         <div class="step-right" style="background:var(--charcoal); border-left: 3px solid var(--bronze);">
@@ -2065,7 +2202,19 @@
               <span>Session de passation et formation à l'utilisation autonome</span>
             </div>
           </div>
-          <div class="step-duration" style="border-top-color:rgba(255,255,255,0.08); color:rgba(255,255,255,0.3);">⏱ <strong style="color:rgba(255,255,255,0.6);">Mi-août</strong> · Livraison finale</div>
+          <div class="step-duration" style="border-top-color:rgba(255,255,255,0.08); color:rgba(255,255,255,0.3);">⏱ <strong style="color:rgba(255,255,255,0.6);">3e semaine d'août</strong> · Mise en ligne</div>
+        </div>
+      </div>
+
+      <!-- MEETING FINAL -->
+      <div class="meeting-marker" style="margin-top:20px;">
+        <div class="meeting-marker-left" style="background:var(--bronze); border:none;">
+          <div class="meeting-marker-tag" style="color:rgba(255,255,255,0.7);">Meeting final</div>
+          <h4 style="color:white;">Dernière semaine d'août</h4>
+        </div>
+        <div class="meeting-marker-right" style="background:var(--charcoal);">
+          <p class="meeting-marker-note" style="color:rgba(255,255,255,0.55);">Passation complète des fichiers, formation à l'utilisation autonome de la marque. résolu conseil est prêt à aller chercher les mandats qui comptent.</p>
+          <div class="meeting-marker-cal" style="color:var(--bronze-light); opacity:1;">📅 Clôture</div>
         </div>
       </div>
 
