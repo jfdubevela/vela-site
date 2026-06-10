@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Proposition Sophie Larivée · Vela</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A2E4D;
+    --navy-light: #0d3a61;
+    --gold: #D4A373;
+    --gold-light: #e8c49a;
+    --horizon: #7DB7D6;
+    --offwhite: #F5F5F0;
+    --ink: #1A1A1A;
+    --muted: #6b7280;
+    --cream: #FAF9F6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    padding: 64px 48px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(125,183,214,0.15) 0%, transparent 70%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 120px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,163,115,0.1) 0%, transparent 70%);
+  }
+  .hero-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    opacity: 0.9;
+  }
+  .hero-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--horizon);
+    margin-bottom: 16px;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 56px);
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+  .hero-title em {
+    color: var(--gold);
+    font-style: italic;
+  }
+  .hero-sub {
+    color: rgba(255,255,255,0.6);
+    font-size: 14px;
+    margin-top: 24px;
+    font-weight: 300;
+  }
+  .hero-pills {
+    display: flex;
+    gap: 10px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+  .pill {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 100px;
+    padding: 6px 18px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 56px 0; border-bottom: 1px solid rgba(0,0,0,0.07); }
+  section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--navy);
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  .lead {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+
+  /* ── INTRO CARDS ── */
+  .insight-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 28px;
+  }
+  @media(max-width: 600px) { .insight-grid { grid-template-columns: 1fr; } }
+  .insight-card {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .insight-card .ic-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    margin-bottom: 10px;
+  }
+  .insight-card p { font-size: 14px; color: #333; line-height: 1.7; }
+  .insight-card.accent { background: var(--navy); }
+  .insight-card.accent p { color: rgba(255,255,255,0.8); }
+  .insight-card.accent .ic-label { color: var(--gold); }
+
+  /* ── MOIS ── */
+  .month-block { margin-bottom: 40px; }
+  .month-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .month-num {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: #fff;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .month-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--navy);
+    font-weight: 700;
+  }
+  .month-sub { font-size: 12px; color: var(--muted); }
+
+  .sessions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  @media(max-width: 600px) { .sessions-grid { grid-template-columns: 1fr; } }
+  .session-card {
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 10px;
+    padding: 20px;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .session-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--horizon);
+  }
+  .session-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    margin-bottom: 8px;
+  }
+  .session-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .session-desc { font-size: 13px; color: #555; line-height: 1.6; }
+
+  /* ── LIVRABLES ── */
+  .deliverables {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin-top: 8px;
+  }
+  .del-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 16px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.07);
+  }
+  .del-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .del-text { font-size: 13px; color: #333; line-height: 1.6; }
+  .del-text strong { display: block; font-size: 13px; color: var(--navy); margin-bottom: 2px; }
+
+  /* ── PRIX ── */
+  .price-block {
+    background: var(--navy);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 28px;
+  }
+  .price-top {
+    padding: 32px 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .price-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .price-note { font-size: 13px; color: rgba(255,255,255,0.55); }
+  .price-amount {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .price-was {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+  .price-now {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    color: var(--gold);
+    font-weight: 700;
+    line-height: 1;
+  }
+  .price-per { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 4px; }
+  .price-bottom {
+    background: rgba(255,255,255,0.05);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 16px 36px;
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .price-detail { font-size: 12px; color: rgba(255,255,255,0.5); }
+  .price-detail strong { color: rgba(255,255,255,0.8); display: block; }
+
+  /* ── FORMATION BONUS ── */
+  .bonus-header {
+    background: linear-gradient(135deg, var(--gold) 0%, #c8935a 100%);
+    border-radius: 12px 12px 0 0;
+    padding: 24px 32px;
+  }
+  .bonus-header .b-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--navy);
+    opacity: 0.7;
+    margin-bottom: 6px;
+  }
+  .bonus-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--navy);
+    font-weight: 700;
+  }
+  .bonus-body {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    padding: 28px 32px;
+  }
+  .formation-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 20px;
+  }
+  @media(max-width: 600px) { .formation-grid { grid-template-columns: 1fr; } }
+  .f-col h4 {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    margin-bottom: 12px;
+  }
+  .f-list { list-style: none; }
+  .f-list li {
+    font-size: 13px;
+    color: #333;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding-left: 16px;
+    position: relative;
+  }
+  .f-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 11px;
+  }
+  .formation-price-row {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0,0,0,0.07);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .fp-label { font-size: 13px; color: var(--muted); }
+  .fp-label strong { display: block; color: var(--navy); font-size: 15px; }
+  .fp-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: var(--navy);
+    font-weight: 700;
+  }
+  .fp-price span { font-size: 14px; color: var(--muted); font-family: 'DM Sans', sans-serif; font-weight: 400; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--navy);
+    padding: 40px 48px;
+    text-align: center;
+  }
+  .footer p { color: rgba(255,255,255,0.4); font-size: 12px; line-height: 1.8; }
+  .footer strong { color: var(--gold); }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: #fff; }
+    .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    section { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-logo">Vela | Intelligence artificielle pour professionnels et PME</div>
+    <a href="https://velavelavela.com" target="_blank" style="display:inline-block; margin-bottom: 32px; margin-top: -24px;">
+      <img src="data:image/png;base64,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" alt="VELA" style="height: 48px; opacity: 0.92;">
+    </a>
+    <div class="hero-label">Proposition personnalisée · Confidentiel</div>
+    <h1 class="hero-title">Coaching individuel I.A.<br><em>pour Sophie Larivée</em></h1>
+    <p class="hero-sub">Préparé par Jean-François Dubé · Juin 2025</p>
+    <div class="hero-pills">
+      <span class="pill">6 sessions de 1h30</span>
+      <span class="pill">3 mois</span>
+      <span class="pill">100 % sur mesure</span>
+      <span class="pill">ChatGPT Plus</span>
+    </div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section>
+  <div class="container">
+    <div class="section-label">Point de départ</div>
+    <h2 class="section-title">Ce qu'on a entendu</h2>
+    <p class="lead">Tu aides des leaders à simplifier ce qui semble compliqué. Tu fais exactement la même chose pour tes clients que ce qu'on va faire ici, rendre simple ce qui paraît intimidant.</p>
+    <p class="lead">Tu utilises déjà l'I.A. au quotidien pour gérer ton coaching, tes formations, tes conférences et ta présence LinkedIn. Mais tu te sens dépassée par la multiplication des outils, et certaines tâches , comme créer des supports visuels qui respectent ton image de marque, te frustrent encore. Résultat : tu laisses du temps et du potentiel sur la table.</p>
+    <p class="lead">En 6 sessions, on va changer ça.</p>
+
+    <div class="insight-grid">
+      <div class="insight-card">
+        <div class="ic-label">La douleur</div>
+        <p>Trop d'outils, pas assez de méthode. La création de contenu (formations, conférences, LinkedIn) prend trop de temps. L'I.A. te dépasse encore plus qu'elle te simplifie la vie.</p>
+      </div>
+      <div class="insight-card">
+        <div class="ic-label">L'objectif</div>
+        <p>Utiliser l'I.A. avec méthode pour accélérer la création de contenu, automatiser les tâches répétitives, et garder ton authenticité intacte dans tout ce que tu produis.</p>
+      </div>
+      <div class="insight-card accent">
+        <div class="ic-label">Ton outil principal</div>
+        <p>On va se concentrer sur un seul outil, ChatGPT, et le configurer pour qu'il te connaisse vraiment : ton ton, ton expertise RH, ta façon de communiquer avec tes clients.</p>
+      </div>
+      <div class="insight-card">
+        <div class="ic-label">Ton niveau</div>
+        <p>Tu l'utilises déjà instinctivement, mais sans structure. Niveau estimé : 3 sur 5. En 6 sessions, on passe du mode instinctif au mode stratégique.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMME -->
+<section>
+  <div class="container">
+    <div class="section-label">Le programme</div>
+    <h2 class="section-title">6 sessions, 3 mois, ta réalité</h2>
+    <p class="lead">Deux rencontres par mois, 1h30 chacune. Contenu théorique et exercices pratiques sur tes vraies tâches : tes conférences, tes offres de service, ton contenu LinkedIn. Chaque session inclut un devoir court pour ancrer les apprentissages dans ton quotidien.</p>
+
+    <!-- MOIS 1 -->
+    <div class="month-block" style="margin-top:36px;">
+      <div class="month-header">
+        <div class="month-num">01</div>
+        <div>
+          <div class="month-title">Comprendre & débloquer</div>
+          <div class="month-sub">Mois 1 · Sessions 1 et 2</div>
+        </div>
+      </div>
+      <div class="sessions-grid">
+        <div class="session-card">
+          <div class="session-num">SESSION 01</div>
+          <div class="session-title">Comprendre l'I.A. vraiment</div>
+          <div class="session-desc">Comment ça fonctionne, ce que c'est et ce que ce n'est pas. Sécurité des données et confidentialité (Loi 25, important pour une pratique de coaching). Premier prompt sur une vraie tâche à toi. Configuration de base de ChatGPT.</div>
+        </div>
+        <div class="session-card">
+          <div class="session-num">SESSION 02</div>
+          <div class="session-title">Maîtriser le prompt</div>
+          <div class="session-desc">Apprendre à formuler des demandes précises pour obtenir des résultats utiles. Construire tes premiers prompts réutilisables pour tes conférences, tes offres de service, ta communication client.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOIS 2 -->
+    <div class="month-block">
+      <div class="month-header">
+        <div class="month-num">02</div>
+        <div>
+          <div class="month-title">Pratiquer et personnaliser</div>
+          <div class="month-sub">Mois 2 · Sessions 3 et 4</div>
+        </div>
+      </div>
+      <div class="sessions-grid">
+        <div class="session-card">
+          <div class="session-num">SESSION 03</div>
+          <div class="session-title">ChatGPT à ton image</div>
+          <div class="session-desc">Configurer ChatGPT pour qu'il connaisse ton expertise, ton ton et ta clientèle. Créer des espaces de travail distincts : coaching, formations, conférences, LinkedIn. Chaque contexte a son propre profil.</div>
+        </div>
+        <div class="session-card">
+          <div class="session-num">SESSION 04</div>
+          <div class="session-title">Cas d'usage : ton contenu</div>
+          <div class="session-desc">Appliquer l'I.A. à tes vraies tâches. Préparer une conférence, rédiger une offre de service, générer du contenu LinkedIn qui sonne comme toi. Introduction à la création de supports visuels structurés.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOIS 3 -->
+    <div class="month-block">
+      <div class="month-header">
+        <div class="month-num">03</div>
+        <div>
+          <div class="month-title">Systématiser et gagner du temps</div>
+          <div class="month-sub">Mois 3 · Sessions 5 et 6</div>
+        </div>
+      </div>
+      <div class="sessions-grid">
+        <div class="session-card">
+          <div class="session-num">SESSION 05</div>
+          <div class="session-title">Ta bibliothèque de prompts</div>
+          <div class="session-desc">Construire ta banque de prompts prêts à l'emploi : développement de leadership, gestion du changement, contenu formation, prospection client. Organisée, réutilisable, toujours disponible.</div>
+        </div>
+        <div class="session-card">
+          <div class="session-num">SESSION 06</div>
+          <div class="session-title">Bilan et autonomie</div>
+          <div class="session-desc">Mesurer le temps gagné chaque semaine. Fixer ta routine I.A. personnelle. Identifier les prochaines étapes : automatisation avancée ou déploiement avec Natalie si tu veux aller plus loin.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVRABLES -->
+<section>
+  <div class="container">
+    <div class="section-label">Ce que tu ressors avec</div>
+    <h2 class="section-title">Des résultats concrets, pas des théories</h2>
+    <div class="deliverables">
+      <div class="del-item">
+        <div class="del-icon">⚡</div>
+        <div class="del-text"><strong>Routine I.A. hebdomadaire</strong>Des réflexes qui tournent sans effort, adaptés à ton rythme de solopreneure.</div>
+      </div>
+      <div class="del-item">
+        <div class="del-icon">📁</div>
+        <div class="del-text"><strong>Bibliothèque de prompts</strong>6 à 10 prompts à ton image pour le coaching, les formations, les conférences et LinkedIn.</div>
+      </div>
+      <div class="del-item">
+        <div class="del-icon">🧠</div>
+        <div class="del-text"><strong>ChatGPT configuré pour toi</strong>Ton profil RH, ton ton, tes projets Différence RH. L'outil te connaît, et ça change tout.</div>
+      </div>
+      <div class="del-item">
+        <div class="del-icon">⏱</div>
+        <div class="del-text"><strong>Temps gagné mesurable</strong>Sur la préparation de conférences, la création d'offres de service et la génération de contenu.</div>
+      </div>
+      <div class="del-item">
+        <div class="del-icon">🔒</div>
+        <div class="del-text"><strong>Utilisation sécuritaire</strong>Tu sais quoi partager, quoi garder privé. Loi 25, confidentialité client, bonnes pratiques : tout est couvert.</div>
+      </div>
+      <div class="del-item">
+        <div class="del-icon">🎯</div>
+        <div class="del-text"><strong>Confiance et autonomie</strong>Savoir quand et comment utiliser l'I.A. sans jamais perdre ta touche humaine, celle qui fait toute la différence.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTISSEMENT -->
+<section>
+  <div class="container">
+    <div class="section-label">Investissement</div>
+    <h2 class="section-title">Pricing</h2>
+    <p class="lead">Six sessions. Trois mois. Un programme bâti sur ta réalité, pas un template générique. Prix promotionnel de lancement, comme discuté.</p>
+
+    <div class="price-block">
+      <div class="price-top">
+        <div>
+          <div class="price-label">Coaching individuel I.A.</div>
+          <div class="price-note">Sophie Larivée · 6 sessions de 1h30 · 3 mois · Prix promotionnel</div>
+        </div>
+        <div class="price-amount">
+          <div class="price-was">Régulier : 1 800 $</div>
+          <div class="price-now">1 200 $</div>
+          <div class="price-per">soit 200 $ / session</div>
+        </div>
+      </div>
+      <div class="price-bottom">
+        <div class="price-detail"><strong>Rabais de 33 %</strong>Prix de lancement appliqué</div>
+        <div class="price-detail"><strong>Facturation</strong>En bloc ou à la session</div>
+        <div class="price-detail"><strong>Outil</strong>ChatGPT Plus (~25 $/mois, payé par toi)</div>
+        <div class="price-detail"><strong>Format</strong>Visioconférence · 1h30 chacune</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMATION BONUS -->
+<section>
+  <div class="container">
+    <div class="section-label">À garder en tête pour la suite</div>
+    <h2 class="section-title">Formation de groupe disponible</h2>
+    <p class="lead">Pour tes clients, ton réseau de leaders ou un événement professionnel : une formation clé en main que tu pourrais même co-animer.</p>
+
+    <div style="margin-top: 24px;">
+      <div class="bonus-header">
+        <div class="b-label">Formation VELA</div>
+        <h3>Utiliser l'I.A. de manière stratégique et sécuritaire</h3>
+      </div>
+      <div class="bonus-body">
+        <p style="font-size:14px;color:#444;line-height:1.8;">Une formation de 2h30 pour outiller les professionnels et leaders qui veulent utiliser l'I.A. dans leur quotidien. Sans jargon, sans complexité. Idéale pour une équipe de direction, une association professionnelle ou un événement thématique.</p>
+
+        <div class="formation-grid">
+          <div class="f-col">
+            <h4>Au programme</h4>
+            <ul class="f-list">
+              <li>Comment fonctionne l'I.A. (sans le jargon)</li>
+              <li>Sécurité & confidentialité (Loi 25)</li>
+              <li>La méthode R.A.C.E. : prompts qui livrent</li>
+              <li>Cas d'usage concrets du secteur RH & leadership</li>
+              <li>Configurer ses outils pour gagner du temps</li>
+              <li>Exercices pratiques en temps réel</li>
+            </ul>
+          </div>
+          <div class="f-col">
+            <h4>Détails</h4>
+            <ul class="f-list">
+              <li>Durée : 2h30</li>
+              <li>Format : présentiel ou visio</li>
+              <li>Groupe : 5 à 30 personnes</li>
+              <li>Niveau : débutants à intermédiaires</li>
+              <li>Contenu adapté au secteur leadership/RH</li>
+              <li>Support visuel inclus</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="formation-price-row">
+          <div class="fp-label">
+            <strong>Formation 2h30 · Groupe</strong>
+            Tarif par événement · Adapté au secteur
+          </div>
+          <div class="fp-price">1 500 $ <span>/ événement</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <a href="https://velavelavela.com" target="_blank" style="display:inline-block; margin-bottom: 20px;">
+    <img src="data:image/png;base64,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" alt="VELA" style="height: 36px; opacity: 0.5;">
+  </a>
+  <p><strong>Vela | Intelligence artificielle pour professionnels et PME</strong><br>
+  Document confidentiel préparé pour Sophie Larivée · Juin 2025<br>
+  Jean-François Dubé · VELA</p>
+</div>
+
+</body>
+</html>
