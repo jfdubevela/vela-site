@@ -18,6 +18,11 @@ const autoSubLinks = [
   { label: 'Agent vocal I.A.', href: '/agent-vocal.html' },
 ]
 
+// Sous-menu d'Outils
+const outilsSubLinks = [
+  { label: 'Guides', href: '/outils/guides' },
+]
+
 export default function Nav({
   lightTop = false,
   showAnchorLinks = true,
@@ -29,6 +34,8 @@ export default function Nav({
   const [mobileOpen, setMobileOpen] = useState(false)
   const [autoOpen, setAutoOpen] = useState(false)
   const [mobileAutoOpen, setMobileAutoOpen] = useState(false)
+  const [outilsOpen, setOutilsOpen] = useState(false)
+  const [mobileOutilsOpen, setMobileOutilsOpen] = useState(false)
 
   useEffect(() => {
     function onScroll() {
@@ -91,7 +98,23 @@ export default function Nav({
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8">
 
-            {/* Automatisations — avec dropdown Agent vocal */}
+            {/* Coaching */}
+            <Link
+              href="/coaching"
+              className={`text-sm font-medium transition-colors duration-200 ${linkColor}`}
+            >
+              Coaching
+            </Link>
+
+            {/* Formation */}
+            <Link
+              href="/formations"
+              className={`text-sm font-medium transition-colors duration-200 ${linkColor}`}
+            >
+              Formation
+            </Link>
+
+            {/* Automatisation — avec dropdown Agent vocal */}
             <div
               className="relative"
               onMouseEnter={() => setAutoOpen(true)}
@@ -101,7 +124,7 @@ export default function Nav({
                 href="/automatisations"
                 className={`flex items-center gap-1 text-sm font-medium transition-colors duration-200 ${linkColor}`}
               >
-                Automatisations
+                Automatisation
                 <CaretDown
                   size={12}
                   weight="bold"
@@ -132,21 +155,46 @@ export default function Nav({
               </AnimatePresence>
             </div>
 
-            {/* Formation */}
-            <Link
-              href="/formations"
-              className={`text-sm font-medium transition-colors duration-200 ${linkColor}`}
+            {/* Outils — avec dropdown Guides */}
+            <div
+              className="relative"
+              onMouseEnter={() => setOutilsOpen(true)}
+              onMouseLeave={() => setOutilsOpen(false)}
             >
-              Formation
-            </Link>
-
-            {/* Coaching */}
-            <Link
-              href="/coaching"
-              className={`text-sm font-medium transition-colors duration-200 ${linkColor}`}
-            >
-              Coaching
-            </Link>
+              <Link
+                href="/outils/guides"
+                className={`flex items-center gap-1 text-sm font-medium transition-colors duration-200 ${linkColor}`}
+              >
+                Outils
+                <CaretDown
+                  size={12}
+                  weight="bold"
+                  className={`transition-transform duration-200 ${outilsOpen ? 'rotate-180' : ''}`}
+                />
+              </Link>
+              <AnimatePresence>
+                {outilsOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 6 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-44 glass rounded-xl overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.3)] py-1"
+                  >
+                    {outilsSubLinks.map((s) => (
+                      <Link
+                        key={s.href}
+                        href={s.href}
+                        className="block px-4 py-2.5 text-sm text-[rgba(245,245,240,0.75)] hover:text-[#F5F5F0] hover:bg-white/[0.06] transition-colors"
+                        onClick={() => setOutilsOpen(false)}
+                      >
+                        {s.label}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
             {/* Anchor links — visibles seulement sur les pages de service */}
             {showAnchorLinks &&
@@ -218,7 +266,25 @@ export default function Nav({
               </div>
 
               <nav className="flex flex-col gap-6">
-                {/* Automatisations + sous-menu Agent vocal */}
+                {/* Coaching */}
+                <Link
+                  href="/coaching"
+                  onClick={() => setMobileOpen(false)}
+                  className="text-lg font-semibold text-[#F5F5F0] hover:text-[#D4A373] transition-colors"
+                >
+                  Coaching
+                </Link>
+
+                {/* Formation */}
+                <Link
+                  href="/formations"
+                  onClick={() => setMobileOpen(false)}
+                  className="text-lg font-semibold text-[#F5F5F0] hover:text-[#D4A373] transition-colors"
+                >
+                  Formation
+                </Link>
+
+                {/* Automatisation + sous-menu Agent vocal */}
                 <div className="flex flex-col gap-3">
                   <div className="flex items-center justify-between">
                     <Link
@@ -226,12 +292,12 @@ export default function Nav({
                       onClick={() => setMobileOpen(false)}
                       className="text-lg font-semibold text-[#F5F5F0] hover:text-[#D4A373] transition-colors"
                     >
-                      Automatisations
+                      Automatisation
                     </Link>
                     <button
                       onClick={() => setMobileAutoOpen((prev) => !prev)}
                       className="p-1 text-[rgba(245,245,240,0.5)] hover:text-[#D4A373] transition-colors"
-                      aria-label="Sous-menu Automatisations"
+                      aria-label="Sous-menu Automatisation"
                     >
                       <CaretDown
                         size={14}
@@ -264,23 +330,51 @@ export default function Nav({
                   </AnimatePresence>
                 </div>
 
-                {/* Formation */}
-                <Link
-                  href="/formations"
-                  onClick={() => setMobileOpen(false)}
-                  className="text-lg font-semibold text-[#F5F5F0] hover:text-[#D4A373] transition-colors"
-                >
-                  Formation
-                </Link>
-
-                {/* Coaching */}
-                <Link
-                  href="/coaching"
-                  onClick={() => setMobileOpen(false)}
-                  className="text-lg font-semibold text-[#F5F5F0] hover:text-[#D4A373] transition-colors"
-                >
-                  Coaching
-                </Link>
+                {/* Outils + sous-menu Guides */}
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center justify-between">
+                    <Link
+                      href="/outils/guides"
+                      onClick={() => setMobileOpen(false)}
+                      className="text-lg font-semibold text-[#F5F5F0] hover:text-[#D4A373] transition-colors"
+                    >
+                      Outils
+                    </Link>
+                    <button
+                      onClick={() => setMobileOutilsOpen((prev) => !prev)}
+                      className="p-1 text-[rgba(245,245,240,0.5)] hover:text-[#D4A373] transition-colors"
+                      aria-label="Sous-menu Outils"
+                    >
+                      <CaretDown
+                        size={14}
+                        weight="bold"
+                        className={`transition-transform duration-200 ${mobileOutilsOpen ? 'rotate-180' : ''}`}
+                      />
+                    </button>
+                  </div>
+                  <AnimatePresence>
+                    {mobileOutilsOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="overflow-hidden flex flex-col gap-2 pl-4 border-l border-white/[0.1]"
+                      >
+                        {outilsSubLinks.map((s) => (
+                          <Link
+                            key={s.href}
+                            href={s.href}
+                            onClick={() => setMobileOpen(false)}
+                            className="text-base text-[rgba(245,245,240,0.65)] hover:text-[#D4A373] transition-colors"
+                          >
+                            {s.label}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
 
                 {/* Anchor links */}
                 {showAnchorLinks &&
