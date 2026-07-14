@@ -187,24 +187,25 @@ export default function GuideClaudeChatgptGeminiPmePage() {
           </div>
         </section>
 
-        {/* ─── Comparatif détaillé ─── */}
-        <section id="comparatif" className="relative py-24 md:py-32 bg-[#F5F5F0]">
-          <div className="max-w-[1100px] mx-auto px-6 md:px-12 lg:px-20">
+        {/* ─── Comparatif détaillé + coûts (fond foncé pour séparer de la section précédente) ─── */}
+        <section id="comparatif" className="relative py-24 md:py-32 overflow-hidden">
+          <div className="texture-overlay" aria-hidden="true" />
+          <div className="relative z-10 max-w-[1100px] mx-auto px-6 md:px-12 lg:px-20">
 
             <ScrollReveal>
               <div className="mb-12 text-center md:text-left">
-                <p className="text-xs uppercase tracking-[0.25em] text-[#0A2E4D]/50 mb-4">
+                <p className="text-xs uppercase tracking-[0.25em] text-[rgba(245,245,240,0.5)] mb-4">
                   En bref
                 </p>
-                <h2 className="text-[clamp(1.7rem,3.5vw,2.6rem)] font-black tracking-normal leading-[1.05] text-[#0A2E4D] max-w-[28ch]">
+                <h2 className="text-[clamp(1.7rem,3.5vw,2.6rem)] font-black tracking-normal leading-[1.05] text-[#F7F3EB] max-w-[28ch]">
                   Le portrait, à jour au 14 juillet 2026.
                 </h2>
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={0.1}>
-              <div className="rounded-3xl overflow-hidden border border-[#0A2E4D]/[0.08] shadow-[0_8px_40px_-12px_rgba(10,46,77,0.1)]">
-                <div className="hidden md:grid grid-cols-[200px_1fr_1fr_1fr] bg-[#0A2E4D] text-[rgba(245,245,240,0.6)] text-[11px] uppercase tracking-widest font-mono">
+              <div className="rounded-3xl overflow-hidden border border-white/10 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.3)]">
+                <div className="hidden md:grid grid-cols-[200px_1fr_1fr_1fr] bg-[#071E33] text-[rgba(245,245,240,0.6)] text-[11px] uppercase tracking-widest font-mono">
                   <div className="px-6 py-4">Critère</div>
                   <div className="px-6 py-4 text-center">Claude</div>
                   <div className="px-6 py-4 text-center">ChatGPT</div>
@@ -214,21 +215,21 @@ export default function GuideClaudeChatgptGeminiPmePage() {
                 {comparatif.map((row, i) => (
                   <div
                     key={row.critere}
-                    className={`grid grid-cols-1 md:grid-cols-[200px_1fr_1fr_1fr] bg-white ${
-                      i > 0 ? 'border-t border-[#0A2E4D]/[0.08]' : ''
+                    className={`grid grid-cols-1 md:grid-cols-[200px_1fr_1fr_1fr] bg-[#0D3760] ${
+                      i > 0 ? 'border-t border-white/10' : ''
                     }`}
                   >
                     <div className="px-6 py-5 flex items-center">
-                      <p className="text-sm font-bold text-[#0A2E4D]">{row.critere}</p>
+                      <p className="text-sm font-bold text-[#F7F3EB]">{row.critere}</p>
                     </div>
-                    <div className="px-6 py-5 flex items-center justify-center text-center md:border-l border-[#0A2E4D]/[0.06]">
-                      <p className="text-sm text-[#0A2E4D]/65 leading-relaxed">{row.claude}</p>
+                    <div className="px-6 py-5 flex items-center justify-center text-center md:border-l border-white/[0.08]">
+                      <p className="text-sm text-[rgba(245,245,240,0.65)] leading-relaxed">{row.claude}</p>
                     </div>
-                    <div className="px-6 py-5 flex items-center justify-center text-center md:border-l border-[#0A2E4D]/[0.06]">
-                      <p className="text-sm text-[#0A2E4D]/65 leading-relaxed">{row.chatgpt}</p>
+                    <div className="px-6 py-5 flex items-center justify-center text-center md:border-l border-white/[0.08]">
+                      <p className="text-sm text-[rgba(245,245,240,0.65)] leading-relaxed">{row.chatgpt}</p>
                     </div>
-                    <div className="px-6 py-5 flex items-center justify-center text-center md:border-l border-[#0A2E4D]/[0.06]">
-                      <p className="text-sm text-[#0A2E4D]/65 leading-relaxed">{row.gemini}</p>
+                    <div className="px-6 py-5 flex items-center justify-center text-center md:border-l border-white/[0.08]">
+                      <p className="text-sm text-[rgba(245,245,240,0.65)] leading-relaxed">{row.gemini}</p>
                     </div>
                   </div>
                 ))}
@@ -236,19 +237,14 @@ export default function GuideClaudeChatgptGeminiPmePage() {
             </ScrollReveal>
 
             <ScrollReveal delay={0.15}>
-              <p className="text-xs text-[#0A2E4D]/35 leading-relaxed mt-6 max-w-[70ch]">
+              <p className="text-xs text-[rgba(245,245,240,0.3)] leading-relaxed mt-6 max-w-[70ch]">
                 Sources : Anthropic (claude.com/pricing), OpenAI (developers.openai.com), Google AI
                 (ai.google.dev). Prix et modèles à jour au 14 juillet 2026, sujets à changement.
               </p>
             </ScrollReveal>
-          </div>
-        </section>
 
-        {/* ─── Combien ça coûte ─── */}
-        <section className="relative py-24 md:py-32 bg-[#F5F5F0]">
-          <div className="max-w-[1100px] mx-auto px-6 md:px-12 lg:px-20">
-            <ScrollReveal>
-              <div className="rounded-3xl bg-[#0A2E4D] p-8 md:p-10 flex flex-col sm:flex-row items-start sm:items-center gap-6">
+            <ScrollReveal delay={0.2}>
+              <div className="rounded-3xl bg-[#0D3760] border border-white/10 p-8 md:p-10 flex flex-col sm:flex-row items-start sm:items-center gap-6 mt-10">
                 <span className="text-[clamp(2.4rem,5vw,3.6rem)] font-black text-[#D4A373] leading-none shrink-0">
                   150-400$
                 </span>
@@ -303,11 +299,11 @@ export default function GuideClaudeChatgptGeminiPmePage() {
           </div>
         </section>
 
-        {/* ─── Cross-link : aller plus loin ─── */}
-        <section className="relative py-24 md:py-32 bg-[#F5F5F0]">
+        {/* ─── Cross-link : aller plus loin (fond foncé pour alterner avec la section précédente) ─── */}
+        <section className="relative py-24 md:py-32">
           <div className="max-w-[1100px] mx-auto px-6 md:px-12 lg:px-20">
             <ScrollReveal>
-              <div className="rounded-[2rem] bg-[#0A2E4D] p-10 md:p-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+              <div className="rounded-[2rem] bg-[#0D3760] border border-white/10 p-10 md:p-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
                 <div className="flex flex-col gap-3 max-w-[42ch]">
                   <h2 className="text-[clamp(1.5rem,3vw,2.1rem)] font-black tracking-tight leading-tight text-[#F7F3EB]">
                     Vous voulez qu&apos;on fasse ce choix pour vous ?
