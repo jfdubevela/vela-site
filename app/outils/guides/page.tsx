@@ -7,7 +7,7 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import SpotlightCard from '@/components/ui/SpotlightCard'
-import { Wrench, ArrowRight, FilePdf } from '@phosphor-icons/react'
+import { Wrench, ArrowRight, FilePdf, Scales } from '@phosphor-icons/react'
 
 type Guide = {
   id: string
@@ -15,7 +15,7 @@ type Guide = {
   title: string
   tagline: string
   format: string
-  thumbnail: string
+  thumbnail?: string
 }
 
 const guides: Guide[] = [
@@ -27,6 +27,14 @@ const guides: Guide[] = [
       'Un guide visuel pour savoir quand utiliser le modèle par défaut, le modèle réflexion, ou le plus puissant disponible chez Claude et ChatGPT.',
     format: 'PDF · 2 pages',
     thumbnail: '/images/guides/quel-modele-ia-choisir/page-1.png',
+  },
+  {
+    id: 'claude-chatgpt-gemini-pme',
+    href: '/outils/guides/claude-chatgpt-gemini-pme',
+    title: 'Claude, ChatGPT ou Gemini : quel outil choisir ?',
+    tagline:
+      "Comparatif à jour des forces, prix et cas d'usage de Claude, ChatGPT et Gemini pour votre PME.",
+    format: 'Article · 5 min',
   },
 ]
 
@@ -119,12 +127,18 @@ export default function GuidesPage() {
                       className="h-full rounded-[2rem] bg-white border border-[#0A2E4D]/[0.08] hover:border-[#0A2E4D]/[0.2] transition-colors duration-300 overflow-hidden flex flex-col shadow-[0_8px_40px_-12px_rgba(10,46,77,0.12)]"
                     >
                       <div className="relative aspect-[4/3] bg-[#F7F3EB] border-b border-[#0A2E4D]/[0.08]">
-                        <Image
-                          src={g.thumbnail}
-                          alt={g.title}
-                          fill
-                          className="object-cover object-top"
-                        />
+                        {g.thumbnail ? (
+                          <Image
+                            src={g.thumbnail}
+                            alt={g.title}
+                            fill
+                            className="object-cover object-top"
+                          />
+                        ) : (
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <Scales size={40} weight="duotone" className="text-[#0A2E4D]/20" />
+                          </div>
+                        )}
                       </div>
                       <div className="p-7 flex flex-col gap-3 flex-1">
                         <span className="inline-flex items-center gap-1.5 self-start text-[10px] font-mono uppercase tracking-widest text-[#0A2E4D]/50 px-2.5 py-1 rounded-full bg-[#0A2E4D]/[0.05] border border-[#0A2E4D]/[0.08]">
