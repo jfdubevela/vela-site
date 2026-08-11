@@ -54,16 +54,16 @@ const comparatif = [
     contexte: '90% du temps',
     description: 'Rédaction, courriels, résumés, brainstorm, réponses clients.',
     accent: '#7DB7D6',
-    claude: { nom: 'Sonnet 4.6', note: 'Solide, rapide, polyvalent. Ton point de départ pour presque tout.' },
-    chatgpt: { nom: 'Instant', note: 'Le défaut pour tous les plans. Rapide et efficace au quotidien.' },
+    claude: { nom: 'Sonnet 5', note: 'Solide, rapide, polyvalent. Ton point de départ pour presque tout.' },
+    chatgpt: { nom: 'GPT-4o', note: 'Le défaut pour tous les plans. Rapide et efficace au quotidien.' },
   },
   {
     niveau: 'Réflexion',
     contexte: 'Quand le défaut ne suffit pas',
     description: 'Analyse dense, long document, problème complexe à démêler.',
     accent: '#0A2E4D',
-    claude: { nom: 'Opus 4.8', note: 'Raisonnement avancé et nuancé. Plus lent, mais nettement plus profond.' },
-    chatgpt: { nom: 'Medium → High', note: 'Réflexion légère à poussée. Monte graduellement selon la complexité.' },
+    claude: { nom: 'Opus 5', note: 'Raisonnement avancé et nuancé. Plus lent, mais nettement plus profond.' },
+    chatgpt: { nom: 'o3', note: 'Réflexion activée. Pour les analyses complexes ou les documents denses.' },
   },
   {
     niveau: 'Gros calibre',
@@ -71,7 +71,7 @@ const comparatif = [
     description: 'Travail long et complexe à haute valeur. À utiliser avec parcimonie.',
     accent: '#D4A373',
     claude: { nom: 'Fable 5', note: 'Le plus puissant. Pense de façon autonome. Réponse plus lente, résultat plus ambitieux.' },
-    chatgpt: { nom: 'Extra High / Pro', note: 'Le niveau le plus lourd disponible. Abonnement Pro requis pour les modes Pro.' },
+    chatgpt: { nom: 'o3 Pro', note: 'Le niveau le plus lourd disponible. Abonnement Pro requis ($200/mois).' },
   },
 ]
 
