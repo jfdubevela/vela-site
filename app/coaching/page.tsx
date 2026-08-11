@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import ScrollReveal from '@/components/ui/ScrollReveal'
+import BoutonDecouverte from '@/components/ui/BoutonDecouverte'
 import {
   ArrowRight,
   ArrowDown,
@@ -224,14 +225,14 @@ export default function CoachingPage() {
                 initial={{ opacity: 0, y: 28 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ type: 'spring', stiffness: 80, damping: 18, delay: 0.56 }}
-                className="flex flex-col items-start gap-4"
+                className="flex flex-col items-start gap-4 w-full"
               >
+                <BoutonDecouverte onLight />
                 <a
                   href="#contact"
-                  className="inline-flex items-center gap-2 bg-[#D4A373] hover:bg-[#C49060] text-[#0A2E4D] font-bold px-8 py-4 rounded-full transition-colors duration-200 shadow-[0_8px_32px_-8px_rgba(212,163,115,0.45)] hover:shadow-[0_12px_40px_-8px_rgba(212,163,115,0.55)] active:scale-[0.97]"
-                  style={{ fontSize: '0.9375rem' }}
+                  className="inline-flex items-center gap-2 text-[0.9375rem] font-semibold text-[rgba(10,46,77,0.6)] hover:text-[#0A2E4D] underline underline-offset-4 decoration-[rgba(10,46,77,0.25)] transition-colors"
                 >
-                  Réserver ma session découverte
+                  Ou écrivez-nous directement
                   <ArrowRight size={14} weight="bold" />
                 </a>
                 <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#0A2E4D]/10 bg-[#0A2E4D]/04 text-xs text-[rgba(10,46,77,0.38)] font-mono tracking-wide">
@@ -253,7 +254,7 @@ export default function CoachingPage() {
 
           {/* Scroll indicator */}
           <div
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 opacity-0 animate-[fade-up_0.6s_ease_1.5s_forwards]"
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-1.5 opacity-0 animate-[fade-up_0.6s_ease_1.5s_forwards]"
             aria-hidden="true"
           >
             <span className="text-[0.6rem] uppercase tracking-[0.22em] text-[rgba(10,46,77,0.22)]">Défiler</span>
@@ -600,7 +601,11 @@ export default function CoachingPage() {
                   </p>
                 </ScrollReveal>
 
-                <ScrollReveal delay={0.25}>
+                <ScrollReveal delay={0.24}>
+                  <BoutonDecouverte />
+                </ScrollReveal>
+
+                <ScrollReveal delay={0.28}>
                   <p className="text-xs text-[rgba(245,245,240,0.22)] font-mono tracking-wide">
                     Réponse sous 24h · Aucune obligation
                   </p>
@@ -619,7 +624,7 @@ export default function CoachingPage() {
                   ) : (
                     <>
                       <div className="flex flex-col gap-1">
-                        <p className="text-base font-semibold text-[#F5F5F0]">Demander ma session découverte</p>
+                        <p className="text-base font-semibold text-[#F5F5F0]">Ou demandez votre session par courriel</p>
                         <p className="text-sm text-[rgba(245,245,240,0.4)]">Gratuite · 30 minutes · Sans engagement</p>
                       </div>
 

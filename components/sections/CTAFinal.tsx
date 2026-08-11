@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { ArrowRight, CheckCircle } from '@phosphor-icons/react'
 import MagneticButton from '../ui/MagneticButton'
 import ScrollReveal from '../ui/ScrollReveal'
+import BoutonDecouverte from '../ui/BoutonDecouverte'
 import { submitContact } from '@/app/actions/contact'
 
 const inputClass = "w-full px-4 py-3 rounded-xl bg-white/[0.08] border border-white/[0.12] text-[#F5F5F0] text-sm placeholder:text-[rgba(245,245,240,0.3)] focus:outline-none focus:border-[#7DB7D6]/50 transition-colors"
@@ -83,6 +84,10 @@ export default function CTAFinal() {
               </p>
             </ScrollReveal>
 
+            <ScrollReveal delay={0.28}>
+              <BoutonDecouverte />
+            </ScrollReveal>
+
             <ScrollReveal delay={0.3}>
               <p className="text-xs text-[rgba(245,245,240,0.25)] font-mono tracking-wide">
                 Prix fixe · Aucune surprise · Vous gardez tous vos accès
@@ -102,7 +107,7 @@ export default function CTAFinal() {
               ) : (
                 <>
                   <div className="flex flex-col gap-1">
-                    <p className="text-base font-semibold text-[#F5F5F0]">Laissez vos coordonnées</p>
+                    <p className="text-base font-semibold text-[#F5F5F0]">Ou laissez vos coordonnées</p>
                     <p className="text-sm text-[rgba(245,245,240,0.4)]">On vous répond dans les 2 jours ouvrables.</p>
                   </div>
 

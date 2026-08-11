@@ -42,6 +42,7 @@ export default function Home() {
             primaryCtaLabel="Découvrir nos services"
             primaryCtaTarget="#services"
             secondaryCtaLabel={null}
+            showBookingCta
             microText="Automatisation · Formation · Coaching I.A."
           />
         </div>

@@ -4,6 +4,8 @@ import { useRef, useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowDown } from '@phosphor-icons/react'
 import MagneticButton from '../ui/MagneticButton'
+import BoutonDecouverte from '../ui/BoutonDecouverte'
+import { CALENDRIER_MICRO_COPY } from '../ui/calendrier'
 
 interface HeroProps {
   badge?: string
@@ -16,6 +18,8 @@ interface HeroProps {
   secondaryCtaLabel?: string | null
   secondaryCtaTarget?: string
   microText?: string
+  /** Affiche le bouton de réservation Google Calendar sous les CTA */
+  showBookingCta?: boolean
 }
 
 export default function Hero({
@@ -29,6 +33,7 @@ export default function Hero({
   secondaryCtaLabel = 'Voir nos services',
   secondaryCtaTarget = '#services',
   microText = 'Prix fixe · Aucune surprise · Vous gardez tous vos accès',
+  showBookingCta = false,
 }: HeroProps = {}) {
   const containerRef = useRef<HTMLElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -143,8 +148,15 @@ export default function Hero({
               transition={{ type: 'spring', stiffness: 80, damping: 18, delay: 0.85 }}
               className="flex flex-wrap items-center gap-4"
             >
+              {showBookingCta && (
+                <BoutonDecouverte showMicroCopy={false} fullWidthMobile={false} />
+              )}
               <MagneticButton
-                className="inline-flex items-center gap-2 bg-[#D4A373] hover:bg-[#C49060] text-[#0A2E4D] font-bold text-sm px-7 py-3.5 rounded-full transition-colors duration-200 cursor-pointer shadow-[0_8px_32px_-8px_rgba(212,163,115,0.45)]"
+                className={
+                  showBookingCta
+                    ? 'inline-flex items-center gap-2 border border-[rgba(245,245,240,0.22)] text-[#F5F5F0] hover:border-[rgba(245,245,240,0.45)] hover:bg-white/[0.04] text-sm px-7 py-3.5 rounded-full transition-all duration-200 cursor-pointer'
+                    : 'inline-flex items-center gap-2 bg-[#D4A373] hover:bg-[#C49060] text-[#0A2E4D] font-bold text-sm px-7 py-3.5 rounded-full transition-colors duration-200 cursor-pointer shadow-[0_8px_32px_-8px_rgba(212,163,115,0.45)]'
+                }
                 onClick={() => scrollToSection(primaryCtaTarget)}
               >
                 {primaryCtaLabel}
@@ -159,6 +171,18 @@ export default function Hero({
                 </MagneticButton>
               )}
             </motion.div>
+
+            {/* Booking micro-copy */}
+            {showBookingCta && (
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.1, duration: 0.5 }}
+                className="text-xs text-[rgba(245,245,240,0.45)] leading-relaxed max-w-[46ch] -mt-3"
+              >
+                {CALENDRIER_MICRO_COPY}
+              </motion.p>
+            )}
 
             {/* Guarantee micro-text */}
             <motion.p

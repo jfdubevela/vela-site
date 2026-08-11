@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { LinkedinLogo } from '@phosphor-icons/react/dist/ssr'
+import { CALENDRIER_URL } from './ui/calendrier'
 
 export default function Footer() {
   return (
@@ -54,10 +55,17 @@ export default function Footer() {
                 { label: 'Tarification', href: '#tarification' },
                 { label: 'Exemples', href: '#etudes-de-cas' },
                 { label: 'FAQ', href: '#faq' },
-                { label: 'Réserver un appel', href: '#contact' },
+                { label: 'Réserver un appel', href: CALENDRIER_URL },
+                { label: 'Nous écrire', href: '#contact' },
               ].map((item) => (
                 <li key={item.label}>
-                  <a href={item.href} className="text-sm text-[rgba(245,245,240,0.5)] hover:text-[#F5F5F0] transition-colors">
+                  <a
+                    href={item.href}
+                    {...(item.href.startsWith('http')
+                      ? { target: '_blank', rel: 'noopener noreferrer' }
+                      : {})}
+                    className="text-sm text-[rgba(245,245,240,0.5)] hover:text-[#F5F5F0] transition-colors"
+                  >
                     {item.label}
                   </a>
                 </li>

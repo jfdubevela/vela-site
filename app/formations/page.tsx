@@ -7,6 +7,7 @@ import Footer from '@/components/Footer'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import SpotlightCard from '@/components/ui/SpotlightCard'
 import MagneticButton from '@/components/ui/MagneticButton'
+import BoutonDecouverte from '@/components/ui/BoutonDecouverte'
 import {
   Chalkboard,
   ArrowRight,
@@ -156,15 +157,15 @@ function DetailPanel({ formation: f, onContact }: { formation: Formation; onCont
           <div className="flex flex-wrap gap-6">
             <div className="flex flex-col gap-1">
               <span className="text-[10px] uppercase tracking-widest text-[#0A2E4D]/40 font-mono">Format</span>
-              <span className="text-sm text-[#0A2E4D]/70">{f.format}</span>
+              <span className="text-[0.9375rem] text-[#0A2E4D]/70">{f.format}</span>
             </div>
             <div className="flex flex-col gap-1">
               <span className="text-[10px] uppercase tracking-widest text-[#0A2E4D]/40 font-mono">Durée</span>
-              <span className="text-sm text-[#0A2E4D]/70">{f.duration}</span>
+              <span className="text-[0.9375rem] text-[#0A2E4D]/70">{f.duration}</span>
             </div>
             <div className="flex flex-col gap-1">
               <span className="text-[10px] uppercase tracking-widest text-[#0A2E4D]/40 font-mono">Pour qui</span>
-              <span className="text-sm text-[#0A2E4D]/70">{f.audience}</span>
+              <span className="text-[0.9375rem] text-[#0A2E4D]/70">{f.audience}</span>
             </div>
           </div>
           <div className="flex flex-col gap-2 shrink-0">
@@ -397,7 +398,7 @@ export default function FormationsPage() {
                           <h3 className="text-xl font-bold tracking-tight text-[#0A2E4D] leading-snug">
                             {f.title}
                           </h3>
-                          <p className="text-sm text-[#0A2E4D]/55 leading-relaxed">
+                          <p className="text-[0.9375rem] text-[#0A2E4D]/55 leading-relaxed">
                             {f.tagline}
                           </p>
                         </div>
@@ -497,7 +498,11 @@ export default function FormationsPage() {
                   </p>
                 </ScrollReveal>
 
-                <ScrollReveal delay={0.25}>
+                <ScrollReveal delay={0.24}>
+                  <BoutonDecouverte />
+                </ScrollReveal>
+
+                <ScrollReveal delay={0.28}>
                   <p className="text-xs text-[rgba(245,245,240,0.25)] font-mono tracking-wide">
                     Prix fixe · Aucune surprise · Formation adaptée à votre équipe
                   </p>
