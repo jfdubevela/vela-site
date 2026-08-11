@@ -12,7 +12,7 @@ const outils = [
     nom: 'Claude',
     editeur: 'Anthropic',
     accent: '#D4A373',
-    force: 'Rédaction longue, analyse, code, faible taux d’hallucination.',
+    force: 'Rédaction longue, analyse, code, meilleure fiabilité factuelle de la comparaison.',
     pourPme: 'Contrats, politiques internes, analyses financières, rapports : tout ce qui doit être juste et bien écrit du premier coup.',
   },
   {
@@ -32,14 +32,14 @@ const outils = [
 ]
 
 const comparatif = [
-  { critere: 'Force principale', claude: 'Faible taux d’hallucination', chatgpt: 'Image, voix, recherche web', gemini: 'Audio + vidéo natif' },
-  { critere: 'Modèle par défaut', claude: 'Sonnet 5', chatgpt: 'Instant / GPT-5.5', gemini: 'Gemini 3 Flash' },
-  { critere: 'Modèle réflexion', claude: 'Opus 4.8', chatgpt: 'GPT-5.6 Terra / High', gemini: 'Gemini 3.1 Pro' },
-  { critere: 'Gros calibre', claude: 'Fable 5', chatgpt: 'GPT-5.6 Sol / Pro', gemini: 'Gemini 3.5 Flash' },
+  { critere: 'Force principale', claude: 'Fiabilité factuelle, rédaction, code', chatgpt: 'Image, voix, recherche web', gemini: 'Audio + vidéo natif' },
+  { critere: 'Modèle par défaut', claude: 'Sonnet 5', chatgpt: 'GPT-5.6 Terra', gemini: 'Gemini 3.6 Flash' },
+  { critere: 'Modèle réflexion', claude: 'Opus 5', chatgpt: 'GPT-5.6 Sol', gemini: 'Gemini 3.1 Pro' },
+  { critere: 'Gros calibre', claude: 'Fable 5', chatgpt: 'GPT-5.6 Sol Pro', gemini: 'Gemini 3.1 Pro (Deep Think)' },
   { critere: 'Fenêtre de contexte', claude: 'Jusqu’à 1M tokens', chatgpt: 'Standard', gemini: 'Jusqu’à 1M tokens (Pro)' },
-  { critere: 'Taux d’hallucination approx.', claude: '~3%', chatgpt: '5-8%', gemini: '5-8%' },
+  { critere: 'Fiabilité factuelle (AA-Omniscience)*', claude: '61% (Fable 5)', chatgpt: '59% (Sol)', gemini: '55% (3.1 Pro)' },
   { critere: 'Prix individuel', claude: 'Pro : 20$ US/mois', chatgpt: 'Plus : 20$ US/mois', gemini: 'AI Pro : 19,99$ US/mois' },
-  { critere: 'Prix équipe (PME)', claude: 'Enterprise : dès 20$/siège/mois + usage (min. 20 sièges)', chatgpt: 'Business : 20-25$/siège/mois', gemini: 'Google Workspace : variable selon forfait' },
+  { critere: 'Prix équipe (PME)', claude: 'Team : 30$ US/siège/mois (Enterprise sur mesure)', chatgpt: 'Business : 20-25$/siège/mois', gemini: 'Workspace : dès 7$ US/siège/mois' },
 ]
 
 const recommandations = [
@@ -131,7 +131,7 @@ export default function GuideClaudeChatgptGeminiPmePage() {
                 transition={{ delay: 1.0, duration: 0.5 }}
                 className="text-xs text-[rgba(245,245,240,0.25)] font-mono tracking-wide"
               >
-                Gratuit · Mis à jour le 14 juillet 2026
+                Gratuit · Mis à jour le 10 août 2026
               </motion.p>
             </div>
           </div>
@@ -198,7 +198,7 @@ export default function GuideClaudeChatgptGeminiPmePage() {
                   En bref
                 </p>
                 <h2 className="text-[clamp(1.7rem,3.5vw,2.6rem)] font-black tracking-normal leading-[1.05] text-[#F7F3EB] max-w-[28ch]">
-                  Le portrait, à jour au 14 juillet 2026.
+                  Le portrait, à jour au 10 août 2026.
                 </h2>
               </div>
             </ScrollReveal>
@@ -238,8 +238,11 @@ export default function GuideClaudeChatgptGeminiPmePage() {
 
             <ScrollReveal delay={0.15}>
               <p className="text-xs text-[rgba(245,245,240,0.3)] leading-relaxed mt-6 max-w-[70ch]">
-                Sources : Anthropic (claude.com/pricing), OpenAI (developers.openai.com), Google AI
-                (ai.google.dev). Prix et modèles à jour au 14 juillet 2026, sujets à changement.
+                *Fiabilité factuelle mesurée par le benchmark AA-Omniscience d&apos;Artificial Analysis.
+                Sources : Anthropic (platform.claude.com/pricing), OpenAI (openai.com, developers.openai.com),
+                Google AI (ai.google.dev). Anthropic a rendu permanent le tarif d&apos;introduction de Sonnet 5
+                (2$/10$ US par million de jetons) le 10 août 2026. Prix et modèles à jour à cette date,
+                sujets à changement.
               </p>
             </ScrollReveal>
 
