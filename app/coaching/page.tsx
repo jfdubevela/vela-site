@@ -149,7 +149,7 @@ export default function CoachingPage() {
         {/* ── Hero ── */}
         <section
           id="hero"
-          className="relative min-h-[100dvh] flex items-center overflow-hidden pt-20 bg-vela-cream"
+          className="relative min-h-[86dvh] md:min-h-[88dvh] flex items-center overflow-hidden pt-20 bg-vela-cream"
         >
           {/* Background image */}
           <div
@@ -179,8 +179,8 @@ export default function CoachingPage() {
             aria-hidden="true"
           />
 
-          <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 py-20 w-full">
-            <div className="flex flex-col gap-7 max-w-[680px]">
+          <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 py-12 [@media(max-height:820px)]:py-6 w-full">
+            <div className="flex flex-col gap-6 max-w-[680px]">
 
               {/* Badge */}
               <motion.div
@@ -199,8 +199,7 @@ export default function CoachingPage() {
                 initial={{ opacity: 0, y: 28 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ type: 'spring', stiffness: 80, damping: 18, delay: 0.28 }}
-                className="font-black tracking-[-0.025em] leading-[0.95] text-[#0A2E4D]"
-                style={{ fontSize: 'clamp(2.4rem, 5.8vw, 4.6rem)' }}
+                className="font-black tracking-[-0.025em] leading-[0.95] text-[#0A2E4D] text-display-xl [@media(max-height:820px)]:text-[clamp(2.2rem,4.4vw,3.4rem)]"
               >
                 Utilisez l&apos;I.A.<br />
                 comme un levier.<br />
@@ -259,6 +258,78 @@ export default function CoachingPage() {
           >
             <span className="text-[0.6rem] uppercase tracking-[0.22em] text-[rgba(10,46,77,0.22)]">Défiler</span>
             <ArrowDown size={14} weight="bold" className="text-[rgba(10,46,77,0.22)] animate-[bounce-y_1.8s_ease-in-out_infinite]" />
+          </div>
+        </section>
+
+
+        {/* ── Tarif ── */}
+        <section
+          id="tarif"
+          className="bg-[#C5DCE8] border-y border-[rgba(10,46,77,0.10)] py-14 md:py-20"
+          aria-labelledby="tarif-titre"
+        >
+          <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+            <div className="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-16">
+
+              {/* Prix */}
+              <div className="shrink-0">
+                <span
+                  id="tarif-titre"
+                  className="block text-[0.6875rem] uppercase tracking-[0.25em] font-semibold text-[#1C3D55] mb-4"
+                >
+                  L&apos;investissement
+                </span>
+
+                <p className="font-black tracking-[-0.03em] leading-[0.95] text-[#0A2E4D] text-[clamp(3rem,7vw,5rem)]">
+                  {'1 800 $'}
+                </p>
+
+                <p className="mt-3 text-[clamp(1rem,1.6vw,1.1875rem)] font-semibold text-[#0A2E4D] leading-[1.45]">
+                  6 sessions de 60 minutes,<br className="hidden sm:block" /> aux deux semaines.
+                </p>
+
+                <p className="mt-2 font-mono text-[0.8125rem] tracking-[0.04em] text-[#1C3D55]/85">
+                  300 $ par session · 3 mois d&apos;accompagnement
+                </p>
+              </div>
+
+              {/* Séparateur */}
+              <div
+                className="hidden lg:block w-px self-stretch bg-[rgba(10,46,77,0.14)]"
+                aria-hidden="true"
+              />
+
+              {/* Inclusions + CTA */}
+              <div className="flex-1 flex flex-col gap-7">
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3.5">
+                  {[
+                    'Sessions individuelles en visioconférence',
+                    'Prompts et outils calibrés à votre rôle',
+                    'Fiche synthèse après chaque session',
+                    'Exercices pratiques entre les sessions',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <CheckCircle
+                        size={19}
+                        weight="fill"
+                        className="text-[#1C3D55] shrink-0 mt-0.5"
+                      />
+                      <span className="text-[0.9375rem] md:text-base text-[#173753] leading-[1.5]">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex flex-col sm:flex-row sm:items-start gap-4">
+                  <BoutonDecouverte variant="deep" onLight showMicroCopy={false} />
+                  <span className="text-[0.8125rem] text-[#1C3D55]/85 leading-[1.5] sm:max-w-[34ch] sm:pt-1">
+                    30 minutes, sans engagement. On regarde vos processus, vous repartez avec un plan clair.
+                  </span>
+                </div>
+              </div>
+
+            </div>
           </div>
         </section>
 
