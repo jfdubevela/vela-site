@@ -48,24 +48,24 @@ const items = [
 
 export default function FAQ() {
   return (
-    <section id="faq" className="bg-[#0A2E4D] py-28 md:py-36 rounded-t-3xl">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+    <section id="faq" className="bg-[#122434] py-28 md:py-36 rounded-t-[18px]">
+      <div className="max-w-[1180px] mx-auto px-6 md:px-12 lg:px-20">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-16 md:gap-24">
           {/* Left */}
           <div className="md:sticky md:top-28 md:self-start">
             <ScrollReveal>
-              <p className="text-xs uppercase tracking-[0.25em] text-[#7DB7D6] mb-4">FAQ</p>
-              <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-black tracking-normal leading-[0.95] text-[#F7F3EB]">
+              <p className="font-mono text-[0.75rem] uppercase tracking-[0.16em] text-[#7DB7D6] mb-4">FAQ</p>
+              <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-medium tracking-[-0.02em] leading-[0.95] text-[#F7F3EB]">
                 Les vraies questions
                 <br />
                 qu&apos;on nous pose.
               </h2>
-              <p className="mt-5 text-sm text-[rgba(245,245,240,0.45)] leading-relaxed max-w-[32ch]">
+              <p className="mt-5 text-sm text-[rgba(247,243,235,0.45)] leading-relaxed max-w-[32ch]">
                 Si vous avez d&apos;autres questions, on est là.
               </p>
               <button
                 onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="mt-6 inline-flex items-center gap-2 text-sm text-[#D4A373] hover:text-[#F7F3EB] transition-colors font-medium cursor-pointer"
+                className="mt-6 inline-flex items-center gap-2 text-sm text-[#B3A280] hover:text-[#F7F3EB] transition-colors font-medium cursor-pointer"
               >
                 Poser une question
                 <span className="text-lg leading-none">→</span>

@@ -43,7 +43,7 @@ function ProcessPathLine() {
     >
       <motion.path
         d="M 0 1 L 1000 1"
-        stroke="#D4A373"
+        stroke="#B3A280"
         strokeWidth="1"
         strokeDasharray="6 6"
         fill="none"
@@ -59,16 +59,16 @@ export default function Processus() {
   return (
     <section
       id="processus"
-      className="bg-[#F5F5F0] py-28 md:py-36 overflow-hidden rounded-t-3xl"
+      className="bg-[#E8E4DA] py-28 md:py-36 overflow-hidden rounded-t-[18px]"
     >
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+      <div className="max-w-[1180px] mx-auto px-6 md:px-12 lg:px-20">
         {/* Header */}
         <ScrollReveal>
           <div className="mb-20">
-            <p className="text-xs uppercase tracking-[0.25em] text-[#0A2E4D]/40 mb-4">
+            <p className="font-mono text-[0.75rem] uppercase tracking-[0.16em] text-[#0A2E4D]/40 mb-4">
               Comment ça fonctionne
             </p>
-            <h2 className="text-[clamp(2rem,4.5vw,3.5rem)] font-black tracking-normal leading-[0.95] text-[#0A2E4D]">
+            <h2 className="text-[clamp(2rem,4.5vw,3.5rem)] font-medium tracking-[-0.02em] leading-[0.95] text-[#0A2E4D]">
               La méthode VELA.
               <br />
               <span className="text-[#0A2E4D]/40">Simple. Mesurée. Fiable.</span>
@@ -103,7 +103,7 @@ export default function Processus() {
                   </div>
                   {/* Watermark number */}
                   <span
-                    className="absolute -top-6 -left-2 font-mono font-black text-[5rem] leading-none text-[#0A2E4D]/[0.06] select-none pointer-events-none"
+                    className="absolute -top-6 -left-2 font-mono font-medium text-[5rem] leading-none text-[#0A2E4D]/[0.06] select-none pointer-events-none"
                     aria-hidden="true"
                   >
                     {step.num}
@@ -112,7 +112,7 @@ export default function Processus() {
 
                 {/* Content */}
                 <div className="flex flex-col gap-3">
-                  <h3 className="text-xl font-bold tracking-tight text-[#0A2E4D]">
+                  <h3 className="text-xl font-bold tracking-[-0.02em] text-[#0A2E4D]">
                     {step.title}
                   </h3>
                   <p className="text-sm text-[#0A2E4D]/60 leading-relaxed max-w-[38ch]">
@@ -132,7 +132,7 @@ export default function Processus() {
                   </div>
 
                   {/* Tag */}
-                  <span className="self-start mt-2 text-xs px-3 py-1.5 rounded-full bg-[#D4A373]/15 text-[#8B5E2A] font-mono font-medium">
+                  <span className="self-start mt-2 text-xs px-3 py-1.5 rounded-full bg-[#B3A280]/15 text-[#8B5E2A] font-mono font-medium">
                     {step.tag}
                   </span>
                 </div>
@@ -144,7 +144,7 @@ export default function Processus() {
         {/* Rule */}
         <ScrollReveal delay={0.3}>
           <div className="mt-20 pt-8 border-t border-[#0A2E4D]/10 flex flex-col md:flex-row items-start md:items-center gap-3">
-            <span className="w-1.5 h-8 rounded-full bg-[#D4A373] shrink-0" />
+            <span className="w-1.5 h-8 rounded-full bg-[#B3A280] shrink-0" />
             <p className="text-sm text-[#0A2E4D]/50 max-w-[70ch] leading-relaxed">
               <strong className="text-[#0A2E4D]/80 font-semibold">Règle structurante :</strong>{' '}
               Le diagnostic est obligatoire avant toute implantation. On ne déploie

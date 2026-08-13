@@ -169,7 +169,7 @@ export default function CoachingPage() {
           {/* Glow top-right */}
           <div
             className="absolute -top-16 -right-16 w-[min(640px,70%)] h-[540px] pointer-events-none"
-            style={{ background: 'radial-gradient(ellipse at center, rgba(212,163,115,0.18) 0%, transparent 65%)' }}
+            style={{ background: 'radial-gradient(ellipse at center, rgba(179,162,128,0.18) 0%, transparent 65%)' }}
             aria-hidden="true"
           />
           {/* Glow bottom-left */}
@@ -179,7 +179,7 @@ export default function CoachingPage() {
             aria-hidden="true"
           />
 
-          <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 py-12 [@media(max-height:820px)]:py-6 w-full">
+          <div className="relative z-10 max-w-[1180px] mx-auto px-6 md:px-12 lg:px-20 py-12 [@media(max-height:820px)]:py-6 w-full">
             <div className="flex flex-col gap-6 max-w-[680px]">
 
               {/* Badge */}
@@ -199,11 +199,11 @@ export default function CoachingPage() {
                 initial={{ opacity: 0, y: 28 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ type: 'spring', stiffness: 80, damping: 18, delay: 0.28 }}
-                className="font-black tracking-[-0.025em] leading-[0.95] text-[#0A2E4D] text-display-xl [@media(max-height:820px)]:text-[clamp(2.2rem,4.4vw,3.4rem)]"
+                className="font-medium tracking-[-0.025em] leading-[0.95] text-[#0A2E4D] text-display-xl [@media(max-height:820px)]:text-[clamp(2.2rem,4.4vw,3.4rem)]"
               >
                 Utilisez l&apos;I.A.<br />
                 comme un levier.<br />
-                <span className="text-[#C49060]">Pas comme un gadget.</span>
+                <span className="text-[#C6B896]">Pas comme un gadget.</span>
               </motion.h1>
 
               {/* Subtitle */}
@@ -232,7 +232,7 @@ export default function CoachingPage() {
                   className="inline-flex items-center gap-2 text-[0.9375rem] font-semibold text-[rgba(10,46,77,0.6)] hover:text-[#0A2E4D] underline underline-offset-4 decoration-[rgba(10,46,77,0.25)] transition-colors"
                 >
                   Ou écrivez-nous directement
-                  <ArrowRight size={14} weight="bold" />
+                  <ArrowRight size={14} weight="regular" />
                 </a>
                 <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#0A2E4D]/10 bg-[#0A2E4D]/04 text-xs text-[rgba(10,46,77,0.38)] font-mono tracking-wide">
                   2 sessions par mois · Adapté à votre réalité
@@ -256,8 +256,8 @@ export default function CoachingPage() {
             className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-1.5 opacity-0 animate-[fade-up_0.6s_ease_1.5s_forwards]"
             aria-hidden="true"
           >
-            <span className="text-[0.6rem] uppercase tracking-[0.22em] text-[rgba(10,46,77,0.22)]">Défiler</span>
-            <ArrowDown size={14} weight="bold" className="text-[rgba(10,46,77,0.22)] animate-[bounce-y_1.8s_ease-in-out_infinite]" />
+            <span className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-[rgba(10,46,77,0.22)]">Défiler</span>
+            <ArrowDown size={14} weight="regular" className="text-[rgba(10,46,77,0.22)] animate-[bounce-y_1.8s_ease-in-out_infinite]" />
           </div>
         </section>
 
@@ -268,19 +268,19 @@ export default function CoachingPage() {
           className="bg-[#C5DCE8] border-y border-[rgba(10,46,77,0.10)] py-14 md:py-20"
           aria-labelledby="tarif-titre"
         >
-          <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+          <div className="max-w-[1180px] mx-auto px-6 md:px-12 lg:px-20">
             <div className="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-16">
 
               {/* Prix */}
               <div className="shrink-0">
                 <span
                   id="tarif-titre"
-                  className="block text-[0.6875rem] uppercase tracking-[0.25em] font-semibold text-[#1C3D55] mb-4"
+                  className="block font-mono text-[0.75rem] uppercase tracking-[0.16em] font-semibold text-[#1C3D55] mb-4"
                 >
                   L&apos;investissement
                 </span>
 
-                <p className="font-black tracking-[-0.03em] leading-[0.95] text-[#0A2E4D] text-[clamp(3rem,7vw,5rem)]">
+                <p className="font-medium tracking-[-0.03em] leading-[0.95] text-[#0A2E4D] text-[clamp(3rem,7vw,5rem)]">
                   {'1 800 $'}
                 </p>
 
@@ -311,7 +311,7 @@ export default function CoachingPage() {
                     <li key={item} className="flex items-start gap-3">
                       <CheckCircle
                         size={19}
-                        weight="fill"
+                        weight="regular"
                         className="text-[#1C3D55] shrink-0 mt-0.5"
                       />
                       <span className="text-[0.9375rem] md:text-base text-[#173753] leading-[1.5]">
@@ -335,18 +335,18 @@ export default function CoachingPage() {
 
 
         {/* ── Problème ── */}
-        <section id="probleme" className="bg-[#0D3760] py-28 md:py-36">
-          <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+        <section id="probleme" className="bg-[#122434] py-28 md:py-36">
+          <div className="max-w-[1180px] mx-auto px-6 md:px-12 lg:px-20">
 
             <ScrollReveal>
-              <span className="block text-[0.6875rem] uppercase tracking-[0.25em] font-medium text-[#7DB7D6] mb-4">
+              <span className="block font-mono text-[0.75rem] uppercase tracking-[0.16em] font-medium text-[#7DB7D6] mb-4">
                 Le problème
               </span>
             </ScrollReveal>
 
             <ScrollReveal delay={0.08}>
               <h2
-                className="font-black tracking-[-0.02em] leading-[1.02] text-[#F7F3EB] max-w-[24ch] mb-14"
+                className="font-medium tracking-[-0.02em] leading-[1.02] text-[#F7F3EB] max-w-[24ch] mb-14"
                 style={{ fontSize: 'clamp(1.9rem, 4.2vw, 3.4rem)' }}
               >
                 Vous utilisez l&apos;I.A.<br />
@@ -355,14 +355,14 @@ export default function CoachingPage() {
               </h2>
             </ScrollReveal>
 
-            <ul className="border-t border-white/[0.08] max-w-[680px]" aria-label="Points de douleur courants">
+            <ul className="border-t border-[rgba(247,243,235,0.12)] max-w-[680px]" aria-label="Points de douleur courants">
               {pains.map(({ icon: Icon, text }, i) => (
                 <ScrollReveal key={i} delay={0.08 * (i + 2)}>
-                  <li className="flex items-start gap-5 py-6 border-b border-white/[0.08]">
+                  <li className="flex items-start gap-5 py-6 border-b border-[rgba(247,243,235,0.12)]">
                     <div className="w-[42px] h-[42px] rounded-full bg-[rgba(125,183,214,0.10)] border border-[rgba(125,183,214,0.18)] flex items-center justify-center text-[#7DB7D6] shrink-0">
-                      <Icon size={18} weight="bold" />
+                      <Icon size={18} weight="regular" />
                     </div>
-                    <p className="text-[rgba(245,245,240,0.78)] leading-[1.55] pt-2.5" style={{ fontSize: 'clamp(1rem, 1.5vw, 1.2rem)' }}>
+                    <p className="text-[rgba(247,243,235,0.78)] leading-[1.55] pt-2.5" style={{ fontSize: 'clamp(1rem, 1.5vw, 1.2rem)' }}>
                       &ldquo;{text}&rdquo;
                     </p>
                   </li>
@@ -375,18 +375,18 @@ export default function CoachingPage() {
 
 
         {/* ── Processus ── */}
-        <section id="processus" className="bg-[#F5F5F0] py-28 md:py-36 rounded-[2rem_2rem_0_0]">
-          <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+        <section id="processus" className="bg-[#E8E4DA] py-28 md:py-36 rounded-t-[18px]">
+          <div className="max-w-[1180px] mx-auto px-6 md:px-12 lg:px-20">
 
             <ScrollReveal>
-              <span className="block text-[0.6875rem] uppercase tracking-[0.25em] font-medium text-[rgba(10,46,77,0.45)] mb-4">
+              <span className="block font-mono text-[0.75rem] uppercase tracking-[0.16em] font-medium text-[rgba(10,46,77,0.45)] mb-4">
                 Le format
               </span>
             </ScrollReveal>
 
             <ScrollReveal delay={0.08}>
               <h2
-                className="text-display-md font-black tracking-[-0.02em] leading-[1] text-[#1A1A1A] mb-3"
+                className="text-display-md font-medium tracking-[-0.02em] leading-[1] text-[#122434] mb-3"
               >
                 Un format simple.<br />Une progression mesurable.
               </h2>
@@ -402,27 +402,27 @@ export default function CoachingPage() {
             <ScrollReveal delay={0.16}>
               {/* ── Desktop : 4 colonnes ── */}
               <div className="hidden md:grid md:grid-cols-4 gap-4 relative">
-                <div className="absolute top-[21px] left-[21px] right-[21px] h-0 border-t-2 border-dashed border-[rgba(212,163,115,0.30)] z-0" aria-hidden="true" />
+                <div className="absolute top-[21px] left-[21px] right-[21px] h-0 border-t-2 border-dashed border-[rgba(179,162,128,0.30)] z-0" aria-hidden="true" />
                 {steps.map((step) => (
                   <div key={step.num} className="relative z-10 flex flex-col gap-3.5">
                     <div className="flex flex-col items-start gap-2">
                       <div
                         className={`w-[42px] h-[42px] rounded-full flex items-center justify-center font-bold text-sm shrink-0 shadow-[0_4px_16px_-4px_rgba(10,46,77,0.35)] font-mono ${
-                          step.isFree ? 'bg-[#D4A373] text-[#0A2E4D]' : 'bg-[#0A2E4D] text-[#F7F3EB]'
+                          step.isFree ? 'bg-[#B3A280] text-[#0A2E4D]' : 'bg-[#0A2E4D] text-[#F7F3EB]'
                         }`}
                       >
                         {step.num}
                       </div>
                       <span className="font-mono text-[0.625rem] tracking-[0.18em] text-[rgba(26,26,26,0.3)]">{step.label}</span>
                     </div>
-                    <h3 className="text-base font-bold text-[#1A1A1A] leading-[1.3]">{step.title}</h3>
+                    <h3 className="text-base font-bold text-[#122434] leading-[1.3]">{step.title}</h3>
                     <p className="text-[0.8125rem] text-[rgba(26,26,26,0.55)] leading-[1.65]">{step.desc}</p>
                     <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[0.6375rem] font-mono w-fit border ${
                       step.isFree
-                        ? 'bg-[rgba(212,163,115,0.12)] border-[rgba(212,163,115,0.25)] text-[rgba(180,120,60,0.85)]'
+                        ? 'bg-[rgba(179,162,128,0.12)] border-[rgba(179,162,128,0.25)] text-[rgba(180,120,60,0.85)]'
                         : 'bg-[rgba(10,46,77,0.06)] border-[rgba(10,46,77,0.09)] text-[rgba(10,46,77,0.5)]'
                     }`}>
-                      <step.tagIcon size={10} weight="bold" />
+                      <step.tagIcon size={10} weight="regular" />
                       {step.tag}
                     </span>
                   </div>
@@ -436,8 +436,8 @@ export default function CoachingPage() {
                     {/* Colonne gauche — numéro + ligne */}
                     <div className="flex flex-col items-center shrink-0 w-14">
                       <div
-                        className={`w-14 h-14 rounded-full flex items-center justify-center font-black text-2xl shrink-0 shadow-[0_6px_20px_-6px_rgba(10,46,77,0.35)] font-mono z-10 ${
-                          step.isFree ? 'bg-[#D4A373] text-[#0A2E4D]' : 'bg-[#0A2E4D] text-[#F7F3EB]'
+                        className={`w-14 h-14 rounded-full flex items-center justify-center font-medium text-2xl shrink-0 shadow-[0_6px_20px_-6px_rgba(10,46,77,0.35)] font-mono z-10 ${
+                          step.isFree ? 'bg-[#B3A280] text-[#0A2E4D]' : 'bg-[#0A2E4D] text-[#F7F3EB]'
                         }`}
                       >
                         {step.num}
@@ -452,16 +452,16 @@ export default function CoachingPage() {
                       <span className="font-mono text-[0.6rem] tracking-[0.22em] text-[rgba(26,26,26,0.32)] block mb-2 mt-3.5">
                         {step.label}
                       </span>
-                      <h3 className="text-[1.375rem] font-black text-[#1A1A1A] leading-[1.2] mb-3">{step.title}</h3>
+                      <h3 className="text-[1.375rem] font-medium text-[#122434] leading-[1.2] mb-3">{step.title}</h3>
                       <p className="text-[1rem] text-[rgba(26,26,26,0.58)] leading-[1.7] mb-4">{step.desc}</p>
                       <span
                         className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-[0.75rem] font-mono w-fit border ${
                           step.isFree
-                            ? 'bg-[rgba(212,163,115,0.14)] border-[rgba(212,163,115,0.30)] text-[rgba(180,120,60,0.90)]'
+                            ? 'bg-[rgba(179,162,128,0.14)] border-[rgba(179,162,128,0.30)] text-[rgba(180,120,60,0.90)]'
                             : 'bg-[rgba(10,46,77,0.06)] border-[rgba(10,46,77,0.12)] text-[rgba(10,46,77,0.55)]'
                         }`}
                       >
-                        <step.tagIcon size={12} weight="bold" />
+                        <step.tagIcon size={12} weight="regular" />
                         {step.tag}
                       </span>
                     </div>
@@ -475,18 +475,18 @@ export default function CoachingPage() {
 
 
         {/* ── Profils ── */}
-        <section id="profils" className="bg-[#0A2E4D] py-28 md:py-36">
-          <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+        <section id="profils" className="bg-[#122434] py-28 md:py-36">
+          <div className="max-w-[1180px] mx-auto px-6 md:px-12 lg:px-20">
 
             <ScrollReveal>
-              <span className="block text-[0.6875rem] uppercase tracking-[0.25em] font-medium text-[#7DB7D6] mb-4">
+              <span className="block font-mono text-[0.75rem] uppercase tracking-[0.16em] font-medium text-[#7DB7D6] mb-4">
                 Exemples concrets
               </span>
             </ScrollReveal>
 
             <ScrollReveal delay={0.08}>
               <h2
-                className="text-display-md font-black tracking-[-0.02em] leading-[1] text-[#F7F3EB] mb-3"
+                className="text-display-md font-medium tracking-[-0.02em] leading-[1] text-[#F7F3EB] mb-3"
               >
                 Ce qu&apos;on travaille ensemble,<br />
                 <span className="text-[rgba(247,243,235,0.35)]">selon où vous en êtes.</span>
@@ -494,7 +494,7 @@ export default function CoachingPage() {
             </ScrollReveal>
 
             <ScrollReveal delay={0.16}>
-              <p className="text-[rgba(245,245,240,0.48)] leading-[1.65] max-w-[52ch] mb-12">
+              <p className="text-[rgba(247,243,235,0.48)] leading-[1.65] max-w-[52ch] mb-12">
                 Chaque parcours est différent. Voici trois profils représentatifs et ce qu&apos;on a accompli ensemble.
               </p>
             </ScrollReveal>
@@ -502,32 +502,32 @@ export default function CoachingPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {profils.map((p, i) => (
                 <ScrollReveal key={i} delay={0.08 * (i + 2)}>
-                  <div className="bg-[rgba(247,243,235,0.04)] border border-[rgba(212,163,115,0.15)] rounded-[2rem] p-8 flex flex-col gap-5 h-full transition-all duration-300 hover:border-[rgba(212,163,115,0.32)] hover:bg-[rgba(247,243,235,0.06)]">
+                  <div className="bg-[rgba(247,243,235,0.04)] border border-[rgba(179,162,128,0.15)] rounded-[14px] p-8 flex flex-col gap-5 h-full transition-all duration-300 hover:border-[rgba(179,162,128,0.32)] hover:bg-[rgba(247,243,235,0.06)]">
                     <div className="flex items-center justify-between">
-                      <span className="font-mono text-[0.6375rem] tracking-[0.18em] text-[rgba(212,163,115,0.40)]">{p.num}</span>
+                      <span className="font-mono text-[0.6375rem] tracking-[0.18em] text-[rgba(179,162,128,0.40)]">{p.num}</span>
                       <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[rgba(125,183,214,0.10)] border border-[rgba(125,183,214,0.18)] text-[0.6375rem] text-[#7DB7D6] tracking-wide">
-                        <p.chipIcon size={10} weight="bold" />
+                        <p.chipIcon size={10} weight="regular" />
                         {p.chip}
                       </span>
                     </div>
 
                     <div>
                       <h3 className="text-[1.125rem] font-bold text-[#F7F3EB] leading-[1.3]">{p.title}</h3>
-                      <p className="text-[0.8125rem] text-[rgba(245,245,240,0.42)] leading-[1.55] italic mt-0.5">{p.meta}</p>
+                      <p className="text-[0.8125rem] text-[rgba(247,243,235,0.42)] leading-[1.55] italic mt-0.5">{p.meta}</p>
                     </div>
 
-                    <hr className="border-white/[0.07]" />
+                    <hr className="border-[rgba(247,243,235,0.12)]" />
 
                     <div>
-                      <p className="text-[0.625rem] uppercase tracking-[0.18em] text-[rgba(245,245,240,0.28)] font-medium mb-2">
+                      <p className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-[rgba(247,243,235,0.28)] font-medium mb-2">
                         Ce qu&apos;on a fait
                       </p>
-                      <p className="text-[0.875rem] text-[rgba(245,245,240,0.68)] leading-[1.65]">{p.action}</p>
+                      <p className="text-[0.875rem] text-[rgba(247,243,235,0.68)] leading-[1.65]">{p.action}</p>
                     </div>
 
-                    <div className="flex items-center gap-3 bg-[rgba(212,163,115,0.09)] border border-[rgba(212,163,115,0.18)] rounded-2xl p-4 mt-auto">
-                      <p.resultIcon size={18} weight="bold" className="text-[#D4A373] shrink-0" />
-                      <span className="text-[0.8125rem] text-[rgba(212,163,115,0.88)] font-semibold leading-[1.4]">{p.result}</span>
+                    <div className="flex items-center gap-3 bg-[rgba(179,162,128,0.09)] border border-[rgba(179,162,128,0.18)] rounded-[14px] p-4 mt-auto">
+                      <p.resultIcon size={18} weight="regular" className="text-[#B3A280] shrink-0" />
+                      <span className="text-[0.8125rem] text-[rgba(179,162,128,0.88)] font-semibold leading-[1.4]">{p.result}</span>
                     </div>
                   </div>
                 </ScrollReveal>
@@ -539,18 +539,18 @@ export default function CoachingPage() {
 
 
         {/* ── Livrables ── */}
-        <section id="livrables" className="bg-[#F5F5F0] py-28 md:py-36 rounded-[2rem_2rem_0_0]">
-          <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+        <section id="livrables" className="bg-[#E8E4DA] py-28 md:py-36 rounded-t-[18px]">
+          <div className="max-w-[1180px] mx-auto px-6 md:px-12 lg:px-20">
 
             <ScrollReveal>
-              <span className="block text-[0.6875rem] uppercase tracking-[0.25em] font-medium text-[rgba(10,46,77,0.45)] mb-4">
+              <span className="block font-mono text-[0.75rem] uppercase tracking-[0.16em] font-medium text-[rgba(10,46,77,0.45)] mb-4">
                 Ce que vous obtenez
               </span>
             </ScrollReveal>
 
             <ScrollReveal delay={0.08}>
               <h2
-                className="text-display-md font-black tracking-[-0.02em] leading-[1] text-[#1A1A1A] mb-3"
+                className="text-display-md font-medium tracking-[-0.02em] leading-[1] text-[#122434] mb-3"
               >
                 Pas juste des conseils.<br />
                 <span className="text-[rgba(26,26,26,0.3)]">Des outils qui vous appartiennent.</span>
@@ -566,11 +566,11 @@ export default function CoachingPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {livrables.map((item, i) => (
                 <ScrollReveal key={i} delay={0.08 * (i % 3 + 2)}>
-                  <div className="bg-white border border-[rgba(10,46,77,0.08)] rounded-3xl p-7 flex flex-col gap-3.5 shadow-[0_4px_20px_-8px_rgba(10,46,77,0.07)] transition-all duration-200 hover:border-[rgba(212,163,115,0.38)] hover:shadow-[0_10px_36px_-8px_rgba(212,163,115,0.14)] hover:-translate-y-0.5">
+                  <div className="bg-white border border-[rgba(10,46,77,0.08)] rounded-[18px] p-7 flex flex-col gap-3.5 shadow-[0_4px_20px_-8px_rgba(10,46,77,0.07)] transition-all duration-200 hover:border-[rgba(179,162,128,0.38)] hover:shadow-[0_10px_36px_-8px_rgba(179,162,128,0.14)] hover:-translate-y-0.5">
                     <div className="w-11 h-11 rounded-full bg-[rgba(10,46,77,0.06)] flex items-center justify-center text-[#0A2E4D]">
-                      <item.icon size={20} weight="bold" />
+                      <item.icon size={20} weight="regular" />
                     </div>
-                    <h3 className="text-base font-bold text-[#1A1A1A] leading-[1.3]">{item.title}</h3>
+                    <h3 className="text-base font-bold text-[#122434] leading-[1.3]">{item.title}</h3>
                     <p className="text-[0.8125rem] text-[rgba(26,26,26,0.52)] leading-[1.65]">{item.desc}</p>
                   </div>
                 </ScrollReveal>
@@ -582,19 +582,19 @@ export default function CoachingPage() {
 
 
         {/* ── Coach ── */}
-        <section id="coach" className="bg-[#0A2E4D] py-28 md:py-36">
-          <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+        <section id="coach" className="bg-[#122434] py-28 md:py-36">
+          <div className="max-w-[1180px] mx-auto px-6 md:px-12 lg:px-20">
             <div className="max-w-[640px]">
 
               <ScrollReveal>
-                <span className="block text-[0.6875rem] uppercase tracking-[0.25em] font-medium text-[#7DB7D6] mb-4">
+                <span className="block font-mono text-[0.75rem] uppercase tracking-[0.16em] font-medium text-[#7DB7D6] mb-4">
                   Votre copilote
                 </span>
               </ScrollReveal>
 
               <ScrollReveal delay={0.08}>
                 <h2
-                  className="font-black tracking-[-0.02em] leading-[1.05] text-[#F7F3EB] mb-6"
+                  className="font-medium tracking-[-0.02em] leading-[1.05] text-[#F7F3EB] mb-6"
                   style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)' }}
                 >
                   Vous avez un copilote,<br />pas un prof.
@@ -602,13 +602,13 @@ export default function CoachingPage() {
               </ScrollReveal>
 
               <ScrollReveal delay={0.16}>
-                <p className="text-[rgba(245,245,240,0.60)] leading-[1.8] mb-8">
+                <p className="text-[rgba(247,243,235,0.60)] leading-[1.8] mb-8">
                   VELA est une micro-agence québécoise d&apos;automatisation par l&apos;I.A.,{' '}
-                  <strong className="text-[rgba(245,245,240,0.85)] font-semibold">concrète, anti-hype, orientée résultats.</strong>{' '}
+                  <strong className="text-[rgba(247,243,235,0.85)] font-semibold">concrète, anti-hype, orientée résultats.</strong>{' '}
                   On ne vend pas de rêves technologiques. On mesure ce qui vaut la peine, on implante ce qui marche,
                   et on vous rend autonome. Le coaching individuel, c&apos;est cette même approche appliquée à votre
                   réalité personnelle :{' '}
-                  <strong className="text-[rgba(245,245,240,0.85)] font-semibold">
+                  <strong className="text-[rgba(247,243,235,0.85)] font-semibold">
                     un cas réel à la fois, à votre rythme, avec des livrables qui vous appartiennent.
                   </strong>
                 </p>
@@ -617,10 +617,10 @@ export default function CoachingPage() {
               <ScrollReveal delay={0.24}>
                 <a
                   href="/"
-                  className="inline-flex items-center gap-2 text-[#7DB7D6] hover:text-[#F5F5F0] font-semibold text-sm transition-colors duration-200 group"
+                  className="inline-flex items-center gap-2 text-[#7DB7D6] hover:text-[#E8E4DA] font-semibold text-sm transition-colors duration-200 group"
                 >
                   En savoir plus sur VELA
-                  <ArrowRight size={13} weight="bold" className="transition-transform group-hover:translate-x-1 duration-200" />
+                  <ArrowRight size={13} weight="regular" className="transition-transform group-hover:translate-x-1 duration-200" />
                 </a>
               </ScrollReveal>
 
@@ -630,7 +630,7 @@ export default function CoachingPage() {
 
 
         {/* ── Contact ── */}
-        <section id="contact" className="bg-[#0D3760] py-28 md:py-36 relative overflow-hidden">
+        <section id="contact" className="bg-[#122434] py-28 md:py-36 relative overflow-hidden">
           <div
             className="absolute inset-0 opacity-[0.035] bg-cover bg-center pointer-events-none"
             style={{ backgroundImage: "url('/images/13.png')" }}
@@ -638,24 +638,24 @@ export default function CoachingPage() {
           />
           <div
             className="absolute -top-[120px] left-1/2 -translate-x-1/2 w-[min(800px,100%)] h-[500px] pointer-events-none"
-            style={{ background: 'radial-gradient(ellipse at center, rgba(212,163,115,0.07) 0%, transparent 65%)' }}
+            style={{ background: 'radial-gradient(ellipse at center, rgba(179,162,128,0.07) 0%, transparent 65%)' }}
             aria-hidden="true"
           />
 
-          <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+          <div className="relative z-10 max-w-[1180px] mx-auto px-6 md:px-12 lg:px-20">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 items-start">
 
               {/* Left */}
               <div className="flex flex-col gap-8">
                 <ScrollReveal>
-                  <span className="block text-[0.6875rem] uppercase tracking-[0.25em] font-medium text-[#7DB7D6]">
+                  <span className="block font-mono text-[0.75rem] uppercase tracking-[0.16em] font-medium text-[#7DB7D6]">
                     Première étape
                   </span>
                 </ScrollReveal>
 
                 <ScrollReveal delay={0.1}>
                   <h2
-                    className="font-black tracking-[-0.025em] leading-[0.93] text-[#F7F3EB]"
+                    className="font-medium tracking-[-0.025em] leading-[0.93] text-[#F7F3EB]"
                     style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)' }}
                   >
                     Prêt à mettre<br />
@@ -665,8 +665,8 @@ export default function CoachingPage() {
                 </ScrollReveal>
 
                 <ScrollReveal delay={0.2}>
-                  <p className="text-[rgba(245,245,240,0.52)] leading-[1.72] max-w-[44ch]">
-                    La session découverte est <strong className="text-[rgba(245,245,240,0.82)]">gratuite</strong>.
+                  <p className="text-[rgba(247,243,235,0.52)] leading-[1.72] max-w-[44ch]">
+                    La session découverte est <strong className="text-[rgba(247,243,235,0.82)]">gratuite</strong>.
                     Sans engagement. On voit si ça fait du sens ensemble.
                     Si oui, on trace la suite. Si non, vous repartez avec au moins une bonne idée.
                   </p>
@@ -677,7 +677,7 @@ export default function CoachingPage() {
                 </ScrollReveal>
 
                 <ScrollReveal delay={0.28}>
-                  <p className="text-xs text-[rgba(245,245,240,0.22)] font-mono tracking-wide">
+                  <p className="text-xs text-[rgba(247,243,235,0.22)] font-mono tracking-wide">
                     Réponse sous 24h · Aucune obligation
                   </p>
                 </ScrollReveal>
@@ -685,63 +685,63 @@ export default function CoachingPage() {
 
               {/* Right — form */}
               <ScrollReveal delay={0.15}>
-                <div className="rounded-[2rem] glass p-8 md:p-10 flex flex-col gap-6">
+                <div className="rounded-[14px] glass p-8 md:p-10 flex flex-col gap-6">
                   {sent ? (
                     <div className="flex flex-col items-center gap-4 py-8 text-center">
-                      <CheckCircle size={48} weight="fill" className="text-[#D4A373]" />
-                      <p className="text-lg font-semibold text-[#F5F5F0]">Demande envoyée&nbsp;!</p>
-                      <p className="text-sm text-[rgba(245,245,240,0.5)]">On vous répond dans les 24 heures.</p>
+                      <CheckCircle size={48} weight="regular" className="text-[#B3A280]" />
+                      <p className="text-lg font-semibold text-[#E8E4DA]">Demande envoyée&nbsp;!</p>
+                      <p className="text-sm text-[rgba(247,243,235,0.5)]">On vous répond dans les 24 heures.</p>
                     </div>
                   ) : (
                     <>
                       <div className="flex flex-col gap-1">
-                        <p className="text-base font-semibold text-[#F5F5F0]">Ou demandez votre session par courriel</p>
-                        <p className="text-sm text-[rgba(245,245,240,0.4)]">Gratuite · 30 minutes · Sans engagement</p>
+                        <p className="text-base font-semibold text-[#E8E4DA]">Ou demandez votre session par courriel</p>
+                        <p className="text-sm text-[rgba(247,243,235,0.4)]">Gratuite · 30 minutes · Sans engagement</p>
                       </div>
 
                       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
                         <div className="flex flex-col gap-1.5">
-                          <label className="text-xs text-[rgba(245,245,240,0.5)]">Prénom *</label>
+                          <label className="text-xs text-[rgba(247,243,235,0.5)]">Prénom *</label>
                           <input
                             name="prenom"
                             type="text"
                             required
                             placeholder="Marie"
                             autoComplete="given-name"
-                            className="w-full px-4 py-3 rounded-xl bg-white/[0.08] border border-white/[0.12] text-[#F5F5F0] text-sm placeholder:text-[rgba(245,245,240,0.3)] focus:outline-none focus:border-[#7DB7D6]/50 transition-colors"
+                            className="w-full px-4 py-3.5 rounded-[10px] bg-[rgba(247,243,235,0.04)] border border-[rgba(247,243,235,0.2)] text-[#F7F3EB] text-[0.9375rem] placeholder:text-[rgba(247,243,235,0.3)] focus:outline-none focus:border-[#7DB7D6] focus:bg-[rgba(125,183,214,0.08)] transition-colors duration-[140ms]"
                           />
                         </div>
 
                         <div className="flex flex-col gap-1.5">
-                          <label className="text-xs text-[rgba(245,245,240,0.5)]">Courriel *</label>
+                          <label className="text-xs text-[rgba(247,243,235,0.5)]">Courriel *</label>
                           <input
                             name="courriel"
                             type="email"
                             required
                             placeholder="marie@entreprise.com"
                             autoComplete="email"
-                            className="w-full px-4 py-3 rounded-xl bg-white/[0.08] border border-white/[0.12] text-[#F5F5F0] text-sm placeholder:text-[rgba(245,245,240,0.3)] focus:outline-none focus:border-[#7DB7D6]/50 transition-colors"
+                            className="w-full px-4 py-3.5 rounded-[10px] bg-[rgba(247,243,235,0.04)] border border-[rgba(247,243,235,0.2)] text-[#F7F3EB] text-[0.9375rem] placeholder:text-[rgba(247,243,235,0.3)] focus:outline-none focus:border-[#7DB7D6] focus:bg-[rgba(125,183,214,0.08)] transition-colors duration-[140ms]"
                           />
                         </div>
 
                         <div className="flex flex-col gap-1.5">
-                          <label className="text-xs text-[rgba(245,245,240,0.5)]">Votre rôle / titre *</label>
+                          <label className="text-xs text-[rgba(247,243,235,0.5)]">Votre rôle / titre *</label>
                           <input
                             name="role"
                             type="text"
                             required
                             placeholder="Ex : Gestionnaire RH, Directrice marketing…"
-                            className="w-full px-4 py-3 rounded-xl bg-white/[0.08] border border-white/[0.12] text-[#F5F5F0] text-sm placeholder:text-[rgba(245,245,240,0.3)] focus:outline-none focus:border-[#7DB7D6]/50 transition-colors"
+                            className="w-full px-4 py-3.5 rounded-[10px] bg-[rgba(247,243,235,0.04)] border border-[rgba(247,243,235,0.2)] text-[#F7F3EB] text-[0.9375rem] placeholder:text-[rgba(247,243,235,0.3)] focus:outline-none focus:border-[#7DB7D6] focus:bg-[rgba(125,183,214,0.08)] transition-colors duration-[140ms]"
                           />
                         </div>
 
                         <div className="flex flex-col gap-1.5">
-                          <label className="text-xs text-[rgba(245,245,240,0.5)]">Comment utilisez-vous l&apos;I.A. aujourd&apos;hui&nbsp;?</label>
+                          <label className="text-xs text-[rgba(247,243,235,0.5)]">Comment utilisez-vous l&apos;I.A. aujourd&apos;hui&nbsp;?</label>
                           <select
                             name="usage"
                             required
                             defaultValue=""
-                            className="w-full px-4 py-3 rounded-xl bg-white/[0.08] border border-white/[0.12] text-[#F5F5F0] text-sm focus:outline-none focus:border-[#7DB7D6]/50 transition-colors appearance-none cursor-pointer"
+                            className="w-full px-4 py-3.5 rounded-[10px] bg-[rgba(247,243,235,0.04)] border border-[rgba(247,243,235,0.2)] text-[#F7F3EB] text-[0.9375rem] focus:outline-none focus:border-[#7DB7D6] focus:bg-[rgba(125,183,214,0.08)] transition-colors duration-[140ms] appearance-none cursor-pointer"
                           >
                             <option value="" disabled className="bg-[#0A2E4D]">Choisir…</option>
                             <option value="jamais" className="bg-[#0A2E4D]">Jamais</option>
@@ -752,12 +752,12 @@ export default function CoachingPage() {
                         </div>
 
                         <div className="flex flex-col gap-1.5">
-                          <label className="text-xs text-[rgba(245,245,240,0.5)]">Référé par</label>
+                          <label className="text-xs text-[rgba(247,243,235,0.5)]">Référé par</label>
                           <input
                             name="reference"
                             type="text"
                             placeholder="Nom d'une personne, LinkedIn, Google…"
-                            className="w-full px-4 py-3 rounded-xl bg-white/[0.08] border border-white/[0.12] text-[#F5F5F0] text-sm placeholder:text-[rgba(245,245,240,0.3)] focus:outline-none focus:border-[#7DB7D6]/50 transition-colors"
+                            className="w-full px-4 py-3.5 rounded-[10px] bg-[rgba(247,243,235,0.04)] border border-[rgba(247,243,235,0.2)] text-[#F7F3EB] text-[0.9375rem] placeholder:text-[rgba(247,243,235,0.3)] focus:outline-none focus:border-[#7DB7D6] focus:bg-[rgba(125,183,214,0.08)] transition-colors duration-[140ms]"
                           />
                         </div>
 
@@ -768,13 +768,13 @@ export default function CoachingPage() {
                         <button
                           type="submit"
                           disabled={isPending}
-                          className="w-full flex items-center justify-center gap-2 bg-[#D4A373] hover:bg-[#C49060] active:scale-[0.98] disabled:opacity-60 text-[#0A2E4D] font-bold py-4 rounded-full transition-all duration-200 text-sm cursor-pointer mt-1"
+                          className="w-full flex items-center justify-center gap-2 bg-[#B3A280] hover:bg-[#C6B896] active:scale-[0.98] disabled:opacity-60 text-[#0A2E4D] font-bold py-4 rounded-[10px] transition-all duration-200 text-sm cursor-pointer mt-1"
                         >
                           {isPending ? 'Envoi en cours…' : 'Demander ma session découverte'}
-                          {!isPending && <ArrowRight size={14} weight="bold" />}
+                          {!isPending && <ArrowRight size={14} weight="regular" />}
                         </button>
 
-                        <p className="text-[0.6875rem] text-[rgba(245,245,240,0.22)] text-center font-mono">
+                        <p className="text-[0.6875rem] text-[rgba(247,243,235,0.22)] text-center font-mono">
                           Réponse sous 24h. Aucune obligation.
                         </p>
                       </form>

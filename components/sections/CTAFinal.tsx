@@ -9,7 +9,7 @@ import ScrollReveal from '../ui/ScrollReveal'
 import BoutonDecouverte from '../ui/BoutonDecouverte'
 import { submitContact } from '@/app/actions/contact'
 
-const inputClass = "w-full px-4 py-3 rounded-xl bg-white/[0.08] border border-white/[0.12] text-[#F5F5F0] text-sm placeholder:text-[rgba(245,245,240,0.3)] focus:outline-none focus:border-[#7DB7D6]/50 transition-colors"
+const inputClass = "w-full px-4 py-3.5 rounded-[10px] bg-[rgba(247,243,235,0.04)] border border-[rgba(247,243,235,0.2)] text-[#F7F3EB] text-[0.9375rem] placeholder:text-[rgba(247,243,235,0.3)] focus:outline-none focus:border-[#7DB7D6] focus:bg-[rgba(125,183,214,0.08)] transition-colors duration-[140ms]"
 
 export default function CTAFinal() {
   const [sent, setSent] = useState(false)
@@ -32,7 +32,7 @@ export default function CTAFinal() {
   return (
     <section
       id="contact"
-      className="relative bg-[#0A2E4D] py-36 md:py-48 overflow-hidden rounded-t-3xl"
+      className="relative bg-[#122434] py-36 md:py-48 overflow-hidden rounded-t-[18px]"
     >
       {/* Background image */}
       <div className="absolute inset-0 z-0">
@@ -48,7 +48,7 @@ export default function CTAFinal() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+      <div className="relative z-10 max-w-[1180px] mx-auto px-6 md:px-12 lg:px-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 items-center">
 
           {/* Left — copy */}
@@ -65,7 +65,7 @@ export default function CTAFinal() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-10% 0px' }}
               transition={{ type: 'spring', stiffness: 70, damping: 18, delay: 0.1 }}
-              className="text-[clamp(2.8rem,5.5vw,5rem)] font-black tracking-normal leading-[0.92] text-[#F7F3EB]"
+              className="text-[clamp(2.8rem,5.5vw,5rem)] font-medium tracking-[-0.02em] leading-[0.92] text-[#F7F3EB]"
             >
               L&apos;intelligence artificielle est là.
               <br />
@@ -73,13 +73,13 @@ export default function CTAFinal() {
             </motion.h2>
 
             <ScrollReveal delay={0.2}>
-              <p className="text-base md:text-lg text-[rgba(245,245,240,0.55)] max-w-[44ch] leading-relaxed">
+              <p className="text-base md:text-lg text-[rgba(247,243,235,0.55)] max-w-[44ch] leading-relaxed">
                 Une question sur l&apos;I.A., un projet à explorer, ou juste l&apos;envie de comprendre ce qui est possible pour votre entreprise. On est là pour ça.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={0.25}>
-              <p className="text-xl md:text-2xl italic text-[#D4A373] font-medium">
+              <p className="text-xl md:text-2xl italic text-[#B3A280] font-medium">
                 &ldquo;Aucun projet trop petit. Aucune question trop basique.&rdquo;
               </p>
             </ScrollReveal>
@@ -89,7 +89,7 @@ export default function CTAFinal() {
             </ScrollReveal>
 
             <ScrollReveal delay={0.3}>
-              <p className="text-xs text-[rgba(245,245,240,0.25)] font-mono tracking-wide">
+              <p className="text-xs text-[rgba(247,243,235,0.25)] font-mono tracking-wide">
                 Prix fixe · Aucune surprise · Vous gardez tous vos accès
               </p>
             </ScrollReveal>
@@ -97,42 +97,42 @@ export default function CTAFinal() {
 
           {/* Right — form */}
           <ScrollReveal delay={0.15}>
-            <div className="rounded-[2rem] glass p-8 md:p-10 flex flex-col gap-6">
+            <div className="rounded-[14px] glass p-8 md:p-10 flex flex-col gap-6">
               {sent ? (
                 <div className="flex flex-col items-center gap-4 py-8 text-center">
-                  <CheckCircle size={48} weight="fill" className="text-[#D4A373]" />
-                  <p className="text-lg font-semibold text-[#F5F5F0]">Message envoyé !</p>
-                  <p className="text-sm text-[rgba(245,245,240,0.5)]">On vous répond dans les 2 jours ouvrables.</p>
+                  <CheckCircle size={48} weight="regular" className="text-[#B3A280]" />
+                  <p className="text-lg font-semibold text-[#E8E4DA]">Message envoyé !</p>
+                  <p className="text-sm text-[rgba(247,243,235,0.5)]">On vous répond dans les 2 jours ouvrables.</p>
                 </div>
               ) : (
                 <>
                   <div className="flex flex-col gap-1">
-                    <p className="text-base font-semibold text-[#F5F5F0]">Ou laissez vos coordonnées</p>
-                    <p className="text-sm text-[rgba(245,245,240,0.4)]">On vous répond dans les 2 jours ouvrables.</p>
+                    <p className="text-base font-semibold text-[#E8E4DA]">Ou laissez vos coordonnées</p>
+                    <p className="text-sm text-[rgba(247,243,235,0.4)]">On vous répond dans les 2 jours ouvrables.</p>
                   </div>
 
                   <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
                     {/* Nom + Courriel */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-xs text-[rgba(245,245,240,0.5)]">Nom complet</label>
+                        <label className="text-xs text-[rgba(247,243,235,0.5)]">Nom complet</label>
                         <input name="nom" type="text" required placeholder="Marie Tremblay" className={inputClass} />
                       </div>
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-xs text-[rgba(245,245,240,0.5)]">Courriel professionnel</label>
+                        <label className="text-xs text-[rgba(247,243,235,0.5)]">Courriel professionnel</label>
                         <input name="courriel" type="email" required placeholder="marie@entreprise.com" className={inputClass} />
                       </div>
                     </div>
 
                     {/* Type d'entreprise */}
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-xs text-[rgba(245,245,240,0.5)]">Type d&apos;entreprise</label>
+                      <label className="text-xs text-[rgba(247,243,235,0.5)]">Type d&apos;entreprise</label>
                       <input name="typeEntreprise" type="text" placeholder="Ex : clinique, agence, commerce en ligne…" className={inputClass} />
                     </div>
 
                     {/* Taille */}
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-xs text-[rgba(245,245,240,0.5)]">Taille de l&apos;entreprise</label>
+                      <label className="text-xs text-[rgba(247,243,235,0.5)]">Taille de l&apos;entreprise</label>
                       <select name="tailleEntreprise" className={`${inputClass} appearance-none cursor-pointer`} defaultValue="">
                         <option value="" disabled className="bg-[#0A2E4D]">Choisir...</option>
                         <option value="1" className="bg-[#0A2E4D]">Solopreneur / 1 personne</option>
@@ -144,7 +144,7 @@ export default function CTAFinal() {
 
                     {/* Service */}
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-xs text-[rgba(245,245,240,0.5)]">Quel service vous intéresse?</label>
+                      <label className="text-xs text-[rgba(247,243,235,0.5)]">Quel service vous intéresse?</label>
                       <select name="service" className={`${inputClass} appearance-none cursor-pointer`} defaultValue="">
                         <option value="" disabled className="bg-[#0A2E4D]">Choisir...</option>
                         <option value="incertain" className="bg-[#0A2E4D]">Je ne suis pas certain</option>
@@ -156,7 +156,7 @@ export default function CTAFinal() {
 
                     {/* Message */}
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-xs text-[rgba(245,245,240,0.5)]">Message (optionnel)</label>
+                      <label className="text-xs text-[rgba(247,243,235,0.5)]">Message (optionnel)</label>
                       <textarea name="message" rows={3} placeholder="Décrivez brièvement votre situation..." className={`${inputClass} resize-none`} />
                     </div>
 
@@ -167,10 +167,10 @@ export default function CTAFinal() {
                     <button
                       type="submit"
                       disabled={isPending}
-                      className="w-full flex items-center justify-center gap-2 bg-[#D4A373] hover:bg-[#C49060] active:scale-[0.98] disabled:opacity-60 text-[#0A2E4D] font-bold py-4 rounded-full transition-all duration-200 text-sm cursor-pointer mt-1"
+                      className="w-full flex items-center justify-center gap-2 bg-[#B3A280] hover:bg-[#C6B896] active:scale-[0.98] disabled:opacity-60 text-[#0A2E4D] font-bold py-4 rounded-[10px] transition-all duration-200 text-sm cursor-pointer mt-1"
                     >
                       {isPending ? 'Envoi en cours…' : 'Envoyer ma demande'}
-                      {!isPending && <ArrowRight size={15} weight="bold" />}
+                      {!isPending && <ArrowRight size={15} weight="regular" />}
                     </button>
                   </form>
                 </>

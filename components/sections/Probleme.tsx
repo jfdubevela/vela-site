@@ -10,7 +10,7 @@ const pains = [
 
 export default function Probleme() {
   return (
-    <section id="probleme" className="relative bg-[#0A2E4D] overflow-hidden py-28 md:py-36 rounded-t-3xl">
+    <section id="probleme" className="relative bg-[#122434] overflow-hidden py-28 md:py-36 rounded-t-[18px]">
       {/* Lighthouse image — fused into background right side */}
       <div className="absolute right-0 top-0 bottom-0 w-[45%] hidden md:block">
         <Image
@@ -21,23 +21,23 @@ export default function Probleme() {
           className="object-cover object-center"
         />
         {/* Fade to background left */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0A2E4D] via-[#0A2E4D]/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#122434] via-[#0A2E4D]/60 to-transparent" />
         {/* Fade top/bottom */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A2E4D]/40 via-transparent to-[#0A2E4D]/60" />
       </div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+      <div className="relative z-10 max-w-[1180px] mx-auto px-6 md:px-12 lg:px-20">
         <div className="max-w-[55%] md:max-w-[50%]">
           {/* Label */}
           <ScrollReveal delay={0}>
-            <p className="text-xs uppercase tracking-[0.25em] text-[#7DB7D6] mb-6">
+            <p className="font-mono text-[0.75rem] uppercase tracking-[0.16em] text-[#7DB7D6] mb-6">
               Le problème
             </p>
           </ScrollReveal>
 
           {/* H2 */}
           <ScrollReveal delay={0.08}>
-            <h2 className="text-[clamp(2.2rem,5vw,4rem)] font-black tracking-normal leading-[0.95] text-[#F7F3EB] mb-10">
+            <h2 className="text-[clamp(2.2rem,5vw,4rem)] font-medium tracking-[-0.02em] leading-[0.95] text-[#F7F3EB] mb-10">
               Vous avez les outils.
               <br />
               <span className="text-[rgba(247,243,235,0.5)]">Ils ne travaillent pas pour vous.</span>
@@ -51,10 +51,10 @@ export default function Probleme() {
                 <div className="flex items-start gap-4 py-5">
                   <ArrowRight
                     size={16}
-                    weight="bold"
+                    weight="regular"
                     className="text-[#7DB7D6]/60 mt-0.5 shrink-0"
                   />
-                  <p className="text-base text-[rgba(245,245,240,0.72)] leading-relaxed">
+                  <p className="text-base text-[rgba(247,243,235,0.72)] leading-relaxed">
                     {pain}
                   </p>
                 </div>
@@ -64,7 +64,7 @@ export default function Probleme() {
 
           {/* VELA signature */}
           <ScrollReveal delay={0.42}>
-            <p className="mt-10 text-lg md:text-xl italic text-[#D4A373] font-medium">
+            <p className="mt-10 text-lg md:text-xl italic text-[#B3A280] font-medium">
               &ldquo;On mesure avant d&apos;automatiser.&rdquo;
             </p>
           </ScrollReveal>
