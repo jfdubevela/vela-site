@@ -117,7 +117,7 @@ export default function EtudesDeCas() {
                 </div>
 
                 {/* Metric */}
-                <div className="font-mono text-2xl font-bold text-[#C6B896] tracking-[-0.02em] leading-none">
+                <div className="font-mono text-2xl font-bold text-[#D9BC7E] tracking-[-0.02em] leading-none">
                   {c.metric}
                 </div>
 

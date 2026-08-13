@@ -80,7 +80,7 @@ export default function Footer() {
             </p>
             <ul className="flex flex-col gap-2.5">
               <li>
-                <a href="tel:4384991855" className="text-sm text-[rgba(247,243,235,0.5)] hover:text-[#B3A280] transition-colors">
+                <a href="tel:4384991855" className="text-sm text-[rgba(247,243,235,0.5)] hover:text-[#C9A961] transition-colors">
                   438 499-1855
                 </a>
               </li>

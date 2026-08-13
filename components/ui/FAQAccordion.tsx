@@ -25,13 +25,13 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
             onClick={() => setOpen(open === i ? null : i)}
             aria-expanded={open === i}
           >
-            <span className="text-base md:text-lg font-semibold text-[#E8E4DA] group-hover:text-[#B3A280] transition-colors duration-200 pr-8">
+            <span className="text-base md:text-lg font-semibold text-[#E8E4DA] group-hover:text-[#C9A961] transition-colors duration-200 pr-8">
               {item.question}
             </span>
             <motion.span
               animate={{ rotate: open === i ? 45 : 0 }}
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              className="shrink-0 text-[#B3A280]"
+              className="shrink-0 text-[#C9A961]"
             >
               {open === i ? (
                 <Minus size={20} weight="regular" />

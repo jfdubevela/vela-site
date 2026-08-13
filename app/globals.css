@@ -13,8 +13,8 @@
   --color-vela-marine:  #0A2E4D;  /* Couleur de marque, aplats, surfaces élevées */
   --color-vela-ciel:    #7DB7D6;  /* Liens, focus, états actifs, données */
   --color-vela-ciel-h:  #9BC9E0;
-  --color-vela-sable:   #B3A280;  /* Boutons primaires, numérotation, chiffres clés */
-  --color-vela-sable-h: #C6B896;
+  --color-vela-sable:   #C9A961;  /* Boutons primaires, numérotation, chiffres clés */
+  --color-vela-sable-h: #D9BC7E;
   --color-vela-os:      #E8E4DA;  /* Texte sur marine, aplats clairs */
   --color-vela-ivoire:  #F7F3EB;  /* Fond des modes clairs, titres */
 
@@ -22,8 +22,8 @@
   --color-vela-deep:    #0A2E4D;
   --color-vela-off:     #E8E4DA;
   --color-vela-cream:   #F7F3EB;
-  --color-vela-gold:    #B3A280;
-  --color-vela-gold-h:  #C6B896;
+  --color-vela-gold:    #C9A961;
+  --color-vela-gold-h:  #D9BC7E;
   --color-vela-horizon: #7DB7D6;
   --color-vela-ink:     #122434;
   --color-vela-dark:    #122434;
@@ -72,7 +72,7 @@
   --vela-encre:      #122434;
   --vela-marine:     #0A2E4D;
   --vela-ciel:       #7DB7D6;
-  --vela-sable:      #B3A280;
+  --vela-sable:      #C9A961;
   --vela-os:         #E8E4DA;
   --vela-ivoire:     #F7F3EB;
 
@@ -94,13 +94,13 @@
   --vela-ombre:          0 32px 64px rgba(0, 0, 0, 0.45);
 
   /* Lueur — le phare */
-  --vela-lueur-sable:      0 0 0 1px rgba(179, 162, 128, 0.35),
-                           0 10px 32px rgba(179, 162, 128, 0.34);
-  --vela-lueur-sable-fort: 0 0 0 1px rgba(198, 184, 150, 0.5),
-                           0 14px 44px rgba(179, 162, 128, 0.55);
+  --vela-lueur-sable:      0 0 0 1px rgba(201, 169, 97, 0.35),
+                           0 10px 32px rgba(201, 169, 97, 0.34);
+  --vela-lueur-sable-fort: 0 0 0 1px rgba(217, 188, 126, 0.5),
+                           0 14px 44px rgba(201, 169, 97, 0.55);
   --vela-lueur-ciel:       0 0 18px rgba(125, 183, 214, 0.5);
-  --vela-halo-phare:       0 0 28px 8px rgba(179, 162, 128, 0.55),
-                           0 0 120px 44px rgba(179, 162, 128, 0.16);
+  --vela-halo-phare:       0 0 28px 8px rgba(201, 169, 97, 0.55),
+                           0 0 120px 44px rgba(201, 169, 97, 0.16);
 }
 
 /* ============================================================
@@ -209,7 +209,7 @@ h1, h2, h3, h4 {
 .note-sable {
   border-left: 1px solid var(--vela-sable);
   border-radius: 4px 12px 12px 4px;
-  background: rgba(179, 162, 128, 0.08);
+  background: rgba(201, 169, 97, 0.08);
 }
 .note-os {
   border-left: 2px solid var(--vela-os);
@@ -274,8 +274,8 @@ h1, h2, h3, h4 {
    Décor — échos concentriques, ligne d'horizon, graduations.
    Jamais d'ancre, de gouvernail ni de vague dessinée.
    ============================================================ */
-.glow-gold-strong { background: radial-gradient(ellipse at center, rgba(179,162,128,0.18) 0%, transparent 65%); }
-.glow-gold-subtle { background: radial-gradient(ellipse at center, rgba(179,162,128,0.07) 0%, transparent 65%); }
+.glow-gold-strong { background: radial-gradient(ellipse at center, rgba(201,169,97,0.18) 0%, transparent 65%); }
+.glow-gold-subtle { background: radial-gradient(ellipse at center, rgba(201,169,97,0.07) 0%, transparent 65%); }
 .glow-horizon     { background: radial-gradient(ellipse at center, rgba(125,183,214,0.10) 0%, transparent 65%); }
 
 /* Fondu crème — overlay du héros coaching */
@@ -312,10 +312,10 @@ h1, h2, h3, h4 {
 .shimmer-text {
   background: linear-gradient(
     90deg,
-    #B3A280 0%,
+    #C9A961 0%,
     #F7F3EB 40%,
-    #B3A280 60%,
-    #C6B896 100%
+    #C9A961 60%,
+    #D9BC7E 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;

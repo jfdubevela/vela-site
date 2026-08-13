@@ -79,7 +79,7 @@ export default function CTAFinal() {
             </ScrollReveal>
 
             <ScrollReveal delay={0.25}>
-              <p className="text-xl md:text-2xl italic text-[#B3A280] font-medium">
+              <p className="text-xl md:text-2xl italic text-[#C9A961] font-medium">
                 &ldquo;Aucun projet trop petit. Aucune question trop basique.&rdquo;
               </p>
             </ScrollReveal>
@@ -100,7 +100,7 @@ export default function CTAFinal() {
             <div className="rounded-[14px] glass p-8 md:p-10 flex flex-col gap-6">
               {sent ? (
                 <div className="flex flex-col items-center gap-4 py-8 text-center">
-                  <CheckCircle size={48} weight="regular" className="text-[#B3A280]" />
+                  <CheckCircle size={48} weight="regular" className="text-[#C9A961]" />
                   <p className="text-lg font-semibold text-[#E8E4DA]">Message envoyé !</p>
                   <p className="text-sm text-[rgba(247,243,235,0.5)]">On vous répond dans les 2 jours ouvrables.</p>
                 </div>
@@ -167,7 +167,7 @@ export default function CTAFinal() {
                     <button
                       type="submit"
                       disabled={isPending}
-                      className="w-full flex items-center justify-center gap-2 bg-[#B3A280] hover:bg-[#C6B896] active:scale-[0.98] disabled:opacity-60 text-[#0A2E4D] font-bold py-4 rounded-[10px] transition-all duration-200 text-sm cursor-pointer mt-1"
+                      className="w-full flex items-center justify-center gap-2 bg-[#C9A961] hover:bg-[#D9BC7E] active:scale-[0.98] disabled:opacity-60 text-[#0A2E4D] font-bold py-4 rounded-[10px] transition-all duration-200 text-sm cursor-pointer mt-1"
                     >
                       {isPending ? 'Envoi en cours…' : 'Envoyer ma demande'}
                       {!isPending && <ArrowRight size={15} weight="regular" />}

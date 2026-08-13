@@ -169,7 +169,7 @@ export default function CoachingPage() {
           {/* Glow top-right */}
           <div
             className="absolute -top-16 -right-16 w-[min(640px,70%)] h-[540px] pointer-events-none"
-            style={{ background: 'radial-gradient(ellipse at center, rgba(179,162,128,0.18) 0%, transparent 65%)' }}
+            style={{ background: 'radial-gradient(ellipse at center, rgba(201,169,97,0.18) 0%, transparent 65%)' }}
             aria-hidden="true"
           />
           {/* Glow bottom-left */}
@@ -203,7 +203,7 @@ export default function CoachingPage() {
               >
                 Utilisez l&apos;I.A.<br />
                 comme un levier.<br />
-                <span className="text-[#C6B896]">Pas comme un gadget.</span>
+                <span className="text-[#D9BC7E]">Pas comme un gadget.</span>
               </motion.h1>
 
               {/* Subtitle */}
@@ -402,13 +402,13 @@ export default function CoachingPage() {
             <ScrollReveal delay={0.16}>
               {/* ── Desktop : 4 colonnes ── */}
               <div className="hidden md:grid md:grid-cols-4 gap-4 relative">
-                <div className="absolute top-[21px] left-[21px] right-[21px] h-0 border-t-2 border-dashed border-[rgba(179,162,128,0.30)] z-0" aria-hidden="true" />
+                <div className="absolute top-[21px] left-[21px] right-[21px] h-0 border-t-2 border-dashed border-[rgba(201,169,97,0.30)] z-0" aria-hidden="true" />
                 {steps.map((step) => (
                   <div key={step.num} className="relative z-10 flex flex-col gap-3.5">
                     <div className="flex flex-col items-start gap-2">
                       <div
                         className={`w-[42px] h-[42px] rounded-full flex items-center justify-center font-bold text-sm shrink-0 shadow-[0_4px_16px_-4px_rgba(10,46,77,0.35)] font-mono ${
-                          step.isFree ? 'bg-[#B3A280] text-[#0A2E4D]' : 'bg-[#0A2E4D] text-[#F7F3EB]'
+                          step.isFree ? 'bg-[#C9A961] text-[#0A2E4D]' : 'bg-[#0A2E4D] text-[#F7F3EB]'
                         }`}
                       >
                         {step.num}
@@ -419,7 +419,7 @@ export default function CoachingPage() {
                     <p className="text-[0.8125rem] text-[rgba(26,26,26,0.55)] leading-[1.65]">{step.desc}</p>
                     <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[0.6375rem] font-mono w-fit border ${
                       step.isFree
-                        ? 'bg-[rgba(179,162,128,0.12)] border-[rgba(179,162,128,0.25)] text-[rgba(180,120,60,0.85)]'
+                        ? 'bg-[rgba(201,169,97,0.12)] border-[rgba(201,169,97,0.25)] text-[rgba(180,120,60,0.85)]'
                         : 'bg-[rgba(10,46,77,0.06)] border-[rgba(10,46,77,0.09)] text-[rgba(10,46,77,0.5)]'
                     }`}>
                       <step.tagIcon size={10} weight="regular" />
@@ -437,7 +437,7 @@ export default function CoachingPage() {
                     <div className="flex flex-col items-center shrink-0 w-14">
                       <div
                         className={`w-14 h-14 rounded-full flex items-center justify-center font-medium text-2xl shrink-0 shadow-[0_6px_20px_-6px_rgba(10,46,77,0.35)] font-mono z-10 ${
-                          step.isFree ? 'bg-[#B3A280] text-[#0A2E4D]' : 'bg-[#0A2E4D] text-[#F7F3EB]'
+                          step.isFree ? 'bg-[#C9A961] text-[#0A2E4D]' : 'bg-[#0A2E4D] text-[#F7F3EB]'
                         }`}
                       >
                         {step.num}
@@ -457,7 +457,7 @@ export default function CoachingPage() {
                       <span
                         className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-[0.75rem] font-mono w-fit border ${
                           step.isFree
-                            ? 'bg-[rgba(179,162,128,0.14)] border-[rgba(179,162,128,0.30)] text-[rgba(180,120,60,0.90)]'
+                            ? 'bg-[rgba(201,169,97,0.14)] border-[rgba(201,169,97,0.30)] text-[rgba(180,120,60,0.90)]'
                             : 'bg-[rgba(10,46,77,0.06)] border-[rgba(10,46,77,0.12)] text-[rgba(10,46,77,0.55)]'
                         }`}
                       >
@@ -502,9 +502,9 @@ export default function CoachingPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {profils.map((p, i) => (
                 <ScrollReveal key={i} delay={0.08 * (i + 2)}>
-                  <div className="bg-[rgba(247,243,235,0.04)] border border-[rgba(179,162,128,0.15)] rounded-[14px] p-8 flex flex-col gap-5 h-full transition-all duration-300 hover:border-[rgba(179,162,128,0.32)] hover:bg-[rgba(247,243,235,0.06)]">
+                  <div className="bg-[rgba(247,243,235,0.04)] border border-[rgba(201,169,97,0.15)] rounded-[14px] p-8 flex flex-col gap-5 h-full transition-all duration-300 hover:border-[rgba(201,169,97,0.32)] hover:bg-[rgba(247,243,235,0.06)]">
                     <div className="flex items-center justify-between">
-                      <span className="font-mono text-[0.6375rem] tracking-[0.18em] text-[rgba(179,162,128,0.40)]">{p.num}</span>
+                      <span className="font-mono text-[0.6375rem] tracking-[0.18em] text-[rgba(201,169,97,0.40)]">{p.num}</span>
                       <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[rgba(125,183,214,0.10)] border border-[rgba(125,183,214,0.18)] text-[0.6375rem] text-[#7DB7D6] tracking-wide">
                         <p.chipIcon size={10} weight="regular" />
                         {p.chip}
@@ -525,9 +525,9 @@ export default function CoachingPage() {
                       <p className="text-[0.875rem] text-[rgba(247,243,235,0.68)] leading-[1.65]">{p.action}</p>
                     </div>
 
-                    <div className="flex items-center gap-3 bg-[rgba(179,162,128,0.09)] border border-[rgba(179,162,128,0.18)] rounded-[14px] p-4 mt-auto">
-                      <p.resultIcon size={18} weight="regular" className="text-[#B3A280] shrink-0" />
-                      <span className="text-[0.8125rem] text-[rgba(179,162,128,0.88)] font-semibold leading-[1.4]">{p.result}</span>
+                    <div className="flex items-center gap-3 bg-[rgba(201,169,97,0.09)] border border-[rgba(201,169,97,0.18)] rounded-[14px] p-4 mt-auto">
+                      <p.resultIcon size={18} weight="regular" className="text-[#C9A961] shrink-0" />
+                      <span className="text-[0.8125rem] text-[rgba(201,169,97,0.88)] font-semibold leading-[1.4]">{p.result}</span>
                     </div>
                   </div>
                 </ScrollReveal>
@@ -566,7 +566,7 @@ export default function CoachingPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {livrables.map((item, i) => (
                 <ScrollReveal key={i} delay={0.08 * (i % 3 + 2)}>
-                  <div className="bg-white border border-[rgba(10,46,77,0.08)] rounded-[18px] p-7 flex flex-col gap-3.5 shadow-[0_4px_20px_-8px_rgba(10,46,77,0.07)] transition-all duration-200 hover:border-[rgba(179,162,128,0.38)] hover:shadow-[0_10px_36px_-8px_rgba(179,162,128,0.14)] hover:-translate-y-0.5">
+                  <div className="bg-white border border-[rgba(10,46,77,0.08)] rounded-[18px] p-7 flex flex-col gap-3.5 shadow-[0_4px_20px_-8px_rgba(10,46,77,0.07)] transition-all duration-200 hover:border-[rgba(201,169,97,0.38)] hover:shadow-[0_10px_36px_-8px_rgba(201,169,97,0.14)] hover:-translate-y-0.5">
                     <div className="w-11 h-11 rounded-full bg-[rgba(10,46,77,0.06)] flex items-center justify-center text-[#0A2E4D]">
                       <item.icon size={20} weight="regular" />
                     </div>
@@ -638,7 +638,7 @@ export default function CoachingPage() {
           />
           <div
             className="absolute -top-[120px] left-1/2 -translate-x-1/2 w-[min(800px,100%)] h-[500px] pointer-events-none"
-            style={{ background: 'radial-gradient(ellipse at center, rgba(179,162,128,0.07) 0%, transparent 65%)' }}
+            style={{ background: 'radial-gradient(ellipse at center, rgba(201,169,97,0.07) 0%, transparent 65%)' }}
             aria-hidden="true"
           />
 
@@ -688,7 +688,7 @@ export default function CoachingPage() {
                 <div className="rounded-[14px] glass p-8 md:p-10 flex flex-col gap-6">
                   {sent ? (
                     <div className="flex flex-col items-center gap-4 py-8 text-center">
-                      <CheckCircle size={48} weight="regular" className="text-[#B3A280]" />
+                      <CheckCircle size={48} weight="regular" className="text-[#C9A961]" />
                       <p className="text-lg font-semibold text-[#E8E4DA]">Demande envoyée&nbsp;!</p>
                       <p className="text-sm text-[rgba(247,243,235,0.5)]">On vous répond dans les 24 heures.</p>
                     </div>
@@ -768,7 +768,7 @@ export default function CoachingPage() {
                         <button
                           type="submit"
                           disabled={isPending}
-                          className="w-full flex items-center justify-center gap-2 bg-[#B3A280] hover:bg-[#C6B896] active:scale-[0.98] disabled:opacity-60 text-[#0A2E4D] font-bold py-4 rounded-[10px] transition-all duration-200 text-sm cursor-pointer mt-1"
+                          className="w-full flex items-center justify-center gap-2 bg-[#C9A961] hover:bg-[#D9BC7E] active:scale-[0.98] disabled:opacity-60 text-[#0A2E4D] font-bold py-4 rounded-[10px] transition-all duration-200 text-sm cursor-pointer mt-1"
                         >
                           {isPending ? 'Envoi en cours…' : 'Demander ma session découverte'}
                           {!isPending && <ArrowRight size={14} weight="regular" />}

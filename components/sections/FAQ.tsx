@@ -65,7 +65,7 @@ export default function FAQ() {
               </p>
               <button
                 onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="mt-6 inline-flex items-center gap-2 text-sm text-[#B3A280] hover:text-[#F7F3EB] transition-colors font-medium cursor-pointer"
+                className="mt-6 inline-flex items-center gap-2 text-sm text-[#C9A961] hover:text-[#F7F3EB] transition-colors font-medium cursor-pointer"
               >
                 Poser une question
                 <span className="text-lg leading-none">→</span>

@@ -115,7 +115,7 @@ export default function ScrollProgress({
               <motion.span
                 animate={{
                   scale: isActive ? 1 : 0.5,
-                  backgroundColor: isActive ? '#B3A280' : 'rgba(247,243,235,0.35)',
+                  backgroundColor: isActive ? '#C9A961' : 'rgba(247,243,235,0.35)',
                 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 24 }}
                 className="block rounded-full"
@@ -124,7 +124,7 @@ export default function ScrollProgress({
               {isActive && (
                 <motion.span
                   layoutId="dot-ring"
-                  className="absolute inset-0 rounded-full border border-[#B3A280]/50"
+                  className="absolute inset-0 rounded-full border border-[#C9A961]/50"
                   transition={{ type: 'spring', stiffness: 300, damping: 24 }}
                 />
               )}

@@ -57,7 +57,7 @@ export default function SkillExplication({
                 {benefices.map((b, i) => (
                   <ScrollReveal key={i} delay={i * 0.08}>
                     <li className="flex items-start gap-3 text-[0.9375rem] text-[rgba(26,26,26,0.78)] leading-snug">
-                      <CheckCircle size={20} weight="regular" className="text-[#B3A280] shrink-0 mt-0.5" />
+                      <CheckCircle size={20} weight="regular" className="text-[#C9A961] shrink-0 mt-0.5" />
                       {b}
                     </li>
                   </ScrollReveal>
@@ -96,7 +96,7 @@ export default function SkillExplication({
           <ScrollReveal delay={0.08}>
             <h2 className="text-[clamp(1.5rem,3.5vw,2.5rem)] font-medium tracking-[-0.02em] leading-tight text-[#F7F3EB] mb-10">
               Pret en moins de 2 minutes.<br />
-              <span className="text-[#B3A280]">Choisis ta plateforme.</span>
+              <span className="text-[#C9A961]">Choisis ta plateforme.</span>
             </h2>
           </ScrollReveal>
           <SkillInstall claudeSteps={claudeSteps} gptSteps={gptSteps} />

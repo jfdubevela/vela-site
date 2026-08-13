@@ -77,7 +77,7 @@ export default function GuidesPage() {
               >
                 Des guides gratuits,
                 <br />
-                <span className="text-[#B3A280]">à utiliser dès aujourd&apos;hui.</span>
+                <span className="text-[#C9A961]">à utiliser dès aujourd&apos;hui.</span>
               </motion.h1>
 
               <motion.p

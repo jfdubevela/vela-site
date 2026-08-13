@@ -96,12 +96,12 @@ export default function Tarification() {
               <div
                 className={`relative flex flex-col h-full rounded-[14px] p-8 border transition-shadow duration-300 ${
                   tier.highlight
-                    ? 'bg-[#0A2E4D] border-[#B3A280]/60 shadow-[0_20px_60px_-12px_rgba(179,162,128,0.18)] md:-mt-3'
+                    ? 'bg-[#0A2E4D] border-[#C9A961]/60 shadow-[0_20px_60px_-12px_rgba(201,169,97,0.18)] md:-mt-3'
                     : 'bg-white border-[#0A2E4D]/10 hover:shadow-[0_8px_40px_-8px_rgba(10,46,77,0.1)]'
                 }`}
               >
                 {tier.tag && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] px-3 py-1 rounded-full bg-[#B3A280] text-[#0A2E4D] font-bold uppercase tracking-wide whitespace-nowrap">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] px-3 py-1 rounded-full bg-[#C9A961] text-[#0A2E4D] font-bold uppercase tracking-wide whitespace-nowrap">
                     {tier.tag}
                   </span>
                 )}
@@ -115,7 +115,7 @@ export default function Tarification() {
                   </p>
                   <p
                     className={`text-2xl font-medium font-mono tracking-[-0.02em] ${
-                      tier.highlight ? 'text-[#B3A280]' : 'text-[#0A2E4D]'
+                      tier.highlight ? 'text-[#C9A961]' : 'text-[#0A2E4D]'
                     }`}
                   >
                     {tier.price}
@@ -136,7 +136,7 @@ export default function Tarification() {
                         size={14}
                         weight="regular"
                         className={`mt-0.5 shrink-0 ${
-                          tier.highlight ? 'text-[#B3A280]' : 'text-[#0A2E4D]/50'
+                          tier.highlight ? 'text-[#C9A961]' : 'text-[#0A2E4D]/50'
                         }`}
                       />
                       <span
@@ -154,7 +154,7 @@ export default function Tarification() {
                   onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
                   className={`w-full flex items-center justify-center gap-2 py-3 rounded-[10px] font-semibold text-sm transition-all duration-200 group cursor-pointer ${
                     tier.highlight
-                      ? 'bg-[#B3A280] hover:bg-[#C6B896] text-[#0A2E4D]'
+                      ? 'bg-[#C9A961] hover:bg-[#D9BC7E] text-[#0A2E4D]'
                       : 'bg-[#0A2E4D] hover:bg-[#0A2E4D] text-[#E8E4DA]'
                   }`}
                 >
@@ -205,7 +205,7 @@ export default function Tarification() {
                 </p>
                 <button
                   onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="inline-flex items-center gap-2 py-3 px-6 rounded-[10px] bg-[#B3A280] hover:bg-[#C6B896] text-[#0A2E4D] font-semibold text-sm transition-colors group cursor-pointer"
+                  className="inline-flex items-center gap-2 py-3 px-6 rounded-[10px] bg-[#C9A961] hover:bg-[#D9BC7E] text-[#0A2E4D] font-semibold text-sm transition-colors group cursor-pointer"
                 >
                   Discuter de mon cas
                   <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />

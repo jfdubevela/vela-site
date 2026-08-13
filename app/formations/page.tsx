@@ -121,7 +121,7 @@ const formations: Formation[] = [
 /* ─── Detail Panel ─── */
 function DetailPanel({ formation: f, onContact }: { formation: Formation; onContact: () => void }) {
   return (
-    <div className="rounded-[14px] border border-[#B3A280]/30 bg-white p-8 md:p-12 shadow-[0_8px_40px_-12px_rgba(10,46,77,0.1)]">
+    <div className="rounded-[14px] border border-[#C9A961]/30 bg-white p-8 md:p-12 shadow-[0_8px_40px_-12px_rgba(10,46,77,0.1)]">
       <div className="flex flex-col gap-8">
 
         {/* Title */}
@@ -143,7 +143,7 @@ function DetailPanel({ formation: f, onContact }: { formation: Formation; onCont
               <ul className="flex flex-col gap-2.5 pl-1">
                 {mod.items.map((item, ii) => (
                   <li key={ii} className="flex items-start gap-3">
-                    <CheckCircle size={16} weight="regular" className="text-[#B3A280] mt-0.5 shrink-0" />
+                    <CheckCircle size={16} weight="regular" className="text-[#C9A961] mt-0.5 shrink-0" />
                     <span className="text-base text-[#0A2E4D]/65 leading-relaxed">{item}</span>
                   </li>
                 ))}
@@ -170,7 +170,7 @@ function DetailPanel({ formation: f, onContact }: { formation: Formation; onCont
           </div>
           <div className="flex flex-col gap-2 shrink-0">
             <MagneticButton
-              className="inline-flex items-center justify-center gap-2 bg-[#B3A280] hover:bg-[#C6B896] text-[#0A2E4D] font-bold text-sm px-7 py-3.5 rounded-[10px] transition-colors duration-200 cursor-pointer shadow-[0_8px_32px_-8px_rgba(179,162,128,0.40)] whitespace-nowrap"
+              className="inline-flex items-center justify-center gap-2 bg-[#C9A961] hover:bg-[#D9BC7E] text-[#0A2E4D] font-bold text-sm px-7 py-3.5 rounded-[10px] transition-colors duration-200 cursor-pointer shadow-[0_8px_32px_-8px_rgba(201,169,97,0.40)] whitespace-nowrap"
               onClick={onContact}
             >
               {f.cta}
@@ -271,7 +271,7 @@ export default function FormationsPage() {
               >
                 Former votre équipe à l&apos;I.A.
                 <br />
-                <span className="text-[#B3A280]">qui change vraiment<br />les choses.</span>
+                <span className="text-[#C9A961]">qui change vraiment<br />les choses.</span>
               </motion.h1>
 
               {/* Subtitle */}
@@ -295,7 +295,7 @@ export default function FormationsPage() {
                 className="flex flex-wrap items-center gap-4"
               >
                 <MagneticButton
-                  className="inline-flex items-center gap-2 bg-[#B3A280] hover:bg-[#C6B896] text-[#0A2E4D] font-bold text-sm px-7 py-3.5 rounded-[10px] transition-colors duration-200 cursor-pointer shadow-[0_8px_32px_-8px_rgba(179,162,128,0.45)]"
+                  className="inline-flex items-center gap-2 bg-[#C9A961] hover:bg-[#D9BC7E] text-[#0A2E4D] font-bold text-sm px-7 py-3.5 rounded-[10px] transition-colors duration-200 cursor-pointer shadow-[0_8px_32px_-8px_rgba(201,169,97,0.45)]"
                   onClick={scrollToFormations}
                 >
                   Voir nos formations
@@ -370,7 +370,7 @@ export default function FormationsPage() {
                         variant="light"
                         className={`h-full rounded-[14px] bg-white border transition-colors duration-300 p-8 flex flex-col gap-5 shadow-[0_8px_40px_-12px_rgba(10,46,77,0.12)] ${
                           isOpen
-                            ? 'border-[#B3A280]/60'
+                            ? 'border-[#C9A961]/60'
                             : 'border-[#0A2E4D]/[0.08] hover:border-[#0A2E4D]/[0.2]'
                         }`}
                       >
@@ -385,7 +385,7 @@ export default function FormationsPage() {
                           <div
                             className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-200 ${
                               isOpen
-                                ? 'bg-[#B3A280]/15 border-[#B3A280]/50 text-[#B3A280]'
+                                ? 'bg-[#C9A961]/15 border-[#C9A961]/50 text-[#C9A961]'
                                 : 'border-[#0A2E4D]/[0.15] text-[#0A2E4D]/30'
                             }`}
                           >
@@ -514,7 +514,7 @@ export default function FormationsPage() {
                 <div className="rounded-[14px] glass p-8 md:p-10 flex flex-col gap-6">
                   {sent ? (
                     <div className="flex flex-col items-center gap-4 py-8 text-center">
-                      <CheckCircle size={48} weight="regular" className="text-[#B3A280]" />
+                      <CheckCircle size={48} weight="regular" className="text-[#C9A961]" />
                       <p className="text-lg font-semibold text-[#E8E4DA]">Demande envoyée !</p>
                       <p className="text-sm text-[rgba(247,243,235,0.5)]">On vous répond dans les 2 jours ouvrables.</p>
                     </div>
@@ -586,7 +586,7 @@ export default function FormationsPage() {
                         <button
                           type="submit"
                           disabled={isPending}
-                          className="w-full flex items-center justify-center gap-2 bg-[#B3A280] hover:bg-[#C6B896] active:scale-[0.98] disabled:opacity-60 text-[#0A2E4D] font-bold py-4 rounded-[10px] transition-all duration-200 text-sm cursor-pointer mt-1"
+                          className="w-full flex items-center justify-center gap-2 bg-[#C9A961] hover:bg-[#D9BC7E] active:scale-[0.98] disabled:opacity-60 text-[#0A2E4D] font-bold py-4 rounded-[10px] transition-all duration-200 text-sm cursor-pointer mt-1"
                         >
                           {isPending ? 'Envoi en cours…' : 'Envoyer ma demande'}
                           {!isPending && <ArrowRight size={15} weight="regular" />}

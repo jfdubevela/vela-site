@@ -121,7 +121,7 @@ export default function Hero({
                   </motion.span>
                 ))}
               </span>
-              <span className="block text-[#B3A280]">
+              <span className="block text-[#C9A961]">
                 {line2.map((word, i) => (
                   <motion.span key={i} variants={wordVariants} className="inline-block mr-[0.22em] last:mr-0">
                     {word}
@@ -155,7 +155,7 @@ export default function Hero({
                 className={
                   showBookingCta
                     ? 'inline-flex items-center gap-2 border border-[rgba(247,243,235,0.22)] text-[#E8E4DA] hover:border-[rgba(247,243,235,0.45)] hover:bg-white/[0.04] text-sm px-7 py-3.5 rounded-[10px] transition-all duration-200 cursor-pointer'
-                    : 'inline-flex items-center gap-2 bg-[#B3A280] hover:bg-[#C6B896] text-[#0A2E4D] font-bold text-sm px-7 py-3.5 rounded-[10px] transition-colors duration-200 cursor-pointer shadow-[0_8px_32px_-8px_rgba(179,162,128,0.45)]'
+                    : 'inline-flex items-center gap-2 bg-[#C9A961] hover:bg-[#D9BC7E] text-[#0A2E4D] font-bold text-sm px-7 py-3.5 rounded-[10px] transition-colors duration-200 cursor-pointer shadow-[0_8px_32px_-8px_rgba(201,169,97,0.45)]'
                 }
                 onClick={() => scrollToSection(primaryCtaTarget)}
               >

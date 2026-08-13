@@ -64,7 +64,7 @@ export default function Probleme() {
 
           {/* VELA signature */}
           <ScrollReveal delay={0.42}>
-            <p className="mt-10 text-lg md:text-xl italic text-[#B3A280] font-medium">
+            <p className="mt-10 text-lg md:text-xl italic text-[#C9A961] font-medium">
               &ldquo;On mesure avant d&apos;automatiser.&rdquo;
             </p>
           </ScrollReveal>

@@ -221,7 +221,7 @@ export default function Nav({
               <LinkedinLogo size={16} weight="regular" />
             </a>
             <MagneticButton
-              className="inline-flex items-center gap-2 bg-[#B3A280] hover:bg-[#C6B896] text-[#0A2E4D] font-semibold text-sm px-5 py-2.5 rounded-[10px] transition-colors duration-200 cursor-pointer shadow-[0_0_16px_2px_rgba(125,183,214,0.35)]"
+              className="inline-flex items-center gap-2 bg-[#C9A961] hover:bg-[#D9BC7E] text-[#0A2E4D] font-semibold text-sm px-5 py-2.5 rounded-[10px] transition-colors duration-200 cursor-pointer shadow-[0_0_16px_2px_rgba(125,183,214,0.35)]"
               onClick={() => handleNavClick('#contact')}
             >
               Contactez-nous
@@ -270,7 +270,7 @@ export default function Nav({
                 <Link
                   href="/coaching"
                   onClick={() => setMobileOpen(false)}
-                  className="text-lg font-semibold text-[#E8E4DA] hover:text-[#B3A280] transition-colors"
+                  className="text-lg font-semibold text-[#E8E4DA] hover:text-[#C9A961] transition-colors"
                 >
                   Coaching
                 </Link>
@@ -279,7 +279,7 @@ export default function Nav({
                 <Link
                   href="/formations"
                   onClick={() => setMobileOpen(false)}
-                  className="text-lg font-semibold text-[#E8E4DA] hover:text-[#B3A280] transition-colors"
+                  className="text-lg font-semibold text-[#E8E4DA] hover:text-[#C9A961] transition-colors"
                 >
                   Formation
                 </Link>
@@ -290,13 +290,13 @@ export default function Nav({
                     <Link
                       href="/automatisations"
                       onClick={() => setMobileOpen(false)}
-                      className="text-lg font-semibold text-[#E8E4DA] hover:text-[#B3A280] transition-colors"
+                      className="text-lg font-semibold text-[#E8E4DA] hover:text-[#C9A961] transition-colors"
                     >
                       Automatisation
                     </Link>
                     <button
                       onClick={() => setMobileAutoOpen((prev) => !prev)}
-                      className="p-1 text-[rgba(247,243,235,0.5)] hover:text-[#B3A280] transition-colors"
+                      className="p-1 text-[rgba(247,243,235,0.5)] hover:text-[#C9A961] transition-colors"
                       aria-label="Sous-menu Automatisation"
                     >
                       <CaretDown
@@ -320,7 +320,7 @@ export default function Nav({
                             key={s.href}
                             href={s.href}
                             onClick={() => setMobileOpen(false)}
-                            className="text-base text-[rgba(247,243,235,0.65)] hover:text-[#B3A280] transition-colors"
+                            className="text-base text-[rgba(247,243,235,0.65)] hover:text-[#C9A961] transition-colors"
                           >
                             {s.label}
                           </Link>
@@ -336,13 +336,13 @@ export default function Nav({
                     <Link
                       href="/outils/guides"
                       onClick={() => setMobileOpen(false)}
-                      className="text-lg font-semibold text-[#E8E4DA] hover:text-[#B3A280] transition-colors"
+                      className="text-lg font-semibold text-[#E8E4DA] hover:text-[#C9A961] transition-colors"
                     >
                       Outils
                     </Link>
                     <button
                       onClick={() => setMobileOutilsOpen((prev) => !prev)}
-                      className="p-1 text-[rgba(247,243,235,0.5)] hover:text-[#B3A280] transition-colors"
+                      className="p-1 text-[rgba(247,243,235,0.5)] hover:text-[#C9A961] transition-colors"
                       aria-label="Sous-menu Outils"
                     >
                       <CaretDown
@@ -366,7 +366,7 @@ export default function Nav({
                             key={s.href}
                             href={s.href}
                             onClick={() => setMobileOpen(false)}
-                            className="text-base text-[rgba(247,243,235,0.65)] hover:text-[#B3A280] transition-colors"
+                            className="text-base text-[rgba(247,243,235,0.65)] hover:text-[#C9A961] transition-colors"
                           >
                             {s.label}
                           </Link>
@@ -382,7 +382,7 @@ export default function Nav({
                     <button
                       key={link.href}
                       onClick={() => handleNavClick(link.href)}
-                      className="text-left text-lg font-semibold text-[#E8E4DA] hover:text-[#B3A280] transition-colors"
+                      className="text-left text-lg font-semibold text-[#E8E4DA] hover:text-[#C9A961] transition-colors"
                     >
                       {link.label}
                     </button>
@@ -392,7 +392,7 @@ export default function Nav({
               <div className="mt-auto">
                 <button
                   onClick={() => handleNavClick('#contact')}
-                  className="w-full bg-[#B3A280] hover:bg-[#C6B896] text-[#0A2E4D] font-semibold py-3 rounded-[10px] transition-colors text-center"
+                  className="w-full bg-[#C9A961] hover:bg-[#D9BC7E] text-[#0A2E4D] font-semibold py-3 rounded-[10px] transition-colors text-center"
                 >
                   Contactez-nous
                 </button>

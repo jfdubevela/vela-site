@@ -43,11 +43,11 @@ export const metadata: Metadata = {
     template: "%s | VELA",
   },
   description:
-    "Automatisations, formations et coaching I.A. pour PME à Montréal. Gagnez du temps et passez à l'action. Réservez votre appel découverte gratuit.",
+    "Coaching, formations et automatisations I.A. pour PME à Montréal. Gagnez du temps et passez à l'action. Réservez votre appel découverte gratuit.",
   openGraph: {
     title: "VELA | Automatisation I.A. pour PME, Montréal",
     description:
-      "Automatisations, formations et coaching I.A. pour PME à Montréal. Gagnez du temps et passez à l'action. Réservez votre appel découverte gratuit.",
+      "Coaching, formations et automatisations I.A. pour PME à Montréal. Gagnez du temps et passez à l'action. Réservez votre appel découverte gratuit.",
     url: "https://velavelavela.com",
     siteName: "VELA",
     locale: "fr_CA",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
         url: "/og.jpg",
         width: 1200,
         height: 630,
-        alt: "VELA | Automatisation, Formation et Coaching I.A.",
+        alt: "VELA | Coaching, Formation et Automatisation I.A.",
       },
     ],
   },
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "VELA | Automatisation I.A. pour PME, Montréal",
     description:
-      "Automatisations, formations et coaching I.A. pour PME à Montréal. Gagnez du temps et passez à l'action. Réservez votre appel découverte gratuit.",
+      "Coaching, formations et automatisations I.A. pour PME à Montréal. Gagnez du temps et passez à l'action. Réservez votre appel découverte gratuit.",
     images: ["/og.jpg"],
   },
 };

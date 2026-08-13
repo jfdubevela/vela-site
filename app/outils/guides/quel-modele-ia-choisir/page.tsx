@@ -37,7 +37,7 @@ const niveaux = [
     title: 'Le modèle réflexion',
     subtitle: 'Quand le niveau 1 déçoit',
     footer: "Monte d'un cran, pas plus",
-    accent: '#B3A280',
+    accent: '#C9A961',
     items: [
       'Long document à analyser',
       'Problème complexe à démêler',
@@ -69,7 +69,7 @@ const comparatif = [
     niveau: 'Gros calibre',
     contexte: 'Projets à enjeux élevés',
     description: 'Travail long et complexe à haute valeur. À utiliser avec parcimonie.',
-    accent: '#B3A280',
+    accent: '#C9A961',
     claude: { nom: 'Fable 5', note: 'Le plus puissant. Pense de façon autonome. Réponse plus lente, résultat plus ambitieux.' },
     chatgpt: { nom: 'o3 Pro', note: 'Le niveau le plus lourd disponible. Abonnement Pro requis ($200/mois).' },
   },
@@ -128,7 +128,7 @@ export default function GuideQuelModeleIAChoisirPage() {
                 >
                   Quel modèle d&apos;I.A.
                   <br />
-                  <span className="text-[#B3A280]">choisir ?</span>
+                  <span className="text-[#C9A961]">choisir ?</span>
                 </motion.h1>
 
                 <motion.p
@@ -152,7 +152,7 @@ export default function GuideQuelModeleIAChoisirPage() {
                   <a
                     href={PDF_HREF}
                     download
-                    className="inline-flex items-center gap-2 bg-[#B3A280] hover:bg-[#C6B896] text-[#0A2E4D] font-bold text-sm px-7 py-3.5 rounded-[10px] transition-colors duration-200 cursor-pointer shadow-[0_8px_32px_-8px_rgba(179,162,128,0.45)]"
+                    className="inline-flex items-center gap-2 bg-[#C9A961] hover:bg-[#D9BC7E] text-[#0A2E4D] font-bold text-sm px-7 py-3.5 rounded-[10px] transition-colors duration-200 cursor-pointer shadow-[0_8px_32px_-8px_rgba(201,169,97,0.45)]"
                   >
                     <DownloadSimple size={16} weight="regular" />
                     Télécharger le guide (PDF)
@@ -215,7 +215,7 @@ export default function GuideQuelModeleIAChoisirPage() {
             {/* Bandeau 90% */}
             <ScrollReveal delay={0.1}>
               <div className="rounded-[18px] bg-[#0A2E4D] p-8 md:p-10 flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-10">
-                <span className="text-[clamp(3rem,6vw,4.5rem)] font-medium text-[#B3A280] leading-none shrink-0">
+                <span className="text-[clamp(3rem,6vw,4.5rem)] font-medium text-[#C9A961] leading-none shrink-0">
                   90%
                 </span>
                 <p className="text-base md:text-lg text-[rgba(247,243,235,0.75)] leading-relaxed">
@@ -261,7 +261,7 @@ export default function GuideQuelModeleIAChoisirPage() {
 
             {/* Citation contexte */}
             <ScrollReveal delay={0.25}>
-              <div className="rounded-[14px] bg-[#0A2E4D]/[0.04] border-l-4 border-[#B3A280] p-7">
+              <div className="rounded-[14px] bg-[#0A2E4D]/[0.04] border-l-4 border-[#C9A961] p-7">
                 <p className="text-base md:text-lg text-[#0A2E4D]/75 leading-relaxed">
                   Le modèle compte moins que le <strong className="text-[#0A2E4D]">contexte</strong> que
                   tu lui donnes. Un modèle moyen bien briefé bat un modèle puissant mal briefé.{' '}
@@ -357,7 +357,7 @@ export default function GuideQuelModeleIAChoisirPage() {
                     className="block group"
                     aria-label={`Télécharger le guide, ${p.label}`}
                   >
-                    <div className="rounded-[14px] overflow-hidden border border-[rgba(247,243,235,0.12)] shadow-[0_24px_60px_-12px_rgba(0,0,0,0.5)] group-hover:border-[#B3A280]/40 transition-colors duration-300">
+                    <div className="rounded-[14px] overflow-hidden border border-[rgba(247,243,235,0.12)] shadow-[0_24px_60px_-12px_rgba(0,0,0,0.5)] group-hover:border-[#C9A961]/40 transition-colors duration-300">
                       <Image
                         src={p.src}
                         alt={`Aperçu du guide, ${p.label}`}
@@ -379,7 +379,7 @@ export default function GuideQuelModeleIAChoisirPage() {
                 <a
                   href={PDF_HREF}
                   download
-                  className="inline-flex items-center gap-2 bg-[#B3A280] hover:bg-[#C6B896] text-[#0A2E4D] font-bold text-sm px-7 py-3.5 rounded-[10px] transition-colors duration-200 cursor-pointer shadow-[0_8px_32px_-8px_rgba(179,162,128,0.45)]"
+                  className="inline-flex items-center gap-2 bg-[#C9A961] hover:bg-[#D9BC7E] text-[#0A2E4D] font-bold text-sm px-7 py-3.5 rounded-[10px] transition-colors duration-200 cursor-pointer shadow-[0_8px_32px_-8px_rgba(201,169,97,0.45)]"
                 >
                   <DownloadSimple size={16} weight="regular" />
                   Télécharger le guide (PDF)
@@ -399,13 +399,13 @@ export default function GuideQuelModeleIAChoisirPage() {
                     Vous voulez aller plus loin avec l&apos;I.A. ?
                   </h2>
                   <p className="text-[0.9375rem] text-[rgba(247,243,235,0.55)] leading-relaxed">
-                    Formations, automatisations ou coaching : on vous aide à passer du guide à l&apos;action.
+                    Coaching, formations ou automatisations : on vous aide à passer du guide à l&apos;action.
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-3 shrink-0">
                   <Link
                     href="/formations"
-                    className="inline-flex items-center gap-2 bg-[#B3A280] hover:bg-[#C6B896] text-[#0A2E4D] font-bold text-sm px-6 py-3 rounded-[10px] transition-colors duration-200"
+                    className="inline-flex items-center gap-2 bg-[#C9A961] hover:bg-[#D9BC7E] text-[#0A2E4D] font-bold text-sm px-6 py-3 rounded-[10px] transition-colors duration-200"
                   >
                     Voir les formations
                     <ArrowRight size={14} weight="regular" />

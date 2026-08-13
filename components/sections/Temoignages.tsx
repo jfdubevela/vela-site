@@ -61,8 +61,8 @@ export default function Temoignages() {
               </ScrollReveal>
             ) : (
               <ScrollReveal key={i} delay={i * 0.08} className="h-full">
-                <div className={`h-full rounded-[14px] p-5 flex flex-col justify-between gap-3 border ${item.accent ? 'bg-[#B3A280]/10 border-[#B3A280]/30' : 'bg-white/[0.04] border-[rgba(247,243,235,0.12)]'}`}>
-                  <span className={`font-medium leading-tight ${item.accent ? 'text-[#B3A280] text-4xl md:text-5xl' : 'text-[#F7F3EB] text-xl'}`}>{item.top}</span>
+                <div className={`h-full rounded-[14px] p-5 flex flex-col justify-between gap-3 border ${item.accent ? 'bg-[#C9A961]/10 border-[#C9A961]/30' : 'bg-white/[0.04] border-[rgba(247,243,235,0.12)]'}`}>
+                  <span className={`font-medium leading-tight ${item.accent ? 'text-[#C9A961] text-4xl md:text-5xl' : 'text-[#F7F3EB] text-xl'}`}>{item.top}</span>
                   <span className="text-xs text-[rgba(247,243,235,0.35)]">{item.sub}</span>
                 </div>
               </ScrollReveal>
@@ -86,7 +86,7 @@ export default function Temoignages() {
                   <input
                     type="range" min={1} max={40} value={hours}
                     onChange={(e) => setHours(Number(e.target.value))}
-                    className="w-full accent-[#B3A280] cursor-pointer"
+                    className="w-full accent-[#C9A961] cursor-pointer"
                   />
                   <div className="flex justify-between text-[10px] text-[rgba(247,243,235,0.2)]">
                     <span>1h</span><span>40h</span>
@@ -101,7 +101,7 @@ export default function Temoignages() {
                   <input
                     type="range" min={15} max={200} step={5} value={rate}
                     onChange={(e) => setRate(Number(e.target.value))}
-                    className="w-full accent-[#B3A280] cursor-pointer"
+                    className="w-full accent-[#C9A961] cursor-pointer"
                   />
                   <div className="flex justify-between text-[10px] text-[rgba(247,243,235,0.2)]">
                     <span>15 $/h</span><span>200 $/h</span>
@@ -131,7 +131,7 @@ export default function Temoignages() {
                     key={cost}
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-4xl font-medium font-mono text-[#B3A280]"
+                    className="text-4xl font-medium font-mono text-[#C9A961]"
                   >
                     {Math.round(cost).toLocaleString('fr-CA')} $
                   </motion.span>
@@ -149,7 +149,7 @@ export default function Temoignages() {
                     <motion.div
                       animate={{ width: `${Math.min((Math.round(months * 10) / 10 / 12) * 100, 100)}%` }}
                       transition={{ type: 'spring', stiffness: 80, damping: 20 }}
-                      className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-[#7DB7D6] to-[#B3A280]"
+                      className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-[#7DB7D6] to-[#C9A961]"
                     />
                   </div>
                   <div className="flex justify-between text-[10px] text-[rgba(247,243,235,0.2)]">

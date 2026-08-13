@@ -43,7 +43,7 @@ function ProcessPathLine() {
     >
       <motion.path
         d="M 0 1 L 1000 1"
-        stroke="#B3A280"
+        stroke="#C9A961"
         strokeWidth="1"
         strokeDasharray="6 6"
         fill="none"
@@ -132,7 +132,7 @@ export default function Processus() {
                   </div>
 
                   {/* Tag */}
-                  <span className="self-start mt-2 text-xs px-3 py-1.5 rounded-full bg-[#B3A280]/15 text-[#8B5E2A] font-mono font-medium">
+                  <span className="self-start mt-2 text-xs px-3 py-1.5 rounded-full bg-[#C9A961]/15 text-[#8B5E2A] font-mono font-medium">
                     {step.tag}
                   </span>
                 </div>
@@ -144,7 +144,7 @@ export default function Processus() {
         {/* Rule */}
         <ScrollReveal delay={0.3}>
           <div className="mt-20 pt-8 border-t border-[#0A2E4D]/10 flex flex-col md:flex-row items-start md:items-center gap-3">
-            <span className="w-1.5 h-8 rounded-full bg-[#B3A280] shrink-0" />
+            <span className="w-1.5 h-8 rounded-full bg-[#C9A961] shrink-0" />
             <p className="text-sm text-[#0A2E4D]/50 max-w-[70ch] leading-relaxed">
               <strong className="text-[#0A2E4D]/80 font-semibold">Règle structurante :</strong>{' '}
               Le diagnostic est obligatoire avant toute implantation. On ne déploie

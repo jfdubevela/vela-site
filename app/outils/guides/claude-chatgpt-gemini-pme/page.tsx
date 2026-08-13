@@ -11,7 +11,7 @@ const outils = [
   {
     nom: 'Claude',
     editeur: 'Anthropic',
-    accent: '#B3A280',
+    accent: '#C9A961',
     force: 'Rédaction longue, analyse, code, meilleure fiabilité factuelle de la comparaison.',
     pourPme: 'Contrats, politiques internes, analyses financières, rapports : tout ce qui doit être juste et bien écrit du premier coup.',
   },
@@ -43,7 +43,7 @@ const comparatif = [
 ]
 
 const recommandations = [
-  { besoin: 'Vous rédigez, analysez des documents ou gérez des enjeux légaux/financiers', outil: 'Claude', accent: '#B3A280' },
+  { besoin: 'Vous rédigez, analysez des documents ou gérez des enjeux légaux/financiers', outil: 'Claude', accent: '#C9A961' },
   { besoin: 'Vous produisez du contenu visuel et gérez du service client varié', outil: 'ChatGPT', accent: '#7DB7D6' },
   { besoin: 'Vous êtes déjà à fond dans Google Workspace, ou vous traitez de l’audio/vidéo', outil: 'Gemini', accent: '#0A2E4D' },
 ]
@@ -94,7 +94,7 @@ export default function GuideClaudeChatgptGeminiPmePage() {
               >
                 Claude, ChatGPT ou Gemini :
                 <br />
-                <span className="text-[#B3A280]">quel outil choisir ?</span>
+                <span className="text-[#C9A961]">quel outil choisir ?</span>
               </motion.h1>
 
               <motion.p
@@ -118,7 +118,7 @@ export default function GuideClaudeChatgptGeminiPmePage() {
               >
                 <button
                   onClick={scrollToComparatif}
-                  className="inline-flex items-center gap-2 bg-[#B3A280] hover:bg-[#C6B896] text-[#0A2E4D] font-bold text-sm px-7 py-3.5 rounded-[10px] transition-colors duration-200 cursor-pointer shadow-[0_8px_32px_-8px_rgba(179,162,128,0.45)]"
+                  className="inline-flex items-center gap-2 bg-[#C9A961] hover:bg-[#D9BC7E] text-[#0A2E4D] font-bold text-sm px-7 py-3.5 rounded-[10px] transition-colors duration-200 cursor-pointer shadow-[0_8px_32px_-8px_rgba(201,169,97,0.45)]"
                 >
                   Voir le comparatif
                   <ArrowDown size={14} weight="regular" />
@@ -176,7 +176,7 @@ export default function GuideClaudeChatgptGeminiPmePage() {
             </div>
 
             <ScrollReveal delay={0.25}>
-              <div className="rounded-[14px] bg-[#0A2E4D]/[0.04] border-l-4 border-[#B3A280] p-7">
+              <div className="rounded-[14px] bg-[#0A2E4D]/[0.04] border-l-4 border-[#C9A961] p-7">
                 <p className="text-base md:text-lg text-[#0A2E4D]/75 leading-relaxed">
                   Le modèle compte moins que le <strong className="text-[#0A2E4D]">contexte</strong> que
                   vous lui donnez. Un modèle moyen bien briefé bat un modèle puissant mal briefé.{' '}
@@ -248,7 +248,7 @@ export default function GuideClaudeChatgptGeminiPmePage() {
 
             <ScrollReveal delay={0.2}>
               <div className="rounded-[18px] bg-[#0A2E4D] border border-[rgba(247,243,235,0.12)] p-8 md:p-10 flex flex-col sm:flex-row items-start sm:items-center gap-6 mt-10">
-                <span className="text-[clamp(2.4rem,5vw,3.6rem)] font-medium text-[#B3A280] leading-none shrink-0">
+                <span className="text-[clamp(2.4rem,5vw,3.6rem)] font-medium text-[#C9A961] leading-none shrink-0">
                   150-400$
                 </span>
                 <p className="text-base md:text-lg text-[rgba(247,243,235,0.75)] leading-relaxed">
@@ -319,7 +319,7 @@ export default function GuideClaudeChatgptGeminiPmePage() {
                 <div className="flex flex-wrap gap-3 shrink-0">
                   <Link
                     href="/formations"
-                    className="inline-flex items-center gap-2 bg-[#B3A280] hover:bg-[#C6B896] text-[#0A2E4D] font-bold text-sm px-6 py-3 rounded-[10px] transition-colors duration-200"
+                    className="inline-flex items-center gap-2 bg-[#C9A961] hover:bg-[#D9BC7E] text-[#0A2E4D] font-bold text-sm px-6 py-3 rounded-[10px] transition-colors duration-200"
                   >
                     Voir les formations
                     <ArrowRight size={14} weight="regular" />

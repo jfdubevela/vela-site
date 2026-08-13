@@ -58,7 +58,7 @@ const IntelligentList = memo(function IntelligentList() {
             <span className="text-xs text-[rgba(247,243,235,0.75)] flex-1 truncate">
               {item.label}
             </span>
-            <CheckCircle size={14} weight="regular" className="text-[#B3A280]/60 shrink-0" />
+            <CheckCircle size={14} weight="regular" className="text-[#C9A961]/60 shrink-0" />
           </motion.div>
         ))}
       </AnimatePresence>
@@ -95,7 +95,7 @@ const LiveStatus = memo(function LiveStatus() {
             animate={{ y: 0, opacity: 1, scale: 1 }}
             exit={{ y: -8, opacity: 0, scale: 0.9 }}
             transition={{ type: 'spring', stiffness: 400, damping: 22 }}
-            className="absolute -top-3 right-0 flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#B3A280] text-[#0A2E4D] text-[10px] font-bold shadow-lg z-10"
+            className="absolute -top-3 right-0 flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C9A961] text-[#0A2E4D] text-[10px] font-bold shadow-lg z-10"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-[#0A2E4D] animate-[pulse-dot_1s_ease-in-out_infinite]" />
             DEPLOYED
@@ -146,7 +146,7 @@ const Typewriter = memo(function Typewriter() {
       </p>
       <p className="text-xs text-[rgba(247,243,235,0.85)] min-h-[2.4rem] leading-relaxed">
         {displayed}
-        <span className="inline-block w-px h-3.5 bg-[#B3A280] ml-0.5 align-middle animate-[pulse-dot_0.8s_ease-in-out_infinite]" />
+        <span className="inline-block w-px h-3.5 bg-[#C9A961] ml-0.5 align-middle animate-[pulse-dot_0.8s_ease-in-out_infinite]" />
       </p>
     </div>
   )
@@ -196,7 +196,7 @@ export default function Services() {
                   <span className="font-mono text-[10px] tracking-widest text-[#7DB7D6]/50">01</span>
                   <MagnifyingGlass size={20} weight="regular" className="text-[#7DB7D6]" />
                 </div>
-                <span className="text-xs px-3 py-1.5 rounded-full bg-[#B3A280]/15 text-[#B3A280] font-mono">
+                <span className="text-xs px-3 py-1.5 rounded-full bg-[#C9A961]/15 text-[#C9A961] font-mono">
                   À partir de 2 900$
                 </span>
               </div>
@@ -212,7 +212,7 @@ export default function Services() {
               <IntelligentList />
               <button
                 onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="mt-auto self-start flex items-center gap-2 text-sm text-[#B3A280] hover:text-[#F7F3EB] transition-colors font-medium group"
+                className="mt-auto self-start flex items-center gap-2 text-sm text-[#C9A961] hover:text-[#F7F3EB] transition-colors font-medium group"
               >
                 Commencer par le diagnostic
                 <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
@@ -244,7 +244,7 @@ export default function Services() {
                 </p>
               </div>
               <LiveStatus />
-              <span className="mt-auto self-start text-xs px-3 py-1.5 rounded-full bg-[#B3A280]/12 text-[#B3A280] font-mono">
+              <span className="mt-auto self-start text-xs px-3 py-1.5 rounded-full bg-[#C9A961]/12 text-[#C9A961] font-mono">
                 À partir de 750$/automation
               </span>
             </SpotlightCard>
@@ -289,7 +289,7 @@ export default function Services() {
                   <span className="font-mono text-[10px] tracking-widest text-[#7DB7D6]/50">04</span>
                   <CheckCircle size={20} weight="regular" className="text-[#7DB7D6]" />
                 </div>
-                <span className="text-xs px-3 py-1.5 rounded-full bg-[#B3A280]/12 text-[#B3A280] font-mono">
+                <span className="text-xs px-3 py-1.5 rounded-full bg-[#C9A961]/12 text-[#C9A961] font-mono">
                   290$ – 2 490$/mois
                 </span>
               </div>

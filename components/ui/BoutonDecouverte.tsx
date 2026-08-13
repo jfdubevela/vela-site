@@ -27,8 +27,8 @@ export default function BoutonDecouverte({
 
   const tone =
     variant === 'gold'
-      ? 'bg-[#B3A280] border-[#B3A280] text-[#0A2E4D] hover:bg-[#0A2E4D] hover:text-[#E8E4DA] shadow-[0_8px_32px_-8px_rgba(179,162,128,0.45)]'
-      : 'bg-[#0A2E4D] border-[#0A2E4D] text-[#E8E4DA] hover:bg-[#B3A280] hover:border-[#B3A280] hover:text-[#0A2E4D] shadow-[0_8px_28px_-10px_rgba(10,46,77,0.55)]'
+      ? 'bg-[#C9A961] border-[#C9A961] text-[#0A2E4D] hover:bg-[#0A2E4D] hover:text-[#E8E4DA] shadow-[0_8px_32px_-8px_rgba(201,169,97,0.45)]'
+      : 'bg-[#0A2E4D] border-[#0A2E4D] text-[#E8E4DA] hover:bg-[#C9A961] hover:border-[#C9A961] hover:text-[#0A2E4D] shadow-[0_8px_28px_-10px_rgba(10,46,77,0.55)]'
 
   const width = fullWidthMobile ? 'w-full sm:w-auto' : 'w-fit'
 

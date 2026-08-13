@@ -107,7 +107,7 @@ export default function AvantApres() {
               {after.map((item, i) => (
                 <ScrollReveal key={i} delay={i * 0.07}>
                   <div className="flex items-start gap-3">
-                    <CheckCircle size={18} weight="regular" className="text-[#B3A280] mt-0.5 shrink-0" />
+                    <CheckCircle size={18} weight="regular" className="text-[#C9A961] mt-0.5 shrink-0" />
                     <span className="text-sm text-[rgba(247,243,235,0.75)] leading-relaxed">{item}</span>
                   </div>
                 </ScrollReveal>
@@ -120,7 +120,7 @@ export default function AvantApres() {
         <ScrollReveal delay={0.2}>
           <div className="mt-10 flex flex-col md:flex-row items-center justify-center gap-4 py-8 rounded-[14px] bg-[#0A2E4D] border border-[rgba(247,243,235,0.12)]">
             <div className="text-center md:text-left">
-              <p className="text-5xl md:text-6xl font-medium font-mono text-[#B3A280] tracking-[-0.03em]">
+              <p className="text-5xl md:text-6xl font-medium font-mono text-[#C9A961] tracking-[-0.03em]">
                 +<CountUp target={15000} suffix="$" />
               </p>
               <p className="text-sm text-[rgba(247,243,235,0.45)] mt-1 font-mono">

@@ -32,14 +32,14 @@ function PlatformBox({
           <div className="w-9 h-9 rounded-[10px] bg-white/[0.07] flex items-center justify-center shrink-0">
             {logo}
           </div>
-          <span className="text-base font-semibold text-[#E8E4DA] group-hover:text-[#B3A280] transition-colors duration-200">
+          <span className="text-base font-semibold text-[#E8E4DA] group-hover:text-[#C9A961] transition-colors duration-200">
             Installer dans {platform}
           </span>
         </div>
         <motion.span
           animate={{ rotate: open ? 45 : 0 }}
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-          className="shrink-0 text-[#B3A280]"
+          className="shrink-0 text-[#C9A961]"
         >
           {open ? <Minus size={18} weight="regular" /> : <Plus size={18} weight="regular" />}
         </motion.span>
@@ -59,7 +59,7 @@ function PlatformBox({
               <ol className="flex flex-col gap-4 mt-6">
                 {steps.map((step, i) => (
                   <li key={i} className="flex gap-4">
-                    <span className="shrink-0 w-6 h-6 rounded-full bg-[rgba(179,162,128,0.15)] border border-[#B3A280]/30 text-[#B3A280] text-xs font-bold font-mono flex items-center justify-center mt-0.5">
+                    <span className="shrink-0 w-6 h-6 rounded-full bg-[rgba(201,169,97,0.15)] border border-[#C9A961]/30 text-[#C9A961] text-xs font-bold font-mono flex items-center justify-center mt-0.5">
                       {i + 1}
                     </span>
                     <div className="flex flex-col gap-1">

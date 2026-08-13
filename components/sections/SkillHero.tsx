@@ -47,8 +47,8 @@ export default function SkillHero({ badge, line1, line2, subtitle, ctaLabel }: S
             transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.1 }}
             className="self-start"
           >
-            <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#B3A280]/40 bg-[rgba(179,162,128,0.10)] text-[#B3A280] text-sm font-semibold tracking-wide">
-              <span className="w-2 h-2 rounded-full bg-[#B3A280] animate-[pulse-dot_2s_ease-in-out_infinite]" />
+            <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#C9A961]/40 bg-[rgba(201,169,97,0.10)] text-[#C9A961] text-sm font-semibold tracking-wide">
+              <span className="w-2 h-2 rounded-full bg-[#C9A961] animate-[pulse-dot_2s_ease-in-out_infinite]" />
               {badge}
             </span>
           </motion.div>
@@ -67,7 +67,7 @@ export default function SkillHero({ badge, line1, line2, subtitle, ctaLabel }: S
                 </motion.span>
               ))}
             </span>
-            <span className="block text-[#B3A280]">
+            <span className="block text-[#C9A961]">
               {line2Words.map((word, i) => (
                 <motion.span key={i} variants={wordVariants} className="inline-block mr-[0.22em] last:mr-0">
                   {word}
@@ -94,7 +94,7 @@ export default function SkillHero({ badge, line1, line2, subtitle, ctaLabel }: S
             className="flex flex-wrap items-center gap-4"
           >
             <MagneticButton
-              className="inline-flex items-center gap-2 bg-[#B3A280] hover:bg-[#C6B896] text-[#0A2E4D] font-bold text-sm px-7 py-3.5 rounded-[10px] transition-colors duration-200 cursor-pointer shadow-[0_8px_32px_-8px_rgba(179,162,128,0.45)]"
+              className="inline-flex items-center gap-2 bg-[#C9A961] hover:bg-[#D9BC7E] text-[#0A2E4D] font-bold text-sm px-7 py-3.5 rounded-[10px] transition-colors duration-200 cursor-pointer shadow-[0_8px_32px_-8px_rgba(201,169,97,0.45)]"
               onClick={() => scrollTo('formulaire')}
             >
               {ctaLabel}

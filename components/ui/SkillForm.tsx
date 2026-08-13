@@ -63,14 +63,14 @@ export default function SkillForm({
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden="true"
-        style={{ background: 'radial-gradient(ellipse 60% 60% at 50% 110%, rgba(179,162,128,0.07) 0%, transparent 65%)' }}
+        style={{ background: 'radial-gradient(ellipse 60% 60% at 50% 110%, rgba(201,169,97,0.07) 0%, transparent 65%)' }}
       />
 
       <div className="relative max-w-[1180px] mx-auto px-6 md:px-12 lg:px-20">
         <div className="max-w-lg mx-auto text-center">
 
           <ScrollReveal>
-            <span className="text-[0.7rem] font-bold tracking-[0.25em] uppercase text-[#B3A280] block mb-4">
+            <span className="text-[0.7rem] font-bold tracking-[0.25em] uppercase text-[#C9A961] block mb-4">
               Gratuit · Livraison immediate
             </span>
           </ScrollReveal>
@@ -95,11 +95,11 @@ export default function SkillForm({
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ type: 'spring', stiffness: 100, damping: 20 }}
-                  className="rounded-[14px] border border-[#B3A280]/25 bg-[rgba(179,162,128,0.08)] p-8 text-center"
+                  className="rounded-[14px] border border-[#C9A961]/25 bg-[rgba(201,169,97,0.08)] p-8 text-center"
                   role="status"
                 >
-                  <div className="w-14 h-14 rounded-full bg-[rgba(179,162,128,0.15)] flex items-center justify-center mx-auto mb-4">
-                    <CheckCircle size={28} weight="regular" className="text-[#B3A280]" />
+                  <div className="w-14 h-14 rounded-full bg-[rgba(201,169,97,0.15)] flex items-center justify-center mx-auto mb-4">
+                    <CheckCircle size={28} weight="regular" className="text-[#C9A961]" />
                   </div>
                   <h3 className="text-lg font-bold text-[#F7F3EB] mb-2">{successTitle}</h3>
                   <p className="text-sm text-[rgba(247,243,235,0.6)] leading-relaxed">{successMessage}</p>
@@ -123,10 +123,10 @@ export default function SkillForm({
                       onChange={(e) => { setFirstName(e.target.value); setErrors((p) => ({ ...p, firstName: undefined })) }}
                       placeholder="Jean-François"
                       autoComplete="given-name"
-                      className={`w-full bg-white/[0.05] border rounded-[10px] px-4 py-3 text-[#F7F3EB] placeholder:text-[rgba(247,243,235,0.22)] text-sm outline-none transition-all duration-200 focus:bg-white/[0.08] focus:shadow-[0_0_0_3px_rgba(179,162,128,0.14)] ${
+                      className={`w-full bg-white/[0.05] border rounded-[10px] px-4 py-3 text-[#F7F3EB] placeholder:text-[rgba(247,243,235,0.22)] text-sm outline-none transition-all duration-200 focus:bg-white/[0.08] focus:shadow-[0_0_0_3px_rgba(201,169,97,0.14)] ${
                         errors.firstName
                           ? 'border-red-400/50 shadow-[0_0_0_2px_rgba(220,80,80,0.1)]'
-                          : 'border-[rgba(247,243,235,0.12)] focus:border-[#B3A280]'
+                          : 'border-[rgba(247,243,235,0.12)] focus:border-[#C9A961]'
                       }`}
                     />
                     {errors.firstName && (
@@ -146,10 +146,10 @@ export default function SkillForm({
                       onChange={(e) => { setEmail(e.target.value); setErrors((p) => ({ ...p, email: undefined })) }}
                       placeholder="toi@entreprise.com"
                       autoComplete="email"
-                      className={`w-full bg-white/[0.05] border rounded-[10px] px-4 py-3 text-[#F7F3EB] placeholder:text-[rgba(247,243,235,0.22)] text-sm outline-none transition-all duration-200 focus:bg-white/[0.08] focus:shadow-[0_0_0_3px_rgba(179,162,128,0.14)] ${
+                      className={`w-full bg-white/[0.05] border rounded-[10px] px-4 py-3 text-[#F7F3EB] placeholder:text-[rgba(247,243,235,0.22)] text-sm outline-none transition-all duration-200 focus:bg-white/[0.08] focus:shadow-[0_0_0_3px_rgba(201,169,97,0.14)] ${
                         errors.email
                           ? 'border-red-400/50 shadow-[0_0_0_2px_rgba(220,80,80,0.1)]'
-                          : 'border-[rgba(247,243,235,0.12)] focus:border-[#B3A280]'
+                          : 'border-[rgba(247,243,235,0.12)] focus:border-[#C9A961]'
                       }`}
                     />
                     {errors.email && (
@@ -161,7 +161,7 @@ export default function SkillForm({
                   <button
                     type="submit"
                     disabled={status === 'loading'}
-                    className="w-full bg-[#B3A280] hover:bg-[#C6B896] disabled:opacity-60 disabled:cursor-not-allowed text-[#0A2E4D] font-bold text-sm py-3.5 rounded-[10px] transition-colors duration-200 flex items-center justify-center gap-2 mt-1 shadow-[0_8px_32px_-8px_rgba(179,162,128,0.4)] cursor-pointer"
+                    className="w-full bg-[#C9A961] hover:bg-[#D9BC7E] disabled:opacity-60 disabled:cursor-not-allowed text-[#0A2E4D] font-bold text-sm py-3.5 rounded-[10px] transition-colors duration-200 flex items-center justify-center gap-2 mt-1 shadow-[0_8px_32px_-8px_rgba(201,169,97,0.4)] cursor-pointer"
                   >
                     {status === 'loading' ? (
                       <>
