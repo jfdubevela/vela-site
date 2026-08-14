@@ -49,7 +49,7 @@ export default function StatsCountUp({ stats, className = '' }: StatsCountUpProp
     <div className={`flex flex-wrap gap-x-8 gap-y-4 ${className}`}>
       {stats.map((stat, i) => (
         <div key={i} className="flex flex-col">
-          <span className="text-2xl md:text-3xl font-bold text-[#D4A373]">
+          <span className="text-2xl md:text-3xl font-bold text-[#C9A961]">
             <CountUp target={stat.value} suffix={stat.suffix} />
           </span>
           <span className="text-xs text-[rgba(125,183,214,0.8)] tracking-wide mt-0.5">

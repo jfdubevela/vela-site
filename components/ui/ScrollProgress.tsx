@@ -97,7 +97,7 @@ export default function ScrollProgress({
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -6 }}
                   transition={{ duration: 0.15 }}
-                  className="absolute left-5 whitespace-nowrap text-xs font-medium text-[#F5F5F0]/80 bg-[#0A2E4D]/80 backdrop-blur-sm px-2 py-1 rounded-md pointer-events-none"
+                  className="absolute left-5 whitespace-nowrap text-xs font-medium text-[#E8E4DA]/80 bg-[#0A2E4D]/80 backdrop-blur-sm px-2 py-1 rounded-[6px] pointer-events-none"
                 >
                   {label}
                 </motion.span>
@@ -115,7 +115,7 @@ export default function ScrollProgress({
               <motion.span
                 animate={{
                   scale: isActive ? 1 : 0.5,
-                  backgroundColor: isActive ? '#D4A373' : 'rgba(245,245,240,0.35)',
+                  backgroundColor: isActive ? '#C9A961' : 'rgba(247,243,235,0.35)',
                 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 24 }}
                 className="block rounded-full"
@@ -124,7 +124,7 @@ export default function ScrollProgress({
               {isActive && (
                 <motion.span
                   layoutId="dot-ring"
-                  className="absolute inset-0 rounded-full border border-[#D4A373]/50"
+                  className="absolute inset-0 rounded-full border border-[#C9A961]/50"
                   transition={{ type: 'spring', stiffness: 300, damping: 24 }}
                 />
               )}

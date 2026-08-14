@@ -34,7 +34,7 @@ export default function Home() {
       <main>
         <div className="z-[1]">
           <Hero
-            badge="Automatisation · Formation · Coaching"
+            badge="Coaching · Formation · Automatisation"
             line1={['Votre', 'productivité', 'et', 'créativité']}
             line2={['amplifiées', 'par', "l'intelligence artificielle"]}
             subtitle="VELA accompagne les professionnels et les PME québécoises avec trois expertises complémentaires en intelligence artificielle."
@@ -43,7 +43,7 @@ export default function Home() {
             primaryCtaTarget="#services"
             secondaryCtaLabel={null}
             showBookingCta
-            microText="Automatisation · Formation · Coaching I.A."
+            microText="Coaching · Formation · Automatisation I.A."
           />
         </div>
 

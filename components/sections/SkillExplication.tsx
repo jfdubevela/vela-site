@@ -27,8 +27,8 @@ export default function SkillExplication({
   return (
     <>
       {/* ── Explication ────────────────────────────────────── */}
-      <section id="explication" className="bg-[#F5F5F0] py-24 md:py-32">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+      <section id="explication" className="bg-[#E8E4DA] py-24 md:py-32">
+        <div className="max-w-[1180px] mx-auto px-6 md:px-12 lg:px-20">
           <div className="grid grid-cols-1 md:grid-cols-[58fr_42fr] gap-12 md:gap-20 items-start">
 
             {/* Colonne gauche — description */}
@@ -39,7 +39,7 @@ export default function SkillExplication({
                 </span>
               </ScrollReveal>
               <ScrollReveal delay={0.08}>
-                <h2 className="text-[clamp(1.75rem,4vw,3rem)] font-black tracking-tight leading-tight text-[#0A2E4D] mb-8">
+                <h2 className="text-[clamp(1.75rem,4vw,3rem)] font-medium tracking-[-0.02em] leading-tight text-[#0A2E4D] mb-8">
                   {sectionTitle}
                 </h2>
               </ScrollReveal>
@@ -57,7 +57,7 @@ export default function SkillExplication({
                 {benefices.map((b, i) => (
                   <ScrollReveal key={i} delay={i * 0.08}>
                     <li className="flex items-start gap-3 text-[0.9375rem] text-[rgba(26,26,26,0.78)] leading-snug">
-                      <CheckCircle size={20} weight="fill" className="text-[#D4A373] shrink-0 mt-0.5" />
+                      <CheckCircle size={20} weight="regular" className="text-[#C9A961] shrink-0 mt-0.5" />
                       {b}
                     </li>
                   </ScrollReveal>
@@ -65,14 +65,14 @@ export default function SkillExplication({
               </ul>
 
               <ScrollReveal delay={0.1}>
-                <div className="rounded-2xl border border-[rgba(10,46,77,0.08)] bg-[rgba(10,46,77,0.04)] p-6">
+                <div className="rounded-[14px] border border-[rgba(10,46,77,0.08)] bg-[rgba(10,46,77,0.04)] p-6">
                   <p className="text-[0.75rem] font-bold tracking-[0.1em] uppercase text-[#0A2E4D] mb-4">
                     Ce skill est fait pour toi si...
                   </p>
                   <ul className="flex flex-col gap-3" aria-label="Profils cibles">
                     {pourQui.map((p, i) => (
                       <li key={i} className="flex items-start gap-2.5 text-[0.9rem] text-[rgba(26,26,26,0.72)] leading-snug">
-                        <ArrowRight size={16} weight="bold" className="text-[#7DB7D6] shrink-0 mt-0.5" />
+                        <ArrowRight size={16} weight="regular" className="text-[#7DB7D6] shrink-0 mt-0.5" />
                         {p}
                       </li>
                     ))}
@@ -86,17 +86,17 @@ export default function SkillExplication({
       </section>
 
       {/* ── Installation ───────────────────────────────────── */}
-      <section className="bg-[#0A2E4D] py-24 md:py-32">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+      <section className="bg-[#122434] py-24 md:py-32">
+        <div className="max-w-[1180px] mx-auto px-6 md:px-12 lg:px-20">
           <ScrollReveal>
             <span className="text-[0.7rem] font-bold tracking-[0.25em] uppercase text-[#7DB7D6] block mb-4">
               Installation
             </span>
           </ScrollReveal>
           <ScrollReveal delay={0.08}>
-            <h2 className="text-[clamp(1.5rem,3.5vw,2.5rem)] font-black tracking-tight leading-tight text-[#F7F3EB] mb-10">
+            <h2 className="text-[clamp(1.5rem,3.5vw,2.5rem)] font-medium tracking-[-0.02em] leading-tight text-[#F7F3EB] mb-10">
               Pret en moins de 2 minutes.<br />
-              <span className="text-[#D4A373]">Choisis ta plateforme.</span>
+              <span className="text-[#C9A961]">Choisis ta plateforme.</span>
             </h2>
           </ScrollReveal>
           <SkillInstall claudeSteps={claudeSteps} gptSteps={gptSteps} />

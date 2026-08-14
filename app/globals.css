@@ -1,29 +1,111 @@
 @import "tailwindcss";
 
+/* ============================================================
+   VELA — Design System v2.0
+   Encre porte le fond, marine porte la marque, os porte le texte,
+   ciel signale l'interaction, sable ponctue.
+   Répartition cible : 60 encre · 22 marine · 10 os · 5 ciel · 3 sable.
+   ============================================================ */
+
 @theme inline {
+  /* ── Couleurs ─────────────────────────────────────────── */
+  --color-vela-encre:   #122434;  /* Fond principal, decks, app */
+  --color-vela-marine:  #0A2E4D;  /* Couleur de marque, aplats, surfaces élevées */
+  --color-vela-ciel:    #7DB7D6;  /* Liens, focus, états actifs, données */
+  --color-vela-ciel-h:  #9BC9E0;
+  --color-vela-sable:   #C9A961;  /* Boutons primaires, numérotation, chiffres clés */
+  --color-vela-sable-h: #D9BC7E;
+  --color-vela-os:      #E8E4DA;  /* Texte sur marine, aplats clairs */
+  --color-vela-ivoire:  #F7F3EB;  /* Fond des modes clairs, titres */
+
+  /* Alias de compatibilité — anciens noms, nouvelles valeurs */
   --color-vela-deep:    #0A2E4D;
-  --color-vela-deep-2:  #0D3760;
-  --color-vela-off:     #F5F5F0;
+  --color-vela-off:     #E8E4DA;
   --color-vela-cream:   #F7F3EB;
-  --color-vela-gold:    #D4A373;
-  --color-vela-gold-h:  #C49060;
+  --color-vela-gold:    #C9A961;
+  --color-vela-gold-h:  #D9BC7E;
   --color-vela-horizon: #7DB7D6;
-  --color-vela-ink:     #1A1A1A;
-  --color-vela-dark:    #071E33;
+  --color-vela-ink:     #122434;
+  --color-vela-dark:    #122434;
 
-  --font-sans: var(--font-neue-montreal), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  /* ── Typographie ──────────────────────────────────────── */
+  /* Titres uniquement, jamais sous 20 px */
+  --font-display: var(--font-neue-montreal), "Helvetica Neue", Helvetica, sans-serif;
+  /* Texte courant, interfaces, formulaires */
+  --font-sans:    var(--font-instrument), "Helvetica Neue", Helvetica, sans-serif;
+  /* Étiquettes, chiffres, prix */
+  --font-mono:    var(--font-jetbrains), ui-monospace, monospace;
 
-  --animate-marquee: marquee 28s linear infinite;
-  --animate-pulse-dot: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-shimmer: shimmer 2.4s linear infinite;
-  --animate-fade-up: fade-up 0.6s ease forwards;
+  --text-display:  4.75rem;  /* 76 / 1.0  · ls -0.03em */
+  --text-t1:       3.25rem;  /* 52 / 1.05 · ls -0.025em */
+  --text-t2:       2.25rem;  /* 36 / 1.10 · ls -0.02em */
+  --text-t3:       1.5rem;   /* 24 / 1.20 */
+  --text-chapeau:  1.1875rem;/* 19 / 1.55 */
+  --text-corps:    1rem;     /* 16 / 1.60 */
+  --text-legende:  0.875rem; /* 14 / 1.50 */
+  --text-etiq:     0.75rem;  /* 12 · ls 0.16em · capitales */
 
-  --text-display-xl: clamp(2.4rem, 5.8vw, 4.6rem);
+  /* Display fluides — conservés pour les héros */
+  --text-display-xl: clamp(2.4rem, 5.8vw, 4.75rem);
   --text-display-md: clamp(1.9rem, 4vw, 3.25rem);
+
+  /* ── Structure ────────────────────────────────────────── */
+  --radius-xs:   6px;    /* cases, barres de graphique */
+  --radius-sm:   10px;   /* boutons, champs, chips */
+  --radius-md:   14px;   /* cartes, panneaux */
+  --radius-lg:   18px;   /* modales, blocs héros */
+
+  /* ── Animations ───────────────────────────────────────── */
+  --animate-marquee:   marquee 28s linear infinite;
+  --animate-pulse-dot: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float:     float 6s ease-in-out infinite;
+  --animate-shimmer:   shimmer 2.4s linear infinite;
+  --animate-fade-up:   fade-up 0.6s ease forwards;
+  --animate-ping-echo: ping-echo 7s ease-out infinite;
+  --animate-sweep:     sweep 14s linear infinite;
 }
 
+/* ============================================================
+   Tokens bruts — pour le CSS hors utilitaires Tailwind
+   ============================================================ */
+:root {
+  --vela-encre:      #122434;
+  --vela-marine:     #0A2E4D;
+  --vela-ciel:       #7DB7D6;
+  --vela-sable:      #C9A961;
+  --vela-os:         #E8E4DA;
+  --vela-ivoire:     #F7F3EB;
+
+  --vela-bordure:    rgba(247, 243, 235, 0.12);
+  --vela-bordure-f:  rgba(247, 243, 235, 0.28);
+  --vela-texte:      #F7F3EB;
+  --vela-texte-2:    rgba(247, 243, 235, 0.70);
+  --vela-texte-3:    rgba(247, 243, 235, 0.50);
+
+  --vela-contenu:    1180px;
+  --vela-gouttiere:  24px;
+  --vela-transition: 140ms ease;
+
+  /* Verre — sur photo ou texture */
+  --vela-verre:          linear-gradient(150deg, rgba(247,243,235,0.13), rgba(125,183,214,0.09) 48%, rgba(247,243,235,0.03));
+  --vela-verre-flou:     blur(18px);
+  --vela-verre-liseret:  inset 0 1px 0 rgba(247, 243, 235, 0.22);
+  --vela-verre-bordure:  rgba(247, 243, 235, 0.18);
+  --vela-ombre:          0 32px 64px rgba(0, 0, 0, 0.45);
+
+  /* Lueur — le phare */
+  --vela-lueur-sable:      0 0 0 1px rgba(201, 169, 97, 0.35),
+                           0 10px 32px rgba(201, 169, 97, 0.34);
+  --vela-lueur-sable-fort: 0 0 0 1px rgba(217, 188, 126, 0.5),
+                           0 14px 44px rgba(201, 169, 97, 0.55);
+  --vela-lueur-ciel:       0 0 18px rgba(125, 183, 214, 0.5);
+  --vela-halo-phare:       0 0 28px 8px rgba(201, 169, 97, 0.55),
+                           0 0 120px 44px rgba(201, 169, 97, 0.16);
+}
+
+/* ============================================================
+   Keyframes
+   ============================================================ */
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
@@ -31,12 +113,12 @@
 
 @keyframes pulse-dot {
   0%, 100% { opacity: 1; }
-  50%       { opacity: 0.35; }
+  50%      { opacity: 0.35; }
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-10px); }
+  50%      { transform: translateY(-10px); }
 }
 
 @keyframes shimmer {
@@ -49,15 +131,42 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* Échos concentriques — vocabulaire de la navigation */
+@keyframes ping-echo {
+  0%   { transform: scale(0.35); opacity: 0; }
+  12%  { opacity: 0.5; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+/* Balayage de relèvement */
+@keyframes sweep {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: #0A2E4D;
-  color: #F5F5F0;
+  background-color: var(--vela-encre);
+  color: var(--vela-ivoire);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Les titres portent Montreal Neue. Le corps porte Instrument Sans. */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+::selection {
+  background: var(--vela-sable);
+  color: var(--vela-encre);
 }
 
 /* Grain overlay — fixed, pointer-events-none, never on scroll containers */
@@ -71,14 +180,47 @@ body {
   background-repeat: repeat;
 }
 
-/* Liquid glass */
+/* ============================================================
+   Surfaces
+   ============================================================ */
+
+/* Verre — réservé aux fonds photo ou texturés */
 .glass {
-  backdrop-filter: blur(14px) saturate(160%);
-  -webkit-backdrop-filter: blur(14px) saturate(160%);
-  background: rgba(10, 46, 77, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  background: var(--vela-verre);
+  backdrop-filter: var(--vela-verre-flou);
+  -webkit-backdrop-filter: var(--vela-verre-flou);
+  border: 1px solid var(--vela-verre-bordure);
+  box-shadow: var(--vela-verre-liseret);
 }
+
+/* Niveau 2 — ce qui flotte vraiment. L'ombre s'arrête ici. */
+.flottant {
+  background: var(--vela-marine);
+  border: 1px solid var(--vela-bordure-f);
+  box-shadow: var(--vela-ombre);
+}
+
+/* Bloc-note — motif signature : filet à gauche, rayon asymétrique */
+.note {
+  border-left: 1px solid var(--vela-ciel);
+  border-radius: 4px 12px 12px 4px;
+  background: rgba(125, 183, 214, 0.06);
+}
+.note-sable {
+  border-left: 1px solid var(--vela-sable);
+  border-radius: 4px 12px 12px 4px;
+  background: rgba(201, 169, 97, 0.08);
+}
+.note-os {
+  border-left: 2px solid var(--vela-os);
+  border-radius: 4px 12px 12px 4px;
+  background: rgba(232, 228, 218, 0.08);
+}
+
+/* Lueur du phare — bouton primaire sable */
+.lueur-sable        { box-shadow: var(--vela-lueur-sable); }
+.lueur-sable:hover  { box-shadow: var(--vela-lueur-sable-fort); }
+.halo-phare         { box-shadow: var(--vela-halo-phare); }
 
 /* Spotlight border card */
 .spotlight-card {
@@ -128,21 +270,39 @@ body {
   opacity: 1;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar          { width: 4px; }
-::-webkit-scrollbar-track    { background: #0A2E4D; }
-::-webkit-scrollbar-thumb    { background: rgba(125, 183, 214, 0.25); border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(125, 183, 214, 0.45); }
+/* ============================================================
+   Décor — échos concentriques, ligne d'horizon, graduations.
+   Jamais d'ancre, de gouvernail ni de vague dessinée.
+   ============================================================ */
+.glow-gold-strong { background: radial-gradient(ellipse at center, rgba(201,169,97,0.18) 0%, transparent 65%); }
+.glow-gold-subtle { background: radial-gradient(ellipse at center, rgba(201,169,97,0.07) 0%, transparent 65%); }
+.glow-horizon     { background: radial-gradient(ellipse at center, rgba(125,183,214,0.10) 0%, transparent 65%); }
 
-/* Section anchor offset */
-section[id] { scroll-margin-top: 80px; }
+/* Fondu crème — overlay du héros coaching */
+.hero-cream-fade  { background: linear-gradient(to right, rgba(247,243,235,0.70) 0%, rgba(247,243,235,0.30) 55%, rgba(247,243,235,0.05) 100%); }
 
-/* Decorative texture overlay — /images/8.png, reused across sections */
+/* Voile marine — toute photo passe dessous, 40 à 50 % d'opacité */
+.voile-marine     { background: rgba(10, 46, 77, 0.45); }
+
+/* Grille technique 32 px — registre instrument de bord */
+.grille-tech {
+  background-image:
+    linear-gradient(rgba(125,183,214,0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(125,183,214,0.10) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Graduations de relèvement — échos concentriques en pointillé */
+.graduations {
+  background: repeating-radial-gradient(circle at 50% 50%, rgba(125,183,214,0.09) 0 1px, transparent 1px 44px);
+}
+
+/* Texture décorative — /images/8.webp, réutilisée dans plusieurs sections */
 .texture-overlay {
   position: absolute;
   inset: 0;
   opacity: 0.04;
-  background-image: url('/images/8.png');
+  background-image: url('/images/8.webp');
   background-size: cover;
   background-position: center;
   pointer-events: none;
@@ -152,10 +312,10 @@ section[id] { scroll-margin-top: 80px; }
 .shimmer-text {
   background: linear-gradient(
     90deg,
-    #D4A373 0%,
+    #C9A961 0%,
     #F7F3EB 40%,
-    #D4A373 60%,
-    #C49060 100%
+    #C9A961 60%,
+    #D9BC7E 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -163,3 +323,13 @@ section[id] { scroll-margin-top: 80px; }
   -webkit-text-fill-color: transparent;
   animation: shimmer 3s linear infinite;
 }
+
+/* ============================================================
+   Divers
+   ============================================================ */
+::-webkit-scrollbar          { width: 4px; }
+::-webkit-scrollbar-track    { background: #122434; }
+::-webkit-scrollbar-thumb    { background: rgba(125, 183, 214, 0.25); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(125, 183, 214, 0.45); }
+
+section[id] { scroll-margin-top: 80px; }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist_Mono } from "next/font/google";
+import { Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import Script from "next/script";
 import "./globals.css";
@@ -19,9 +19,20 @@ const neueMontreal = localFont({
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Texte courant : paragraphes, interfaces, formulaires, tableaux.
+const instrumentSans = Instrument_Sans({
+  variable: "--font-instrument",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+// Étiquettes, chiffres, prix.
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains",
+  subsets: ["latin"],
+  weight: ["400", "500"],
   display: "swap",
 });
 
@@ -32,11 +43,11 @@ export const metadata: Metadata = {
     template: "%s | VELA",
   },
   description:
-    "Automatisations, formations et coaching I.A. pour PME à Montréal. Gagnez du temps et passez à l'action. Réservez votre appel découverte gratuit.",
+    "Coaching, formations et automatisations I.A. pour PME à Montréal. Gagnez du temps et passez à l'action. Réservez votre appel découverte gratuit.",
   openGraph: {
     title: "VELA | Automatisation I.A. pour PME, Montréal",
     description:
-      "Automatisations, formations et coaching I.A. pour PME à Montréal. Gagnez du temps et passez à l'action. Réservez votre appel découverte gratuit.",
+      "Coaching, formations et automatisations I.A. pour PME à Montréal. Gagnez du temps et passez à l'action. Réservez votre appel découverte gratuit.",
     url: "https://velavelavela.com",
     siteName: "VELA",
     locale: "fr_CA",
@@ -46,7 +57,7 @@ export const metadata: Metadata = {
         url: "/og.jpg",
         width: 1200,
         height: 630,
-        alt: "VELA | Automatisation, Formation et Coaching I.A.",
+        alt: "VELA | Coaching, Formation et Automatisation I.A.",
       },
     ],
   },
@@ -54,7 +65,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "VELA | Automatisation I.A. pour PME, Montréal",
     description:
-      "Automatisations, formations et coaching I.A. pour PME à Montréal. Gagnez du temps et passez à l'action. Réservez votre appel découverte gratuit.",
+      "Coaching, formations et automatisations I.A. pour PME à Montréal. Gagnez du temps et passez à l'action. Réservez votre appel découverte gratuit.",
     images: ["/og.jpg"],
   },
 };
@@ -65,7 +76,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={`${neueMontreal.variable} ${geistMono.variable}`}>
+    <html
+      lang="fr"
+      className={`${neueMontreal.variable} ${instrumentSans.variable} ${jetbrainsMono.variable}`}
+    >
       <body className="antialiased">
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}

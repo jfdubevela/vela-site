@@ -54,11 +54,11 @@ export default function Nav({
   const isLight = lightTop && !scrolled
   const linkColor = isLight
     ? 'text-[rgba(10,46,77,0.60)] hover:text-[#0A2E4D]'
-    : 'text-[rgba(245,245,240,0.65)] hover:text-[#F5F5F0]'
+    : 'text-[rgba(247,243,235,0.65)] hover:text-[#E8E4DA]'
   const linkedinColor = isLight
     ? 'border-[rgba(10,46,77,0.15)] text-[rgba(10,46,77,0.45)] hover:text-[#0A2E4D] hover:border-[rgba(10,46,77,0.30)]'
-    : 'border-white/10 text-[rgba(245,245,240,0.5)] hover:text-[#7DB7D6] hover:border-[#7DB7D6]/30'
-  const burgerColor = isLight ? 'text-[#0A2E4D]' : 'text-[#F5F5F0]'
+    : 'border-[rgba(247,243,235,0.12)] text-[rgba(247,243,235,0.5)] hover:text-[#7DB7D6] hover:border-[#7DB7D6]/30'
+  const burgerColor = isLight ? 'text-[#0A2E4D]' : 'text-[#E8E4DA]'
 
   return (
     <>
@@ -74,7 +74,7 @@ export default function Nav({
             : 'bg-transparent'
         }`}
       >
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 h-20 flex items-center justify-between">
+        <div className="max-w-[1180px] mx-auto px-6 md:px-12 lg:px-20 h-20 flex items-center justify-between">
           {/* Logo */}
           <a href="/" aria-label="VELA, accueil" className="shrink-0">
             <Image
@@ -127,7 +127,7 @@ export default function Nav({
                 Automatisation
                 <CaretDown
                   size={12}
-                  weight="bold"
+                  weight="regular"
                   className={`transition-transform duration-200 ${autoOpen ? 'rotate-180' : ''}`}
                 />
               </Link>
@@ -138,13 +138,13 @@ export default function Nav({
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 6 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-44 glass rounded-xl overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.3)] py-1"
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-44 glass rounded-[10px] overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.3)] py-1"
                   >
                     {autoSubLinks.map((s) => (
                       <Link
                         key={s.href}
                         href={s.href}
-                        className="block px-4 py-2.5 text-sm text-[rgba(245,245,240,0.75)] hover:text-[#F5F5F0] hover:bg-white/[0.06] transition-colors"
+                        className="block px-4 py-2.5 text-sm text-[rgba(247,243,235,0.75)] hover:text-[#E8E4DA] hover:bg-white/[0.06] transition-colors"
                         onClick={() => setAutoOpen(false)}
                       >
                         {s.label}
@@ -168,7 +168,7 @@ export default function Nav({
                 Outils
                 <CaretDown
                   size={12}
-                  weight="bold"
+                  weight="regular"
                   className={`transition-transform duration-200 ${outilsOpen ? 'rotate-180' : ''}`}
                 />
               </Link>
@@ -179,13 +179,13 @@ export default function Nav({
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 6 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-44 glass rounded-xl overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.3)] py-1"
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-44 glass rounded-[10px] overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.3)] py-1"
                   >
                     {outilsSubLinks.map((s) => (
                       <Link
                         key={s.href}
                         href={s.href}
-                        className="block px-4 py-2.5 text-sm text-[rgba(245,245,240,0.75)] hover:text-[#F5F5F0] hover:bg-white/[0.06] transition-colors"
+                        className="block px-4 py-2.5 text-sm text-[rgba(247,243,235,0.75)] hover:text-[#E8E4DA] hover:bg-white/[0.06] transition-colors"
                         onClick={() => setOutilsOpen(false)}
                       >
                         {s.label}
@@ -218,10 +218,10 @@ export default function Nav({
               aria-label="LinkedIn VELA"
               className={`w-9 h-9 rounded-full border flex items-center justify-center transition-colors ${linkedinColor}`}
             >
-              <LinkedinLogo size={16} weight="fill" />
+              <LinkedinLogo size={16} weight="regular" />
             </a>
             <MagneticButton
-              className="inline-flex items-center gap-2 bg-[#D4A373] hover:bg-[#C49060] text-[#0A2E4D] font-semibold text-sm px-5 py-2.5 rounded-full transition-colors duration-200 cursor-pointer shadow-[0_0_16px_2px_rgba(125,183,214,0.35)]"
+              className="inline-flex items-center gap-2 bg-[#C9A961] hover:bg-[#D9BC7E] text-[#0A2E4D] font-semibold text-sm px-5 py-2.5 rounded-[10px] transition-colors duration-200 cursor-pointer shadow-[0_0_16px_2px_rgba(125,183,214,0.35)]"
               onClick={() => handleNavClick('#contact')}
             >
               Contactez-nous
@@ -234,7 +234,7 @@ export default function Nav({
             onClick={() => setMobileOpen(true)}
             aria-label="Menu"
           >
-            <List size={24} weight="bold" />
+            <List size={24} weight="regular" />
           </button>
         </div>
       </motion.header>
@@ -260,8 +260,8 @@ export default function Nav({
             >
               <div className="flex justify-between items-center mb-12">
                 <Image src="/logo.svg" alt="VELA" width={100} height={35} className="h-8 w-auto" />
-                <button onClick={() => setMobileOpen(false)} className="text-[#F5F5F0] p-1">
-                  <X size={22} weight="bold" />
+                <button onClick={() => setMobileOpen(false)} className="text-[#E8E4DA] p-1">
+                  <X size={22} weight="regular" />
                 </button>
               </div>
 
@@ -270,7 +270,7 @@ export default function Nav({
                 <Link
                   href="/coaching"
                   onClick={() => setMobileOpen(false)}
-                  className="text-lg font-semibold text-[#F5F5F0] hover:text-[#D4A373] transition-colors"
+                  className="text-lg font-semibold text-[#E8E4DA] hover:text-[#C9A961] transition-colors"
                 >
                   Coaching
                 </Link>
@@ -279,7 +279,7 @@ export default function Nav({
                 <Link
                   href="/formations"
                   onClick={() => setMobileOpen(false)}
-                  className="text-lg font-semibold text-[#F5F5F0] hover:text-[#D4A373] transition-colors"
+                  className="text-lg font-semibold text-[#E8E4DA] hover:text-[#C9A961] transition-colors"
                 >
                   Formation
                 </Link>
@@ -290,18 +290,18 @@ export default function Nav({
                     <Link
                       href="/automatisations"
                       onClick={() => setMobileOpen(false)}
-                      className="text-lg font-semibold text-[#F5F5F0] hover:text-[#D4A373] transition-colors"
+                      className="text-lg font-semibold text-[#E8E4DA] hover:text-[#C9A961] transition-colors"
                     >
                       Automatisation
                     </Link>
                     <button
                       onClick={() => setMobileAutoOpen((prev) => !prev)}
-                      className="p-1 text-[rgba(245,245,240,0.5)] hover:text-[#D4A373] transition-colors"
+                      className="p-1 text-[rgba(247,243,235,0.5)] hover:text-[#C9A961] transition-colors"
                       aria-label="Sous-menu Automatisation"
                     >
                       <CaretDown
                         size={14}
-                        weight="bold"
+                        weight="regular"
                         className={`transition-transform duration-200 ${mobileAutoOpen ? 'rotate-180' : ''}`}
                       />
                     </button>
@@ -313,14 +313,14 @@ export default function Nav({
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.2 }}
-                        className="overflow-hidden flex flex-col gap-2 pl-4 border-l border-white/[0.1]"
+                        className="overflow-hidden flex flex-col gap-2 pl-4 border-l border-[rgba(247,243,235,0.12)]"
                       >
                         {autoSubLinks.map((s) => (
                           <Link
                             key={s.href}
                             href={s.href}
                             onClick={() => setMobileOpen(false)}
-                            className="text-base text-[rgba(245,245,240,0.65)] hover:text-[#D4A373] transition-colors"
+                            className="text-base text-[rgba(247,243,235,0.65)] hover:text-[#C9A961] transition-colors"
                           >
                             {s.label}
                           </Link>
@@ -336,18 +336,18 @@ export default function Nav({
                     <Link
                       href="/outils/guides"
                       onClick={() => setMobileOpen(false)}
-                      className="text-lg font-semibold text-[#F5F5F0] hover:text-[#D4A373] transition-colors"
+                      className="text-lg font-semibold text-[#E8E4DA] hover:text-[#C9A961] transition-colors"
                     >
                       Outils
                     </Link>
                     <button
                       onClick={() => setMobileOutilsOpen((prev) => !prev)}
-                      className="p-1 text-[rgba(245,245,240,0.5)] hover:text-[#D4A373] transition-colors"
+                      className="p-1 text-[rgba(247,243,235,0.5)] hover:text-[#C9A961] transition-colors"
                       aria-label="Sous-menu Outils"
                     >
                       <CaretDown
                         size={14}
-                        weight="bold"
+                        weight="regular"
                         className={`transition-transform duration-200 ${mobileOutilsOpen ? 'rotate-180' : ''}`}
                       />
                     </button>
@@ -359,14 +359,14 @@ export default function Nav({
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.2 }}
-                        className="overflow-hidden flex flex-col gap-2 pl-4 border-l border-white/[0.1]"
+                        className="overflow-hidden flex flex-col gap-2 pl-4 border-l border-[rgba(247,243,235,0.12)]"
                       >
                         {outilsSubLinks.map((s) => (
                           <Link
                             key={s.href}
                             href={s.href}
                             onClick={() => setMobileOpen(false)}
-                            className="text-base text-[rgba(245,245,240,0.65)] hover:text-[#D4A373] transition-colors"
+                            className="text-base text-[rgba(247,243,235,0.65)] hover:text-[#C9A961] transition-colors"
                           >
                             {s.label}
                           </Link>
@@ -382,7 +382,7 @@ export default function Nav({
                     <button
                       key={link.href}
                       onClick={() => handleNavClick(link.href)}
-                      className="text-left text-lg font-semibold text-[#F5F5F0] hover:text-[#D4A373] transition-colors"
+                      className="text-left text-lg font-semibold text-[#E8E4DA] hover:text-[#C9A961] transition-colors"
                     >
                       {link.label}
                     </button>
@@ -392,7 +392,7 @@ export default function Nav({
               <div className="mt-auto">
                 <button
                   onClick={() => handleNavClick('#contact')}
-                  className="w-full bg-[#D4A373] hover:bg-[#C49060] text-[#0A2E4D] font-semibold py-3 rounded-full transition-colors text-center"
+                  className="w-full bg-[#C9A961] hover:bg-[#D9BC7E] text-[#0A2E4D] font-semibold py-3 rounded-[10px] transition-colors text-center"
                 >
                   Contactez-nous
                 </button>

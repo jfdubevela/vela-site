@@ -42,7 +42,7 @@ export default function GuidesPage() {
   return (
     <>
       <Nav showAnchorLinks={false} />
-      <main className="bg-[#0A2E4D]">
+      <main className="bg-[#122434]">
 
         {/* ─── Hero ─── */}
         <section className="relative min-h-[55dvh] flex items-center overflow-hidden pt-20">
@@ -56,7 +56,7 @@ export default function GuidesPage() {
             aria-hidden="true"
           />
 
-          <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 py-20 w-full">
+          <div className="relative z-10 max-w-[1180px] mx-auto px-6 md:px-12 lg:px-20 py-20 w-full">
             <div className="flex flex-col gap-8 max-w-[720px]">
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
@@ -64,7 +64,7 @@ export default function GuidesPage() {
                 transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.15 }}
               >
                 <span className="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-[#7DB7D6]/50 bg-[#C5DCE8] text-[#1C3D55] text-[15px] font-medium tracking-wide">
-                  <Wrench size={15} weight="duotone" />
+                  <Wrench size={15} weight="regular" />
                   Outils · Guides
                 </span>
               </motion.div>
@@ -73,21 +73,21 @@ export default function GuidesPage() {
                 initial={{ opacity: 0, y: 36 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ type: 'spring', stiffness: 75, damping: 18, delay: 0.25 }}
-                className="text-[clamp(2.4rem,5.5vw,4.4rem)] font-black tracking-normal leading-[0.95] text-[#F7F3EB]"
+                className="text-[clamp(2.4rem,5.5vw,4.4rem)] font-medium tracking-[-0.02em] leading-[0.95] text-[#F7F3EB]"
               >
                 Des guides gratuits,
                 <br />
-                <span className="text-[#D4A373]">à utiliser dès aujourd&apos;hui.</span>
+                <span className="text-[#C9A961]">à utiliser dès aujourd&apos;hui.</span>
               </motion.h1>
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ type: 'spring', stiffness: 70, damping: 18, delay: 0.4 }}
-                className="text-base md:text-lg text-[rgba(245,245,240,0.58)] leading-relaxed max-w-[50ch]"
+                className="text-base md:text-lg text-[rgba(247,243,235,0.58)] leading-relaxed max-w-[50ch]"
               >
                 Des ressources concrètes pour utiliser l&apos;I.A. dans votre PME.{' '}
-                <span className="text-[rgba(245,245,240,0.88)] font-semibold">
+                <span className="text-[rgba(247,243,235,0.88)] font-semibold">
                   Gratuites, sans formulaire. On en ajoute au fil du temps.
                 </span>
               </motion.p>
@@ -96,15 +96,15 @@ export default function GuidesPage() {
         </section>
 
         {/* ─── Grille de guides ─── */}
-        <section className="relative py-24 md:py-32 bg-[#F5F5F0] rounded-t-3xl shadow-[0_-12px_40px_rgba(0,0,0,0.2)]">
-          <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+        <section className="relative py-24 md:py-32 bg-[#E8E4DA] rounded-t-[18px] shadow-[0_-12px_40px_rgba(0,0,0,0.2)]">
+          <div className="max-w-[1180px] mx-auto px-6 md:px-12 lg:px-20">
 
             <ScrollReveal>
               <div className="mb-14">
-                <p className="text-xs uppercase tracking-[0.25em] text-[#0A2E4D]/50 mb-4">
+                <p className="font-mono text-[0.75rem] uppercase tracking-[0.16em] text-[#0A2E4D]/50 mb-4">
                   Bibliothèque de guides
                 </p>
-                <h2 className="text-[clamp(1.9rem,4vw,3rem)] font-black tracking-normal leading-[0.95] text-[#0A2E4D] max-w-[22ch]">
+                <h2 className="text-[clamp(1.9rem,4vw,3rem)] font-medium tracking-[-0.02em] leading-[0.95] text-[#0A2E4D] max-w-[22ch]">
                   Choisissez votre guide.
                   <br />
                   <span className="text-[#0A2E4D]/30">Téléchargez-le en un clic.</span>
@@ -124,7 +124,7 @@ export default function GuidesPage() {
                   <Link href={g.href} className="block h-full">
                     <SpotlightCard
                       variant="light"
-                      className="h-full rounded-[2rem] bg-white border border-[#0A2E4D]/[0.08] hover:border-[#0A2E4D]/[0.2] transition-colors duration-300 overflow-hidden flex flex-col shadow-[0_8px_40px_-12px_rgba(10,46,77,0.12)]"
+                      className="h-full rounded-[14px] bg-white border border-[#0A2E4D]/[0.08] hover:border-[#0A2E4D]/[0.2] transition-colors duration-300 overflow-hidden flex flex-col shadow-[0_8px_40px_-12px_rgba(10,46,77,0.12)]"
                     >
                       <div className="relative aspect-[4/3] bg-[#F7F3EB] border-b border-[#0A2E4D]/[0.08]">
                         {g.thumbnail ? (
@@ -136,16 +136,16 @@ export default function GuidesPage() {
                           />
                         ) : (
                           <div className="absolute inset-0 flex items-center justify-center">
-                            <Scales size={40} weight="duotone" className="text-[#0A2E4D]/20" />
+                            <Scales size={40} weight="regular" className="text-[#0A2E4D]/20" />
                           </div>
                         )}
                       </div>
                       <div className="p-7 flex flex-col gap-3 flex-1">
-                        <span className="inline-flex items-center gap-1.5 self-start text-[10px] font-mono uppercase tracking-widest text-[#0A2E4D]/50 px-2.5 py-1 rounded-full bg-[#0A2E4D]/[0.05] border border-[#0A2E4D]/[0.08]">
+                        <span className="inline-flex items-center gap-1.5 self-start text-[10px] font-mono uppercase tracking-[0.16em] text-[#0A2E4D]/50 px-2.5 py-1 rounded-full bg-[#0A2E4D]/[0.05] border border-[#0A2E4D]/[0.08]">
                           <FilePdf size={11} />
                           {g.format}
                         </span>
-                        <h3 className="text-xl font-bold tracking-tight text-[#0A2E4D] leading-snug">
+                        <h3 className="text-xl font-bold tracking-[-0.02em] text-[#0A2E4D] leading-snug">
                           {g.title}
                         </h3>
                         <p className="text-[0.9375rem] text-[#0A2E4D]/55 leading-relaxed flex-1">
@@ -153,7 +153,7 @@ export default function GuidesPage() {
                         </p>
                         <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#0A2E4D] mt-2">
                           Voir le guide
-                          <ArrowRight size={14} weight="bold" />
+                          <ArrowRight size={14} weight="regular" />
                         </span>
                       </div>
                     </SpotlightCard>
@@ -162,8 +162,8 @@ export default function GuidesPage() {
               ))}
 
               {/* Carte "à venir" */}
-              <div className="rounded-[2rem] border border-dashed border-[#0A2E4D]/[0.15] flex flex-col items-center justify-center gap-3 p-7 text-center min-h-[280px]">
-                <Wrench size={22} weight="duotone" className="text-[#0A2E4D]/25" />
+              <div className="rounded-[14px] border border-dashed border-[#0A2E4D]/[0.15] flex flex-col items-center justify-center gap-3 p-7 text-center min-h-[280px]">
+                <Wrench size={22} weight="regular" className="text-[#0A2E4D]/25" />
                 <p className="text-sm text-[#0A2E4D]/40 max-w-[20ch]">
                   D&apos;autres guides gratuits arrivent bientôt.
                 </p>

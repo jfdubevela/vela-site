@@ -70,16 +70,16 @@ export default function EtudesDeCas() {
   return (
     <section
       id="etudes-de-cas"
-      className="bg-[#F5F5F0] py-28 md:py-36 rounded-t-3xl"
+      className="bg-[#E8E4DA] py-28 md:py-36 rounded-t-[18px]"
     >
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
+      <div className="max-w-[1180px] mx-auto px-6 md:px-12 lg:px-20">
         {/* Header */}
         <ScrollReveal>
           <div className="mb-14">
-            <p className="text-xs uppercase tracking-[0.25em] text-[#0A2E4D]/40 mb-4">
+            <p className="font-mono text-[0.75rem] uppercase tracking-[0.16em] text-[#0A2E4D]/40 mb-4">
               Exemples d&apos;automations
             </p>
-            <h2 className="text-[clamp(2rem,4.5vw,3.5rem)] font-black tracking-normal leading-[0.95] text-[#0A2E4D]">
+            <h2 className="text-[clamp(2rem,4.5vw,3.5rem)] font-medium tracking-[-0.02em] leading-[0.95] text-[#0A2E4D]">
               Cas réels.
               <br />
               <span className="text-[#0A2E4D]/30">Concret. Mesuré. Rentable.</span>
@@ -104,11 +104,11 @@ export default function EtudesDeCas() {
             >
               <SpotlightCard
                 variant="light"
-                className="h-full rounded-[2rem] bg-white border border-[#0A2E4D]/08 p-8 flex flex-col gap-5 shadow-[0_8px_40px_-12px_rgba(10,46,77,0.08)] hover:border-[#0A2E4D]/18 hover:shadow-[0_12px_48px_-12px_rgba(10,46,77,0.13)] transition-all duration-300"
+                className="h-full rounded-[14px] bg-white border border-[#0A2E4D]/08 p-8 flex flex-col gap-5 shadow-[0_8px_40px_-12px_rgba(10,46,77,0.08)] hover:border-[#0A2E4D]/18 hover:shadow-[0_12px_48px_-12px_rgba(10,46,77,0.13)] transition-all duration-300"
               >
                 {/* Top row: sector + number */}
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-[#0A2E4D]/35 font-mono">
+                  <span className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-[#0A2E4D]/35 font-mono">
                     {c.sector}
                   </span>
                   <span className="font-mono text-[10px] text-[#0A2E4D]/18">
@@ -117,13 +117,13 @@ export default function EtudesDeCas() {
                 </div>
 
                 {/* Metric */}
-                <div className="font-mono text-2xl font-bold text-[#C49060] tracking-tight leading-none">
+                <div className="font-mono text-2xl font-bold text-[#D9BC7E] tracking-[-0.02em] leading-none">
                   {c.metric}
                 </div>
 
                 {/* Content */}
                 <div className="flex flex-col gap-2 flex-1">
-                  <h3 className="text-base font-bold tracking-tight text-[#0A2E4D] leading-snug">
+                  <h3 className="text-base font-bold tracking-[-0.02em] text-[#0A2E4D] leading-snug">
                     {c.title}
                   </h3>
                   <p className="text-sm text-[#0A2E4D]/55 leading-relaxed">
@@ -144,7 +144,7 @@ export default function EtudesDeCas() {
                   {c.demoUrl && (
                     <a
                       href={c.demoUrl}
-                      className="ml-auto text-[10px] px-3 py-1 rounded-full bg-[#0A2E4D] text-white font-mono tracking-wide hover:bg-[#0A2E4D]/80 transition-colors"
+                      className="ml-auto text-[10px] px-3 py-1 rounded-[10px] bg-[#0A2E4D] text-white font-mono tracking-wide hover:bg-[#0A2E4D]/80 transition-colors"
                     >
                       Démo →
                     </a>

@@ -1,0 +1,34 @@
+# VELA — Automatisation I.A. pour PME québécoises
+
+## Qui sommes-nous
+
+VELA est une micro-agence québécoise spécialisée en intelligence artificielle appliquée aux PME.
+Basée à Longueuil, Québec, Canada.
+Site web : https://velavelavela.com
+
+## Ce que nous faisons
+
+VELA accompagne les petites et moyennes entreprises (PME) du Québec avec trois expertises complémentaires :
+
+1. **Coaching individuel** — Accompagnement personnalisé pour intégrer l'I.A. dans le travail quotidien. Adapté au rôle, au rythme et à la réalité de chaque client.
+
+2. **Formations pratiques** — Ateliers et formations en I.A. adaptés au contexte des PME québécoises. Outils : ChatGPT, Claude, Perplexity, Notion AI, et autres.
+
+3. **Automatisations sur mesure** — Conception et implantation de flux automatisés (n8n, Make, Zapier, API) pour éliminer les tâches répétitives et gagner du temps opérationnel.
+
+## Valeurs et positionnement
+
+- Concret, anti-hype, orienté résultats
+- Francophone, ancré dans le contexte des PME québécoises
+- Pas de jargon technologique inutile
+- Objectif : rendre les clients autonomes, pas dépendants
+
+## À qui nous nous adressons
+
+PME québécoises de 1 à 50 employés, dirigeants, gestionnaires, professionnels indépendants qui veulent intégrer l'I.A. dans leur réalité d'affaires sans perdre de temps à naviguer seuls dans l'offre technologique.
+
+## Contact
+
+Téléphone : 438 499-1855
+Adresse : Longueuil, Québec, Canada
+LinkedIn : https://www.linkedin.com/company/agencevela/

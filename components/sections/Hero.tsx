@@ -86,12 +86,12 @@ export default function Hero({
         >
           <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0A2E4D] via-[#0A2E4D]/75 to-[#0A2E4D]/20" />
-        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#0A2E4D] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#122434] via-[#0A2E4D]/75 to-[#0A2E4D]/20" />
+        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#122434] to-transparent" />
       </motion.div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20 pt-24 pb-10 w-full">
+      <div className="relative z-10 max-w-[1180px] mx-auto px-6 md:px-12 lg:px-20 pt-24 pb-10 w-full">
         <div className="grid grid-cols-1 md:grid-cols-[55fr_45fr] gap-12 md:gap-0 items-center min-h-[calc(100dvh-6rem)]">
           <div className="flex flex-col justify-center gap-7">
             {/* Pill badge */}
@@ -112,7 +112,7 @@ export default function Hero({
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="text-[clamp(2.2rem,5.5vw,4.2rem)] font-black tracking-normal leading-[0.95] text-[#F7F3EB]"
+              className="text-[clamp(2.2rem,5.5vw,4.2rem)] font-medium tracking-[-0.02em] leading-[0.95] text-[#F7F3EB]"
             >
               <span className="block">
                 {line1.map((word, i) => (
@@ -121,7 +121,7 @@ export default function Hero({
                   </motion.span>
                 ))}
               </span>
-              <span className="block text-[#D4A373]">
+              <span className="block text-[#C9A961]">
                 {line2.map((word, i) => (
                   <motion.span key={i} variants={wordVariants} className="inline-block mr-[0.22em] last:mr-0">
                     {word}
@@ -135,10 +135,10 @@ export default function Hero({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ type: 'spring', stiffness: 70, damping: 18, delay: 0.7 }}
-              className="text-base md:text-lg text-[rgba(245,245,240,0.62)] leading-relaxed max-w-[50ch]"
+              className="text-base md:text-lg text-[rgba(247,243,235,0.62)] leading-relaxed max-w-[50ch]"
             >
               {subtitle}{' '}
-              <span className="text-[rgba(245,245,240,0.92)] font-bold">{subtitleBold}</span>
+              <span className="text-[rgba(247,243,235,0.92)] font-bold">{subtitleBold}</span>
             </motion.p>
 
             {/* CTA group */}
@@ -154,8 +154,8 @@ export default function Hero({
               <MagneticButton
                 className={
                   showBookingCta
-                    ? 'inline-flex items-center gap-2 border border-[rgba(245,245,240,0.22)] text-[#F5F5F0] hover:border-[rgba(245,245,240,0.45)] hover:bg-white/[0.04] text-sm px-7 py-3.5 rounded-full transition-all duration-200 cursor-pointer'
-                    : 'inline-flex items-center gap-2 bg-[#D4A373] hover:bg-[#C49060] text-[#0A2E4D] font-bold text-sm px-7 py-3.5 rounded-full transition-colors duration-200 cursor-pointer shadow-[0_8px_32px_-8px_rgba(212,163,115,0.45)]'
+                    ? 'inline-flex items-center gap-2 border border-[rgba(247,243,235,0.22)] text-[#E8E4DA] hover:border-[rgba(247,243,235,0.45)] hover:bg-white/[0.04] text-sm px-7 py-3.5 rounded-[10px] transition-all duration-200 cursor-pointer'
+                    : 'inline-flex items-center gap-2 bg-[#C9A961] hover:bg-[#D9BC7E] text-[#0A2E4D] font-bold text-sm px-7 py-3.5 rounded-[10px] transition-colors duration-200 cursor-pointer shadow-[0_8px_32px_-8px_rgba(201,169,97,0.45)]'
                 }
                 onClick={() => scrollToSection(primaryCtaTarget)}
               >
@@ -163,11 +163,11 @@ export default function Hero({
               </MagneticButton>
               {secondaryCtaLabel !== null && (
                 <MagneticButton
-                  className="inline-flex items-center gap-2 border border-[rgba(245,245,240,0.22)] text-[#F5F5F0] hover:border-[rgba(245,245,240,0.45)] hover:bg-white/[0.04] text-sm px-7 py-3.5 rounded-full transition-all duration-200 cursor-pointer"
+                  className="inline-flex items-center gap-2 border border-[rgba(247,243,235,0.22)] text-[#E8E4DA] hover:border-[rgba(247,243,235,0.45)] hover:bg-white/[0.04] text-sm px-7 py-3.5 rounded-[10px] transition-all duration-200 cursor-pointer"
                   onClick={() => scrollToSection(secondaryCtaTarget!)}
                 >
                   {secondaryCtaLabel}
-                  <ArrowDown size={15} weight="bold" className="opacity-70" />
+                  <ArrowDown size={15} weight="regular" className="opacity-70" />
                 </MagneticButton>
               )}
             </motion.div>
@@ -178,7 +178,7 @@ export default function Hero({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.1, duration: 0.5 }}
-                className="text-xs text-[rgba(245,245,240,0.45)] leading-relaxed max-w-[46ch] -mt-3"
+                className="text-xs text-[rgba(247,243,235,0.45)] leading-relaxed max-w-[46ch] -mt-3"
               >
                 {CALENDRIER_MICRO_COPY}
               </motion.p>
@@ -189,7 +189,7 @@ export default function Hero({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.3, duration: 0.5 }}
-              className="text-xs text-[rgba(245,245,240,0.28)] font-mono tracking-wide"
+              className="text-xs text-[rgba(247,243,235,0.28)] font-mono tracking-wide"
             >
               {microText}
             </motion.p>
@@ -206,14 +206,14 @@ export default function Hero({
         transition={{ delay: 1.8, duration: 0.6 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
       >
-        <span className="text-[10px] uppercase tracking-[0.2em] text-[rgba(245,245,240,0.25)]">
+        <span className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-[rgba(247,243,235,0.25)]">
           Défiler
         </span>
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <ArrowDown size={14} className="text-[rgba(245,245,240,0.25)]" />
+          <ArrowDown size={14} className="text-[rgba(247,243,235,0.25)]" />
         </motion.div>
       </motion.div>
     </section>
