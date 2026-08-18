@@ -59,6 +59,7 @@ export default function Footer() {
                 { label: 'Tarification', href: '#tarification' },
                 { label: 'Exemples', href: '#etudes-de-cas' },
                 { label: 'FAQ', href: '#faq' },
+                { label: 'Manifeste', href: '/manifeste' },
                 { label: 'Réserver un appel', href: CALENDRIER_URL },
                 { label: 'Nous écrire', href: '#contact' },
               ].map((item) => (
