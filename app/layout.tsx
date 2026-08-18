@@ -39,13 +39,13 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://velavelavela.com"),
   title: {
-    default: "VELA | Automatisation I.A. pour PME, Montréal",
+    default: "VELA | Formation, coaching et automatisation I.A. pour PME du Québec",
     template: "%s | VELA",
   },
   description:
     "Coaching, formations et automatisations I.A. pour PME à Montréal. Gagnez du temps et passez à l'action. Réservez votre appel découverte gratuit.",
   openGraph: {
-    title: "VELA | Automatisation I.A. pour PME, Montréal",
+    title: "VELA | Formation, coaching et automatisation I.A. pour PME du Québec",
     description:
       "Coaching, formations et automatisations I.A. pour PME à Montréal. Gagnez du temps et passez à l'action. Réservez votre appel découverte gratuit.",
     url: "https://velavelavela.com",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "VELA | Automatisation I.A. pour PME, Montréal",
+    title: "VELA | Formation, coaching et automatisation I.A. pour PME du Québec",
     description:
       "Coaching, formations et automatisations I.A. pour PME à Montréal. Gagnez du temps et passez à l'action. Réservez votre appel découverte gratuit.",
     images: ["/og.jpg"],

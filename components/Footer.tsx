@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="flex flex-col gap-4 items-start">
             <Image src="/logo.svg" alt="VELA" width={132} height={46} className="h-10 w-auto" />
             <p className="text-sm text-[rgba(247,243,235,0.45)] leading-relaxed max-w-[30ch]">
-              Automatisation par l&apos;I.A. : claire, rentable, fiable.
+              L&apos;intelligence artificielle, rendue claire, rentable et fiable.
             </p>
             <p className="text-xs text-[rgba(247,243,235,0.25)] font-mono">
               Basé à Longueuil, Québec
@@ -35,10 +35,14 @@ export default function Footer() {
               Services
             </p>
             <ul className="flex flex-col gap-2.5">
-              {['Diagnostic & stratégie', 'Implantation', 'Éducation', 'Adoption'].map((s) => (
-                <li key={s}>
-                  <a href="#services" className="text-sm text-[rgba(247,243,235,0.5)] hover:text-[#E8E4DA] transition-colors">
-                    {s}
+              {[
+                { label: 'Coaching', href: '/coaching' },
+                { label: 'Formation', href: '/formations' },
+                { label: 'Automatisation', href: '/automatisations' },
+              ].map((s) => (
+                <li key={s.label}>
+                  <a href={s.href} className="text-sm text-[rgba(247,243,235,0.5)] hover:text-[#E8E4DA] transition-colors">
+                    {s.label}
                   </a>
                 </li>
               ))}

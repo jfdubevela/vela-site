@@ -153,7 +153,7 @@ export default function ServicesHome() {
                       Coaching I.A.
                     </h3>
                     <p className="text-sm text-[rgba(247,243,235,0.55)] leading-relaxed max-w-[48ch]">
-                      Un accompagnement individuel pour accélérer votre transformation I.A.
+                      Un accompagnement individuel pour intégrer l&apos;I.A. dans votre travail, concrètement, sans jargon.
                       Sessions 1-on-1, roadmap personnalisée, résultats mesurables.
                     </p>
                   </div>

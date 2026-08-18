@@ -603,8 +603,8 @@ export default function CoachingPage() {
 
               <ScrollReveal delay={0.16}>
                 <p className="text-[rgba(247,243,235,0.60)] leading-[1.8] mb-8">
-                  VELA est une micro-agence québécoise d&apos;automatisation par l&apos;I.A.,{' '}
-                  <strong className="text-[rgba(247,243,235,0.85)] font-semibold">concrète, anti-hype, orientée résultats.</strong>{' '}
+                  VELA est le point de repère I.A. des professionnels et des PME,{' '}
+                  <strong className="text-[rgba(247,243,235,0.85)] font-semibold">concret, anti-hype, orienté résultats.</strong>{' '}
                   On ne vend pas de rêves technologiques. On mesure ce qui vaut la peine, on implante ce qui marche,
                   et on vous rend autonome. Le coaching individuel, c&apos;est cette même approche appliquée à votre
                   réalité personnelle :{' '}
