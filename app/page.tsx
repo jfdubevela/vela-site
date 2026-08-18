@@ -35,10 +35,10 @@ export default function Home() {
         <div className="z-[1]">
           <Hero
             badge="Coaching · Formation · Automatisation"
-            line1={['Votre', 'productivité', 'et', 'créativité']}
-            line2={['amplifiées', 'par', "l'intelligence artificielle"]}
-            subtitle="VELA accompagne les professionnels et les PME québécoises avec trois expertises complémentaires en intelligence artificielle."
-            subtitleBold="Concrets, accessibles, et orientés résultats."
+            line1={["Comprendre", "l'I.A."]}
+            line2={['Et', 'enfin', "s'en", 'servir.']}
+            subtitle="Formation, coaching et automatisation pour les professionnels et les PME du Québec."
+            subtitleBold="Concret, mesuré, sans jargon."
             primaryCtaLabel="Découvrir nos services"
             primaryCtaTarget="#services"
             secondaryCtaLabel={null}
