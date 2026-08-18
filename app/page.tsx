@@ -19,6 +19,10 @@ import ScrollProgress from '@/components/ui/ScrollProgress'
 import Hero from '@/components/sections/Hero'
 import CTAFinal from '@/components/sections/CTAFinal'
 import ServicesHome from '@/components/sections/ServicesHome'
+import Parcours from '@/components/sections/Parcours'
+import PourQui from '@/components/sections/PourQui'
+import PourquoiVela from '@/components/sections/PourquoiVela'
+import GuidesGratuits from '@/components/sections/GuidesGratuits'
 
 const homeSections = [
   { id: 'hero', label: 'Intro' },
@@ -48,6 +52,14 @@ export default function Home() {
         </div>
 
         <ServicesHome />
+
+        <Parcours />
+
+        <PourQui />
+
+        <PourquoiVela />
+
+        <GuidesGratuits />
 
         <CTAFinal />
       </main>
