@@ -7,12 +7,6 @@ import Link from 'next/link'
 import { List, X, LinkedinLogo, CaretDown } from '@phosphor-icons/react'
 import MagneticButton from './ui/MagneticButton'
 
-const anchorLinks = [
-  { label: 'Tarification', href: '#tarification' },
-  { label: 'Exemples', href: '#etudes-de-cas' },
-  { label: 'FAQ', href: '#faq' },
-]
-
 type SubLink = { label: string; href: string; nested?: boolean }
 
 // Sous-menu de Services
@@ -31,12 +25,10 @@ const outilsSubLinks: SubLink[] = [
 export default function Nav({
   lightTop = false,
   lightUntil,
-  showAnchorLinks = true,
 }: {
   lightTop?: boolean
   /** Sélecteur de la dernière section claire : la barre reste claire tant qu'elle n'est pas dépassée */
   lightUntil?: string
-  showAnchorLinks?: boolean
 }) {
   const [scrolled, setScrolled] = useState(false)
   const [pastLight, setPastLight] = useState(false)
@@ -227,18 +219,6 @@ export default function Nav({
             >
               Manifeste
             </Link>
-
-            {/* Anchor links, visibles seulement sur les pages de service */}
-            {showAnchorLinks &&
-              anchorLinks.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => handleNavClick(link.href)}
-                  className={`text-sm font-medium transition-colors duration-200 ${linkColor}`}
-                >
-                  {link.label}
-                </button>
-              ))}
           </nav>
 
           {/* CTA */}
@@ -401,18 +381,6 @@ export default function Nav({
                 >
                   Manifeste
                 </Link>
-
-                {/* Anchor links */}
-                {showAnchorLinks &&
-                  anchorLinks.map((link) => (
-                    <button
-                      key={link.href}
-                      onClick={() => handleNavClick(link.href)}
-                      className="text-left text-lg font-semibold text-[#E8E4DA] hover:text-[#C9A961] transition-colors"
-                    >
-                      {link.label}
-                    </button>
-                  ))}
               </nav>
 
               <div className="mt-auto pt-8">

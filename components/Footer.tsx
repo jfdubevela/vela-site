@@ -56,9 +56,6 @@ export default function Footer() {
             </p>
             <ul className="flex flex-col gap-2.5">
               {[
-                { label: 'Tarification', href: '#tarification' },
-                { label: 'Exemples', href: '#etudes-de-cas' },
-                { label: 'FAQ', href: '#faq' },
                 { label: 'Manifeste', href: '/manifeste' },
                 { label: 'Réserver un appel', href: CALENDRIER_URL },
                 { label: 'Nous écrire', href: '#contact' },
@@ -96,7 +93,7 @@ export default function Footer() {
 
         <div className="mt-14 pt-6 border-t border-[rgba(247,243,235,0.12)] flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-[rgba(247,243,235,0.22)] font-mono">
-            © 2025 VELA Automatisation inc.
+            © 2025 VELA Intelligence Artificielle
           </p>
           <div className="flex gap-6">
             <a href="#" className="text-xs text-[rgba(247,243,235,0.22)] hover:text-[rgba(247,243,235,0.5)] transition-colors">

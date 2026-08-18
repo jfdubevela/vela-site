@@ -155,7 +155,7 @@ export default function CoachingPage() {
 
   return (
     <>
-      <Nav lightTop showAnchorLinks={false} />
+      <Nav lightTop />
       <ScrollRail sections={coachingSections} />
 
       <main>

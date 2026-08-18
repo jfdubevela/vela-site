@@ -234,7 +234,7 @@ export default function FormationsPage() {
 
   return (
     <>
-      <Nav showAnchorLinks={false} />
+      <Nav />
       <ScrollRail sections={formationsSections} />
       <main className="bg-[#122434]">
 

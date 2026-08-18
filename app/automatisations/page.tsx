@@ -39,7 +39,7 @@ const autoSections = [
 export default function AutomatisationsPage() {
   return (
     <>
-      <Nav showAnchorLinks={false} />
+      <Nav />
       <ScrollRail sections={autoSections} />
       <main>
         <div className="z-[1]">

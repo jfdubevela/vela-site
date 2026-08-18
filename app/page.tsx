@@ -37,7 +37,7 @@ const homeSections = [
 export default function Home() {
   return (
     <>
-      <Nav showAnchorLinks={false} />
+      <Nav />
       <ScrollRail sections={homeSections} />
       <main>
         <div className="z-[1]">

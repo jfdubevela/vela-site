@@ -41,7 +41,7 @@ const guides: Guide[] = [
 export default function GuidesPage() {
   return (
     <>
-      <Nav showAnchorLinks={false} />
+      <Nav />
       <main className="bg-[#122434]">
 
         {/* ─── Hero ─── */}

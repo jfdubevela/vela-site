@@ -55,7 +55,7 @@ export default function GuideClaudeChatgptGeminiPmePage() {
 
   return (
     <>
-      <Nav showAnchorLinks={false} />
+      <Nav />
       <main className="bg-[#122434]">
 
         {/* ─── Hero ─── */}

@@ -127,7 +127,7 @@ export const metadata: Metadata = {
 export default function SkillLoi25Page() {
   return (
     <>
-      <Nav showAnchorLinks={false} />
+      <Nav />
       <main>
         <SkillHero
           badge={CONFIG.badge}

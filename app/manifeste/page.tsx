@@ -64,7 +64,7 @@ const blocs: Bloc[] = [
 export default function ManifestePage() {
   return (
     <>
-      <Nav lightTop lightUntil="#lettre" showAnchorLinks={false} />
+      <Nav lightTop lightUntil="#lettre" />
 
       <main>
         {/* ─────────────────────────────────────────────

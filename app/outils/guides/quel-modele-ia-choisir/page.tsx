@@ -87,7 +87,7 @@ export default function GuideQuelModeleIAChoisirPage() {
 
   return (
     <>
-      <Nav showAnchorLinks={false} />
+      <Nav />
       <main className="bg-[#122434]">
 
         {/* ─── Hero ─── */}
