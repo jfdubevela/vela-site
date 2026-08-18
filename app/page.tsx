@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
 }
 import Footer from '@/components/Footer'
-import ScrollProgress from '@/components/ui/ScrollProgress'
+import ScrollRail from '@/components/ui/ScrollRail'
 import Hero from '@/components/sections/Hero'
 import CTAFinal from '@/components/sections/CTAFinal'
 import ServicesHome from '@/components/sections/ServicesHome'
@@ -27,6 +27,10 @@ import GuidesGratuits from '@/components/sections/GuidesGratuits'
 const homeSections = [
   { id: 'hero', label: 'Intro' },
   { id: 'services', label: 'Services' },
+  { id: 'parcours', label: 'Parcours' },
+  { id: 'pour-qui', label: 'Pour qui' },
+  { id: 'pourquoi-vela', label: 'Pourquoi VELA' },
+  { id: 'guides', label: 'Guides' },
   { id: 'contact', label: 'Contact' },
 ]
 
@@ -34,7 +38,7 @@ export default function Home() {
   return (
     <>
       <Nav showAnchorLinks={false} />
-      <ScrollProgress sections={homeSections} />
+      <ScrollRail sections={homeSections} />
       <main>
         <div className="z-[1]">
           <Hero

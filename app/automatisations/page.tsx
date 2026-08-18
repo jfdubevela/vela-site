@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
 }
 import Footer from '@/components/Footer'
-import ScrollProgress from '@/components/ui/ScrollProgress'
+import ScrollRail from '@/components/ui/ScrollRail'
 import Hero from '@/components/sections/Hero'
 import TrustBar from '@/components/sections/TrustBar'
 import Probleme from '@/components/sections/Probleme'
@@ -40,7 +40,7 @@ export default function AutomatisationsPage() {
   return (
     <>
       <Nav showAnchorLinks={false} />
-      <ScrollProgress sections={autoSections} />
+      <ScrollRail sections={autoSections} />
       <main>
         <div className="z-[1]">
           <Hero />

@@ -3,6 +3,7 @@
 import { useState, useTransition } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Nav from '@/components/Nav'
+import ScrollRail from '@/components/ui/ScrollRail'
 import Footer from '@/components/Footer'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import SpotlightCard from '@/components/ui/SpotlightCard'
@@ -188,6 +189,12 @@ function DetailPanel({ formation: f, onContact }: { formation: Formation; onCont
 }
 
 /* ─── Page ─── */
+const formationsSections = [
+  { id: 'hero', label: 'Intro' },
+  { id: 'formations-list', label: 'Formations' },
+  { id: 'contact-formations', label: 'Contact' },
+]
+
 export default function FormationsPage() {
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [sent, setSent] = useState(false)
@@ -228,10 +235,11 @@ export default function FormationsPage() {
   return (
     <>
       <Nav showAnchorLinks={false} />
+      <ScrollRail sections={formationsSections} />
       <main className="bg-[#122434]">
 
         {/* ─── Hero ─── */}
-        <section className="relative min-h-[75dvh] flex items-center overflow-hidden pt-20">
+        <section id="hero" className="relative min-h-[75dvh] flex items-center overflow-hidden pt-20">
           {/* Subtle texture */}
           <div
             className="texture-overlay"

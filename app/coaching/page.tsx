@@ -3,6 +3,7 @@
 import { useState, useTransition } from 'react'
 import { motion } from 'framer-motion'
 import Nav from '@/components/Nav'
+import ScrollRail from '@/components/ui/ScrollRail'
 import Footer from '@/components/Footer'
 import ScrollReveal from '@/components/ui/ScrollReveal'
 import BoutonDecouverte from '@/components/ui/BoutonDecouverte'
@@ -120,6 +121,17 @@ const livrables = [
   { icon: TrendUp, title: 'Progression mesurable mois après mois', desc: "Un bilan mensuel qui trace votre évolution. Vous voyez concrètement ce que vous avez intégré." },
 ]
 
+const coachingSections = [
+  { id: 'hero', label: 'Intro' },
+  { id: 'tarif', label: 'Tarif' },
+  { id: 'probleme', label: 'Problème' },
+  { id: 'processus', label: 'Processus' },
+  { id: 'profils', label: 'Pour qui' },
+  { id: 'livrables', label: 'Livrables' },
+  { id: 'coach', label: 'Le coach' },
+  { id: 'contact', label: 'Contact' },
+]
+
 export default function CoachingPage() {
   const [sent, setSent] = useState(false)
   const [formError, setFormError] = useState('')
@@ -144,6 +156,7 @@ export default function CoachingPage() {
   return (
     <>
       <Nav lightTop showAnchorLinks={false} />
+      <ScrollRail sections={coachingSections} />
 
       <main>
         {/* ── Hero ── */}
